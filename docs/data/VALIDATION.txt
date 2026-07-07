@@ -1,0 +1,31 @@
+SACI FINAL VALIDATION
+================================================================================
+
+S0 no_siem SACI=0.0 missing=167 observed=6 edges=173
+S1 siem_deployed SACI=10.56 missing=163 observed=10 edges=173
+S2 inventory_defined SACI=11.56 missing=163 observed=10 edges=173
+S3 dc_visibility SACI=42.96 missing=109 observed=64 edges=173
+S4 endpoint_visibility SACI=69.0 missing=42 observed=131 edges=173
+S5 firewall_visibility SACI=74.56 missing=40 observed=133 edges=173
+S6 cti_integration SACI=94.0 missing=30 observed=143 edges=173
+S7A critical_dc01_sysmon_loss SACI=78.53 missing=57 observed=116 edges=173
+S7B noncritical_ws01_sysmon_loss SACI=92.52 missing=32 observed=141 edges=173
+S8 final_closure SACI=100.0 missing=0 observed=173 edges=173
+S9 critical_dc01_security_loss SACI=96.47 missing=7 observed=166 edges=173
+S10 endpoint_powershell_loss SACI=95.05 missing=12 observed=161 edges=173
+S11 linux_authlog_loss SACI=95.91 missing=7 observed=166 edges=173
+S12 firewall_ioc_without_cti SACI=92.5 missing=6 observed=167 edges=173
+S13 misp_lookup_without_ioc_hit SACI=92.5 missing=6 observed=167 edges=173
+S14 mitre_scope_expansion_gap SACI=97.54 missing=5 observed=173 edges=178
+S15 freshness_decay SACI=95.0 missing=0 observed=173 edges=173
+S16 detection_rule_gap SACI=98.93 missing=5 observed=168 edges=173
+S17 recovery_after_fix SACI=100.0 missing=0 observed=173 edges=173
+S18 legacy_control_out_of_scope SACI=100.0 missing=0 observed=173 edges=173
+
+FINAL CHECK
+================================================================================
+S8 SACI: 100.0
+S8 missing_edges: 0
+S8 observed_edges: 173
+S8 total_edges: 173
+S8 final closure status: OK

@@ -1,0 +1,15 @@
+# Results
+
+The SACI model was evaluated through 20 controlled scenarios, including staged visibility progression, fault-injection cases, CTI failure cases, MITRE coverage expansion, telemetry freshness degradation, recovery, and legacy scope validation. The final evaluation outputs were verified using formula consistency checks, graph edge arithmetic checks, final closure validation, and policy-guided explanation report review.
+
+In the staged progression, the SACI score increased from 0.0 in S0, where no SIEM visibility was available, to 100.0 in S8, where all expected visibility relationships were observed within the defined evaluation scope. The number of missing visibility edges decreased from 167 in S0 to 0 in S8. This indicates that the graph-based model can represent the gradual closure of SOC visibility relationships as telemetry sources, detection controls, MITRE mappings, and CTI integration are added.
+
+The comparison between S7A and S7B demonstrates the effect of asset criticality on SACI. In S7A, the loss of Sysmon telemetry from the critical DC01 asset reduced the score to 78.53 and produced 57 missing edges. In contrast, S7B, which models Sysmon telemetry loss on a non-critical WS01 endpoint, resulted in a higher score of 92.52 and 32 missing edges. This shows that SACI is not only sensitive to missing telemetry, but also to the criticality of the affected asset and its graph relationships.
+
+The MITRE scope expansion scenario S14 resulted in a SACI score of 97.54 with 5 missing edges over 178 total expected edges. This scenario demonstrates that when the evaluation scope is expanded with additional ATT&CK-related relationships, SACI can expose the newly introduced coverage gap instead of incorrectly preserving the previous closure state.
+
+The freshness decay scenario S15 resulted in a SACI score of 95.0 despite having zero missing graph edges. In this case, all expected structural visibility relationships were still observed, but the telemetry freshness component decreased to 50.0. This result shows that SACI separates structural graph completeness from temporal freshness. Therefore, a graph can be structurally closed while still receiving a lower score due to stale telemetry.
+
+The recovery scenario S17 restored the SACI score to 100.0 with zero missing edges, showing that the model can represent visibility recovery after missing control relationships are restored. Similarly, S18 maintained a score of 100.0 after legacy controls were marked out of active evaluation scope. This confirms that older controls can be retained for traceability without lowering the active SACI score when they are explicitly excluded from the final scoring scope.
+
+Overall, the results show that SACI provides an explainable visibility score rather than a general security score. A SACI value of 100.0 means that all expected visibility relationships were observed within the defined evaluation scope. It must not be interpreted as a guarantee that the environment is secure against all attacks.
