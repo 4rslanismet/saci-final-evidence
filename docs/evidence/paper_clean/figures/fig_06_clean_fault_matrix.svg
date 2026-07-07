@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="390" viewBox="0 0 1500 390">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+  </marker>
+  <style>
+    text { font-family: Arial, sans-serif; }
+  </style>
+</defs>
+<rect width="100%" height="100%" fill="white"/>
+<text x="750.0" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a" font-family="Arial">Reviewer-oriented Fault-injection Scenario Matrix</text>
+
+<rect x="70" y="85" width="250" height="82" rx="12" fill="#ffedd5" stroke="#334155" stroke-width="1.4"/>
+<text x="195.0" y="120.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S9</text>
+<text x="195.0" y="135.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">Critical auth/security</text>
+<text x="195.0" y="150.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">log loss</text>
+<text x="195.0" y="165.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=96.47, missing=7</text>
+
+<rect x="355" y="85" width="250" height="82" rx="12" fill="#ffedd5" stroke="#334155" stroke-width="1.4"/>
+<text x="480.0" y="120.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S10</text>
+<text x="480.0" y="135.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">Endpoint PowerShell</text>
+<text x="480.0" y="150.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">telemetry loss</text>
+<text x="480.0" y="165.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=95.05, missing=12</text>
+
+<rect x="640" y="85" width="250" height="82" rx="12" fill="#ffedd5" stroke="#334155" stroke-width="1.4"/>
+<text x="765.0" y="120.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S11</text>
+<text x="765.0" y="135.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">Linux authlog</text>
+<text x="765.0" y="150.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">visibility loss</text>
+<text x="765.0" y="165.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=95.91, missing=7</text>
+
+<rect x="925" y="85" width="250" height="82" rx="12" fill="#f3e8ff" stroke="#334155" stroke-width="1.4"/>
+<text x="1050.0" y="120.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S12</text>
+<text x="1050.0" y="135.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">Firewall IOC</text>
+<text x="1050.0" y="150.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">without CTI closure</text>
+<text x="1050.0" y="165.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=92.5, missing=6</text>
+
+<rect x="1210" y="85" width="250" height="82" rx="12" fill="#f3e8ff" stroke="#334155" stroke-width="1.4"/>
+<text x="1335.0" y="120.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S13</text>
+<text x="1335.0" y="135.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">MISP lookup</text>
+<text x="1335.0" y="150.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">without IOC hit</text>
+<text x="1335.0" y="165.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=92.5, missing=6</text>
+
+<rect x="70" y="197" width="250" height="82" rx="12" fill="#ffedd5" stroke="#334155" stroke-width="1.4"/>
+<text x="195.0" y="232.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S14</text>
+<text x="195.0" y="247.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">MITRE scope</text>
+<text x="195.0" y="262.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">expansion gap</text>
+<text x="195.0" y="277.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=97.54, missing=5</text>
+
+<rect x="355" y="197" width="250" height="82" rx="12" fill="#fef9c3" stroke="#334155" stroke-width="1.4"/>
+<text x="480.0" y="232.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S15</text>
+<text x="480.0" y="247.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">Freshness decay</text>
+<text x="480.0" y="262.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">TF sensitivity</text>
+<text x="480.0" y="277.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=95.0, missing=0</text>
+
+<rect x="640" y="197" width="250" height="82" rx="12" fill="#ffedd5" stroke="#334155" stroke-width="1.4"/>
+<text x="765.0" y="232.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S16</text>
+<text x="765.0" y="247.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">Detection rule</text>
+<text x="765.0" y="262.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">gap</text>
+<text x="765.0" y="277.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=98.93, missing=5</text>
+
+<rect x="925" y="197" width="250" height="82" rx="12" fill="#dcfce7" stroke="#334155" stroke-width="1.4"/>
+<text x="1050.0" y="232.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S17</text>
+<text x="1050.0" y="247.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">Recovery after</text>
+<text x="1050.0" y="262.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">fix</text>
+<text x="1050.0" y="277.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=100.0, missing=0</text>
+
+<rect x="1210" y="197" width="250" height="82" rx="12" fill="#dcfce7" stroke="#334155" stroke-width="1.4"/>
+<text x="1335.0" y="232.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">S18</text>
+<text x="1335.0" y="247.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">Legacy controls</text>
+<text x="1335.0" y="262.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">out of scope</text>
+<text x="1335.0" y="277.0" text-anchor="middle" font-size="12" font-weight="400" fill="#0f172a" font-family="Arial">SACI=100.0, missing=0</text>
+<text x="750" y="340" text-anchor="middle" font-size="15" font-weight="600" fill="#334155" font-family="Arial">Reviewer-oriented scenarios test telemetry loss, CTI failure, MITRE scope gaps, freshness decay, rule failure, recovery and scope handling.</text>
+</svg>

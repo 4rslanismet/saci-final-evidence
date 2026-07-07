@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SACI Controlled Lab Topology</title>
+<style>
+:root {
+  --bg:#0f172a;
+  --panel:#111827;
+  --line:#334155;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial, sans-serif;
+}
+header {
+  padding:24px 30px;
+  background:#020617;
+  border-bottom:1px solid var(--line);
+}
+header h1 { margin:0 0 8px; }
+header p { margin:0; color:var(--muted); }
+main {
+  padding:22px;
+  max-width:1320px;
+  margin:auto;
+}
+.card {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:18px;
+}
+.paper {
+  background:white;
+  color:#0f172a;
+  border-radius:14px;
+  padding:28px;
+  overflow:auto;
+}
+.topology {
+  display:grid;
+  grid-template-columns:1.2fr .9fr 1fr 1fr .9fr;
+  gap:18px;
+}
+.col {
+  border:2px solid #cbd5e1;
+  border-radius:16px;
+  padding:14px;
+  background:#f8fafc;
+}
+.col h2 {
+  text-align:center;
+  margin:0 0 12px;
+  font-size:18px;
+}
+.node {
+  border:2px solid #334155;
+  border-radius:14px;
+  padding:13px;
+  margin:10px 0;
+  text-align:center;
+  font-weight:700;
+  line-height:1.35;
+}
+.asset { background:#dbeafe; }
+.log { background:#ffedd5; }
+.platform { background:#ccfbf1; }
+.control { background:#dcfce7; }
+.intel { background:#f3e8ff; }
+.score { background:#fef9c3; }
+.report { background:#e5e7eb; }
+.note {
+  margin-top:18px;
+  padding:14px 16px;
+  background:#f8fafc;
+  border-left:5px solid #2563eb;
+  font-weight:700;
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  color:#0f172a;
+}
+th, td {
+  border:1px solid #cbd5e1;
+  padding:8px;
+  text-align:left;
+}
+th { background:#e5e7eb; }
+a { color:#93c5fd; }
+.paper a { color:#1d4ed8; }
+@media(max-width:900px) {
+  .topology { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+<h1>SACI Controlled Lab Topology</h1>
+<p>Anonymized lab topology for the SACI evaluation package. No real IP, credential, token, secret, or institution-specific hostname is included.</p>
+</header>
+
+<main>
+
+<section class="card">
+<div class="paper">
+
+<div class="topology">
+
+  <div class="col">
+    <h2>Assets</h2>
+    <div class="node asset">A01 / DC01<br>Critical domain controller</div>
+    <div class="node asset">A04 / WS01<br>Windows endpoint</div>
+    <div class="node asset">A05 / Linux host<br>authlog / syslog</div>
+    <div class="node asset">FW01<br>Firewall / syslog</div>
+  </div>
+
+  <div class="col">
+    <h2>Telemetry</h2>
+    <div class="node log">Windows Security</div>
+    <div class="node log">Sysmon</div>
+    <div class="node log">PowerShell</div>
+    <div class="node log">Linux authlog</div>
+    <div class="node log">Firewall logs</div>
+  </div>
+
+  <div class="col">
+    <h2>SOC Platform</h2>
+    <div class="node platform">Wazuh SIEM<br>Manager + Rules</div>
+    <div class="node platform">OpenSearch / Indexer<br>SACI index</div>
+    <div class="node platform">MISP / CTI<br>IOC enrichment</div>
+  </div>
+
+  <div class="col">
+    <h2>SACI Model</h2>
+    <div class="node control">Detection controls<br>C001-C027</div>
+    <div class="node intel">MITRE ATT&CK<br>Technique coverage</div>
+    <div class="node score">SACI engine<br>LC / CAC / MDC / CTIC / TF</div>
+    <div class="node score">Evidence graph<br>observed / missing edges</div>
+  </div>
+
+  <div class="col">
+    <h2>Outputs</h2>
+    <div class="node report">Policy-guided explanation<br>does not calculate score</div>
+    <div class="node report">GitHub Pages<br>evidence viewer</div>
+    <div class="node report"><a href="evidence/graph.html">Interactive evidence graph</a></div>
+    <div class="node report"><a href="evidence/paper_clean_v2/index.html">Paper clean view</a></div>
+    <div class="node report"><a href="index.html">Main evidence page</a></div>
+  </div>
+
+</div>
+
+<div class="note">
+SACI=100 means expected visibility closure within the defined evaluation scope. It is not a general security guarantee.
+</div>
+
+</div>
+</section>
+
+<section class="card">
+<h2>Topology Relation Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Role in SACI evaluation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assets</td>
+<td>Controlled lab entities that generate expected telemetry relationships.</td>
+</tr>
+<tr>
+<td>Telemetry</td>
+<td>Security, Sysmon, PowerShell, Linux authlog and firewall logs collected by Wazuh.</td>
+</tr>
+<tr>
+<td>SOC platform</td>
+<td>Wazuh produces rule evidence, OpenSearch stores indexed results, and MISP provides CTI closure.</td>
+</tr>
+<tr>
+<td>SACI model</td>
+<td>The deterministic SACI engine builds graph completeness and computes LC, CAC, MDC, CTIC and TF.</td>
+</tr>
+<tr>
+<td>Outputs</td>
+<td>GitHub Pages publishes scenario tables, charts, topology and full graph artifacts.</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+</main>
+</body>
+</html>

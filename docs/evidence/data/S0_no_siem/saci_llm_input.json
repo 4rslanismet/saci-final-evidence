@@ -1,0 +1,871 @@
+{
+  "stage": {
+    "stage_id": "S0",
+    "stage_name": "no_siem",
+    "scenario_type": "controlled_evaluation_scenario",
+    "description": "Kurumda merkezi SIEM ve log görünürlüğü yok.",
+    "created_at": "2026-07-02T01:22:24.097499+00:00",
+    "graph": {
+      "nodes": 95,
+      "edges": 173,
+      "observed_edges": 6,
+      "missing_edges": 167
+    }
+  },
+  "scores": {
+    "LC": "0.0",
+    "CAC": "0.0",
+    "MDC": "0.0",
+    "CTIC": "0.0",
+    "TF": "0.0",
+    "SACI": "0.0"
+  },
+  "graph_summary": "# SACI Graph Summary\n\nNodes: 95\nEdges: 173\nObserved edges: 6\nMissing edges: 167\n\n## Node types\n- asset: 6\n- control: 27\n- ioc: 2\n- logsource: 11\n- metric: 6\n- mitre: 15\n- platform: 2\n- score: 1\n- wazuh_rule: 25\n\n## Missing edge examples\n- asset:A01 --emits--> logsource:Security evidence=A01:Security\n- logsource:Security --collected_by--> platform:Wazuh evidence=A01:Security\n- asset:A01 --emits--> logsource:Sysmon evidence=A01:Sysmon\n- logsource:Sysmon --collected_by--> platform:Wazuh evidence=A01:Sysmon\n- asset:A02 --emits--> logsource:misp_enrichment evidence=A02:misp_enrichment\n- logsource:misp_enrichment --collected_by--> platform:Wazuh evidence=A02:misp_enrichment\n- asset:A02 --emits--> logsource:ossec evidence=A02:ossec\n- logsource:ossec --collected_by--> platform:Wazuh evidence=A02:ossec\n- asset:A03 --emits--> logsource:misp_api evidence=A03:misp_api\n- logsource:misp_api --collected_by--> platform:Wazuh evidence=A03:misp_api\n- asset:A07 --emits--> logsource:pfsense_syslog evidence=A07:pfsense_syslog\n- logsource:pfsense_syslog --collected_by--> platform:Wazuh evidence=A07:pfsense_syslog\n- asset:A04 --emits--> logsource:PowerShell evidence=A04:PowerShell\n- logsource:PowerShell --collected_by--> platform:Wazuh evidence=A04:PowerShell\n- asset:A04 --emits--> logsource:Security evidence=A04:Security\n- logsource:Security --collected_by--> platform:Wazuh evidence=A04:Security\n- asset:A04 --emits--> logsource:Sysmon evidence=A04:Sysmon\n- logsource:Sysmon --collected_by--> platform:Wazuh evidence=A04:Sysmon\n- asset:A05 --emits--> logsource:authlog evidence=A05:authlog\n- logsource:authlog --collected_by--> platform:Wazuh evidence=A05:authlog\n- asset:A05 --emits--> logsource:process evidence=A05:process\n- logsource:process --collected_by--> platform:Wazuh evidence=A05:process\n- asset:A05 --emits--> logsource:syslog evidence=A05:syslog\n- logsource:syslog --collected_by--> platform:Wazuh evidence=A05:syslog\n- asset:A01 --protected_by--> control:C001 evidence=C001\n- control:C001 --uses_log_source--> logsource:Sysmon evidence=C001\n- control:C001 --produces_rule--> rule:110006 evidence=C001\n- rule:110006 --alerted_in--> platform:Wazuh evidence=C001\n- control:C001 --detects_technique--> mitre:T1071.004 evidence=C001\n- asset:A01 --protected_by--> control:C002 evidence=C002\n- control:C002 --uses_log_source--> logsource:Sysmon evidence=C002\n- control:C002 --produces_rule--> rule:110005 evidence=C002\n- rule:110005 --alerted_in--> platform:Wazuh evidence=C002\n- control:C002 --detects_technique--> mitre:T1071.004 evidence=C002\n- asset:A01 --protected_by--> control:C003 evidence=C003\n- control:C003 --uses_log_source--> logsource:Sysmon evidence=C003\n- control:C003 --produces_rule--> rule:92057 evidence=C003\n- rule:92057 --alerted_in--> platform:Wazuh evidence=C003\n- control:C003 --detects_technique--> mitre:T1059.001 evidence=C003\n- asset:A01 --protected_by--> control:C004 evidence=C004\n- control:C004 --uses_log_source--> logsource:Sysmon evidence=C004\n- control:C004 --produces_rule--> rule:92052 evidence=C004\n- rule:92052 --alerted_in--> platform:Wazuh evidence=C004\n- control:C004 --detects_technique--> mitre:T1059.003 evidence=C004\n- asset:A01 --protected_by--> control:C005 evidence=C005\n- control:C005 --uses_log_source--> logsource:Security evidence=C005\n- control:C005 --produces_rule--> rule:60106 evidence=C005\n- rule:60106 --alerted_in--> platform:Wazuh evidence=C005\n- control:C005 --detects_technique--> mitre:T1078 evidence=C005\n- asset:A02 --protected_by--> control:C006 evidence=C006\n- control:C006 --uses_log_source--> logsource:Wazuh evidence=C006\n- control:C006 --produces_rule--> rule:110100 evidence=C006\n- rule:110100 --alerted_in--> platform:Wazuh evidence=C006\n- control:C006 --detects_technique--> mitre:T1071.004 evidence=C006\n- asset:A01 --protected_by--> control:C007 evidence=C007\n- control:C007 --uses_log_source--> logsource:Sysmon evidence=C007\n- control:C007 --produces_rule--> rule:110010 evidence=C007\n- rule:110010 --alerted_in--> platform:Wazuh evidence=C007\n- control:C007 --detects_technique--> mitre:T1087 evidence=C007\n- asset:A01 --protected_by--> control:C008 evidence=C008\n- control:C008 --uses_log_source--> logsource:Sysmon evidence=C008\n- control:C008 --produces_rule--> rule:110011 evidence=C008\n- rule:110011 --alerted_in--> platform:Wazuh evidence=C008\n- control:C008 --detects_technique--> mitre:T1482 evidence=C008\n- asset:A01 --protected_by--> control:C009 evidence=C009\n- control:C009 --uses_log_source--> logsource:Sysmon evidence=C009\n- control:C009 --produces_rule--> rule:110012 evidence=C009\n- rule:110012 --alerted_in--> platform:Wazuh evidence=C009\n- control:C009 --detects_technique--> mitre:T1016 evidence=C009\n- asset:A01 --protected_by--> control:C010 evidence=C010\n- control:C010 --uses_log_source--> logsource:Sysmon evidence=C010\n- control:C010 --produces_rule--> rule:110013 evidence=C010\n- rule:110013 --alerted_in--> platform:Wazuh evidence=C010\n- control:C010 --detects_technique--> mitre:T1105 evidence=C010\n- asset:A01 --protected_by--> control:C011 evidence=C011\n- control:C011 --uses_log_source--> logsource:Sysmon evidence=C011\n- control:C011 --produces_rule--> rule:110014 evidence=C011\n- rule:110014 --alerted_in--> platform:Wazuh evidence=C011\n- control:C011 --detects_technique--> mitre:T1135 evidence=C011\n- asset:A01 --protected_by--> control:C012 evidence=C012\n- control:C012 --uses_log_source--> logsource:Sysmon evidence=C012\n- control:C012 --produces_rule--> rule:110011 evidence=C012\n- rule:110011 --alerted_in--> platform:Wazuh evidence=C012\n- control:C012 --detects_technique--> mitre:T1018 evidence=C012\n- asset:A01 --protected_by--> control:C013 evidence=C013\n- control:C013 --uses_log_source--> logsource:Sysmon evidence=C013\n- control:C013 --produces_rule--> rule:110012 evidence=C013\n- rule:110012 --alerted_in--> platform:Wazuh evidence=C013\n- control:C013 --detects_technique--> mitre:T1049 evidence=C013\n- asset:A07 --protected_by--> control:C014 evidence=C014\n- control:C014 --uses_log_source--> logsource:pfsense_syslog evidence=C014\n- control:C014 --produces_rule--> rule:110200 evidence=C014\n- rule:110200 --alerted_in--> platform:Wazuh evidence=C014\n- control:C014 --detects_technique--> mitre:T1046 evidence=C014\n- asset:A07 --protected_by--> control:C015 evidence=C015\n- control:C015 --uses_log_source--> logsource:pfsense_syslog evidence=C015\n- control:C015 --produces_rule--> rule:110201 evidence=C015\n- rule:110201 --alerted_in--> platform:Wazuh evidence=C015\n- control:C015 --detects_technique--> mitre:T1046 evidence=C015\n- asset:A07 --protected_by--> control:C016 evidence=C016\n- control:C016 --uses_log_source--> logsource:pfsense_syslog evidence=C016\n- control:C016 --produces_rule--> rule:110203 evidence=C016\n- rule:110203 --alerted_in--> platform:Wazuh evidence=C016\n- control:C016 --detects_technique--> mitre:T1071.001 evidence=C016\n- asset:A04 --protected_by--> control:C017 evidence=C017\n- control:C017 --uses_log_source--> logsource:Security evidence=C017\n- control:C017 --produces_rule--> rule:110223 evidence=C017\n- rule:110223 --alerted_in--> platform:Wazuh evidence=C017\n- control:C017 --detects_technique--> mitre:T1078 evidence=C017\n- asset:A04 --protected_by--> control:C018 evidence=C018\n- control:C018 --uses_log_source--> logsource:Sysmon evidence=C018\n- control:C018 --produces_rule--> rule:110220 evidence=C018\n- rule:110220 --alerted_in--> platform:Wazuh evidence=C018\n- control:C018 --detects_technique--> mitre:T1087 evidence=C018\n- asset:A04 --protected_by--> control:C019 evidence=C019\n- control:C019 --uses_log_source--> logsource:PowerShell evidence=C019\n- control:C019 --produces_rule--> rule:110222 evidence=C019\n- rule:110222 --alerted_in--> platform:Wazuh evidence=C019\n- control:C019 --detects_technique--> mitre:T1059.001 evidence=C019\n- asset:A05 --protected_by--> control:C020 evidence=C020\n- control:C020 --uses_log_source--> logsource:authlog evidence=C020\n- control:C020 --produces_rule--> rule:110230 evidence=C020\n- rule:110230 --alerted_in--> platform:Wazuh evidence=C020\n- control:C020 --detects_technique--> mitre:T1110 evidence=C020\n- asset:A05 --protected_by--> control:C021 evidence=C021\n- control:C021 --uses_log_source--> logsource:syslog evidence=C021\n- control:C021 --produces_rule--> rule:110231 evidence=C021\n- rule:110231 --alerted_in--> platform:Wazuh evidence=C021\n- control:C021 --detects_technique--> mitre:T1082 evidence=C021\n- asset:A05 --protected_by--> control:C022 evidence=C022\n- control:C022 --uses_log_source--> logsource:process evidence=C022\n- control:C022 --produces_rule--> rule:110232 evidence=C022\n- rule:110232 --alerted_in--> platform:Wazuh evidence=C022\n- control:C022 --detects_technique--> mitre:T1046 evidence=C022\n- asset:A04 --protected_by--> control:C023 evidence=C023\n- control:C023 --uses_log_source--> logsource:Security evidence=C023\n- control:C023 --produces_rule--> rule:110240 evidence=C023\n- rule:110240 --alerted_in--> platform:Wazuh evidence=C023\n- control:C023 --detects_technique--> mitre:T1078 evidence=C023\n- asset:A04 --protected_by--> control:C024 evidence=C024\n- control:C024 --uses_log_source--> logsource:Sysmon evidence=C024\n- control:C024 --produces_rule--> rule:110241 evidence=C024\n- rule:110241 --alerted_in--> platform:Wazuh evidence=C024\n- control:C024 --detects_technique--> mitre:T1087 evidence=C024\n- asset:A04 --protected_by--> control:C025 evidence=C025\n- control:C025 --uses_log_source--> logsource:Sysmon evidence=C025\n- control:C025 --produces_rule--> rule:110242 evidence=C025\n- rule:110242 --alerted_in--> platform:Wazuh evidence=C025\n- control:C025 --detects_technique--> mitre:T1016 evidence=C025\n- asset:A04 --protected_by--> control:C026 evidence=C026\n- control:C026 --uses_log_source--> logsource:PowerShell evidence=C026\n- control:C026 --produces_rule--> rule:110243 evidence=C026\n- rule:110243 --alerted_in--> platform:Wazuh evidence=C026\n- control:C026 --detects_technique--> mitre:T1059.001 evidence=C026\n- asset:A04 --protected_by--> control:C027 evidence=C027\n- control:C027 --uses_log_source--> logsource:Sysmon evidence=C027\n- control:C027 --produces_rule--> rule:110244 evidence=C027\n- rule:110244 --alerted_in--> platform:Wazuh evidence=C027\n- control:C027 --detects_technique--> mitre:T1071.004 evidence=C027\n- platform:MISP --contains_ioc--> ioc:cti-test.example.com evidence=cti-test.example.com\n- platform:Wazuh --queries--> platform:MISP evidence=cti-test.example.com\n- ioc:cti-test.example.com --converted_to_alert--> rule:110100 evidence=cti-test.example.com\n- rule:110100 --alerted_in--> platform:Wazuh evidence=cti-test.example.com\n- platform:MISP --contains_ioc--> ioc:203.0.113.66 evidence=203.0.113.66\n- platform:Wazuh --queries--> platform:MISP evidence=203.0.113.66\n- ioc:203.0.113.66 --converted_to_alert--> rule:110203 evidence=203.0.113.66\n- rule:110203 --alerted_in--> platform:Wazuh evidence=203.0.113.66",
+  "weak_assets": [
+    {
+      "asset_id": "A01",
+      "hostname": "DC01",
+      "criticality": 5.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "Security;Sysmon",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A02",
+      "hostname": "WSIEM",
+      "criticality": 5.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "misp_enrichment;ossec",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A03",
+      "hostname": "CTI01",
+      "criticality": 4.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "misp_api",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A07",
+      "hostname": "FW01-PFSENSE",
+      "criticality": 5.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "pfsense_syslog",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A04",
+      "hostname": "WS01",
+      "criticality": 4.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "PowerShell;Security;Sysmon",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A05",
+      "hostname": "uhost",
+      "criticality": 4.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "authlog;process;syslog",
+      "received_sources": ""
+    }
+  ],
+  "critical_asset_gaps": [
+    {
+      "asset_id": "A01",
+      "hostname": "DC01",
+      "criticality": 5.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "Security;Sysmon",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A02",
+      "hostname": "WSIEM",
+      "criticality": 5.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "misp_enrichment;ossec",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A03",
+      "hostname": "CTI01",
+      "criticality": 4.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "misp_api",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A07",
+      "hostname": "FW01-PFSENSE",
+      "criticality": 5.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "pfsense_syslog",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A04",
+      "hostname": "WS01",
+      "criticality": 4.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "PowerShell;Security;Sysmon",
+      "received_sources": ""
+    },
+    {
+      "asset_id": "A05",
+      "hostname": "uhost",
+      "criticality": 4.0,
+      "coverage_percent": 0.0,
+      "expected_sources": "authlog;process;syslog",
+      "received_sources": ""
+    }
+  ],
+  "missing_controls": [
+    {
+      "control_id": "C001",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110006",
+      "mitre_technique": "T1071.004",
+      "description": "IOC or suspicious domain observed in process command line"
+    },
+    {
+      "control_id": "C002",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110005",
+      "mitre_technique": "T1071.004",
+      "description": "Sysmon DNS query observed"
+    },
+    {
+      "control_id": "C005",
+      "asset_id": "A01",
+      "source": "Security",
+      "rule_id": "60106",
+      "mitre_technique": "T1078",
+      "description": "Windows successful logon observed"
+    },
+    {
+      "control_id": "C006",
+      "asset_id": "A02",
+      "source": "Wazuh",
+      "rule_id": "110100",
+      "mitre_technique": "T1071.004",
+      "description": "MISP IOC match converted to Wazuh alert"
+    },
+    {
+      "control_id": "C007",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110010",
+      "mitre_technique": "T1087",
+      "description": "Account discovery command observed"
+    },
+    {
+      "control_id": "C008",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110011",
+      "mitre_technique": "T1482",
+      "description": "Domain trust or domain controller discovery observed"
+    },
+    {
+      "control_id": "C009",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110012",
+      "mitre_technique": "T1016",
+      "description": "Network configuration discovery observed"
+    },
+    {
+      "control_id": "C010",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110013",
+      "mitre_technique": "T1105",
+      "description": "Ingress tool transfer simulation observed"
+    },
+    {
+      "control_id": "C011",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110014",
+      "mitre_technique": "T1135",
+      "description": "Network share discovery observed"
+    },
+    {
+      "control_id": "C012",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110011",
+      "mitre_technique": "T1018",
+      "description": "Remote system discovery observed"
+    },
+    {
+      "control_id": "C013",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110012",
+      "mitre_technique": "T1049",
+      "description": "Network connection discovery observed"
+    },
+    {
+      "control_id": "C014",
+      "asset_id": "A07",
+      "source": "pfsense_syslog",
+      "rule_id": "110200",
+      "mitre_technique": "T1046",
+      "description": "pfSense firewall event observed"
+    },
+    {
+      "control_id": "C015",
+      "asset_id": "A07",
+      "source": "pfsense_syslog",
+      "rule_id": "110201",
+      "mitre_technique": "T1046",
+      "description": "pfSense blocked traffic observed"
+    },
+    {
+      "control_id": "C016",
+      "asset_id": "A07",
+      "source": "pfsense_syslog",
+      "rule_id": "110203",
+      "mitre_technique": "T1071.001",
+      "description": "pfSense observed CTI IOC IP traffic"
+    },
+    {
+      "control_id": "C017",
+      "asset_id": "A04",
+      "source": "Security",
+      "rule_id": "110223",
+      "mitre_technique": "T1078",
+      "description": "Windows endpoint security logon observed"
+    },
+    {
+      "control_id": "C018",
+      "asset_id": "A04",
+      "source": "Sysmon",
+      "rule_id": "110220",
+      "mitre_technique": "T1087",
+      "description": "Windows endpoint account discovery observed"
+    },
+    {
+      "control_id": "C019",
+      "asset_id": "A04",
+      "source": "PowerShell",
+      "rule_id": "110222",
+      "mitre_technique": "T1059.001",
+      "description": "Windows endpoint PowerShell execution observed"
+    },
+    {
+      "control_id": "C020",
+      "asset_id": "A05",
+      "source": "authlog",
+      "rule_id": "110230",
+      "mitre_technique": "T1110",
+      "description": "Ubuntu SSH authentication failure observed"
+    },
+    {
+      "control_id": "C021",
+      "asset_id": "A05",
+      "source": "syslog",
+      "rule_id": "110231",
+      "mitre_technique": "T1082",
+      "description": "Ubuntu syslog telemetry observed"
+    },
+    {
+      "control_id": "C022",
+      "asset_id": "A05",
+      "source": "process",
+      "rule_id": "110232",
+      "mitre_technique": "T1046",
+      "description": "Ubuntu process or network discovery telemetry observed"
+    }
+  ],
+  "missing_mitre": [
+    {
+      "technique_id": "T1071.004",
+      "technique_name": "DNS",
+      "tactic": "Command and Control"
+    },
+    {
+      "technique_id": "T1059.001",
+      "technique_name": "PowerShell",
+      "tactic": "Execution"
+    },
+    {
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "tactic": "Initial Access / Persistence / Privilege Escalation"
+    },
+    {
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "tactic": "Command and Control"
+    },
+    {
+      "technique_id": "T1016",
+      "technique_name": "System Network Configuration Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1018",
+      "technique_name": "Remote System Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1135",
+      "technique_name": "Network Share Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1482",
+      "technique_name": "Domain Trust Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1087",
+      "technique_name": "Account Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1049",
+      "technique_name": "System Network Connections Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1110",
+      "technique_name": "Brute Force",
+      "tactic": "Credential Access"
+    },
+    {
+      "technique_id": "T1082",
+      "technique_name": "System Information Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1046",
+      "technique_name": "Network Service Discovery",
+      "tactic": "Discovery"
+    }
+  ],
+  "weak_cti": [
+    {
+      "indicator": "cti-test.example.com",
+      "type": "domain",
+      "misp_hit": "0",
+      "wazuh_alert": "0",
+      "ctic_score": "0",
+      "expected_alert_rule": "110100"
+    },
+    {
+      "indicator": "203.0.113.66",
+      "type": "ip-dst",
+      "misp_hit": "0",
+      "wazuh_alert": "0",
+      "ctic_score": "0",
+      "expected_alert_rule": "110203"
+    }
+  ],
+  "missing_edges_examples": [
+    {
+      "source": "asset:A01",
+      "target": "logsource:Security",
+      "relation": "emits",
+      "evidence": "A01:Security"
+    },
+    {
+      "source": "logsource:Security",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A01:Security"
+    },
+    {
+      "source": "asset:A01",
+      "target": "logsource:Sysmon",
+      "relation": "emits",
+      "evidence": "A01:Sysmon"
+    },
+    {
+      "source": "logsource:Sysmon",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A01:Sysmon"
+    },
+    {
+      "source": "asset:A02",
+      "target": "logsource:misp_enrichment",
+      "relation": "emits",
+      "evidence": "A02:misp_enrichment"
+    },
+    {
+      "source": "logsource:misp_enrichment",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A02:misp_enrichment"
+    },
+    {
+      "source": "asset:A02",
+      "target": "logsource:ossec",
+      "relation": "emits",
+      "evidence": "A02:ossec"
+    },
+    {
+      "source": "logsource:ossec",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A02:ossec"
+    },
+    {
+      "source": "asset:A03",
+      "target": "logsource:misp_api",
+      "relation": "emits",
+      "evidence": "A03:misp_api"
+    },
+    {
+      "source": "logsource:misp_api",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A03:misp_api"
+    },
+    {
+      "source": "asset:A07",
+      "target": "logsource:pfsense_syslog",
+      "relation": "emits",
+      "evidence": "A07:pfsense_syslog"
+    },
+    {
+      "source": "logsource:pfsense_syslog",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A07:pfsense_syslog"
+    },
+    {
+      "source": "asset:A04",
+      "target": "logsource:PowerShell",
+      "relation": "emits",
+      "evidence": "A04:PowerShell"
+    },
+    {
+      "source": "logsource:PowerShell",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A04:PowerShell"
+    },
+    {
+      "source": "asset:A04",
+      "target": "logsource:Security",
+      "relation": "emits",
+      "evidence": "A04:Security"
+    },
+    {
+      "source": "logsource:Security",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A04:Security"
+    },
+    {
+      "source": "asset:A04",
+      "target": "logsource:Sysmon",
+      "relation": "emits",
+      "evidence": "A04:Sysmon"
+    },
+    {
+      "source": "logsource:Sysmon",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A04:Sysmon"
+    },
+    {
+      "source": "asset:A05",
+      "target": "logsource:authlog",
+      "relation": "emits",
+      "evidence": "A05:authlog"
+    },
+    {
+      "source": "logsource:authlog",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A05:authlog"
+    },
+    {
+      "source": "asset:A05",
+      "target": "logsource:process",
+      "relation": "emits",
+      "evidence": "A05:process"
+    },
+    {
+      "source": "logsource:process",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A05:process"
+    },
+    {
+      "source": "asset:A05",
+      "target": "logsource:syslog",
+      "relation": "emits",
+      "evidence": "A05:syslog"
+    },
+    {
+      "source": "logsource:syslog",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A05:syslog"
+    },
+    {
+      "source": "asset:A01",
+      "target": "control:C001",
+      "relation": "protected_by",
+      "evidence": "C001"
+    }
+  ],
+  "detected_reasons": [
+    {
+      "metric": "LC",
+      "reason": "Beklenen log kaynaklarının tamamı gözlemlenemedi.",
+      "evidence": [
+        {
+          "asset_id": "A01",
+          "hostname": "DC01",
+          "criticality": 5.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "Security;Sysmon",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A02",
+          "hostname": "WSIEM",
+          "criticality": 5.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "misp_enrichment;ossec",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A03",
+          "hostname": "CTI01",
+          "criticality": 4.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "misp_api",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A07",
+          "hostname": "FW01-PFSENSE",
+          "criticality": 5.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "pfsense_syslog",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A04",
+          "hostname": "WS01",
+          "criticality": 4.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "PowerShell;Security;Sysmon",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A05",
+          "hostname": "uhost",
+          "criticality": 4.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "authlog;process;syslog",
+          "received_sources": ""
+        }
+      ]
+    },
+    {
+      "metric": "Critical Asset Visibility",
+      "reason": "Kritik olarak işaretlenmiş varlıklardan beklenen log kaynaklarının tamamı alınamıyor.",
+      "evidence": [
+        {
+          "asset_id": "A01",
+          "hostname": "DC01",
+          "criticality": 5.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "Security;Sysmon",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A02",
+          "hostname": "WSIEM",
+          "criticality": 5.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "misp_enrichment;ossec",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A03",
+          "hostname": "CTI01",
+          "criticality": 4.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "misp_api",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A07",
+          "hostname": "FW01-PFSENSE",
+          "criticality": 5.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "pfsense_syslog",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A04",
+          "hostname": "WS01",
+          "criticality": 4.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "PowerShell;Security;Sysmon",
+          "received_sources": ""
+        },
+        {
+          "asset_id": "A05",
+          "hostname": "uhost",
+          "criticality": 4.0,
+          "coverage_percent": 0.0,
+          "expected_sources": "authlog;process;syslog",
+          "received_sources": ""
+        }
+      ]
+    },
+    {
+      "metric": "CAC",
+      "reason": "Aktif tespit kontrollerinden bazıları beklenen rule çıktısını üretmedi.",
+      "evidence": [
+        {
+          "control_id": "C001",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110006",
+          "mitre_technique": "T1071.004",
+          "description": "IOC or suspicious domain observed in process command line"
+        },
+        {
+          "control_id": "C002",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110005",
+          "mitre_technique": "T1071.004",
+          "description": "Sysmon DNS query observed"
+        },
+        {
+          "control_id": "C005",
+          "asset_id": "A01",
+          "source": "Security",
+          "rule_id": "60106",
+          "mitre_technique": "T1078",
+          "description": "Windows successful logon observed"
+        },
+        {
+          "control_id": "C006",
+          "asset_id": "A02",
+          "source": "Wazuh",
+          "rule_id": "110100",
+          "mitre_technique": "T1071.004",
+          "description": "MISP IOC match converted to Wazuh alert"
+        },
+        {
+          "control_id": "C007",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110010",
+          "mitre_technique": "T1087",
+          "description": "Account discovery command observed"
+        },
+        {
+          "control_id": "C008",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110011",
+          "mitre_technique": "T1482",
+          "description": "Domain trust or domain controller discovery observed"
+        },
+        {
+          "control_id": "C009",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110012",
+          "mitre_technique": "T1016",
+          "description": "Network configuration discovery observed"
+        },
+        {
+          "control_id": "C010",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110013",
+          "mitre_technique": "T1105",
+          "description": "Ingress tool transfer simulation observed"
+        },
+        {
+          "control_id": "C011",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110014",
+          "mitre_technique": "T1135",
+          "description": "Network share discovery observed"
+        },
+        {
+          "control_id": "C012",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110011",
+          "mitre_technique": "T1018",
+          "description": "Remote system discovery observed"
+        }
+      ]
+    },
+    {
+      "metric": "MDC",
+      "reason": "Kapsamdaki bazı MITRE ATT&CK teknikleri gözlemlenen kontrollerle kapanmadı.",
+      "evidence": [
+        {
+          "technique_id": "T1071.004",
+          "technique_name": "DNS",
+          "tactic": "Command and Control"
+        },
+        {
+          "technique_id": "T1059.001",
+          "technique_name": "PowerShell",
+          "tactic": "Execution"
+        },
+        {
+          "technique_id": "T1078",
+          "technique_name": "Valid Accounts",
+          "tactic": "Initial Access / Persistence / Privilege Escalation"
+        },
+        {
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "tactic": "Command and Control"
+        },
+        {
+          "technique_id": "T1016",
+          "technique_name": "System Network Configuration Discovery",
+          "tactic": "Discovery"
+        },
+        {
+          "technique_id": "T1018",
+          "technique_name": "Remote System Discovery",
+          "tactic": "Discovery"
+        },
+        {
+          "technique_id": "T1135",
+          "technique_name": "Network Share Discovery",
+          "tactic": "Discovery"
+        },
+        {
+          "technique_id": "T1482",
+          "technique_name": "Domain Trust Discovery",
+          "tactic": "Discovery"
+        },
+        {
+          "technique_id": "T1087",
+          "technique_name": "Account Discovery",
+          "tactic": "Discovery"
+        },
+        {
+          "technique_id": "T1049",
+          "technique_name": "System Network Connections Discovery",
+          "tactic": "Discovery"
+        }
+      ]
+    },
+    {
+      "metric": "CTIC",
+      "reason": "Bazı IOC kayıtları MISP/Wazuh alarm zincirinde tam kapanmadı.",
+      "evidence": [
+        {
+          "indicator": "cti-test.example.com",
+          "type": "domain",
+          "misp_hit": "0",
+          "wazuh_alert": "0",
+          "ctic_score": "0",
+          "expected_alert_rule": "110100"
+        },
+        {
+          "indicator": "203.0.113.66",
+          "type": "ip-dst",
+          "misp_hit": "0",
+          "wazuh_alert": "0",
+          "ctic_score": "0",
+          "expected_alert_rule": "110203"
+        }
+      ]
+    },
+    {
+      "metric": "TF",
+      "reason": "Son gözlenen kanıt freshness penceresini geçtiği için tazelik skoru düştü.",
+      "evidence": {
+        "TF": "0.0"
+      }
+    },
+    {
+      "metric": "Graph",
+      "reason": "Graph üzerinde beklenen ancak gözlemlenemeyen ilişkiler bulunmaktadır.",
+      "evidence": [
+        {
+          "source": "asset:A01",
+          "target": "logsource:Security",
+          "relation": "emits",
+          "evidence": "A01:Security"
+        },
+        {
+          "source": "logsource:Security",
+          "target": "platform:Wazuh",
+          "relation": "collected_by",
+          "evidence": "A01:Security"
+        },
+        {
+          "source": "asset:A01",
+          "target": "logsource:Sysmon",
+          "relation": "emits",
+          "evidence": "A01:Sysmon"
+        },
+        {
+          "source": "logsource:Sysmon",
+          "target": "platform:Wazuh",
+          "relation": "collected_by",
+          "evidence": "A01:Sysmon"
+        },
+        {
+          "source": "asset:A02",
+          "target": "logsource:misp_enrichment",
+          "relation": "emits",
+          "evidence": "A02:misp_enrichment"
+        },
+        {
+          "source": "logsource:misp_enrichment",
+          "target": "platform:Wazuh",
+          "relation": "collected_by",
+          "evidence": "A02:misp_enrichment"
+        },
+        {
+          "source": "asset:A02",
+          "target": "logsource:ossec",
+          "relation": "emits",
+          "evidence": "A02:ossec"
+        },
+        {
+          "source": "logsource:ossec",
+          "target": "platform:Wazuh",
+          "relation": "collected_by",
+          "evidence": "A02:ossec"
+        },
+        {
+          "source": "asset:A03",
+          "target": "logsource:misp_api",
+          "relation": "emits",
+          "evidence": "A03:misp_api"
+        },
+        {
+          "source": "logsource:misp_api",
+          "target": "platform:Wazuh",
+          "relation": "collected_by",
+          "evidence": "A03:misp_api"
+        }
+      ]
+    }
+  ],
+  "important_note": "LLM skor hesaplamaz. SACI skorları deterministik olarak hesaplanır. LLM yalnızca skor, coverage ve graph çıktılarını doğal dille açıklar."
+}

@@ -1,0 +1,86 @@
+digraph G {
+rankdir=LR;
+graph [splines=ortho, ranksep=0.8, nodesep=0.45, bgcolor="white", label="Critical DC01 Sysmon Loss - Missing Visibility Path", labelloc=t, fontsize=20, fontname="Arial"];
+node [fontsize=11, margin=0.12];
+edge [fontsize=9, arrowsize=0.7];
+"asset" [label="A01 / DC01
+critical asset", shape=box, style="rounded,filled", fillcolor="#dbeafe", color="#334155", fontname="Arial"];
+"lost_source" [label="Lost log source
+Sysmon", shape=box, style="rounded,filled", fillcolor="#fecaca", color="#dc2626", fontname="Arial"];
+"wazuh" [label="Wazuh SIEM
+missing expected alerts", shape=box, style="rounded,filled", fillcolor="#ccfbf1", color="#334155", fontname="Arial"];
+"metrics" [label="Score impact
+LC=90.74
+CAC=64.0
+MDC=61.54
+SACI=78.53", shape=oval, style="rounded,filled", fillcolor="#fee2e2", color="#334155", fontname="Arial"];
+"asset" -> "lost_source" [label="expected telemetry missing", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.5", fontname="Arial"];
+"lost_source" -> "wazuh" [label="not collected", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.5", fontname="Arial"];
+"control_C001" [label="C001
+control seen=0", shape=box, style="rounded,filled", fillcolor="#fecaca", color="#dc2626", fontname="Arial"];
+"rule_110006" [label="Rule 110006
+missing alert", shape=box, style="rounded,filled", fillcolor="#fee2e2", color="#dc2626", fontname="Arial"];
+"mitre_T1071.004" [label="T1071.004
+coverage affected", shape=box, style="rounded,filled", fillcolor="#f3e8ff", color="#334155", fontname="Arial"];
+"lost_source" -> "control_C001" [label="uses source", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C001" -> "rule_110006" [label="no alert", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C001" -> "mitre_T1071.004" [label="MITRE visibility gap", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"rule_110006" -> "wazuh" [label="not alerted", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"mitre_T1071.004" -> "metrics" [label="MDC/CAC impact", color="#dc2626", fontcolor="#dc2626", style="solid", penwidth="2.2", fontname="Arial"];
+"control_C002" [label="C002
+control seen=0", shape=box, style="rounded,filled", fillcolor="#fecaca", color="#dc2626", fontname="Arial"];
+"rule_110005" [label="Rule 110005
+missing alert", shape=box, style="rounded,filled", fillcolor="#fee2e2", color="#dc2626", fontname="Arial"];
+"mitre_T1071.004" [label="T1071.004
+coverage affected", shape=box, style="rounded,filled", fillcolor="#f3e8ff", color="#334155", fontname="Arial"];
+"lost_source" -> "control_C002" [label="uses source", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C002" -> "rule_110005" [label="no alert", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C002" -> "mitre_T1071.004" [label="MITRE visibility gap", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"rule_110005" -> "wazuh" [label="not alerted", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"mitre_T1071.004" -> "metrics" [label="MDC/CAC impact", color="#dc2626", fontcolor="#dc2626", style="solid", penwidth="2.2", fontname="Arial"];
+"control_C003" [label="C003
+control seen=0", shape=box, style="rounded,filled", fillcolor="#fecaca", color="#dc2626", fontname="Arial"];
+"rule_92057" [label="Rule 92057
+missing alert", shape=box, style="rounded,filled", fillcolor="#fee2e2", color="#dc2626", fontname="Arial"];
+"mitre_T1059.001" [label="T1059.001
+coverage affected", shape=box, style="rounded,filled", fillcolor="#f3e8ff", color="#334155", fontname="Arial"];
+"lost_source" -> "control_C003" [label="uses source", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C003" -> "rule_92057" [label="no alert", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C003" -> "mitre_T1059.001" [label="MITRE visibility gap", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"rule_92057" -> "wazuh" [label="not alerted", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"mitre_T1059.001" -> "metrics" [label="MDC/CAC impact", color="#dc2626", fontcolor="#dc2626", style="solid", penwidth="2.2", fontname="Arial"];
+"control_C004" [label="C004
+control seen=0", shape=box, style="rounded,filled", fillcolor="#fecaca", color="#dc2626", fontname="Arial"];
+"rule_92052" [label="Rule 92052
+missing alert", shape=box, style="rounded,filled", fillcolor="#fee2e2", color="#dc2626", fontname="Arial"];
+"mitre_T1059.003" [label="T1059.003
+coverage affected", shape=box, style="rounded,filled", fillcolor="#f3e8ff", color="#334155", fontname="Arial"];
+"lost_source" -> "control_C004" [label="uses source", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C004" -> "rule_92052" [label="no alert", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C004" -> "mitre_T1059.003" [label="MITRE visibility gap", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"rule_92052" -> "wazuh" [label="not alerted", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"mitre_T1059.003" -> "metrics" [label="MDC/CAC impact", color="#dc2626", fontcolor="#dc2626", style="solid", penwidth="2.2", fontname="Arial"];
+"control_C007" [label="C007
+control seen=0", shape=box, style="rounded,filled", fillcolor="#fecaca", color="#dc2626", fontname="Arial"];
+"rule_110010" [label="Rule 110010
+missing alert", shape=box, style="rounded,filled", fillcolor="#fee2e2", color="#dc2626", fontname="Arial"];
+"mitre_T1087" [label="T1087
+coverage affected", shape=box, style="rounded,filled", fillcolor="#f3e8ff", color="#334155", fontname="Arial"];
+"lost_source" -> "control_C007" [label="uses source", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C007" -> "rule_110010" [label="no alert", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C007" -> "mitre_T1087" [label="MITRE visibility gap", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"rule_110010" -> "wazuh" [label="not alerted", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"mitre_T1087" -> "metrics" [label="MDC/CAC impact", color="#dc2626", fontcolor="#dc2626", style="solid", penwidth="2.2", fontname="Arial"];
+"control_C008" [label="C008
+control seen=0", shape=box, style="rounded,filled", fillcolor="#fecaca", color="#dc2626", fontname="Arial"];
+"rule_110011" [label="Rule 110011
+missing alert", shape=box, style="rounded,filled", fillcolor="#fee2e2", color="#dc2626", fontname="Arial"];
+"mitre_T1482" [label="T1482
+coverage affected", shape=box, style="rounded,filled", fillcolor="#f3e8ff", color="#334155", fontname="Arial"];
+"lost_source" -> "control_C008" [label="uses source", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C008" -> "rule_110011" [label="no alert", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"control_C008" -> "mitre_T1482" [label="MITRE visibility gap", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"rule_110011" -> "wazuh" [label="not alerted", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"mitre_T1482" -> "metrics" [label="MDC/CAC impact", color="#dc2626", fontcolor="#dc2626", style="solid", penwidth="2.2", fontname="Arial"];
+"wazuh" -> "metrics" [label="missing evidence", color="#dc2626", fontcolor="#dc2626", style="solid", penwidth="2.5", fontname="Arial"];
+}

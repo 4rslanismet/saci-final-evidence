@@ -1,0 +1,511 @@
+{
+  "stage": {
+    "stage_id": "S7A",
+    "stage_name": "critical_dc01_sysmon_loss",
+    "scenario_type": "controlled_visibility_regression",
+    "description": "Kritik A01/DC01 varlığından Sysmon log kaynağı kesildi.",
+    "created_at": "2026-07-02T01:22:24.259137+00:00",
+    "graph": {
+      "nodes": 95,
+      "edges": 173,
+      "observed_edges": 116,
+      "missing_edges": 57
+    }
+  },
+  "scores": {
+    "LC": "90.74",
+    "CAC": "64.0",
+    "MDC": "61.54",
+    "CTIC": "100.0",
+    "TF": "80.0",
+    "SACI": "78.53"
+  },
+  "graph_summary": "# SACI Graph Summary\n\nNodes: 95\nEdges: 173\nObserved edges: 116\nMissing edges: 57\n\n## Node types\n- asset: 6\n- control: 27\n- ioc: 2\n- logsource: 11\n- metric: 6\n- mitre: 15\n- platform: 2\n- score: 1\n- wazuh_rule: 25\n\n## Missing edge examples\n- asset:A01 --emits--> logsource:Sysmon evidence=A01:Sysmon\n- logsource:Sysmon --collected_by--> platform:Wazuh evidence=A01:Sysmon\n- asset:A01 --protected_by--> control:C001 evidence=C001\n- control:C001 --uses_log_source--> logsource:Sysmon evidence=C001\n- control:C001 --produces_rule--> rule:110006 evidence=C001\n- rule:110006 --alerted_in--> platform:Wazuh evidence=C001\n- control:C001 --detects_technique--> mitre:T1071.004 evidence=C001\n- asset:A01 --protected_by--> control:C002 evidence=C002\n- control:C002 --uses_log_source--> logsource:Sysmon evidence=C002\n- control:C002 --produces_rule--> rule:110005 evidence=C002\n- rule:110005 --alerted_in--> platform:Wazuh evidence=C002\n- control:C002 --detects_technique--> mitre:T1071.004 evidence=C002\n- asset:A01 --protected_by--> control:C003 evidence=C003\n- control:C003 --uses_log_source--> logsource:Sysmon evidence=C003\n- control:C003 --produces_rule--> rule:92057 evidence=C003\n- rule:92057 --alerted_in--> platform:Wazuh evidence=C003\n- control:C003 --detects_technique--> mitre:T1059.001 evidence=C003\n- asset:A01 --protected_by--> control:C004 evidence=C004\n- control:C004 --uses_log_source--> logsource:Sysmon evidence=C004\n- control:C004 --produces_rule--> rule:92052 evidence=C004\n- rule:92052 --alerted_in--> platform:Wazuh evidence=C004\n- control:C004 --detects_technique--> mitre:T1059.003 evidence=C004\n- asset:A01 --protected_by--> control:C007 evidence=C007\n- control:C007 --uses_log_source--> logsource:Sysmon evidence=C007\n- control:C007 --produces_rule--> rule:110010 evidence=C007\n- rule:110010 --alerted_in--> platform:Wazuh evidence=C007\n- control:C007 --detects_technique--> mitre:T1087 evidence=C007\n- asset:A01 --protected_by--> control:C008 evidence=C008\n- control:C008 --uses_log_source--> logsource:Sysmon evidence=C008\n- control:C008 --produces_rule--> rule:110011 evidence=C008\n- rule:110011 --alerted_in--> platform:Wazuh evidence=C008\n- control:C008 --detects_technique--> mitre:T1482 evidence=C008\n- asset:A01 --protected_by--> control:C009 evidence=C009\n- control:C009 --uses_log_source--> logsource:Sysmon evidence=C009\n- control:C009 --produces_rule--> rule:110012 evidence=C009\n- rule:110012 --alerted_in--> platform:Wazuh evidence=C009\n- control:C009 --detects_technique--> mitre:T1016 evidence=C009\n- asset:A01 --protected_by--> control:C010 evidence=C010\n- control:C010 --uses_log_source--> logsource:Sysmon evidence=C010\n- control:C010 --produces_rule--> rule:110013 evidence=C010\n- rule:110013 --alerted_in--> platform:Wazuh evidence=C010\n- control:C010 --detects_technique--> mitre:T1105 evidence=C010\n- asset:A01 --protected_by--> control:C011 evidence=C011\n- control:C011 --uses_log_source--> logsource:Sysmon evidence=C011\n- control:C011 --produces_rule--> rule:110014 evidence=C011\n- rule:110014 --alerted_in--> platform:Wazuh evidence=C011\n- control:C011 --detects_technique--> mitre:T1135 evidence=C011\n- asset:A01 --protected_by--> control:C012 evidence=C012\n- control:C012 --uses_log_source--> logsource:Sysmon evidence=C012\n- control:C012 --produces_rule--> rule:110011 evidence=C012\n- rule:110011 --alerted_in--> platform:Wazuh evidence=C012\n- control:C012 --detects_technique--> mitre:T1018 evidence=C012\n- asset:A01 --protected_by--> control:C013 evidence=C013\n- control:C013 --uses_log_source--> logsource:Sysmon evidence=C013\n- control:C013 --produces_rule--> rule:110012 evidence=C013\n- rule:110012 --alerted_in--> platform:Wazuh evidence=C013\n- control:C013 --detects_technique--> mitre:T1049 evidence=C013",
+  "weak_assets": [
+    {
+      "asset_id": "A01",
+      "hostname": "DC01",
+      "criticality": 5.0,
+      "coverage_percent": 50.0,
+      "expected_sources": "Security;Sysmon",
+      "received_sources": "Security"
+    }
+  ],
+  "critical_asset_gaps": [
+    {
+      "asset_id": "A01",
+      "hostname": "DC01",
+      "criticality": 5.0,
+      "coverage_percent": 50.0,
+      "expected_sources": "Security;Sysmon",
+      "received_sources": "Security"
+    }
+  ],
+  "missing_controls": [
+    {
+      "control_id": "C001",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110006",
+      "mitre_technique": "T1071.004",
+      "description": "IOC or suspicious domain observed in process command line"
+    },
+    {
+      "control_id": "C002",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110005",
+      "mitre_technique": "T1071.004",
+      "description": "Sysmon DNS query observed"
+    },
+    {
+      "control_id": "C007",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110010",
+      "mitre_technique": "T1087",
+      "description": "Account discovery command observed"
+    },
+    {
+      "control_id": "C008",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110011",
+      "mitre_technique": "T1482",
+      "description": "Domain trust or domain controller discovery observed"
+    },
+    {
+      "control_id": "C009",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110012",
+      "mitre_technique": "T1016",
+      "description": "Network configuration discovery observed"
+    },
+    {
+      "control_id": "C010",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110013",
+      "mitre_technique": "T1105",
+      "description": "Ingress tool transfer simulation observed"
+    },
+    {
+      "control_id": "C011",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110014",
+      "mitre_technique": "T1135",
+      "description": "Network share discovery observed"
+    },
+    {
+      "control_id": "C012",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110011",
+      "mitre_technique": "T1018",
+      "description": "Remote system discovery observed"
+    },
+    {
+      "control_id": "C013",
+      "asset_id": "A01",
+      "source": "Sysmon",
+      "rule_id": "110012",
+      "mitre_technique": "T1049",
+      "description": "Network connection discovery observed"
+    }
+  ],
+  "missing_mitre": [
+    {
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "tactic": "Command and Control"
+    },
+    {
+      "technique_id": "T1018",
+      "technique_name": "Remote System Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1135",
+      "technique_name": "Network Share Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1482",
+      "technique_name": "Domain Trust Discovery",
+      "tactic": "Discovery"
+    },
+    {
+      "technique_id": "T1049",
+      "technique_name": "System Network Connections Discovery",
+      "tactic": "Discovery"
+    }
+  ],
+  "weak_cti": [],
+  "missing_edges_examples": [
+    {
+      "source": "asset:A01",
+      "target": "logsource:Sysmon",
+      "relation": "emits",
+      "evidence": "A01:Sysmon"
+    },
+    {
+      "source": "logsource:Sysmon",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A01:Sysmon"
+    },
+    {
+      "source": "asset:A01",
+      "target": "control:C001",
+      "relation": "protected_by",
+      "evidence": "C001"
+    },
+    {
+      "source": "control:C001",
+      "target": "logsource:Sysmon",
+      "relation": "uses_log_source",
+      "evidence": "C001"
+    },
+    {
+      "source": "control:C001",
+      "target": "rule:110006",
+      "relation": "produces_rule",
+      "evidence": "C001"
+    },
+    {
+      "source": "rule:110006",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C001"
+    },
+    {
+      "source": "control:C001",
+      "target": "mitre:T1071.004",
+      "relation": "detects_technique",
+      "evidence": "C001"
+    },
+    {
+      "source": "asset:A01",
+      "target": "control:C002",
+      "relation": "protected_by",
+      "evidence": "C002"
+    },
+    {
+      "source": "control:C002",
+      "target": "logsource:Sysmon",
+      "relation": "uses_log_source",
+      "evidence": "C002"
+    },
+    {
+      "source": "control:C002",
+      "target": "rule:110005",
+      "relation": "produces_rule",
+      "evidence": "C002"
+    },
+    {
+      "source": "rule:110005",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C002"
+    },
+    {
+      "source": "control:C002",
+      "target": "mitre:T1071.004",
+      "relation": "detects_technique",
+      "evidence": "C002"
+    },
+    {
+      "source": "asset:A01",
+      "target": "control:C003",
+      "relation": "protected_by",
+      "evidence": "C003"
+    },
+    {
+      "source": "control:C003",
+      "target": "logsource:Sysmon",
+      "relation": "uses_log_source",
+      "evidence": "C003"
+    },
+    {
+      "source": "control:C003",
+      "target": "rule:92057",
+      "relation": "produces_rule",
+      "evidence": "C003"
+    },
+    {
+      "source": "rule:92057",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C003"
+    },
+    {
+      "source": "control:C003",
+      "target": "mitre:T1059.001",
+      "relation": "detects_technique",
+      "evidence": "C003"
+    },
+    {
+      "source": "asset:A01",
+      "target": "control:C004",
+      "relation": "protected_by",
+      "evidence": "C004"
+    },
+    {
+      "source": "control:C004",
+      "target": "logsource:Sysmon",
+      "relation": "uses_log_source",
+      "evidence": "C004"
+    },
+    {
+      "source": "control:C004",
+      "target": "rule:92052",
+      "relation": "produces_rule",
+      "evidence": "C004"
+    },
+    {
+      "source": "rule:92052",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C004"
+    },
+    {
+      "source": "control:C004",
+      "target": "mitre:T1059.003",
+      "relation": "detects_technique",
+      "evidence": "C004"
+    },
+    {
+      "source": "asset:A01",
+      "target": "control:C007",
+      "relation": "protected_by",
+      "evidence": "C007"
+    },
+    {
+      "source": "control:C007",
+      "target": "logsource:Sysmon",
+      "relation": "uses_log_source",
+      "evidence": "C007"
+    },
+    {
+      "source": "control:C007",
+      "target": "rule:110010",
+      "relation": "produces_rule",
+      "evidence": "C007"
+    }
+  ],
+  "detected_reasons": [
+    {
+      "metric": "LC",
+      "reason": "Beklenen log kaynaklarının tamamı gözlemlenemedi.",
+      "evidence": [
+        {
+          "asset_id": "A01",
+          "hostname": "DC01",
+          "criticality": 5.0,
+          "coverage_percent": 50.0,
+          "expected_sources": "Security;Sysmon",
+          "received_sources": "Security"
+        }
+      ]
+    },
+    {
+      "metric": "Critical Asset Visibility",
+      "reason": "Kritik olarak işaretlenmiş varlıklardan beklenen log kaynaklarının tamamı alınamıyor.",
+      "evidence": [
+        {
+          "asset_id": "A01",
+          "hostname": "DC01",
+          "criticality": 5.0,
+          "coverage_percent": 50.0,
+          "expected_sources": "Security;Sysmon",
+          "received_sources": "Security"
+        }
+      ]
+    },
+    {
+      "metric": "CAC",
+      "reason": "Aktif tespit kontrollerinden bazıları beklenen rule çıktısını üretmedi.",
+      "evidence": [
+        {
+          "control_id": "C001",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110006",
+          "mitre_technique": "T1071.004",
+          "description": "IOC or suspicious domain observed in process command line"
+        },
+        {
+          "control_id": "C002",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110005",
+          "mitre_technique": "T1071.004",
+          "description": "Sysmon DNS query observed"
+        },
+        {
+          "control_id": "C007",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110010",
+          "mitre_technique": "T1087",
+          "description": "Account discovery command observed"
+        },
+        {
+          "control_id": "C008",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110011",
+          "mitre_technique": "T1482",
+          "description": "Domain trust or domain controller discovery observed"
+        },
+        {
+          "control_id": "C009",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110012",
+          "mitre_technique": "T1016",
+          "description": "Network configuration discovery observed"
+        },
+        {
+          "control_id": "C010",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110013",
+          "mitre_technique": "T1105",
+          "description": "Ingress tool transfer simulation observed"
+        },
+        {
+          "control_id": "C011",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110014",
+          "mitre_technique": "T1135",
+          "description": "Network share discovery observed"
+        },
+        {
+          "control_id": "C012",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110011",
+          "mitre_technique": "T1018",
+          "description": "Remote system discovery observed"
+        },
+        {
+          "control_id": "C013",
+          "asset_id": "A01",
+          "source": "Sysmon",
+          "rule_id": "110012",
+          "mitre_technique": "T1049",
+          "description": "Network connection discovery observed"
+        }
+      ]
+    },
+    {
+      "metric": "MDC",
+      "reason": "Kapsamdaki bazı MITRE ATT&CK teknikleri gözlemlenen kontrollerle kapanmadı.",
+      "evidence": [
+        {
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "tactic": "Command and Control"
+        },
+        {
+          "technique_id": "T1018",
+          "technique_name": "Remote System Discovery",
+          "tactic": "Discovery"
+        },
+        {
+          "technique_id": "T1135",
+          "technique_name": "Network Share Discovery",
+          "tactic": "Discovery"
+        },
+        {
+          "technique_id": "T1482",
+          "technique_name": "Domain Trust Discovery",
+          "tactic": "Discovery"
+        },
+        {
+          "technique_id": "T1049",
+          "technique_name": "System Network Connections Discovery",
+          "tactic": "Discovery"
+        }
+      ]
+    },
+    {
+      "metric": "TF",
+      "reason": "Son gözlenen kanıt freshness penceresini geçtiği için tazelik skoru düştü.",
+      "evidence": {
+        "TF": "80.0"
+      }
+    },
+    {
+      "metric": "Graph",
+      "reason": "Graph üzerinde beklenen ancak gözlemlenemeyen ilişkiler bulunmaktadır.",
+      "evidence": [
+        {
+          "source": "asset:A01",
+          "target": "logsource:Sysmon",
+          "relation": "emits",
+          "evidence": "A01:Sysmon"
+        },
+        {
+          "source": "logsource:Sysmon",
+          "target": "platform:Wazuh",
+          "relation": "collected_by",
+          "evidence": "A01:Sysmon"
+        },
+        {
+          "source": "asset:A01",
+          "target": "control:C001",
+          "relation": "protected_by",
+          "evidence": "C001"
+        },
+        {
+          "source": "control:C001",
+          "target": "logsource:Sysmon",
+          "relation": "uses_log_source",
+          "evidence": "C001"
+        },
+        {
+          "source": "control:C001",
+          "target": "rule:110006",
+          "relation": "produces_rule",
+          "evidence": "C001"
+        },
+        {
+          "source": "rule:110006",
+          "target": "platform:Wazuh",
+          "relation": "alerted_in",
+          "evidence": "C001"
+        },
+        {
+          "source": "control:C001",
+          "target": "mitre:T1071.004",
+          "relation": "detects_technique",
+          "evidence": "C001"
+        },
+        {
+          "source": "asset:A01",
+          "target": "control:C002",
+          "relation": "protected_by",
+          "evidence": "C002"
+        },
+        {
+          "source": "control:C002",
+          "target": "logsource:Sysmon",
+          "relation": "uses_log_source",
+          "evidence": "C002"
+        },
+        {
+          "source": "control:C002",
+          "target": "rule:110005",
+          "relation": "produces_rule",
+          "evidence": "C002"
+        }
+      ]
+    }
+  ],
+  "important_note": "LLM skor hesaplamaz. SACI skorları deterministik olarak hesaplanır. LLM yalnızca skor, coverage ve graph çıktılarını doğal dille açıklar."
+}

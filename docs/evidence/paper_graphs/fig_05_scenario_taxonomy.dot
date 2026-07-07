@@ -1,0 +1,33 @@
+digraph G {
+rankdir=LR;
+graph [splines=ortho, ranksep=0.8, nodesep=0.45, bgcolor="white", label="SACI Evaluation Scenario Taxonomy", labelloc=t, fontsize=20, fontname="Arial"];
+node [fontsize=11, margin=0.12];
+edge [fontsize=9, arrowsize=0.7];
+"baseline" [label="Baseline
+S0-S2
+No/limited visibility", shape=box, style="rounded,filled", fillcolor="#e5e7eb", color="#334155", fontname="Arial"];
+"progression" [label="Visibility progression
+S3-S6
+DC / endpoint / firewall / CTI", shape=box, style="rounded,filled", fillcolor="#dbeafe", color="#334155", fontname="Arial"];
+"final" [label="Final closure
+S8
+SACI=100 / missing=0", shape=oval, style="rounded,filled", fillcolor="#dcfce7", color="#334155", fontname="Arial"];
+"regression" [label="Visibility regression
+S7A-S7B
+critical vs non-critical loss", shape=box, style="rounded,filled", fillcolor="#fee2e2", color="#334155", fontname="Arial"];
+"faults" [label="Fault injection
+S9-S16
+telemetry / CTI / MITRE / rule / TF", shape=box, style="rounded,filled", fillcolor="#ffedd5", color="#334155", fontname="Arial"];
+"recovery" [label="Recovery
+S17
+fixed state returns to closure", shape=box, style="rounded,filled", fillcolor="#dcfce7", color="#334155", fontname="Arial"];
+"scope" [label="Scope validation
+S18
+legacy control handling", shape=box, style="rounded,filled", fillcolor="#f3e8ff", color="#334155", fontname="Arial"];
+"baseline" -> "progression" [label="visibility increases", color="#475569", fontcolor="#475569", style="solid", penwidth="1.4", fontname="Arial"];
+"progression" -> "final" [label="expected relations close", color="#475569", fontcolor="#475569", style="solid", penwidth="1.4", fontname="Arial"];
+"final" -> "regression" [label="controlled loss", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.2", fontname="Arial"];
+"final" -> "faults" [label="fault injection", color="#ea580c", fontcolor="#ea580c", style="dashed", penwidth="2.2", fontname="Arial"];
+"faults" -> "recovery" [label="fix", color="#475569", fontcolor="#475569", style="solid", penwidth="1.4", fontname="Arial"];
+"final" -> "scope" [label="scope check", color="#475569", fontcolor="#475569", style="solid", penwidth="1.4", fontname="Arial"];
+}

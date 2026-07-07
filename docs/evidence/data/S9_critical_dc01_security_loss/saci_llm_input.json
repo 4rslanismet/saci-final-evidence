@@ -1,0 +1,189 @@
+{
+  "stage": {
+    "stage_id": "S9",
+    "stage_name": "critical_dc01_security_loss",
+    "scenario_type": "fault_injection",
+    "description": "Critical DC01 Security log source is removed to test critical authentication visibility loss.",
+    "generated_at": "2026-07-06T10:21:14.740162+00:00",
+    "base_stage": "S8_final_closure",
+    "action": "log_loss"
+  },
+  "scores": {
+    "LC": "90.74",
+    "CAC": "97.0",
+    "MDC": "100.0",
+    "CTIC": "100.0",
+    "TF": "100.0",
+    "SACI": "96.47"
+  },
+  "graph_summary": "# SACI Graph Summary\n\nNodes: 95\nEdges: 173\nObserved edges: 166\nMissing edges: 7\n\n## Node types\n- asset: 6\n- control: 27\n- ioc: 2\n- logsource: 11\n- metric: 6\n- mitre: 15\n- platform: 2\n- score: 1\n- wazuh_rule: 25\n\n## Missing edge examples\n- asset:A01 --emits--> logsource:Security evidence=A01:Security\n- logsource:Security --collected_by--> platform:Wazuh evidence=A01:Security\n- asset:A01 --protected_by--> control:C005 evidence=C005\n- control:C005 --uses_log_source--> logsource:Security evidence=C005\n- control:C005 --produces_rule--> rule:60106 evidence=C005\n- rule:60106 --alerted_in--> platform:Wazuh evidence=C005\n- control:C005 --detects_technique--> mitre:T1078 evidence=C005",
+  "weak_assets": [
+    {
+      "asset_id": "A01",
+      "hostname": "DC01",
+      "criticality": 5.0,
+      "coverage_percent": 50.0,
+      "expected_sources": "Security;Sysmon",
+      "received_sources": "Sysmon"
+    }
+  ],
+  "critical_asset_gaps": [
+    {
+      "asset_id": "A01",
+      "hostname": "DC01",
+      "criticality": 5.0,
+      "coverage_percent": 50.0,
+      "expected_sources": "Security;Sysmon",
+      "received_sources": "Sysmon"
+    }
+  ],
+  "missing_controls": [
+    {
+      "control_id": "C005",
+      "asset_id": "A01",
+      "source": "Security",
+      "rule_id": "60106",
+      "mitre_technique": "T1078",
+      "description": "Windows successful logon observed"
+    }
+  ],
+  "missing_mitre": [],
+  "weak_cti": [],
+  "missing_edges_examples": [
+    {
+      "source": "asset:A01",
+      "target": "logsource:Security",
+      "relation": "emits",
+      "evidence": "A01:Security"
+    },
+    {
+      "source": "logsource:Security",
+      "target": "platform:Wazuh",
+      "relation": "collected_by",
+      "evidence": "A01:Security"
+    },
+    {
+      "source": "asset:A01",
+      "target": "control:C005",
+      "relation": "protected_by",
+      "evidence": "C005"
+    },
+    {
+      "source": "control:C005",
+      "target": "logsource:Security",
+      "relation": "uses_log_source",
+      "evidence": "C005"
+    },
+    {
+      "source": "control:C005",
+      "target": "rule:60106",
+      "relation": "produces_rule",
+      "evidence": "C005"
+    },
+    {
+      "source": "rule:60106",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C005"
+    },
+    {
+      "source": "control:C005",
+      "target": "mitre:T1078",
+      "relation": "detects_technique",
+      "evidence": "C005"
+    }
+  ],
+  "detected_reasons": [
+    {
+      "metric": "LC",
+      "reason": "Beklenen log kaynaklarının tamamı gözlemlenemedi.",
+      "evidence": [
+        {
+          "asset_id": "A01",
+          "hostname": "DC01",
+          "criticality": 5.0,
+          "coverage_percent": 50.0,
+          "expected_sources": "Security;Sysmon",
+          "received_sources": "Sysmon"
+        }
+      ]
+    },
+    {
+      "metric": "Critical Asset Visibility",
+      "reason": "Kritik olarak işaretlenmiş varlıklardan beklenen log kaynaklarının tamamı alınamıyor.",
+      "evidence": [
+        {
+          "asset_id": "A01",
+          "hostname": "DC01",
+          "criticality": 5.0,
+          "coverage_percent": 50.0,
+          "expected_sources": "Security;Sysmon",
+          "received_sources": "Sysmon"
+        }
+      ]
+    },
+    {
+      "metric": "CAC",
+      "reason": "Aktif tespit kontrollerinden bazıları beklenen rule çıktısını üretmedi.",
+      "evidence": [
+        {
+          "control_id": "C005",
+          "asset_id": "A01",
+          "source": "Security",
+          "rule_id": "60106",
+          "mitre_technique": "T1078",
+          "description": "Windows successful logon observed"
+        }
+      ]
+    },
+    {
+      "metric": "Graph",
+      "reason": "Graph üzerinde beklenen ancak gözlemlenemeyen ilişkiler bulunmaktadır.",
+      "evidence": [
+        {
+          "source": "asset:A01",
+          "target": "logsource:Security",
+          "relation": "emits",
+          "evidence": "A01:Security"
+        },
+        {
+          "source": "logsource:Security",
+          "target": "platform:Wazuh",
+          "relation": "collected_by",
+          "evidence": "A01:Security"
+        },
+        {
+          "source": "asset:A01",
+          "target": "control:C005",
+          "relation": "protected_by",
+          "evidence": "C005"
+        },
+        {
+          "source": "control:C005",
+          "target": "logsource:Security",
+          "relation": "uses_log_source",
+          "evidence": "C005"
+        },
+        {
+          "source": "control:C005",
+          "target": "rule:60106",
+          "relation": "produces_rule",
+          "evidence": "C005"
+        },
+        {
+          "source": "rule:60106",
+          "target": "platform:Wazuh",
+          "relation": "alerted_in",
+          "evidence": "C005"
+        },
+        {
+          "source": "control:C005",
+          "target": "mitre:T1078",
+          "relation": "detects_technique",
+          "evidence": "C005"
+        }
+      ]
+    }
+  ],
+  "important_note": "LLM skor hesaplamaz. SACI skorları deterministik olarak hesaplanır. LLM yalnızca skor, coverage ve graph çıktılarını doğal dille açıklar."
+}

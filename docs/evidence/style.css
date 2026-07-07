@@ -1,0 +1,76 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+header {
+  padding: 24px 32px;
+  background: #111827;
+  border-bottom: 1px solid #334155;
+}
+main {
+  padding: 24px 32px;
+}
+.card {
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 12px;
+}
+.metric {
+  background: #1f2937;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #374151;
+}
+.metric .value {
+  font-size: 30px;
+  font-weight: bold;
+}
+a {
+  color: #93c5fd;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+th, td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #334155;
+  text-align: left;
+}
+th {
+  color: #bfdbfe;
+}
+select, button {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #1f2937;
+  color: #e5e7eb;
+}
+#cy {
+  width: 100%;
+  height: 78vh;
+  background: #020617;
+  border: 1px solid #334155;
+  border-radius: 12px;
+}
+img {
+  max-width: 100%;
+  border-radius: 10px;
+  border: 1px solid #334155;
+}
+.small {
+  color: #94a3b8;
+  font-size: 13px;
+}

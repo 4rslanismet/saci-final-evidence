@@ -1,0 +1,14 @@
+technique_id,technique_name,tactic,covered
+T1071.004,DNS,Command and Control,0
+T1059.001,PowerShell,Execution,0
+T1078,Valid Accounts,Initial Access / Persistence / Privilege Escalation,0
+T1105,Ingress Tool Transfer,Command and Control,0
+T1016,System Network Configuration Discovery,Discovery,0
+T1018,Remote System Discovery,Discovery,0
+T1135,Network Share Discovery,Discovery,0
+T1482,Domain Trust Discovery,Discovery,0
+T1087,Account Discovery,Discovery,0
+T1049,System Network Connections Discovery,Discovery,0
+T1110,Brute Force,Credential Access,0
+T1082,System Information Discovery,Discovery,0
+T1046,Network Service Discovery,Discovery,0

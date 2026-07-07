@@ -1,0 +1,119 @@
+{
+  "stage": {
+    "stage_id": "S16",
+    "stage_name": "detection_rule_gap",
+    "scenario_type": "control_failure",
+    "description": "Telemetry exists, but an expected detection rule/control does not produce observable alert evidence.",
+    "generated_at": "2026-07-06T10:21:15.037177+00:00",
+    "base_stage": "S8_final_closure",
+    "action": "control_gap"
+  },
+  "scores": {
+    "LC": "100.0",
+    "CAC": "95.71",
+    "MDC": "100.0",
+    "CTIC": "100.0",
+    "TF": "100.0",
+    "SACI": "98.93"
+  },
+  "graph_summary": "# SACI Graph Summary\n\nNodes: 95\nEdges: 173\nObserved edges: 168\nMissing edges: 5\n\n## Node types\n- asset: 6\n- control: 27\n- ioc: 2\n- logsource: 11\n- metric: 6\n- mitre: 15\n- platform: 2\n- score: 1\n- wazuh_rule: 25\n\n## Missing edge examples\n- asset:A04 --protected_by--> control:C024 evidence=C024\n- control:C024 --uses_log_source--> logsource:Sysmon evidence=C024\n- control:C024 --produces_rule--> rule:110241 evidence=C024\n- rule:110241 --alerted_in--> platform:Wazuh evidence=C024\n- control:C024 --detects_technique--> mitre:T1087 evidence=C024",
+  "weak_assets": [],
+  "critical_asset_gaps": [],
+  "missing_controls": [
+    {
+      "control_id": "C024",
+      "asset_id": "A04",
+      "source": "Sysmon",
+      "rule_id": "110241",
+      "mitre_technique": "T1087",
+      "description": "Real Windows endpoint account discovery observed"
+    }
+  ],
+  "missing_mitre": [],
+  "weak_cti": [],
+  "missing_edges_examples": [
+    {
+      "source": "asset:A04",
+      "target": "control:C024",
+      "relation": "protected_by",
+      "evidence": "C024"
+    },
+    {
+      "source": "control:C024",
+      "target": "logsource:Sysmon",
+      "relation": "uses_log_source",
+      "evidence": "C024"
+    },
+    {
+      "source": "control:C024",
+      "target": "rule:110241",
+      "relation": "produces_rule",
+      "evidence": "C024"
+    },
+    {
+      "source": "rule:110241",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C024"
+    },
+    {
+      "source": "control:C024",
+      "target": "mitre:T1087",
+      "relation": "detects_technique",
+      "evidence": "C024"
+    }
+  ],
+  "detected_reasons": [
+    {
+      "metric": "CAC",
+      "reason": "Aktif tespit kontrollerinden bazıları beklenen rule çıktısını üretmedi.",
+      "evidence": [
+        {
+          "control_id": "C024",
+          "asset_id": "A04",
+          "source": "Sysmon",
+          "rule_id": "110241",
+          "mitre_technique": "T1087",
+          "description": "Real Windows endpoint account discovery observed"
+        }
+      ]
+    },
+    {
+      "metric": "Graph",
+      "reason": "Graph üzerinde beklenen ancak gözlemlenemeyen ilişkiler bulunmaktadır.",
+      "evidence": [
+        {
+          "source": "asset:A04",
+          "target": "control:C024",
+          "relation": "protected_by",
+          "evidence": "C024"
+        },
+        {
+          "source": "control:C024",
+          "target": "logsource:Sysmon",
+          "relation": "uses_log_source",
+          "evidence": "C024"
+        },
+        {
+          "source": "control:C024",
+          "target": "rule:110241",
+          "relation": "produces_rule",
+          "evidence": "C024"
+        },
+        {
+          "source": "rule:110241",
+          "target": "platform:Wazuh",
+          "relation": "alerted_in",
+          "evidence": "C024"
+        },
+        {
+          "source": "control:C024",
+          "target": "mitre:T1087",
+          "relation": "detects_technique",
+          "evidence": "C024"
+        }
+      ]
+    }
+  ],
+  "important_note": "LLM skor hesaplamaz. SACI skorları deterministik olarak hesaplanır. LLM yalnızca skor, coverage ve graph çıktılarını doğal dille açıklar."
+}

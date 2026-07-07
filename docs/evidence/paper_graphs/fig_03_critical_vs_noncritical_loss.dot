@@ -1,0 +1,30 @@
+digraph G {
+rankdir=LR;
+graph [splines=ortho, ranksep=0.8, nodesep=0.45, bgcolor="white", label="Critical vs Non-critical Telemetry Loss", labelloc=t, fontsize=20, fontname="Arial"];
+node [fontsize=11, margin=0.12];
+edge [fontsize=9, arrowsize=0.7];
+"baseline" [label="S8 Final closure
+SACI=100.0
+Missing=0", shape=oval, style="rounded,filled", fillcolor="#dcfce7", color="#334155", fontname="Arial"];
+"critical_loss" [label="S7A
+Critical DC01 Sysmon loss
+asset=A01 / criticality high", shape=box, style="rounded,filled", fillcolor="#fee2e2", color="#334155", fontname="Arial"];
+"noncritical_loss" [label="S7B
+Non-critical WS01 Sysmon loss
+asset=A04 / lower criticality", shape=box, style="rounded,filled", fillcolor="#ffedd5", color="#334155", fontname="Arial"];
+"critical_impact" [label="Impact
+SACI=78.53
+Missing=57", shape=oval, style="rounded,filled", fillcolor="#fecaca", color="#334155", fontname="Arial"];
+"noncritical_impact" [label="Impact
+SACI=92.52
+Missing=32", shape=oval, style="rounded,filled", fillcolor="#fed7aa", color="#334155", fontname="Arial"];
+"interpretation" [label="Interpretation
+Critical asset telemetry loss
+causes stronger score regression", shape=box, style="rounded,filled", fillcolor="#e0f2fe", color="#334155", fontname="Arial"];
+"baseline" -> "critical_loss" [label="fault injection", color="#dc2626", fontcolor="#dc2626", style="dashed", penwidth="2.3", fontname="Arial"];
+"baseline" -> "noncritical_loss" [label="fault injection", color="#ea580c", fontcolor="#ea580c", style="dashed", penwidth="2.3", fontname="Arial"];
+"critical_loss" -> "critical_impact" [label="score regression", color="#dc2626", fontcolor="#dc2626", style="solid", penwidth="2.3", fontname="Arial"];
+"noncritical_loss" -> "noncritical_impact" [label="smaller regression", color="#ea580c", fontcolor="#ea580c", style="solid", penwidth="2.3", fontname="Arial"];
+"critical_impact" -> "interpretation" [color="#475569", fontcolor="#475569", style="solid", penwidth="1.4", fontname="Arial"];
+"noncritical_impact" -> "interpretation" [color="#475569", fontcolor="#475569", style="solid", penwidth="1.4", fontname="Arial"];
+}

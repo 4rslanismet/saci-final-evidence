@@ -1,0 +1,122 @@
+[
+  {
+    "dir": "S0_no_siem",
+    "label": "S0 no siem",
+    "graph": "data/S0_no_siem/saci_graph.cyjs",
+    "summary": "data/S0_no_siem/saci_graph_summary.md"
+  },
+  {
+    "dir": "S10_endpoint_powershell_loss",
+    "label": "S10 endpoint powershell loss",
+    "graph": "data/S10_endpoint_powershell_loss/saci_graph.cyjs",
+    "summary": "data/S10_endpoint_powershell_loss/saci_graph_summary.md"
+  },
+  {
+    "dir": "S11_linux_authlog_loss",
+    "label": "S11 linux authlog loss",
+    "graph": "data/S11_linux_authlog_loss/saci_graph.cyjs",
+    "summary": "data/S11_linux_authlog_loss/saci_graph_summary.md"
+  },
+  {
+    "dir": "S12_firewall_ioc_without_cti",
+    "label": "S12 firewall ioc without cti",
+    "graph": "data/S12_firewall_ioc_without_cti/saci_graph.cyjs",
+    "summary": "data/S12_firewall_ioc_without_cti/saci_graph_summary.md"
+  },
+  {
+    "dir": "S13_misp_lookup_without_ioc_hit",
+    "label": "S13 misp lookup without ioc hit",
+    "graph": "data/S13_misp_lookup_without_ioc_hit/saci_graph.cyjs",
+    "summary": "data/S13_misp_lookup_without_ioc_hit/saci_graph_summary.md"
+  },
+  {
+    "dir": "S14_mitre_scope_expansion_gap",
+    "label": "S14 mitre scope expansion gap",
+    "graph": "data/S14_mitre_scope_expansion_gap/saci_graph.cyjs",
+    "summary": "data/S14_mitre_scope_expansion_gap/saci_graph_summary.md"
+  },
+  {
+    "dir": "S15_freshness_decay",
+    "label": "S15 freshness decay",
+    "graph": "data/S15_freshness_decay/saci_graph.cyjs",
+    "summary": "data/S15_freshness_decay/saci_graph_summary.md"
+  },
+  {
+    "dir": "S16_detection_rule_gap",
+    "label": "S16 detection rule gap",
+    "graph": "data/S16_detection_rule_gap/saci_graph.cyjs",
+    "summary": "data/S16_detection_rule_gap/saci_graph_summary.md"
+  },
+  {
+    "dir": "S17_recovery_after_fix",
+    "label": "S17 recovery after fix",
+    "graph": "data/S17_recovery_after_fix/saci_graph.cyjs",
+    "summary": "data/S17_recovery_after_fix/saci_graph_summary.md"
+  },
+  {
+    "dir": "S18_legacy_control_out_of_scope",
+    "label": "S18 legacy control out of scope",
+    "graph": "data/S18_legacy_control_out_of_scope/saci_graph.cyjs",
+    "summary": "data/S18_legacy_control_out_of_scope/saci_graph_summary.md"
+  },
+  {
+    "dir": "S1_siem_deployed",
+    "label": "S1 siem deployed",
+    "graph": "data/S1_siem_deployed/saci_graph.cyjs",
+    "summary": "data/S1_siem_deployed/saci_graph_summary.md"
+  },
+  {
+    "dir": "S2_inventory_defined",
+    "label": "S2 inventory defined",
+    "graph": "data/S2_inventory_defined/saci_graph.cyjs",
+    "summary": "data/S2_inventory_defined/saci_graph_summary.md"
+  },
+  {
+    "dir": "S3_dc_visibility",
+    "label": "S3 dc visibility",
+    "graph": "data/S3_dc_visibility/saci_graph.cyjs",
+    "summary": "data/S3_dc_visibility/saci_graph_summary.md"
+  },
+  {
+    "dir": "S4_endpoint_visibility",
+    "label": "S4 endpoint visibility",
+    "graph": "data/S4_endpoint_visibility/saci_graph.cyjs",
+    "summary": "data/S4_endpoint_visibility/saci_graph_summary.md"
+  },
+  {
+    "dir": "S5_firewall_visibility",
+    "label": "S5 firewall visibility",
+    "graph": "data/S5_firewall_visibility/saci_graph.cyjs",
+    "summary": "data/S5_firewall_visibility/saci_graph_summary.md"
+  },
+  {
+    "dir": "S6_cti_integration",
+    "label": "S6 cti integration",
+    "graph": "data/S6_cti_integration/saci_graph.cyjs",
+    "summary": "data/S6_cti_integration/saci_graph_summary.md"
+  },
+  {
+    "dir": "S7A_critical_dc01_sysmon_loss",
+    "label": "S7A critical dc01 sysmon loss",
+    "graph": "data/S7A_critical_dc01_sysmon_loss/saci_graph.cyjs",
+    "summary": "data/S7A_critical_dc01_sysmon_loss/saci_graph_summary.md"
+  },
+  {
+    "dir": "S7B_noncritical_ws01_sysmon_loss",
+    "label": "S7B noncritical ws01 sysmon loss",
+    "graph": "data/S7B_noncritical_ws01_sysmon_loss/saci_graph.cyjs",
+    "summary": "data/S7B_noncritical_ws01_sysmon_loss/saci_graph_summary.md"
+  },
+  {
+    "dir": "S8_final_closure",
+    "label": "S8 final closure",
+    "graph": "data/S8_final_closure/saci_graph.cyjs",
+    "summary": "data/S8_final_closure/saci_graph_summary.md"
+  },
+  {
+    "dir": "S9_critical_dc01_security_loss",
+    "label": "S9 critical dc01 security loss",
+    "graph": "data/S9_critical_dc01_security_loss/saci_graph.cyjs",
+    "summary": "data/S9_critical_dc01_security_loss/saci_graph_summary.md"
+  }
+]

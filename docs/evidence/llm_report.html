@@ -1,0 +1,1460 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>SACI Explanation Report</title>
+<style>
+body { margin:0; background:#0f172a; color:#e5e7eb; font-family:Arial,sans-serif; }
+header { padding:24px 32px; background:#020617; border-bottom:1px solid #334155; }
+main { padding:24px 32px; }
+.card,.scenario-card { background:#111827; border:1px solid #334155; border-radius:14px; padding:18px; margin-bottom:18px; }
+.head { display:flex; justify-content:space-between; gap:20px; }
+.head h2 { margin:0 0 8px 0; }
+.badge { background:#1e3a8a; color:#bfdbfe; border-radius:999px; padding:4px 8px; font-size:12px; font-weight:700; }
+.score { min-width:130px; background:#dcfce7; color:#14532d; border-radius:12px; padding:12px; text-align:center; }
+.score b { font-size:30px; }
+.metrics { display:grid; grid-template-columns:repeat(6,minmax(100px,1fr)); gap:10px; margin:16px 0; }
+.metrics div { background:#1f2937; border:1px solid #334155; border-radius:10px; padding:10px; }
+.metrics span { display:block; color:#94a3b8; font-size:12px; }
+.metrics b { font-size:20px; }
+pre { background:#020617; border:1px solid #334155; padding:14px; border-radius:10px; white-space:pre-wrap; line-height:1.45; overflow:auto; }
+a { color:#93c5fd; margin-right:14px; }
+select { padding:10px; background:#1f2937; color:#e5e7eb; border:1px solid #334155; border-radius:10px; }
+</style>
+<script>
+function filterCards() {
+  const value = document.getElementById("filter").value;
+  document.querySelectorAll(".scenario-card").forEach(card => {
+    card.style.display = (value === "all" || card.dataset.stage === value || card.dataset.type === value) ? "block" : "none";
+  });
+}
+</script>
+</head>
+<body>
+<header>
+  <h1>SACI Explanation Report</h1>
+  <p>Policy-guided explanation layer for deterministic SACI score and graph outputs.</p>
+</header>
+
+<main>
+<section class="card">
+  <h2>Executive Summary</h2>
+  <p><b>Scenario count:</b> 20</p>
+  <p><b>S8 SACI:</b> 100.0 | <b>S8 missing edges:</b> 0</p>
+  <p>SACI is a visibility scoring model. SACI=100 indicates closure of expected visibility relationships within the defined scope, not a general security guarantee.</p>
+</section>
+
+<section class="card">
+  <h2>Filter</h2>
+  <select id="filter" onchange="filterCards()">
+    <option value="all">All scenarios</option>
+    <option value="S8">S8 only</option>
+    <option value="S7A">S7A only</option>
+    <option value="S7B">S7B only</option>
+    <option value="fault_injection">Fault injection</option>
+    <option value="cti_failure">CTI failure</option>
+    <option value="coverage_gap">Coverage gap</option>
+    <option value="sensitivity_test">Sensitivity test</option>
+    <option value="control_failure">Control failure</option>
+    <option value="recovery">Recovery</option>
+    <option value="scope_validation">Scope validation</option>
+  </select>
+</section>
+
+
+<section class="scenario-card" data-stage="S0" data-type="controlled_evaluation_scenario">
+  <div class="head">
+    <div>
+      <h2>S0 - no_siem</h2>
+      <span class="badge">controlled_evaluation_scenario</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>0.0</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>0.0</b></div>
+    <div><span>CAC</span><b>0.0</b></div>
+    <div><span>MDC</span><b>0.0</b></div>
+    <div><span>CTIC</span><b>0.0</b></div>
+    <div><span>TF</span><b>0.0</b></div>
+    <div><span>Missing</span><b>167</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S0 - no_siem
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S0 senaryosu, SACI değerlendirme sürecindeki aşamalı görünürlük kazanımını temsil eder. SIEM, varlık envanteri, domain controller telemetrisi, endpoint telemetrisi, firewall görünürlüğü ve CTI entegrasyonu gibi bileşenler aşamalı olarak eklenir.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **0.0** olarak ölçülmüştür. Bu değer, ölçülebilir görünürlüğün bulunmadığını ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **MDC düşüşü**, kapsam dahilindeki MITRE ATT&amp;CK tekniklerinden bazılarının gözlemlenen kontrol veya alarm ile kapatılamadığını gösterir. Rule-to-technique mapping ve ilgili telemetri kaynağı gözden geçirilmelidir.
+- **CTIC düşüşü**, IOC/CTI/MISP/Wazuh alarm zincirinin tam kapanmadığını gösterir. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 6 observed edge ve 167 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+3. Eksik MITRE teknikleri için rule-to-technique mapping ve ilgili telemetri desteği doğrulanmalıdır.
+4. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+5. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S0_no_siem/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S0_no_siem/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S0_no_siem" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S1" data-type="controlled_evaluation_scenario">
+  <div class="head">
+    <div>
+      <h2>S1 - siem_deployed</h2>
+      <span class="badge">controlled_evaluation_scenario</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>10.56</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>18.52</b></div>
+    <div><span>CAC</span><b>0.0</b></div>
+    <div><span>MDC</span><b>0.0</b></div>
+    <div><span>CTIC</span><b>0.0</b></div>
+    <div><span>TF</span><b>50.0</b></div>
+    <div><span>Missing</span><b>163</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S1 - siem_deployed
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S1 senaryosu, SACI değerlendirme sürecindeki aşamalı görünürlük kazanımını temsil eder. SIEM, varlık envanteri, domain controller telemetrisi, endpoint telemetrisi, firewall görünürlüğü ve CTI entegrasyonu gibi bileşenler aşamalı olarak eklenir.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **10.56** olarak ölçülmüştür. Bu değer, düşük görünürlük seviyesini ve temel SIEM/telemetri ilişkilerinin eksik olduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **MDC düşüşü**, kapsam dahilindeki MITRE ATT&amp;CK tekniklerinden bazılarının gözlemlenen kontrol veya alarm ile kapatılamadığını gösterir. Rule-to-technique mapping ve ilgili telemetri kaynağı gözden geçirilmelidir.
+- **CTIC düşüşü**, IOC/CTI/MISP/Wazuh alarm zincirinin tam kapanmadığını gösterir. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 10 observed edge ve 163 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+3. Eksik MITRE teknikleri için rule-to-technique mapping ve ilgili telemetri desteği doğrulanmalıdır.
+4. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+5. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S1_siem_deployed/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S1_siem_deployed/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S1_siem_deployed" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S2" data-type="controlled_evaluation_scenario">
+  <div class="head">
+    <div>
+      <h2>S2 - inventory_defined</h2>
+      <span class="badge">controlled_evaluation_scenario</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>11.56</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>18.52</b></div>
+    <div><span>CAC</span><b>0.0</b></div>
+    <div><span>MDC</span><b>0.0</b></div>
+    <div><span>CTIC</span><b>0.0</b></div>
+    <div><span>TF</span><b>60.0</b></div>
+    <div><span>Missing</span><b>163</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S2 - inventory_defined
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S2 senaryosu, SACI değerlendirme sürecindeki aşamalı görünürlük kazanımını temsil eder. SIEM, varlık envanteri, domain controller telemetrisi, endpoint telemetrisi, firewall görünürlüğü ve CTI entegrasyonu gibi bileşenler aşamalı olarak eklenir.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **11.56** olarak ölçülmüştür. Bu değer, düşük görünürlük seviyesini ve temel SIEM/telemetri ilişkilerinin eksik olduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **MDC düşüşü**, kapsam dahilindeki MITRE ATT&amp;CK tekniklerinden bazılarının gözlemlenen kontrol veya alarm ile kapatılamadığını gösterir. Rule-to-technique mapping ve ilgili telemetri kaynağı gözden geçirilmelidir.
+- **CTIC düşüşü**, IOC/CTI/MISP/Wazuh alarm zincirinin tam kapanmadığını gösterir. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 10 observed edge ve 163 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+3. Eksik MITRE teknikleri için rule-to-technique mapping ve ilgili telemetri desteği doğrulanmalıdır.
+4. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+5. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S2_inventory_defined/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S2_inventory_defined/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S2_inventory_defined" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S3" data-type="controlled_evaluation_scenario">
+  <div class="head">
+    <div>
+      <h2>S3 - dc_visibility</h2>
+      <span class="badge">controlled_evaluation_scenario</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>42.96</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>37.04</b></div>
+    <div><span>CAC</span><b>40.0</b></div>
+    <div><span>MDC</span><b>69.23</b></div>
+    <div><span>CTIC</span><b>0.0</b></div>
+    <div><span>TF</span><b>80.0</b></div>
+    <div><span>Missing</span><b>109</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S3 - dc_visibility
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S3 senaryosu, SACI değerlendirme sürecindeki aşamalı görünürlük kazanımını temsil eder. SIEM, varlık envanteri, domain controller telemetrisi, endpoint telemetrisi, firewall görünürlüğü ve CTI entegrasyonu gibi bileşenler aşamalı olarak eklenir.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **42.96** olarak ölçülmüştür. Bu değer, düşük görünürlük seviyesini ve temel SIEM/telemetri ilişkilerinin eksik olduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **MDC düşüşü**, kapsam dahilindeki MITRE ATT&amp;CK tekniklerinden bazılarının gözlemlenen kontrol veya alarm ile kapatılamadığını gösterir. Rule-to-technique mapping ve ilgili telemetri kaynağı gözden geçirilmelidir.
+- **CTIC düşüşü**, IOC/CTI/MISP/Wazuh alarm zincirinin tam kapanmadığını gösterir. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 64 observed edge ve 109 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+3. Eksik MITRE teknikleri için rule-to-technique mapping ve ilgili telemetri desteği doğrulanmalıdır.
+4. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+5. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S3_dc_visibility/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S3_dc_visibility/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S3_dc_visibility" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S4" data-type="controlled_evaluation_scenario">
+  <div class="head">
+    <div>
+      <h2>S4 - endpoint_visibility</h2>
+      <span class="badge">controlled_evaluation_scenario</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>69.0</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>66.67</b></div>
+    <div><span>CAC</span><b>84.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>0.0</b></div>
+    <div><span>TF</span><b>80.0</b></div>
+    <div><span>Missing</span><b>42</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S4 - endpoint_visibility
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S4 senaryosu, SACI değerlendirme sürecindeki aşamalı görünürlük kazanımını temsil eder. SIEM, varlık envanteri, domain controller telemetrisi, endpoint telemetrisi, firewall görünürlüğü ve CTI entegrasyonu gibi bileşenler aşamalı olarak eklenir.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **69.0** olarak ölçülmüştür. Bu değer, önemli görünürlük gerilemesi veya eksik telemetri/kontrol kapsaması bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **CTIC düşüşü**, IOC/CTI/MISP/Wazuh alarm zincirinin tam kapanmadığını gösterir. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 131 observed edge ve 42 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+3. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+4. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S4_endpoint_visibility/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S4_endpoint_visibility/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S4_endpoint_visibility" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S5" data-type="controlled_evaluation_scenario">
+  <div class="head">
+    <div>
+      <h2>S5 - firewall_visibility</h2>
+      <span class="badge">controlled_evaluation_scenario</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>74.56</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>85.19</b></div>
+    <div><span>CAC</span><b>84.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>0.0</b></div>
+    <div><span>TF</span><b>80.0</b></div>
+    <div><span>Missing</span><b>40</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S5 - firewall_visibility
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S5 senaryosu, SACI değerlendirme sürecindeki aşamalı görünürlük kazanımını temsil eder. SIEM, varlık envanteri, domain controller telemetrisi, endpoint telemetrisi, firewall görünürlüğü ve CTI entegrasyonu gibi bileşenler aşamalı olarak eklenir.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **74.56** olarak ölçülmüştür. Bu değer, önemli görünürlük gerilemesi veya eksik telemetri/kontrol kapsaması bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **CTIC düşüşü**, IOC/CTI/MISP/Wazuh alarm zincirinin tam kapanmadığını gösterir. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 133 observed edge ve 40 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+3. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+4. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S5_firewall_visibility/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S5_firewall_visibility/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S5_firewall_visibility" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S6" data-type="controlled_evaluation_scenario">
+  <div class="head">
+    <div>
+      <h2>S6 - cti_integration</h2>
+      <span class="badge">controlled_evaluation_scenario</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>94.0</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>100.0</b></div>
+    <div><span>CAC</span><b>84.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>80.0</b></div>
+    <div><span>Missing</span><b>30</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S6 - cti_integration
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S6 senaryosu, SACI değerlendirme sürecindeki aşamalı görünürlük kazanımını temsil eder. SIEM, varlık envanteri, domain controller telemetrisi, endpoint telemetrisi, firewall görünürlüğü ve CTI entegrasyonu gibi bileşenler aşamalı olarak eklenir.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **94.0** olarak ölçülmüştür. Bu değer, anlamlı görünürlük sağlandığını, ancak incelenmesi gereken görünürlük boşlukları bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 143 observed edge ve 30 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+2. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S6_cti_integration/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S6_cti_integration/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S6_cti_integration" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S7A" data-type="controlled_visibility_regression">
+  <div class="head">
+    <div>
+      <h2>S7A - critical_dc01_sysmon_loss</h2>
+      <span class="badge">controlled_visibility_regression</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>78.53</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>90.74</b></div>
+    <div><span>CAC</span><b>64.0</b></div>
+    <div><span>MDC</span><b>61.54</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>80.0</b></div>
+    <div><span>Missing</span><b>57</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S7A - critical_dc01_sysmon_loss
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S7A senaryosu, kritik A01/DC01 varlığında Sysmon telemetri kaybını temsil eder. Bu senaryo, kritik varlık üzerindeki telemetri kaybının SACI skoruna ve kanıt grafındaki missing edge sayısına etkisini ölçmek için kullanılır.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **78.53** olarak ölçülmüştür. Bu değer, önemli görünürlük gerilemesi veya eksik telemetri/kontrol kapsaması bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **MDC düşüşü**, kapsam dahilindeki MITRE ATT&amp;CK tekniklerinden bazılarının gözlemlenen kontrol veya alarm ile kapatılamadığını gösterir. Rule-to-technique mapping ve ilgili telemetri kaynağı gözden geçirilmelidir.
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 57 missing edge bulunmaktadır. Bu missing edge’lerin kritik DC01/Sysmon görünürlük zinciriyle ilişkili olması, kritik varlık telemetri kaybının graph completeness üzerinde güçlü etki ürettiğini gösterir.
+
+## 4. Operasyonel Anlam
+
+Kritik domain controller telemetrisindeki kayıp, SOC görünürlüğü açısından yüksek öncelikli bir eksikliktir. Bu tür bir kayıp, kimlik, discovery ve lateral movement ile ilişkili tekniklerin görünürlüğünü zayıflatabilir.
+
+## 5. Önerilen Kontroller
+
+1. A01/DC01 üzerindeki Sysmon servis durumu, Sysmon event channel ve Wazuh agent event collection yapılandırması öncelikli doğrulanmalıdır.
+2. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+3. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+4. Eksik MITRE teknikleri için rule-to-technique mapping ve ilgili telemetri desteği doğrulanmalıdır.
+5. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S7A_critical_dc01_sysmon_loss/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S7A_critical_dc01_sysmon_loss/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S7A_critical_dc01_sysmon_loss" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S7B" data-type="controlled_visibility_regression">
+  <div class="head">
+    <div>
+      <h2>S7B - noncritical_ws01_sysmon_loss</h2>
+      <span class="badge">controlled_visibility_regression</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>92.52</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>95.06</b></div>
+    <div><span>CAC</span><b>84.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>80.0</b></div>
+    <div><span>Missing</span><b>32</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S7B - noncritical_ws01_sysmon_loss
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S7B senaryosu, kritik olmayan A04/WS01 endpoint üzerinde Sysmon telemetri kaybını temsil eder. Bu senaryo, kritik olmayan bir endpoint kaybının S7A’daki kritik DC01 kaybına göre daha düşük etki üretip üretmediğini karşılaştırmak için kullanılır.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **92.52** olarak ölçülmüştür. Bu değer, anlamlı görünürlük sağlandığını, ancak incelenmesi gereken görünürlük boşlukları bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 32 missing edge bulunmaktadır. Bu eksiklik WS01 endpoint görünürlüğüyle ilişkilidir. Kritik olmayan endpoint kaybı skor düşürür; ancak kritik DC01 kaybına göre daha sınırlı etki üretir.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+3. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S7B_noncritical_ws01_sysmon_loss/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S7B_noncritical_ws01_sysmon_loss/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S7B_noncritical_ws01_sysmon_loss" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S8" data-type="final_lab_measurement">
+  <div class="head">
+    <div>
+      <h2>S8 - final_closure</h2>
+      <span class="badge">final_lab_measurement</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>100.0</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>100.0</b></div>
+    <div><span>CAC</span><b>100.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>0</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S8 - final_closure
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S8 senaryosu final görünürlük kapanışını temsil eder. Bu aşamada kapsam dahilindeki beklenen görünürlük ilişkilerinin tamamı gözlemlenmiş, SACI skoru 100 ve missing edge sayısı 0 olarak ölçülmüştür.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **100.0** olarak ölçülmüştür. Bu değer, beklenen görünürlük ilişkilerinin kapsam dahilinde tamamen kapandığını ifade eder.
+
+Bileşen bazlı yorum:
+
+- Tüm SACI bileşenleri 100 değerindedir. Bu durum, tanımlı kapsam içinde beklenen görünürlük bileşenlerinin gözlemlendiğini gösterir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node ve 173 edge bulunmaktadır. Observed edge sayısı 173, missing edge sayısı 0’dır. Bu durum, kapsam dahilindeki beklenen graph ilişkilerinin yapısal olarak kapandığını gösterir.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç güvenlik garantisi değildir. Operasyonel olarak, yalnızca tanımlı değerlendirme kapsamındaki beklenen SOC görünürlük ilişkilerinin gözlemlenebildiğini gösterir.
+
+## 5. Önerilen Kontroller
+
+1. Final kapanış durumunun korunması için agent health, log freshness ve rule eşleşmeleri periyodik olarak izlenmelidir.
+2. Yeni varlık, log source, MITRE teknik veya IOC eklendiğinde SACI kapsamı yeniden hesaplanmalıdır.
+3. SACI=100 sonucunun güvenlik garantisi olmadığı, yalnızca kapsam dahilindeki görünürlük kapanışını ifade ettiği raporlarda korunmalıdır.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S8_final_closure/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S8_final_closure/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S8_final_closure" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S9" data-type="fault_injection">
+  <div class="head">
+    <div>
+      <h2>S9 - critical_dc01_security_loss</h2>
+      <span class="badge">fault_injection</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>96.47</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>90.74</b></div>
+    <div><span>CAC</span><b>97.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>7</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S9 - critical_dc01_security_loss
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S9 senaryosu, kritik DC01 üzerinde Security log görünürlüğü kaybını temsil eden bir fault-injection senaryosudur.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **96.47** olarak ölçülmüştür. Bu değer, neredeyse tam görünürlük sağlandığını, ancak küçük bir tazelik, kapsam veya kontrol etkisi bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 166 observed edge ve 7 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S9_critical_dc01_security_loss/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S9_critical_dc01_security_loss/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S9_critical_dc01_security_loss" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S10" data-type="fault_injection">
+  <div class="head">
+    <div>
+      <h2>S10 - endpoint_powershell_loss</h2>
+      <span class="badge">fault_injection</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>95.05</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>95.06</b></div>
+    <div><span>CAC</span><b>92.27</b></div>
+    <div><span>MDC</span><b>92.31</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>12</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S10 - endpoint_powershell_loss
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S10 senaryosu, endpoint PowerShell telemetrisi kaybını temsil eden bir fault-injection senaryosudur.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **95.05** olarak ölçülmüştür. Bu değer, neredeyse tam görünürlük sağlandığını, ancak küçük bir tazelik, kapsam veya kontrol etkisi bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **MDC düşüşü**, kapsam dahilindeki MITRE ATT&amp;CK tekniklerinden bazılarının gözlemlenen kontrol veya alarm ile kapatılamadığını gösterir. Rule-to-technique mapping ve ilgili telemetri kaynağı gözden geçirilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 161 observed edge ve 12 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+3. Eksik MITRE teknikleri için rule-to-technique mapping ve ilgili telemetri desteği doğrulanmalıdır.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S10_endpoint_powershell_loss/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S10_endpoint_powershell_loss/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S10_endpoint_powershell_loss" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S11" data-type="fault_injection">
+  <div class="head">
+    <div>
+      <h2>S11 - linux_authlog_loss</h2>
+      <span class="badge">fault_injection</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>95.91</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>95.06</b></div>
+    <div><span>CAC</span><b>95.71</b></div>
+    <div><span>MDC</span><b>92.31</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>7</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S11 - linux_authlog_loss
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S11 senaryosu, Linux authlog görünürlüğü kaybını temsil eden bir fault-injection senaryosudur.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **95.91** olarak ölçülmüştür. Bu değer, neredeyse tam görünürlük sağlandığını, ancak küçük bir tazelik, kapsam veya kontrol etkisi bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **LC düşüşü**, beklenen varlık-log kaynağı ilişkisinin tamamen gözlemlenemediğini gösterir. Agent durumu, log forwarding, event channel, syslog veya ingestion pipeline kontrol edilmelidir.
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **MDC düşüşü**, kapsam dahilindeki MITRE ATT&amp;CK tekniklerinden bazılarının gözlemlenen kontrol veya alarm ile kapatılamadığını gösterir. Rule-to-technique mapping ve ilgili telemetri kaynağı gözden geçirilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 166 observed edge ve 7 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Etkilenen varlıklar için Wazuh agent durumu, log forwarding ve beklenen log source akışı doğrulanmalıdır.
+2. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+3. Eksik MITRE teknikleri için rule-to-technique mapping ve ilgili telemetri desteği doğrulanmalıdır.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S11_linux_authlog_loss/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S11_linux_authlog_loss/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S11_linux_authlog_loss" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S12" data-type="cti_failure">
+  <div class="head">
+    <div>
+      <h2>S12 - firewall_ioc_without_cti</h2>
+      <span class="badge">cti_failure</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>92.5</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>100.0</b></div>
+    <div><span>CAC</span><b>100.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>50.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>6</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S12 - firewall_ioc_without_cti
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S12 senaryosu, firewall üzerinde IOC görülmesine rağmen CTI kapanışının sağlanamadığı durumu temsil eder.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **92.5** olarak ölçülmüştür. Bu değer, anlamlı görünürlük sağlandığını, ancak incelenmesi gereken görünürlük boşlukları bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **CTIC düşüşü**, IOC/CTI/MISP/Wazuh alarm zincirinin tam kapanmadığını gösterir. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 167 observed edge ve 6 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+CTI zinciri kapanmadığında IOC bilgisinin SIEM alarmına ve MITRE kapsamına bağlanması zayıflar. Bu durum threat intelligence entegrasyonunun operasyonel doğrulamasını gerektirir.
+
+## 5. Önerilen Kontroller
+
+1. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S12_firewall_ioc_without_cti/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S12_firewall_ioc_without_cti/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S12_firewall_ioc_without_cti" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S13" data-type="cti_failure">
+  <div class="head">
+    <div>
+      <h2>S13 - misp_lookup_without_ioc_hit</h2>
+      <span class="badge">cti_failure</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>92.5</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>100.0</b></div>
+    <div><span>CAC</span><b>100.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>50.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>6</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S13 - misp_lookup_without_ioc_hit
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S13 senaryosu, MISP sorgusunun çalıştığı ancak IOC hit üretmediği CTI failure durumunu temsil eder.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **92.5** olarak ölçülmüştür. Bu değer, anlamlı görünürlük sağlandığını, ancak incelenmesi gereken görünürlük boşlukları bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **CTIC düşüşü**, IOC/CTI/MISP/Wazuh alarm zincirinin tam kapanmadığını gösterir. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 167 observed edge ve 6 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+CTI zinciri kapanmadığında IOC bilgisinin SIEM alarmına ve MITRE kapsamına bağlanması zayıflar. Bu durum threat intelligence entegrasyonunun operasyonel doğrulamasını gerektirir.
+
+## 5. Önerilen Kontroller
+
+1. MISP bağlantısı, IOC feed, enrichment script, API anahtarı ve IOC-to-alert dönüşümü kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S13_misp_lookup_without_ioc_hit/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S13_misp_lookup_without_ioc_hit/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S13_misp_lookup_without_ioc_hit" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S14" data-type="coverage_gap">
+  <div class="head">
+    <div>
+      <h2>S14 - mitre_scope_expansion_gap</h2>
+      <span class="badge">coverage_gap</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>97.54</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>100.0</b></div>
+    <div><span>CAC</span><b>95.88</b></div>
+    <div><span>MDC</span><b>92.86</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>5</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S14 - mitre_scope_expansion_gap
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S14 senaryosu, MITRE kapsamı genişletildiğinde ilgili kontrol veya alarm gözlemlenmezse oluşan coverage gap durumunu temsil eder.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **97.54** olarak ölçülmüştür. Bu değer, neredeyse tam görünürlük sağlandığını, ancak küçük bir tazelik, kapsam veya kontrol etkisi bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+- **MDC düşüşü**, kapsam dahilindeki MITRE ATT&amp;CK tekniklerinden bazılarının gözlemlenen kontrol veya alarm ile kapatılamadığını gösterir. Rule-to-technique mapping ve ilgili telemetri kaynağı gözden geçirilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 98 node, 178 edge, 173 observed edge ve 5 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+2. Eksik MITRE teknikleri için rule-to-technique mapping ve ilgili telemetri desteği doğrulanmalıdır.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S14_mitre_scope_expansion_gap/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S14_mitre_scope_expansion_gap/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S14_mitre_scope_expansion_gap" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S15" data-type="sensitivity_test">
+  <div class="head">
+    <div>
+      <h2>S15 - freshness_decay</h2>
+      <span class="badge">sensitivity_test</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>95.0</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>100.0</b></div>
+    <div><span>CAC</span><b>100.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>50.0</b></div>
+    <div><span>Missing</span><b>0</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S15 - freshness_decay
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S15 senaryosu freshness decay etkisini temsil eder. Bu senaryoda kanıt grafı yapısal olarak kapalı kalır; ancak TF bileşeni düştüğü için SACI skoru azalır.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **95.0** olarak ölçülmüştür. Bu değer, neredeyse tam görünürlük sağlandığını, ancak küçük bir tazelik, kapsam veya kontrol etkisi bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **TF düşüşü**, telemetrinin yapısal olarak mevcut olsa bile tazelik açısından zayıfladığını gösterir. Event timestamp, ingestion delay, agent gecikmesi, index freshness ve NTP senkronizasyonu kontrol edilmelidir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında missing edge bulunmamaktadır; observed edge sayısı 173/173 seviyesindedir. Buna rağmen SACI skorunun 100 olmaması, düşüşün yapısal graph eksikliğinden değil, freshness gibi ayrı bir skor bileşeninden kaynaklandığını gösterir.
+
+## 4. Operasyonel Anlam
+
+Bu senaryoda operasyonel sorun graph ilişkisinin eksik olması değil, telemetrinin güncelliğini kaybetmesidir. Bu nedenle olay zamanları, ingestion gecikmesi ve NTP senkronizasyonu öncelikli incelenmelidir.
+
+## 5. Önerilen Kontroller
+
+1. Event timestamp, ingestion delay, index freshness, agent gecikmesi ve NTP senkronizasyonu kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S15_freshness_decay/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S15_freshness_decay/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S15_freshness_decay" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S16" data-type="control_failure">
+  <div class="head">
+    <div>
+      <h2>S16 - detection_rule_gap</h2>
+      <span class="badge">control_failure</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>98.93</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>100.0</b></div>
+    <div><span>CAC</span><b>95.71</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>5</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S16 - detection_rule_gap
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S16 senaryosu detection rule gap durumunu temsil eder. Telemetri mevcut olsa bile beklenen detection control veya Wazuh rule çıktısı oluşmadığında skorun nasıl etkilendiğini gösterir.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **98.93** olarak ölçülmüştür. Bu değer, neredeyse tam görünürlük sağlandığını, ancak küçük bir tazelik, kapsam veya kontrol etkisi bulunduğunu ifade eder.
+
+Bileşen bazlı yorum:
+
+- **CAC düşüşü**, beklenen detection control veya Wazuh rule çıktısının tam oluşmadığını gösterir. Decoder, rule matching, control mapping ve alert üretimi doğrulanmalıdır.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node, 173 edge, 168 observed edge ve 5 missing edge bulunmaktadır. Missing edge değeri, beklenen görünürlük ilişkisinin kanıt grafı üzerinde doğrulanamadığı durumları ifade eder.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Detection control kayıtları, Wazuh decoder/rule eşleşmeleri ve beklenen alert üretimi kontrol edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S16_detection_rule_gap/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S16_detection_rule_gap/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S16_detection_rule_gap" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S17" data-type="recovery">
+  <div class="head">
+    <div>
+      <h2>S17 - recovery_after_fix</h2>
+      <span class="badge">recovery</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>100.0</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>100.0</b></div>
+    <div><span>CAC</span><b>100.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>0</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S17 - recovery_after_fix
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S17 senaryosu recovery sonrası durumu temsil eder. Eksik görünürlük ilişkileri giderildiğinde SACI skorunun final kapanış seviyesine dönebildiğini gösterir.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **100.0** olarak ölçülmüştür. Bu değer, beklenen görünürlük ilişkilerinin kapsam dahilinde tamamen kapandığını ifade eder.
+
+Bileşen bazlı yorum:
+
+- Tüm SACI bileşenleri 100 değerindedir. Bu durum, tanımlı kapsam içinde beklenen görünürlük bileşenlerinin gözlemlendiğini gösterir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node ve 173 edge bulunmaktadır. Observed edge sayısı 173, missing edge sayısı 0’dır. Bu durum, kapsam dahilindeki beklenen graph ilişkilerinin yapısal olarak kapandığını gösterir.
+
+## 4. Operasyonel Anlam
+
+Bu sonuç, ilgili senaryoda SOC görünürlüğünün hangi bileşen üzerinden eksildiğini veya hangi bileşenle güçlendiğini yorumlamak için kullanılmalıdır.
+
+## 5. Önerilen Kontroller
+
+1. Final kapanış durumunun korunması için agent health, log freshness ve rule eşleşmeleri periyodik olarak izlenmelidir.
+2. Yeni varlık, log source, MITRE teknik veya IOC eklendiğinde SACI kapsamı yeniden hesaplanmalıdır.
+3. SACI=100 sonucunun güvenlik garantisi olmadığı, yalnızca kapsam dahilindeki görünürlük kapanışını ifade ettiği raporlarda korunmalıdır.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S17_recovery_after_fix/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S17_recovery_after_fix/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S17_recovery_after_fix" target="_blank">Full graph</a>
+  </p>
+</section>
+
+<section class="scenario-card" data-stage="S18" data-type="scope_validation">
+  <div class="head">
+    <div>
+      <h2>S18 - legacy_control_out_of_scope</h2>
+      <span class="badge">scope_validation</span>
+    </div>
+    <div class="score">
+      <div>SACI</div>
+      <b>100.0</b>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><span>LC</span><b>100.0</b></div>
+    <div><span>CAC</span><b>100.0</b></div>
+    <div><span>MDC</span><b>100.0</b></div>
+    <div><span>CTIC</span><b>100.0</b></div>
+    <div><span>TF</span><b>100.0</b></div>
+    <div><span>Missing</span><b>0</b></div>
+  </div>
+
+  <details open>
+    <summary>Policy-guided explanation</summary>
+    <pre># SACI Policy-Guided Explanation
+
+Stage: S18 - legacy_control_out_of_scope
+
+Bu açıklama, SACI skor bileşenleri ve kanıt grafı çıktıları üzerinden kural-tabanlı raporlama politikası ile üretilmiştir. SACI skoru bu rapor tarafından hesaplanmaz; skor daha önce deterministik SACI engine tarafından üretilmiştir.
+
+## 1. Senaryo Özeti
+
+S18 senaryosu legacy control out-of-scope durumunu temsil eder. Eski kontrol kayıtları izlenebilirlik için korunur; ancak aktif skor kapsamını bozmayacak şekilde değerlendirme dışında tutulur.
+
+## 2. Skor Yorumu
+
+Bu senaryoda SACI skoru **100.0** olarak ölçülmüştür. Bu değer, beklenen görünürlük ilişkilerinin kapsam dahilinde tamamen kapandığını ifade eder.
+
+Bileşen bazlı yorum:
+
+- Tüm SACI bileşenleri 100 değerindedir. Bu durum, tanımlı kapsam içinde beklenen görünürlük bileşenlerinin gözlemlendiğini gösterir.
+
+## 3. Graph/Görünürlük Yorumu
+
+Kanıt grafında 95 node ve 173 edge bulunmaktadır. Observed edge sayısı 173, missing edge sayısı 0’dır. Bu durum, kapsam dahilindeki beklenen graph ilişkilerinin yapısal olarak kapandığını gösterir.
+
+## 4. Operasyonel Anlam
+
+Legacy kayıtların aktif skor kapsamından ayrılması, eski mapping’lerin final skoru yapay olarak düşürmesini engellerken izlenebilirliği korur.
+
+## 5. Önerilen Kontroller
+
+1. Legacy control kayıtlarının aktif scoring kapsamı dışında, ancak traceability amacıyla ayrı tutulduğu dokümante edilmelidir.
+
+## Not
+
+SACI=100 sonucu kurumun güvenli olduğunu göstermez. Yalnızca tanımlı kapsam içindeki beklenen görünürlük ilişkilerinin gözlemlendiğini ifade eder. SACI; IDS/IPS, EDR veya saldırı tespit algoritması değil, açıklanabilir SOC görünürlük skorlama modelidir.
+</pre>
+  </details>
+
+  <p>
+    <a href="data/S18_legacy_control_out_of_scope/saci_llm_explanation.md" target="_blank">Raw explanation</a>
+    <a href="data/S18_legacy_control_out_of_scope/saci_graph_summary.md" target="_blank">Graph summary</a>
+    <a href="graph.html?stage=S18_legacy_control_out_of_scope" target="_blank">Full graph</a>
+  </p>
+</section>
+
+</main>
+</body>
+</html>
