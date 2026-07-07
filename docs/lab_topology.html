@@ -5,159 +5,275 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SACI Controlled Lab Topology</title>
 <style>
-:root {
-  --bg:#0f172a;
-  --panel:#111827;
-  --line:#334155;
-  --text:#e5e7eb;
-  --muted:#94a3b8;
-}
-* { box-sizing:border-box; }
-body {
+body{
   margin:0;
-  background:var(--bg);
-  color:var(--text);
+  background:#0f172a;
+  color:#e5e7eb;
   font-family:Arial, sans-serif;
 }
-header {
+header{
   padding:24px 30px;
   background:#020617;
-  border-bottom:1px solid var(--line);
+  border-bottom:1px solid #334155;
 }
-header h1 { margin:0 0 8px; }
-header p { margin:0; color:var(--muted); }
-main {
-  padding:22px;
-  max-width:1320px;
+header h1{
+  margin:0 0 8px 0;
+}
+header p{
+  margin:0;
+  color:#94a3b8;
+}
+main{
+  max-width:1420px;
   margin:auto;
+  padding:24px;
 }
-.card {
-  background:var(--panel);
-  border:1px solid var(--line);
+.card{
+  background:#111827;
+  border:1px solid #334155;
   border-radius:14px;
   padding:18px;
   margin-bottom:18px;
 }
-.paper {
-  background:white;
+.paper{
+  background:#ffffff;
   color:#0f172a;
   border-radius:14px;
-  padding:28px;
+  padding:24px;
   overflow:auto;
 }
-.topology {
-  display:grid;
-  grid-template-columns:1.2fr .9fr 1fr 1fr .9fr;
-  gap:18px;
+svg{
+  width:100%;
+  min-width:1180px;
+  height:auto;
 }
-.col {
-  border:2px solid #cbd5e1;
-  border-radius:16px;
-  padding:14px;
-  background:#f8fafc;
+.box{
+  fill:#f8fafc;
+  stroke:#334155;
+  stroke-width:2;
+  rx:14;
 }
-.col h2 {
-  text-align:center;
-  margin:0 0 12px;
+.asset{fill:#dbeafe;}
+.telemetry{fill:#ffedd5;}
+.platform{fill:#ccfbf1;}
+.cti{fill:#f3e8ff;}
+.score{fill:#fef9c3;}
+.output{fill:#e5e7eb;}
+.boundary{
+  fill:none;
+  stroke:#94a3b8;
+  stroke-width:2;
+  stroke-dasharray:8 6;
+  rx:18;
+}
+.title{
   font-size:18px;
-}
-.node {
-  border:2px solid #334155;
-  border-radius:14px;
-  padding:13px;
-  margin:10px 0;
-  text-align:center;
   font-weight:700;
-  line-height:1.35;
+  fill:#0f172a;
 }
-.asset { background:#dbeafe; }
-.log { background:#ffedd5; }
-.platform { background:#ccfbf1; }
-.control { background:#dcfce7; }
-.intel { background:#f3e8ff; }
-.score { background:#fef9c3; }
-.report { background:#e5e7eb; }
-.note {
+.text{
+  font-size:14px;
+  font-weight:600;
+  fill:#0f172a;
+}
+.small{
+  font-size:12px;
+  fill:#334155;
+}
+.arrow{
+  stroke:#334155;
+  stroke-width:2.5;
+  fill:none;
+  marker-end:url(#arrow);
+}
+.arrow2{
+  stroke:#7c3aed;
+  stroke-width:2.5;
+  fill:none;
+  stroke-dasharray:7 5;
+  marker-end:url(#arrowPurple);
+}
+.note{
   margin-top:18px;
   padding:14px 16px;
   background:#f8fafc;
   border-left:5px solid #2563eb;
+  color:#0f172a;
   font-weight:700;
 }
-table {
+.links a{
+  color:#93c5fd;
+  margin-right:16px;
+}
+table{
   width:100%;
   border-collapse:collapse;
-  background:white;
+  background:#ffffff;
   color:#0f172a;
 }
-th, td {
+th,td{
   border:1px solid #cbd5e1;
-  padding:8px;
+  padding:9px;
   text-align:left;
 }
-th { background:#e5e7eb; }
-a { color:#93c5fd; }
-.paper a { color:#1d4ed8; }
-@media(max-width:900px) {
-  .topology { grid-template-columns:1fr; }
+th{
+  background:#e5e7eb;
 }
 </style>
 </head>
+
 <body>
 <header>
-<h1>SACI Controlled Lab Topology</h1>
-<p>Anonymized lab topology for the SACI evaluation package. No real IP, credential, token, secret, or institution-specific hostname is included.</p>
+  <h1>SACI Controlled Lab Topology</h1>
+  <p>Anonymized topology of the controlled SACI evaluation environment. No real IP address, credential, token, API key, or institution-specific hostname is included.</p>
 </header>
 
 <main>
 
+<section class="card links">
+  <a href="index.html">Main evidence page</a>
+  <a href="evidence/graph.html">Interactive evidence graph</a>
+  <a href="evidence/paper_clean_v2/index.html">Paper clean view v2</a>
+  <a href="evidence/llm_report.html">Policy-guided explanation report</a>
+</section>
+
 <section class="card">
 <div class="paper">
 
-<div class="topology">
+<svg viewBox="0 0 1380 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SACI controlled lab topology">
 
-  <div class="col">
-    <h2>Assets</h2>
-    <div class="node asset">A01 / DC01<br>Critical domain controller</div>
-    <div class="node asset">A04 / WS01<br>Windows endpoint</div>
-    <div class="node asset">A05 / Linux host<br>authlog / syslog</div>
-    <div class="node asset">FW01<br>Firewall / syslog</div>
-  </div>
+<defs>
+  <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+    <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+  </marker>
+  <marker id="arrowPurple" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+    <path d="M2,2 L10,6 L2,10 Z" fill="#7c3aed"/>
+  </marker>
+</defs>
 
-  <div class="col">
-    <h2>Telemetry</h2>
-    <div class="node log">Windows Security</div>
-    <div class="node log">Sysmon</div>
-    <div class="node log">PowerShell</div>
-    <div class="node log">Linux authlog</div>
-    <div class="node log">Firewall logs</div>
-  </div>
+<!-- Boundaries -->
+<rect class="boundary" x="30" y="70" width="390" height="560"/>
+<text class="title" x="155" y="100">Controlled Lab Assets</text>
 
-  <div class="col">
-    <h2>SOC Platform</h2>
-    <div class="node platform">Wazuh SIEM<br>Manager + Rules</div>
-    <div class="node platform">OpenSearch / Indexer<br>SACI index</div>
-    <div class="node platform">MISP / CTI<br>IOC enrichment</div>
-  </div>
+<rect class="boundary" x="470" y="70" width="380" height="560"/>
+<text class="title" x="575" y="100">SOC Collection Layer</text>
 
-  <div class="col">
-    <h2>SACI Model</h2>
-    <div class="node control">Detection controls<br>C001-C027</div>
-    <div class="node intel">MITRE ATT&CK<br>Technique coverage</div>
-    <div class="node score">SACI engine<br>LC / CAC / MDC / CTIC / TF</div>
-    <div class="node score">Evidence graph<br>observed / missing edges</div>
-  </div>
+<rect class="boundary" x="900" y="70" width="430" height="560"/>
+<text class="title" x="1010" y="100">SACI Evaluation Layer</text>
 
-  <div class="col">
-    <h2>Outputs</h2>
-    <div class="node report">Policy-guided explanation<br>does not calculate score</div>
-    <div class="node report">GitHub Pages<br>evidence viewer</div>
-    <div class="node report"><a href="evidence/graph.html">Interactive evidence graph</a></div>
-    <div class="node report"><a href="evidence/paper_clean_v2/index.html">Paper clean view</a></div>
-    <div class="node report"><a href="index.html">Main evidence page</a></div>
-  </div>
+<!-- Assets -->
+<rect class="box asset" x="70" y="135" width="300" height="70"/>
+<text class="text" x="170" y="163">A01 / DC01</text>
+<text class="small" x="132" y="186">Critical domain controller</text>
 
-</div>
+<rect class="box asset" x="70" y="235" width="300" height="70"/>
+<text class="text" x="170" y="263">A04 / WS01</text>
+<text class="small" x="142" y="286">Windows endpoint</text>
+
+<rect class="box asset" x="70" y="335" width="300" height="70"/>
+<text class="text" x="162" y="363">A05 / Linux Host</text>
+<text class="small" x="146" y="386">authlog / syslog</text>
+
+<rect class="box asset" x="70" y="435" width="300" height="70"/>
+<text class="text" x="184" y="463">FW01</text>
+<text class="small" x="143" y="486">Firewall / syslog</text>
+
+<!-- Telemetry -->
+<rect class="box telemetry" x="505" y="120" width="300" height="75"/>
+<text class="text" x="586" y="148">Wazuh Agent</text>
+<text class="small" x="548" y="171">Security / Sysmon / PowerShell</text>
+
+<rect class="box telemetry" x="505" y="230" width="300" height="75"/>
+<text class="text" x="568" y="258">Linux Log Collection</text>
+<text class="small" x="582" y="281">authlog / syslog</text>
+
+<rect class="box telemetry" x="505" y="340" width="300" height="75"/>
+<text class="text" x="572" y="368">Firewall Syslog</text>
+<text class="small" x="555" y="391">network / IOC evidence</text>
+
+<!-- SOC Platform -->
+<rect class="box platform" x="505" y="470" width="300" height="85"/>
+<text class="text" x="573" y="500">Wazuh Manager</text>
+<text class="small" x="548" y="523">decoders / rules / alerts</text>
+
+<rect class="box platform" x="505" y="585" width="300" height="70"/>
+<text class="text" x="576" y="613">OpenSearch</text>
+<text class="small" x="562" y="636">SACI visibility index</text>
+
+<!-- CTI -->
+<rect class="box cti" x="930" y="120" width="330" height="80"/>
+<text class="text" x="1048" y="149">MISP / CTI</text>
+<text class="small" x="1005" y="173">IOC lookup and enrichment</text>
+
+<!-- SACI engine -->
+<rect class="box score" x="930" y="250" width="330" height="90"/>
+<text class="text" x="1036" y="282">SACI Engine</text>
+<text class="small" x="972" y="306">LC / CAC / MDC / CTIC / TF</text>
+<text class="small" x="986" y="326">deterministic scoring</text>
+
+<rect class="box score" x="930" y="390" width="330" height="85"/>
+<text class="text" x="1032" y="421">Evidence Graph</text>
+<text class="small" x="991" y="444">observed / missing relations</text>
+
+<rect class="box output" x="930" y="525" width="330" height="85"/>
+<text class="text" x="985" y="555">Policy-guided Explanation</text>
+<text class="small" x="993" y="578">does not calculate score</text>
+
+<rect class="box output" x="930" y="650" width="330" height="65"/>
+<text class="text" x="1004" y="679">GitHub Pages Output</text>
+<text class="small" x="987" y="701">results / topology / graph viewer</text>
+
+<!-- Arrows assets to telemetry -->
+<path class="arrow" d="M370 170 C430 170, 445 158, 505 158"/>
+<text class="small" x="404" y="150">agent events</text>
+
+<path class="arrow" d="M370 270 C430 270, 445 158, 505 158"/>
+<text class="small" x="392" y="248">agent events</text>
+
+<path class="arrow" d="M370 370 C430 370, 445 268, 505 268"/>
+<text class="small" x="404" y="345">authlog</text>
+
+<path class="arrow" d="M370 470 C430 470, 445 378, 505 378"/>
+<text class="small" x="402" y="445">syslog</text>
+
+<!-- Telemetry to Wazuh -->
+<path class="arrow" d="M655 195 L655 470"/>
+<path class="arrow" d="M655 305 L655 470"/>
+<path class="arrow" d="M655 415 L655 470"/>
+
+<!-- Wazuh to OpenSearch -->
+<path class="arrow" d="M655 555 L655 585"/>
+<text class="small" x="674" y="575">indexed alerts</text>
+
+<!-- CTI links -->
+<path class="arrow2" d="M930 160 C860 160, 840 500, 805 510"/>
+<text class="small" x="825" y="245">IOC enrichment</text>
+
+<!-- OpenSearch to SACI -->
+<path class="arrow" d="M805 620 C870 620, 890 295, 930 295"/>
+<text class="small" x="830" y="500">queries</text>
+
+<!-- CTI to SACI -->
+<path class="arrow2" d="M1095 200 L1095 250"/>
+<text class="small" x="1110" y="229">CTIC</text>
+
+<!-- SACI to graph -->
+<path class="arrow" d="M1095 340 L1095 390"/>
+<text class="small" x="1110" y="368">builds</text>
+
+<!-- Graph to explanation -->
+<path class="arrow" d="M1095 475 L1095 525"/>
+<text class="small" x="1110" y="505">explains</text>
+
+<!-- Explanation to GitHub -->
+<path class="arrow" d="M1095 610 L1095 650"/>
+<text class="small" x="1110" y="633">publishes</text>
+
+<!-- Footer notes -->
+<text class="small" x="55" y="690">SACI does not measure whether the organization is secure.</text>
+<text class="small" x="55" y="715">It measures whether expected telemetry, detection, CTI, MITRE and freshness relationships are observable.</text>
+
+</svg>
 
 <div class="note">
 SACI=100 means expected visibility closure within the defined evaluation scope. It is not a general security guarantee.
@@ -167,34 +283,34 @@ SACI=100 means expected visibility closure within the defined evaluation scope. 
 </section>
 
 <section class="card">
-<h2>Topology Relation Summary</h2>
+<h2>Topology Interpretation</h2>
 <table>
 <thead>
 <tr>
 <th>Layer</th>
-<th>Role in SACI evaluation</th>
+<th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Assets</td>
-<td>Controlled lab entities that generate expected telemetry relationships.</td>
+<td>Controlled Lab Assets</td>
+<td>DC01, WS01, Linux host and firewall represent the controlled evaluation assets. They generate expected telemetry relationships.</td>
 </tr>
 <tr>
-<td>Telemetry</td>
-<td>Security, Sysmon, PowerShell, Linux authlog and firewall logs collected by Wazuh.</td>
+<td>SOC Collection Layer</td>
+<td>Wazuh Agent, Linux log collection and firewall syslog deliver telemetry to Wazuh Manager, where rules and alerts are produced.</td>
 </tr>
 <tr>
-<td>SOC platform</td>
-<td>Wazuh produces rule evidence, OpenSearch stores indexed results, and MISP provides CTI closure.</td>
+<td>CTI Integration</td>
+<td>MISP provides IOC enrichment and contributes to CTIC closure in the SACI model.</td>
 </tr>
 <tr>
-<td>SACI model</td>
-<td>The deterministic SACI engine builds graph completeness and computes LC, CAC, MDC, CTIC and TF.</td>
+<td>SACI Evaluation Layer</td>
+<td>The deterministic SACI engine queries indexed evidence, computes SACI components and builds the observed/missing evidence graph.</td>
 </tr>
 <tr>
 <td>Outputs</td>
-<td>GitHub Pages publishes scenario tables, charts, topology and full graph artifacts.</td>
+<td>Policy-guided explanations, paper-ready views and interactive evidence graphs are published through GitHub Pages.</td>
 </tr>
 </tbody>
 </table>
