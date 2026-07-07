@@ -328,6 +328,496 @@ pre {
   }
 }
 </style>
+
+
+
+
+
+
+
+<style id="saci-final-figure-system">
+  .fw-shell{
+    background:#ffffff;
+    color:#0f172a;
+    border:1px solid #cbd5e1;
+    border-radius:22px;
+    padding:28px;
+    max-width:1180px;
+    margin:0 auto 18px;
+    overflow:hidden;
+    box-shadow:0 10px 24px rgba(15,23,42,.06);
+  }
+
+  .fw-title{
+    margin:0 0 8px;
+    text-align:center;
+    font-size:clamp(24px,2vw,31px);
+    font-weight:900;
+    letter-spacing:-.02em;
+    color:#0f172a;
+  }
+
+  .fw-subtitle{
+    margin:0 auto 22px;
+    max-width:820px;
+    text-align:center;
+    color:#475569;
+    line-height:1.55;
+    font-size:14px;
+  }
+
+  .fw-flow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    flex-wrap:wrap;
+    margin:0 0 18px;
+    font-size:13px;
+    font-weight:800;
+    color:#334155;
+  }
+
+  .fw-flow span{
+    background:#f8fafc;
+    border:1px solid #cbd5e1;
+    border-radius:999px;
+    padding:7px 10px;
+  }
+
+  .fw-flow b{
+    color:#2563eb;
+    font-size:18px;
+  }
+
+  .fw-grid{
+    display:grid;
+    gap:16px;
+    width:100%;
+  }
+
+  .fw-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .fw-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .fw-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+
+  .fw-panel{
+    border:1.6px dashed #94a3b8;
+    border-radius:20px;
+    padding:18px;
+    background:#fbfdff;
+    min-height:245px;
+    overflow:hidden;
+  }
+
+  .fw-panel.inputs{background:linear-gradient(180deg,#f8fbff,#ffffff);border-color:#93c5fd;}
+  .fw-panel.evidence{background:linear-gradient(180deg,#fffaf0,#ffffff);border-color:#fbbf24;}
+  .fw-panel.scoring{background:linear-gradient(180deg,#faf7ff,#ffffff);border-color:#c4b5fd;}
+  .fw-panel.outputs{background:linear-gradient(180deg,#f7fff9,#ffffff);border-color:#86efac;}
+  .fw-panel.loss{background:linear-gradient(180deg,#fff5f5,#ffffff);border-color:#fca5a5;}
+
+  .fw-head{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:14px;
+  }
+
+  .fw-no{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:#0f172a;
+    color:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:13px;
+    flex:0 0 auto;
+  }
+
+  .fw-head h3{
+    margin:0 0 4px;
+    font-size:19px;
+    line-height:1.2;
+    color:#0f172a;
+    overflow-wrap:break-word;
+  }
+
+  .fw-head p{
+    margin:0;
+    color:#475569;
+    font-size:12.5px;
+    line-height:1.4;
+    overflow-wrap:break-word;
+  }
+
+  .fw-card-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+
+  .fw-card{
+    border:1.4px solid #334155;
+    border-radius:15px;
+    padding:14px;
+    min-height:94px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    box-shadow:0 6px 14px rgba(15,23,42,.055);
+  }
+
+  .fw-card h4{
+    margin:0 0 6px;
+    font-size:14px;
+    font-weight:900;
+    line-height:1.25;
+    color:#0f172a;
+    overflow-wrap:break-word;
+  }
+
+  .fw-card small{
+    display:block;
+    color:#334155;
+    font-size:12px;
+    line-height:1.35;
+    overflow-wrap:break-word;
+  }
+
+  .fw-blue{background:#dbeafe;}
+  .fw-beige{background:#ffedd5;}
+  .fw-green{background:#ccfbf1;}
+  .fw-red{background:#fee2e2;}
+  .fw-purple{background:#ede9fe;}
+  .fw-yellow{background:#fef9c3;}
+  .fw-gray{background:#e5e7eb;}
+  .fw-output{background:#dcfce7;}
+
+  .fw-metrics{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+    margin-top:8px;
+  }
+
+  .fw-chip{
+    background:rgba(255,255,255,.72);
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    padding:8px 10px;
+    text-align:left;
+    overflow:hidden;
+  }
+
+  .fw-chip span{
+    display:block;
+    color:#475569;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:3px;
+  }
+
+  .fw-chip strong{
+    display:block;
+    color:#0f172a;
+    font-size:20px;
+    line-height:1;
+  }
+
+  .fw-note{
+    margin-top:18px;
+    background:#f8fafc;
+    border-left:5px solid #2563eb;
+    border-radius:12px;
+    padding:14px 16px;
+    color:#0f172a;
+    font-weight:750;
+    line-height:1.5;
+    font-size:14px;
+  }
+
+  .fw-fm-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+    gap:14px;
+  }
+
+  .fw-fm-card{
+    border:1.5px solid #334155;
+    border-radius:16px;
+    padding:15px;
+    min-height:168px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow:0 8px 18px rgba(15,23,42,.06);
+    overflow:hidden;
+  }
+
+  .fw-fm-top{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .fw-id{
+    flex:0 0 auto;
+    background:#0f172a;
+    color:#ffffff;
+    border-radius:10px;
+    padding:7px 9px;
+    font-weight:800;
+    font-size:13px;
+    line-height:1;
+  }
+
+  .fw-fm-name{
+    font-weight:800;
+    font-size:15px;
+    line-height:1.25;
+    color:#0f172a;
+    overflow-wrap:break-word;
+  }
+
+  .fw-fm-purpose{
+    color:#334155;
+    font-size:12.5px;
+    line-height:1.35;
+    margin-top:8px;
+    overflow-wrap:break-word;
+  }
+
+  .fw-fm-metrics{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:12px;
+  }
+
+  .fw-fm-metric{
+    background:rgba(255,255,255,.68);
+    border:1px solid rgba(51,65,85,.22);
+    border-radius:12px;
+    padding:9px 10px;
+  }
+
+  .fw-fm-metric span{
+    display:block;
+    color:#475569;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:3px;
+  }
+
+  .fw-fm-metric strong{
+    display:block;
+    color:#0f172a;
+    font-size:18px;
+    line-height:1.1;
+  }
+
+  @media(max-width:900px){
+    .fw-shell{padding:18px;}
+    .fw-4,.fw-3,.fw-2{grid-template-columns:1fr;}
+    .fw-panel{min-height:auto;}
+  }
+
+  @media(max-width:560px){
+    .fw-card-grid{grid-template-columns:1fr;}
+  }
+</style>
+
+
+
+
+
+
+
+
+<style id="saci-rich-scenario-detail">
+  #saciScenarioDetailCard{
+    margin-top:14px !important;
+    background:#1f2937 !important;
+    border:1px solid #334155 !important;
+    border-radius:16px !important;
+    padding:16px !important;
+    color:#e5e7eb !important;
+    max-width:1180px !important;
+    overflow:hidden !important;
+  }
+
+  .saci-rich-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0 0 14px;
+    color:#ffffff;
+    font-size:20px;
+    font-weight:900;
+    overflow-wrap:anywhere;
+  }
+
+  .saci-rich-pill{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#2563eb;
+    color:#ffffff;
+    border-radius:999px;
+    padding:4px 8px;
+    font-size:12px;
+    font-weight:900;
+    line-height:1;
+  }
+
+  .saci-rich-metrics{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(175px,1fr));
+    gap:10px;
+    margin-bottom:14px;
+  }
+
+  .saci-rich-metric{
+    background:#111827;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:11px 12px;
+    min-width:0;
+    overflow:hidden;
+  }
+
+  .saci-rich-metric span{
+    display:block;
+    color:#93c5fd;
+    font-size:12px;
+    margin-bottom:6px;
+    font-weight:700;
+  }
+
+  .saci-rich-metric strong{
+    display:block;
+    color:#ffffff;
+    font-size:28px;
+    line-height:1;
+    overflow-wrap:anywhere;
+  }
+
+  .saci-rich-lines{
+    display:grid;
+    gap:8px;
+    margin:10px 0 12px;
+    color:#f8fafc;
+    line-height:1.45;
+    font-size:14px;
+  }
+
+  .saci-rich-lines b{
+    color:#ffffff;
+  }
+
+  .saci-rich-links{
+    margin:10px 0 12px;
+    color:#93c5fd;
+    font-size:14px;
+  }
+
+  .saci-rich-links a{
+    color:#93c5fd;
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+
+  .saci-rich-note{
+    background:#111827;
+    border-left:4px solid #2563eb;
+    border-radius:10px;
+    padding:12px;
+    color:#e5e7eb;
+    line-height:1.45;
+    font-size:14px;
+    margin-top:10px;
+  }
+
+  .saci-raw-json{
+    margin-top:12px;
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:12px;
+    overflow:hidden;
+  }
+
+  .saci-raw-json summary{
+    cursor:pointer;
+    padding:10px 12px;
+    color:#bfdbfe;
+    font-weight:800;
+    user-select:none;
+  }
+
+  .saci-raw-json pre{
+    margin:0;
+    padding:12px;
+    overflow:auto;
+    max-height:260px;
+    color:#e5e7eb;
+    font-size:12px;
+    line-height:1.35;
+  }
+
+  select{
+    max-width:420px !important;
+    width:100% !important;
+  }
+
+  .saci-table-fixed{
+    width:100%;
+    border-collapse:collapse;
+  }
+
+  .saci-table-fixed th,
+  .saci-table-fixed td{
+    padding:10px;
+    border-bottom:1px solid #334155;
+    text-align:left;
+    vertical-align:top;
+    font-size:13px;
+  }
+
+  .saci-table-fixed th{
+    color:#bfdbfe;
+    font-weight:800;
+    white-space:nowrap;
+  }
+
+  .saci-table-fixed td{
+    color:#e5e7eb;
+  }
+
+  .saci-stage-pill{
+    display:inline-block;
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:999px;
+    padding:4px 8px;
+    color:#ffffff;
+    font-weight:800;
+    font-size:12px;
+  }
+
+  @media(max-width:760px){
+    #saciScenarioDetailCard{
+      padding:14px !important;
+    }
+    .saci-rich-metric strong{
+      font-size:24px;
+    }
+  }
+</style>
+
 </head>
 
 <body>
@@ -708,6 +1198,494 @@ async function load() {
 }
 
 load();
+</script>
+
+
+
+
+
+
+
+
+<script id="saci-final-figure-system">
+(function(){
+  function chip(label,value){
+    return `<div class="fw-chip"><span>${label}</span><strong>${value}</strong></div>`;
+  }
+
+  function card(cls,title,body,metrics=""){
+    return `
+      <div class="fw-card ${cls}">
+        <h4>${title}</h4>
+        <small>${body}</small>
+        ${metrics}
+      </div>
+    `;
+  }
+
+  function metricBlock(items){
+    return `<div class="fw-metrics">${items.map(x => chip(x[0],x[1])).join("")}</div>`;
+  }
+
+  function flow(items){
+    return `<div class="fw-flow">${items.map((x,i)=> i ? `<b>→</b><span>${x}</span>` : `<span>${x}</span>`).join("")}</div>`;
+  }
+
+  function panel(no,cls,title,desc,cards){
+    return `
+      <section class="fw-panel ${cls}">
+        <div class="fw-head">
+          <div class="fw-no">${no}</div>
+          <div>
+            <h3>${title}</h3>
+            <p>${desc}</p>
+          </div>
+        </div>
+        <div class="fw-card-grid">${cards}</div>
+      </section>
+    `;
+  }
+
+  function fmCard(s){
+    return `
+      <article class="fw-fm-card ${s.cls}">
+        <div>
+          <div class="fw-fm-top">
+            <div class="fw-id">${s.id}</div>
+            <div>
+              <div class="fw-fm-name">${s.title}</div>
+              <div class="fw-fm-purpose">${s.purpose}</div>
+            </div>
+          </div>
+        </div>
+        <div class="fw-fm-metrics">
+          <div class="fw-fm-metric"><span>SACI</span><strong>${s.saci}</strong></div>
+          <div class="fw-fm-metric"><span>Missing</span><strong>${s.missing}</strong></div>
+        </div>
+      </article>
+    `;
+  }
+
+  function findBlock(terms){
+    const headings = Array.from(document.querySelectorAll("h1,h2,h3,h4"));
+    const h = headings.find(x => {
+      const t = x.textContent.trim().toLowerCase();
+      return terms.some(term => t.includes(term.toLowerCase()));
+    });
+    if(!h) return null;
+    return h.closest(".fw-shell,.sf-shell,.cm-shell,.faultMatrixSection,.figure-shell,section,.card,.paper") || h.parentElement;
+  }
+
+  function replace(terms, html){
+    const block = findBlock(terms);
+    if(!block) return false;
+    block.className = "fw-shell";
+    block.innerHTML = html;
+    block.style.overflow = "hidden";
+    return true;
+  }
+
+  function renderAll(){
+    replace(["SACI Conceptual Model"], `
+      <h2 class="fw-title">SACI Conceptual Model</h2>
+      <p class="fw-subtitle">The model is organized as a Wazuh-style visibility architecture: telemetry sources produce evidence, Wazuh rules create observable alerts, and SACI converts graph relations into deterministic visibility scores.</p>
+      ${flow(["Visibility Inputs","SOC Evidence","Graph Scoring","Explanation Output"])}
+      <div class="fw-grid fw-2">
+        ${panel("01","inputs","Visibility Inputs","Assets and telemetry sources define what should be visible.",
+          card("fw-blue","Assets","DC / endpoint / firewall") +
+          card("fw-beige","Log Sources","Security / Sysmon / PowerShell / authlog / firewall")
+        )}
+        ${panel("02","evidence","SOC Evidence Layer","Expected controls and Wazuh rules generate observable alert evidence.",
+          card("fw-green","Detection Controls","Expected visibility rules") +
+          card("fw-red","Wazuh Rules","Observed alerts")
+        )}
+        ${panel("03","scoring","Graph Scoring Core","Coverage and relationship states are converted into SACI components.",
+          card("fw-purple","MITRE + CTI","Technique and IOC closure") +
+          card("fw-yellow","SACI Metrics","LC / CAC / MDC / CTIC / TF") +
+          card("fw-gray","Graph Relation State","Observed / missing") +
+          card("fw-output","SACI Score","Deterministic visibility score")
+        )}
+        ${panel("04","outputs","Explanation Output","Reports explain deterministic SACI outputs without modifying the score.",
+          card("fw-green","Policy-guided Explanation","Explains outputs; does not calculate score") +
+          card("fw-yellow","Human-readable Report","Scenario-level interpretation")
+        )}
+      </div>
+      <div class="fw-note">SACI does not determine whether an organization is secure. It measures whether expected visibility relationships are observable within the defined evaluation scope.</div>
+    `);
+
+    replace(["S8 Final Visibility Closure","S8 Closure"], `
+      <h2 class="fw-title">S8 Final Visibility Closure</h2>
+      <p class="fw-subtitle">S8 is the clean reference state used before post-closure fault-injection and recovery scenarios.</p>
+      ${flow(["asset","telemetry","alert evidence","closure"])}
+      <div class="fw-grid fw-2">
+        ${panel("01","inputs","Reference Asset","The controlled endpoint produces expected telemetry.",
+          card("fw-blue","A04 / WS01","Windows endpoint") +
+          card("fw-beige","Observed Telemetry","Security / Sysmon / PowerShell")
+        )}
+        ${panel("02","evidence","Alert Evidence","Expected Wazuh rule evidence is observed.",
+          card("fw-green","Observed Alerts","Expected Wazuh rule evidence") +
+          card("fw-purple","MITRE Closure","T1078 / T1087 / T1016 / T1059.001 / T1071.004")
+        )}
+        ${panel("03","scoring","Graph Closure","Observed edge count equals expected edge count.",
+          card("fw-gray","Graph State","Observed edge count equals expected edge count") +
+          card("fw-yellow","CTI Closure","IOC evidence converted to alert")
+        )}
+        ${panel("04","outputs","Final Closure","S8 provides the full-visibility reference point.",
+          card("fw-output","Final State","", metricBlock([["SACI","100.0"],["Missing","0"]])) +
+          card("fw-green","Reference Role","Baseline for later regression and recovery")
+        )}
+      </div>
+      <div class="fw-note">S8 is important because all later regression, sensitivity and recovery scenarios are compared against this controlled full-visibility reference state.</div>
+    `);
+
+    replace(["S7A Critical DC01 Sysmon Loss","Critical DC01 Sysmon"], `
+      <h2 class="fw-title">S7A Critical DC01 Sysmon Loss</h2>
+      <p class="fw-subtitle">This view explains the causal path from missing critical telemetry to score regression and increased missing-edge count.</p>
+      ${flow(["critical asset","missing Sysmon","controls not evidenced","score regression"])}
+      <div class="fw-grid fw-2">
+        ${panel("01","inputs","Critical Asset","The affected source is a critical domain controller.",
+          card("fw-blue","A01 / DC01","Critical asset") +
+          card("fw-beige","Expected Source","Sysmon telemetry")
+        )}
+        ${panel("02","loss","Telemetry Loss","Expected critical telemetry is not observed.",
+          card("fw-red","Lost Source","Sysmon telemetry not observed") +
+          card("fw-red","Affected Controls","C001 / C002 / C003<br>C004 / C007 / C008")
+        )}
+        ${panel("03","scoring","Coverage Impact","MITRE and graph coverage are affected.",
+          card("fw-purple","MITRE Coverage Affected","T1071.004 / T1059.001 / T1482 / T1087") +
+          card("fw-yellow","Graph Impact","Missing visibility edges increase")
+        )}
+        ${panel("04","outputs","Score Impact","The missing critical telemetry produces a stronger SACI regression.",
+          card("fw-red","S7A Result","", metricBlock([["SACI","78.53"],["Missing","57"]])) +
+          card("fw-green","Explanation Layer","Natural-language reason for score drop")
+        )}
+      </div>
+      <div class="fw-note">This clean view abstracts the full graph and shows why critical telemetry loss produces a stronger SACI regression.</div>
+    `);
+
+    replace(["Critical vs Non-critical","Criticality Comparison","S7A S7B"], `
+      <h2 class="fw-title">Critical vs Non-critical Telemetry Loss</h2>
+      <p class="fw-subtitle">S7A and S7B compare the effect of telemetry loss on a critical domain controller versus a non-critical workstation.</p>
+      ${flow(["same telemetry type","different asset criticality","different score impact"])}
+      <div class="fw-grid fw-2">
+        ${panel("S7A","loss","Critical DC01 Sysmon Loss","Critical asset telemetry loss has stronger graph impact.",
+          card("fw-red","Critical Asset Loss","DC01 Sysmon telemetry not observed") +
+          card("fw-red","Score Impact","", metricBlock([["SACI","78.53"],["Missing","57"]]))
+        )}
+        ${panel("S7B","scoring","Non-critical WS01 Sysmon Loss","Non-critical endpoint telemetry loss has lower graph impact.",
+          card("fw-purple","Non-critical Asset Loss","WS01 Sysmon telemetry not observed") +
+          card("fw-purple","Score Impact","", metricBlock([["SACI","92.52"],["Missing","32"]]))
+        )}
+      </div>
+      <div class="fw-note">The comparison demonstrates that SACI is sensitive not only to missing telemetry, but also to the criticality of the affected asset and its expected visibility relationships.</div>
+    `);
+
+    replace(["Scenario Taxonomy","Taxonomy"], `
+      <h2 class="fw-title">Scenario Taxonomy</h2>
+      <p class="fw-subtitle">The evaluation scenarios are grouped to make the experimental design easier to read and defend during review.</p>
+      <div class="fw-grid fw-3">
+        ${card("fw-gray","S0-S2 Baseline","Initial or limited visibility")}
+        ${card("fw-beige","S3-S6 Visibility Progression","Telemetry, firewall and CTI visibility added")}
+        ${card("fw-red","S7A-S7B Criticality Regression","Critical vs non-critical telemetry loss")}
+        ${card("fw-output","S8 Final Closure","Complete expected visibility closure")}
+        ${card("fw-yellow","S9-S16 Sensitivity Tests","Post-closure isolated fault injection")}
+        ${card("fw-green","S17-S18 Recovery / Scope","Recovery after fix and legacy scope validation")}
+      </div>
+      <div class="fw-note">This taxonomy shows that the scenarios cover baseline, progression, regression, closure, sensitivity, recovery and scope validation.</div>
+    `);
+
+    replace(["Reviewer-oriented Fault-injection Matrix","Fault-injection Matrix","Fault matrix"], `
+      <h2 class="fw-title">Reviewer-oriented Fault-injection Matrix</h2>
+      <p class="fw-subtitle">Post-closure fault-injection scenarios are shown as compact cards so that long scenario names do not collide with scores or missing-edge counts.</p>
+      <div class="fw-fm-grid">
+        ${[
+          {id:"S9",title:"Critical DC01 Security Loss",saci:"96.47",missing:"7",cls:"fw-beige",purpose:"Critical domain controller security telemetry regression."},
+          {id:"S10",title:"Endpoint PowerShell Loss",saci:"95.05",missing:"12",cls:"fw-beige",purpose:"Endpoint command telemetry degradation."},
+          {id:"S11",title:"Linux Authlog Loss",saci:"95.91",missing:"7",cls:"fw-beige",purpose:"Linux authentication log visibility loss."},
+          {id:"S12",title:"Firewall IOC Without CTI",saci:"92.50",missing:"6",cls:"fw-purple",purpose:"Firewall IOC evidence exists, but CTI closure is incomplete."},
+          {id:"S13",title:"MISP Lookup Without IOC Hit",saci:"92.50",missing:"6",cls:"fw-purple",purpose:"CTI lookup runs but does not produce an IOC match."},
+          {id:"S14",title:"MITRE Scope Expansion Gap",saci:"97.54",missing:"5",cls:"fw-yellow",purpose:"New in-scope MITRE expectation introduces uncovered relations."},
+          {id:"S15",title:"Freshness Decay",saci:"95.00",missing:"0",cls:"fw-yellow",purpose:"Graph relations are closed, but telemetry freshness decreases."},
+          {id:"S16",title:"Detection Rule Gap",saci:"98.93",missing:"5",cls:"fw-beige",purpose:"A detection rule expectation is not observed."},
+          {id:"S17",title:"Recovery After Fix",saci:"100.00",missing:"0",cls:"fw-green",purpose:"Visibility closure is restored after remediation."},
+          {id:"S18",title:"Legacy Control Out of Scope",saci:"100.00",missing:"0",cls:"fw-green",purpose:"Out-of-scope legacy controls do not reduce the final score."}
+        ].map(fmCard).join("")}
+      </div>
+      <div class="fw-note">These scenarios address reviewer concerns about critical telemetry loss, CTI dependency, MITRE scope expansion, rule gaps, freshness decay, recovery behavior and legacy out-of-scope controls.</div>
+    `);
+  }
+
+  renderAll();
+
+  document.addEventListener("DOMContentLoaded", renderAll);
+  setTimeout(renderAll, 200);
+  setTimeout(renderAll, 700);
+
+  document.addEventListener("click", function(e){
+    if(e.target.closest("button,a")){
+      setTimeout(renderAll, 100);
+      setTimeout(renderAll, 400);
+    }
+  });
+})();
+</script>
+
+
+
+
+
+
+
+
+<script id="saci-rich-scenario-detail">
+(function(){
+  const STORAGE_KEY = "saci_selected_scenario_stage";
+
+  const fallbackRows = [
+    {stage:"S0", name:"no_siem", type:"baseline", saci:0.0, observed:6, missing:167, total:173, graph:"6/173", description:"No SIEM visibility baseline. Expected visibility relations are mostly missing."},
+    {stage:"S1", name:"siem_deployed", type:"progression", saci:10.56, observed:10, missing:163, total:173, graph:"10/173", description:"SIEM deployment is present, but expected visibility relationships are still largely incomplete."},
+    {stage:"S2", name:"inventory_defined", type:"progression", saci:11.56, observed:10, missing:163, total:173, graph:"10/173", description:"Asset inventory is defined, yet telemetry and detection evidence remain limited."},
+    {stage:"S3", name:"dc_visibility", type:"progression", saci:42.96, observed:64, missing:109, total:173, graph:"64/173", description:"Domain controller visibility is introduced. Critical DC telemetry starts to close expected graph relations."},
+    {stage:"S4", name:"endpoint_visibility", type:"progression", saci:69.0, observed:131, missing:42, total:173, graph:"131/173", description:"Endpoint visibility is added and Windows endpoint telemetry contributes to observed evidence."},
+    {stage:"S5", name:"firewall_visibility", type:"progression", saci:74.56, observed:133, missing:40, total:173, graph:"133/173", description:"Firewall visibility is introduced and network-side telemetry contributes to the evidence graph."},
+    {stage:"S6", name:"cti_integration", type:"progression", saci:94.0, observed:143, missing:30, total:173, graph:"143/173", description:"CTI integration is added. IOC enrichment and threat intelligence relations improve visibility."},
+    {stage:"S7A", name:"critical_dc01_sysmon_loss", type:"criticality", saci:78.53, observed:116, missing:57, total:173, graph:"116/173", description:"Critical DC01 Sysmon telemetry loss causes a strong visibility regression and increases missing graph relations."},
+    {stage:"S7B", name:"noncritical_ws01_sysmon_loss", type:"criticality", saci:92.52, observed:141, missing:32, total:173, graph:"141/173", description:"Non-critical endpoint telemetry loss has lower impact than critical DC01 telemetry loss."},
+    {stage:"S8", name:"final_closure", type:"final_lab_measurement", LC:100.0, CAC:100.0, MDC:100.0, CTIC:100.0, TF:100.0, saci:100.0, nodes:95, observed:173, missing:0, total:173, graph:"173/173", description:"Final controlled laboratory condition where all expected visibility relations are closed."},
+    {stage:"S9", name:"critical_dc01_security_loss", type:"fault-injection", saci:96.47, observed:166, missing:7, total:173, graph:"166/173", description:"Critical DC01 Security telemetry loss tests sensitivity to authentication/security log degradation."},
+    {stage:"S10", name:"endpoint_powershell_loss", type:"fault-injection", saci:95.05, observed:161, missing:12, total:173, graph:"161/173", description:"Endpoint PowerShell telemetry loss tests degradation in command and script visibility."},
+    {stage:"S11", name:"linux_authlog_loss", type:"fault-injection", saci:95.91, observed:166, missing:7, total:173, graph:"166/173", description:"Linux authlog loss tests authentication telemetry visibility degradation."},
+    {stage:"S12", name:"firewall_ioc_without_cti", type:"cti-gap", LC:100.0, CAC:100.0, MDC:100.0, CTIC:50.0, TF:100.0, saci:92.5, observed:167, missing:6, total:173, graph:"167/173", description:"Firewall IOC evidence exists, but CTI closure is incomplete."},
+    {stage:"S13", name:"misp_lookup_without_ioc_hit", type:"cti-gap", LC:100.0, CAC:100.0, MDC:100.0, CTIC:50.0, TF:100.0, saci:92.5, observed:167, missing:6, total:173, graph:"167/173", description:"MISP lookup runs but does not produce an IOC hit."},
+    {stage:"S14", name:"mitre_scope_expansion_gap", type:"scope-gap", saci:97.54, observed:173, missing:5, total:178, graph:"173/178", description:"MITRE scope expansion introduces new expected relationships and creates a controlled visibility gap."},
+    {stage:"S15", name:"freshness_decay", type:"freshness", LC:100.0, CAC:100.0, MDC:100.0, CTIC:100.0, TF:50.0, saci:95.0, observed:173, missing:0, total:173, graph:"173/173", description:"Graph relations remain structurally closed, but freshness decay lowers the SACI score."},
+    {stage:"S16", name:"detection_rule_gap", type:"rule-gap", saci:98.93, observed:168, missing:5, total:173, graph:"168/173", description:"Detection rule gap tests the effect of an expected rule not producing observable evidence."},
+    {stage:"S17", name:"recovery_after_fix", type:"recovery", LC:100.0, CAC:100.0, MDC:100.0, CTIC:100.0, TF:100.0, saci:100.0, observed:173, missing:0, total:173, graph:"173/173", description:"Recovery after fix restores expected visibility closure."},
+    {stage:"S18", name:"legacy_control_out_of_scope", type:"scope-validation", LC:100.0, CAC:100.0, MDC:100.0, CTIC:100.0, TF:100.0, saci:100.0, observed:173, missing:0, total:173, graph:"173/173", description:"Legacy out-of-scope controls do not reduce the final score, validating scope handling."}
+  ];
+
+  function fmt(v){
+    if(v === undefined || v === null || v === "") return "—";
+    if(typeof v === "number") return Number.isInteger(v) ? String(v) : v.toFixed(2).replace(/\.00$/,".0");
+    return String(v);
+  }
+
+  function get(row, keys, fallback=""){
+    for(const k of keys){
+      if(row && row[k] !== undefined && row[k] !== null && row[k] !== "") return row[k];
+    }
+    return fallback;
+  }
+
+  function normalize(row, i){
+    const stage = String(get(row, ["stage","stage_id","Stage","id","ID","scenario"], `S${i}`));
+    const observed = get(row, ["observed","observed_edges","Observed"], "");
+    const missing = get(row, ["missing","missing_edges","Missing"], "");
+    const total = get(row, ["total","total_edges","edges","Graph Edges"], "");
+    const graph = get(row, ["graph","Graph"], observed !== "" && total !== "" ? `${observed}/${total}` : "");
+
+    return {
+      raw: row,
+      stage,
+      name: get(row, ["name","stage_name","scenario_name","Name"], ""),
+      type: get(row, ["type","scenario_type","Type"], ""),
+      LC: get(row, ["LC","lc"], ""),
+      CAC: get(row, ["CAC","cac"], ""),
+      MDC: get(row, ["MDC","mdc"], ""),
+      CTIC: get(row, ["CTIC","ctic"], ""),
+      TF: get(row, ["TF","tf"], ""),
+      saci: get(row, ["SACI","saci","score"], ""),
+      nodes: get(row, ["nodes","Nodes"], ""),
+      observed,
+      missing,
+      total,
+      graph,
+      description: get(row, ["description","Description"], "")
+    };
+  }
+
+  async function loadRows(){
+    const paths = [
+      "data/progression.json",
+      "./data/progression.json",
+      "../paper_clean/data/progression.json"
+    ];
+
+    for(const path of paths){
+      try{
+        const res = await fetch(path, {cache:"no-store"});
+        if(!res.ok) continue;
+        const data = await res.json();
+
+        let arr = [];
+        if(Array.isArray(data)) arr = data;
+        else if(Array.isArray(data.rows)) arr = data.rows;
+        else if(Array.isArray(data.data)) arr = data.data;
+        else if(Array.isArray(data.scenarios)) arr = data.scenarios;
+        else if(Array.isArray(data.progression)) arr = data.progression;
+
+        const rows = arr.map(normalize);
+        if(rows.length >= 10 && rows.some(r => r.stage === "S8")) return rows;
+      }catch(e){}
+    }
+
+    return fallbackRows.map(normalize);
+  }
+
+  function findScenarioSection(){
+    const headings = Array.from(document.querySelectorAll("h1,h2,h3,h4"));
+    const h = headings.find(x => x.textContent.trim().toLowerCase().includes("scenario detail"));
+    if(!h) return null;
+    return h.closest("section,.card,.panel,div") || h.parentElement;
+  }
+
+  function componentsLine(r){
+    const parts = [];
+    for(const k of ["LC","CAC","MDC","CTIC","TF"]){
+      if(r[k] !== undefined && r[k] !== null && r[k] !== "") parts.push(`${k}=${fmt(r[k])}`);
+    }
+    return parts.length ? parts.join(", ") : "";
+  }
+
+  function renderDetail(section, rows){
+    let select = section.querySelector("select");
+    if(!select){
+      select = document.createElement("select");
+      section.appendChild(select);
+    }
+
+    const current = select.value || select.getAttribute("data-selected-stage") || localStorage.getItem(STORAGE_KEY) || "S8";
+
+    select.innerHTML = rows.map(r => `<option value="${r.stage}">${r.stage} — ${r.name}</option>`).join("");
+
+    const valid = new Set(rows.map(r => r.stage));
+    select.value = valid.has(current) ? current : "S8";
+    select.setAttribute("data-selected-stage", select.value);
+    localStorage.setItem(STORAGE_KEY, select.value);
+
+    let card = section.querySelector("#saciScenarioDetailCard");
+    if(!card){
+      card = document.createElement("div");
+      card.id = "saciScenarioDetailCard";
+      select.insertAdjacentElement("afterend", card);
+    }
+
+    function draw(){
+      const r = rows.find(x => x.stage === select.value) || rows.find(x => x.stage === "S8") || rows[0];
+      select.value = r.stage;
+      localStorage.setItem(STORAGE_KEY, r.stage);
+      select.setAttribute("data-selected-stage", r.stage);
+
+      const comp = componentsLine(r);
+
+      const raw = {
+        stage_id: r.stage,
+        stage_name: r.name,
+        scenario_type: r.type,
+        LC: r.LC,
+        CAC: r.CAC,
+        MDC: r.MDC,
+        CTIC: r.CTIC,
+        TF: r.TF,
+        SACI: r.saci,
+        nodes: r.nodes,
+        edges: r.total,
+        observed_edges: r.observed,
+        missing_edges: r.missing,
+        description: r.description
+      };
+
+      card.innerHTML = `
+        <h3 class="saci-rich-title"><span class="saci-rich-pill">${r.stage}</span>${r.name}</h3>
+
+        <div class="saci-rich-metrics">
+          <div class="saci-rich-metric"><span>SACI</span><strong>${fmt(r.saci)}</strong></div>
+          <div class="saci-rich-metric"><span>Missing edges</span><strong>${fmt(r.missing)}</strong></div>
+          <div class="saci-rich-metric"><span>Observed edges</span><strong>${fmt(r.observed)}</strong></div>
+          <div class="saci-rich-metric"><span>Total edges</span><strong>${fmt(r.total)}</strong></div>
+        </div>
+
+        <div class="saci-rich-lines">
+          <div><b>Type:</b> ${fmt(r.type)}</div>
+          <div><b>Description:</b> ${fmt(r.description)}</div>
+          ${comp ? `<div><b>Components:</b> ${comp}</div>` : ``}
+        </div>
+
+        <div class="saci-rich-links">
+          <a href="../graph.html">Full interactive graph</a>
+          |
+          <a href="../llm_report.html">Policy-guided explanation</a>
+          |
+          <a href="../index.html">Evidence package index</a>
+        </div>
+
+        <details class="saci-raw-json">
+          <summary>Raw scenario JSON</summary>
+          <pre>${JSON.stringify(raw, null, 2)}</pre>
+        </details>
+      `;
+    }
+
+    select.onchange = function(e){
+      e.stopPropagation();
+      draw();
+    };
+    select.onclick = e => e.stopPropagation();
+    select.onmousedown = e => e.stopPropagation();
+
+    draw();
+
+    // Boş eski placeholder barlarını temizle
+    Array.from(section.children).forEach(el => {
+      if(el === select || el.id === "saciScenarioDetailCard" || el.textContent.trim()) return;
+      el.style.display = "none";
+    });
+  }
+
+  function fillTable(rows){
+    const table = Array.from(document.querySelectorAll("table")).find(t => {
+      const th = Array.from(t.querySelectorAll("th")).map(x => x.textContent.trim().toLowerCase()).join("|");
+      return th.includes("stage") && th.includes("saci") && th.includes("missing");
+    });
+    if(!table) return;
+
+    table.classList.add("saci-table-fixed");
+
+    let tbody = table.querySelector("tbody");
+    if(!tbody){
+      tbody = document.createElement("tbody");
+      table.appendChild(tbody);
+    }
+
+    tbody.innerHTML = rows.map(r => `
+      <tr>
+        <td><span class="saci-stage-pill">${fmt(r.stage)}</span></td>
+        <td>${fmt(r.name)}</td>
+        <td>${fmt(r.type)}</td>
+        <td>${fmt(r.LC)}</td>
+        <td>${fmt(r.CAC)}</td>
+        <td>${fmt(r.MDC)}</td>
+        <td>${fmt(r.CTIC)}</td>
+        <td>${fmt(r.TF)}</td>
+        <td><strong>${fmt(r.saci)}</strong></td>
+        <td>${fmt(r.observed)}</td>
+        <td>${fmt(r.missing)}</td>
+        <td>${fmt(r.graph)}</td>
+      </tr>
+    `).join("");
+  }
+
+  async function run(){
+    const rows = await loadRows();
+    const section = findScenarioSection();
+    if(section) renderDetail(section, rows);
+    fillTable(rows);
+  }
+
+  document.addEventListener("DOMContentLoaded", run);
+  setTimeout(run, 200);
+  setTimeout(run, 700);
+})();
 </script>
 
 </body>
