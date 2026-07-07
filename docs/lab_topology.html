@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SACI Controlled Lab Architecture</title>
+<title>SACI Kontrollü Lab Mimarisi</title>
 <style>
 :root{
   --bg:#0f172a;
@@ -157,22 +157,31 @@ th,td{
   font-size:14px;
 }
 th{background:#e2e8f0;}
+
+.lang button{border:1px solid #475569;background:#020617;color:#e5e7eb;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700}
+.lang button.active{background:#2563eb;border-color:#60a5fa}
 </style>
+
 </head>
 
 <body>
 <header>
-  <h1>SACI Controlled Lab Architecture</h1>
-  <p>Wazuh tabanlı kontrollü görünürlük değerlendirme ortamı, SACI skorlama motoru ve GitHub Pages kanıt çıktıları</p>
+<div class="lang" style="float:right">
+  <button id="btn-tr" onclick="setLang('tr')">TR</button>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+  <h1>SACI Kontrollü Lab Mimarisi</h1>
+  <p>Wazuh tabanlı kontrollü görünürlük değerlendirme ortamı, SACI skorlama motoru ve kanıt çıktıları</p>
 </header>
 
 <main>
 
 <section class="toolbar">
   <a href="index.html">Ana sayfa</a>
-  <a href="evidence/graph.html">Interactive evidence graph</a>
-  <a href="evidence/paper_clean/index.html">Paper clean view</a>
-  <a href="evidence/llm_report.html">Policy-guided explanation report</a>
+  <a href="evidence/graf.html">Etkileşimli kanıt grafı</a>
+  <a href="evidence/paper_clean/index.html">Makale görsel görünümü</a>
+  <a href="evidence/llm_raporu.html">Açıklama raporu</a>
 </section>
 
 <section class="card">
@@ -193,21 +202,21 @@ th{background:#e2e8f0;}
 
 <!-- zones -->
 <rect class="zone" x="30" y="65" width="330" height="570"/>
-<text class="zone-title" x="195" y="95" text-anchor="middle">Endpoints / Sources</text>
+<text class="zone-title" x="195" y="95" text-anchor="middle">Uç sistemler / Kaynaklar</text>
 
 <rect class="zone" x="415" y="65" width="500" height="570"/>
-<text class="zone-title" x="665" y="95" text-anchor="middle">Wazuh central components</text>
+<text class="zone-title" x="665" y="95" text-anchor="middle">Wazuh merkezi bileşenleri</text>
 
 <rect class="zone" x="970" y="65" width="360" height="570"/>
-<text class="zone-title" x="1150" y="95" text-anchor="middle">SACI evaluation layer</text>
+<text class="zone-title" x="1150" y="95" text-anchor="middle">SACI değerlendirme katmanı</text>
 
 <rect class="zone" x="1360" y="150" width="110" height="310"/>
-<text class="zone-title" x="1415" y="180" text-anchor="middle">Outputs</text>
+<text class="zone-title" x="1415" y="180" text-anchor="middle">Çıktılar</text>
 
 <!-- Left asset boxes -->
 <rect class="box asset" x="70" y="130" width="250" height="76"/>
 <text class="title" x="195" y="158">A01 / DC01</text>
-<text class="sub" x="195" y="180">Critical domain controller</text>
+<text class="sub" x="195" y="180">Kritik domain controller</text>
 
 <rect class="box asset" x="70" y="238" width="250" height="76"/>
 <text class="title" x="195" y="266">A04 / WS01</text>
@@ -223,66 +232,66 @@ th{background:#e2e8f0;}
 
 <!-- collection boxes -->
 <rect class="box telemetry" x="455" y="120" width="290" height="80"/>
-<text class="title" x="600" y="150">Windows collection</text>
+<text class="title" x="600" y="150">Windows log toplama</text>
 <text class="sub" x="600" y="172">Wazuh agent</text>
 <text class="tiny" x="600" y="188">Security / Sysmon / PowerShell</text>
 
 <rect class="box telemetry" x="455" y="245" width="290" height="80"/>
-<text class="title" x="600" y="275">Linux collection</text>
+<text class="title" x="600" y="275">Linux log toplama</text>
 <text class="sub" x="600" y="297">authlog / syslog</text>
 
 <rect class="box telemetry" x="455" y="370" width="290" height="80"/>
-<text class="title" x="600" y="400">Firewall collection</text>
-<text class="sub" x="600" y="422">syslog / IOC evidence</text>
+<text class="title" x="600" y="400">Firewall log toplama</text>
+<text class="sub" x="600" y="422">syslog / IOC kanıtı</text>
 
 <!-- manager/index -->
 <rect class="box platform" x="525" y="495" width="300" height="88"/>
 <text class="title" x="675" y="525">Wazuh manager</text>
-<text class="sub" x="675" y="547">analysis / decoders / rules</text>
-<text class="tiny" x="675" y="565">alert production</text>
+<text class="sub" x="675" y="547">analiz / decoder / kural</text>
+<text class="tiny" x="675" y="565">alarm üretimi</text>
 
 <rect class="box platform" x="565" y="615" width="220" height="70"/>
 <text class="title" x="675" y="642">OpenSearch / Indexer</text>
-<text class="sub" x="675" y="664">SACI visibility index</text>
+<text class="sub" x="675" y="664">SACI görünürlük indeksi</text>
 
 <!-- right side -->
 <rect class="box cti" x="1010" y="110" width="280" height="85"/>
 <text class="title" x="1150" y="140">MISP / CTI</text>
-<text class="sub" x="1150" y="162">IOC lookup and enrichment</text>
+<text class="sub" x="1150" y="162">IOC sorgulama ve zenginleştirme</text>
 
 <rect class="box saci" x="1010" y="245" width="280" height="92"/>
-<text class="title" x="1150" y="275">SACI engine</text>
+<text class="title" x="1150" y="275">SACI motoru</text>
 <text class="sub" x="1150" y="297">LC / CAC / MDC / CTIC / TF</text>
-<text class="tiny" x="1150" y="315">deterministic scoring</text>
+<text class="tiny" x="1150" y="315">deterministik skorlama</text>
 
 <rect class="box saci" x="1010" y="385" width="280" height="85"/>
-<text class="title" x="1150" y="415">Evidence graph</text>
-<text class="sub" x="1150" y="437">observed / missing relations</text>
+<text class="title" x="1150" y="415">Kanıt grafı</text>
+<text class="sub" x="1150" y="437">gözlenen / eksik ilişkiler</text>
 
 <rect class="box output" x="1010" y="520" width="280" height="85"/>
-<text class="title" x="1150" y="550">Policy-guided explanation</text>
-<text class="sub" x="1150" y="572">explains deterministic outputs</text>
-<text class="tiny" x="1150" y="590">does not calculate score</text>
+<text class="title" x="1150" y="550">Politika yönlendirmeli açıklama</text>
+<text class="sub" x="1150" y="572">deterministik çıktıları açıklar</text>
+<text class="tiny" x="1150" y="590">skoru hesaplamaz</text>
 
 <!-- output column -->
 <rect class="box score" x="1380" y="210" width="70" height="68"/>
-<text class="tiny" x="1415" y="236">Interactive</text>
-<text class="tiny" x="1415" y="252">graph</text>
+<text class="tiny" x="1415" y="236">Etkileşimli</text>
+<text class="tiny" x="1415" y="252">graf</text>
 
 <rect class="box score" x="1380" y="300" width="70" height="68"/>
-<text class="tiny" x="1415" y="326">Explanation</text>
-<text class="tiny" x="1415" y="342">report</text>
+<text class="tiny" x="1415" y="326">Açıklama</text>
+<text class="tiny" x="1415" y="342">raporu</text>
 
 <rect class="box score" x="1380" y="390" width="70" height="68"/>
-<text class="tiny" x="1415" y="416">Paper</text>
-<text class="tiny" x="1415" y="432">views</text>
+<text class="tiny" x="1415" y="416">Makale</text>
+<text class="tiny" x="1415" y="432">görselleri</text>
 
 <!-- arrows -->
 <path class="line" d="M320 168 C380 168, 395 160, 455 160"/>
-<text class="label" x="370" y="152">agent events</text>
+<text class="label" x="370" y="152">agent olayları</text>
 
 <path class="line" d="M320 276 C380 276, 395 182, 455 182"/>
-<text class="label" x="372" y="258">agent events</text>
+<text class="label" x="372" y="258">agent olayları</text>
 
 <path class="line" d="M320 384 C380 384, 395 285, 455 285"/>
 <text class="label" x="392" y="365">authlog</text>
@@ -295,37 +304,37 @@ th{background:#e2e8f0;}
 <path class="line" d="M600 450 L600 495"/>
 
 <path class="line" d="M675 583 L675 615"/>
-<text class="label" x="696" y="608">indexed alerts</text>
+<text class="label" x="696" y="608">indekslenen alarmlar</text>
 
 <path class="line" d="M785 650 C930 650, 910 290, 1010 290"/>
-<text class="label" x="886" y="520">queries</text>
+<text class="label" x="886" y="520">sorgular</text>
 
 <path class="line" d="M1150 337 L1150 385"/>
-<text class="label" x="1164" y="365">builds</text>
+<text class="label" x="1164" y="365">oluşturur</text>
 
 <path class="line" d="M1150 470 L1150 520"/>
-<text class="label" x="1168" y="500">explains</text>
+<text class="label" x="1168" y="500">açıklar</text>
 
 <path class="line-soft" d="M1290 560 C1335 560, 1340 245, 1380 245"/>
 <path class="line-soft" d="M1290 560 C1345 560, 1345 335, 1380 335"/>
 <path class="line-soft" d="M1290 560 C1350 560, 1350 425, 1380 425"/>
-<text class="label" x="1324" y="548">publishes</text>
+<text class="label" x="1324" y="548">yayınlar</text>
 
 <!-- CTI integration -->
 <path class="line-cti" d="M1010 152 C930 152, 930 525, 825 535"/>
-<text class="label" x="928" y="250" fill="#7c3aed">IOC enrichment</text>
+<text class="label" x="928" y="250" fill="#7c3aed">IOC zenginleştirme</text>
 
 <path class="line-cti" d="M1150 195 L1150 245"/>
 <text class="label" x="1162" y="226" fill="#7c3aed">CTIC</text>
 
 <!-- footer text -->
-<text class="label" x="70" y="710">SACI does not measure whether the organization is secure.</text>
-<text class="label" x="70" y="730">It measures whether expected telemetry, detection, CTI, MITRE and freshness relationships are observable.</text>
+<text class="label" x="70" y="710">SACI, kurumun güvenli olup olmadığını ölçmez.</text>
+<text class="label" x="70" y="730">Beklenen telemetri, tespit, CTI, MITRE ve güncellik ilişkilerinin gözlenebilir olup olmadığını ölçer.</text>
 
 </svg>
 
 <div class="foot">
-SACI=100 means expected visibility closure within the defined evaluation scope. It is not a general security guarantee.
+SACI=100, tanımlı değerlendirme kapsamında beklenen görünürlük kapanışının sağlandığını ifade eder. Genel bir güvenlik garantisi değildir.
 </div>
 
 </div>
@@ -342,25 +351,98 @@ SACI=100 means expected visibility closure within the defined evaluation scope. 
 </thead>
 <tbody>
 <tr>
-<td>Endpoints / Sources</td>
+<td>Uç sistemler / Kaynaklar</td>
 <td>Kontrollü değerlendirme ortamındaki varlıkları temsil eder: domain controller, Windows endpoint, Linux host ve firewall.</td>
 </tr>
 <tr>
-<td>Wazuh central components</td>
-<td>Logların toplanması, kuralların çalıştırılması, alert üretimi ve OpenSearch tarafına indekslenmesini gösterir.</td>
+<td>Wazuh merkezi bileşenleri</td>
+<td>Logların toplanması, kuralların çalıştırılması, alarm üretimi ve OpenSearch tarafına indekslenmesini gösterir.</td>
 </tr>
 <tr>
-<td>SACI evaluation layer</td>
-<td>SACI engine deterministik skor hesaplar; evidence graph observed/missing ilişkileri üretir; policy-guided explanation katmanı ise bu çıktıları doğal dille açıklar.</td>
+<td>SACI değerlendirme katmanı</td>
+<td>SACI motoru deterministik skor hesaplar; evidence graf observed/missing ilişkileri üretir; policy-guided explanation katmanı ise bu çıktıları doğal dille açıklar.</td>
 </tr>
 <tr>
-<td>Outputs</td>
-<td>Interactive evidence graph, explanation report, paper-clean görseller ve GitHub Pages üzerinden yayınlanan kanıt ekranlarıdır.</td>
+<td>Çıktılar</td>
+<td>Etkileşimli kanıt grafı, explanation raporu, paper-clean görseller ve GitHub Pages üzerinden yayınlanan kanıt ekranlarıdır.</td>
 </tr>
 </tbody>
 </table>
 </section>
 
 </main>
+
+<script>
+const enMap = {
+  "SACI Kontrollü Lab Mimarisi":"SACI Controlled Lab Architecture",
+  "Wazuh tabanlı kontrollü görünürlük değerlendirme ortamı, SACI skorlama motoru ve kanıt çıktıları":"Controlled Wazuh-based visibility evaluation environment, SACI scoring engine and evidence outputs",
+  "Ana sayfa":"Home",
+  "Etkileşimli kanıt grafı":"Interactive evidence graph",
+  "Makale görsel görünümü":"Paper clean view",
+  "Açıklama raporu":"Explanation report",
+  "Uç sistemler / Kaynaklar":"Endpoints / Sources",
+  "Wazuh merkezi bileşenleri":"Wazuh central components",
+  "SACI değerlendirme katmanı":"SACI evaluation layer",
+  "Çıktılar":"Outputs",
+  "Kritik domain controller":"Critical domain controller",
+  "Windows log toplama":"Windows collection",
+  "Linux log toplama":"Linux collection",
+  "Firewall log toplama":"Firewall collection",
+  "syslog / IOC kanıtı":"syslog / IOC evidence",
+  "analiz / decoder / kural":"analysis / decoders / rules",
+  "alarm üretimi":"alert production",
+  "SACI görünürlük indeksi":"SACI visibility index",
+  "IOC sorgulama ve zenginleştirme":"IOC lookup and enrichment",
+  "SACI motoru":"SACI engine",
+  "deterministik skorlama":"deterministic scoring",
+  "Kanıt grafı":"Evidence graph",
+  "gözlenen / eksik ilişkiler":"observed / missing relations",
+  "Politika yönlendirmeli açıklama":"Policy-guided explanation",
+  "deterministik çıktıları açıklar":"explains deterministic outputs",
+  "skoru hesaplamaz":"does not calculate score",
+  "Etkileşimli":"Interactive",
+  "graf":"graph",
+  "Açıklama":"Explanation",
+  "raporu":"report",
+  "Makale":"Paper",
+  "görselleri":"views",
+  "agent olayları":"agent events",
+  "indekslenen alarmlar":"indexed alerts",
+  "sorgular":"queries",
+  "oluşturur":"builds",
+  "açıklar":"explains",
+  "yayınlar":"publishes",
+  "IOC zenginleştirme":"IOC enrichment",
+  "SACI, kurumun güvenli olup olmadığını ölçmez.":"SACI does not measure whether the organization is secure.",
+  "Beklenen telemetri, tespit, CTI, MITRE ve güncellik ilişkilerinin gözlenebilir olup olmadığını ölçer.":"It measures whether expected telemetry, detection, CTI, MITRE and freshness relationships are observable.",
+  "SACI=100, tanımlı değerlendirme kapsamında beklenen görünürlük kapanışının sağlandığını ifade eder. Genel bir güvenlik garantisi değildir.":"SACI=100 means expected visibility closure within the defined evaluation scope. It is not a general security guarantee.",
+  "Mimari katmanlarının anlamı":"Meaning of architecture layers",
+  "Katman":"Layer",
+  "Açıklama":"Description"
+};
+const trMap = {};
+for (const [tr,en] of Object.entries(enMap)) trMap[en] = tr;
+
+function walkText(node, map){
+  if(node.nodeType === Node.TEXT_NODE){
+    let v = node.nodeValue;
+    for(const [a,b] of Object.entries(map)){
+      if(v.includes(a)) v = v.split(a).join(b);
+    }
+    node.nodeValue = v;
+  } else {
+    node.childNodes.forEach(n => walkText(n,map));
+  }
+}
+
+function setLang(lang){
+  document.documentElement.lang = lang;
+  localStorage.setItem("saci_lang", lang);
+  walkText(document.body, lang === "en" ? enMap : trMap);
+  document.getElementById("btn-tr").classList.toggle("active", lang === "tr");
+  document.getElementById("btn-en").classList.toggle("active", lang === "en");
+}
+setLang(localStorage.getItem("saci_lang") || "tr");
+</script>
 </body>
 </html>

@@ -6,31 +6,27 @@
 <title>SACI Final Evidence Portal</title>
 <style>
 :root{
-  --bg:#0f172a;
-  --panel:#111827;
-  --panel2:#1e293b;
-  --text:#e5e7eb;
-  --muted:#94a3b8;
-  --line:#334155;
-  --blue:#93c5fd;
-  --green:#86efac;
-  --yellow:#fde68a;
-  --red:#fca5a5;
+  --bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;
+  --line:#334155;--blue:#93c5fd;--green:#86efac;--yellow:#fde68a;
 }
 *{box-sizing:border-box}
 body{
   margin:0;
-  background:linear-gradient(180deg,#020617 0%,#0f172a 48%,#111827 100%);
+  background:linear-gradient(180deg,#020617 0%,#0f172a 50%,#111827 100%);
   color:var(--text);
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
 header{
-  padding:42px 28px 30px;
+  padding:34px 28px 28px;
   border-bottom:1px solid var(--line);
 }
-.wrap{
-  max-width:1180px;
-  margin:0 auto;
+.wrap{max-width:1180px;margin:0 auto}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-bottom:18px;
 }
 .badge{
   display:inline-block;
@@ -41,115 +37,47 @@ header{
   background:rgba(37,99,235,.15);
   font-size:13px;
   font-weight:700;
-  margin-bottom:16px;
 }
-h1{
-  font-size:42px;
-  margin:0 0 12px;
-  letter-spacing:-.6px;
+.lang button{
+  border:1px solid #475569;
+  background:#020617;
+  color:#e5e7eb;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
 }
-.lead{
-  max-width:900px;
-  color:var(--muted);
-  font-size:17px;
-  line-height:1.6;
-  margin:0;
+.lang button.active{
+  background:#2563eb;
+  border-color:#60a5fa;
 }
-main{
-  max-width:1180px;
-  margin:0 auto;
-  padding:26px 24px 48px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin:22px 0;
-}
-.card{
+h1{font-size:42px;margin:0 0 12px;letter-spacing:-.6px}
+.lead{max-width:920px;color:var(--muted);font-size:17px;line-height:1.6;margin:0}
+main{max-width:1180px;margin:0 auto;padding:26px 24px 48px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}
+.card,.section{
   background:rgba(17,24,39,.92);
   border:1px solid var(--line);
   border-radius:18px;
   padding:18px;
-  min-height:150px;
 }
-.card h2,.card h3{
-  margin:0 0 10px;
-}
-.card p{
-  margin:0;
-  color:var(--muted);
-  line-height:1.5;
-  font-size:14px;
-}
-.card a{
-  color:var(--blue);
-  text-decoration:none;
-  font-weight:700;
-}
+.card{min-height:150px}
+.card h3,.section h2{margin:0 0 10px}
+.card p,.section p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}
+.card a{color:var(--blue);text-decoration:none;font-weight:700}
 .card a:hover{text-decoration:underline}
-.section{
-  background:rgba(17,24,39,.86);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:22px;
-  margin:18px 0;
-}
-.section h2{
-  margin:0 0 14px;
-}
-.warning{
-  border-left:5px solid var(--yellow);
-  background:rgba(253,230,138,.08);
-}
-.ok{
-  border-left:5px solid var(--green);
-  background:rgba(134,239,172,.08);
-}
-.metrics{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-}
-.metric{
-  background:#020617;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:14px;
-}
-.metric .k{
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:8px;
-}
-.metric .v{
-  font-size:24px;
-  font-weight:800;
-}
-table{
-  width:100%;
-  border-collapse:collapse;
-  overflow:hidden;
-  border-radius:14px;
-}
-th,td{
-  border:1px solid var(--line);
-  padding:11px;
-  text-align:left;
-  vertical-align:top;
-  font-size:14px;
-}
-th{
-  background:#020617;
-}
-td{
-  color:#d1d5db;
-}
-.links{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
+.section{margin:18px 0;padding:22px}
+.warning{border-left:5px solid var(--yellow);background:rgba(253,230,138,.08)}
+.ok{border-left:5px solid var(--green);background:rgba(134,239,172,.08)}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.metric{background:#020617;border:1px solid var(--line);border-radius:14px;padding:14px}
+.metric .k{color:var(--muted);font-size:12px;margin-bottom:8px}
+.metric .v{font-size:24px;font-weight:800}
+table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px}
+th,td{border:1px solid var(--line);padding:11px;text-align:left;vertical-align:top;font-size:14px}
+th{background:#020617}
+td{color:#d1d5db}
+.links{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .linkbox{
   display:block;
   padding:14px;
@@ -160,31 +88,32 @@ td{
   text-decoration:none;
   font-weight:700;
 }
-.linkbox span{
-  display:block;
-  color:var(--muted);
-  font-weight:400;
-  font-size:13px;
-  margin-top:6px;
-}
-.footer{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:20px;
-}
+.linkbox span{display:block;color:var(--muted);font-weight:400;font-size:13px;margin-top:6px}
+.footer{color:var(--muted);font-size:13px;margin-top:20px}
 @media(max-width:980px){
   .grid,.metrics,.links{grid-template-columns:1fr}
   h1{font-size:32px}
+  .topbar{align-items:flex-start;flex-direction:column}
 }
 </style>
 </head>
 <body>
+
 <header>
   <div class="wrap">
-    <div class="badge">Final verified SACI evidence package</div>
-    <h1>SACI Final Evidence Portal</h1>
-    <p class="lead">
-      This page publishes the final supplementary evidence package for SACI, an explainable graph-based visibility scoring model for SIEM telemetry, CTI integration and MITRE ATT&CK coverage assessment.
+    <div class="topbar">
+      <div class="badge" data-tr="SACI final kanıt paketi" data-en="Final SACI evidence package">SACI final kanıt paketi</div>
+      <div class="lang">
+        <button id="btn-tr" onclick="setLang('tr')">TR</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+
+    <h1 data-tr="SACI Final Kanıt Portalı" data-en="SACI Final Evidence Portal">SACI Final Kanıt Portalı</h1>
+    <p class="lead"
+       data-tr="Bu sayfa, SIEM telemetrisi, CTI entegrasyonu ve MITRE ATT&CK kapsamasını değerlendirmek için geliştirilen açıklanabilir graf tabanlı SACI görünürlük skorlama modelinin final destekleyici kanıt paketini yayınlar."
+       data-en="This page publishes the final supplementary evidence package for SACI, an explainable graph-based visibility scoring model for SIEM telemetry, CTI integration and MITRE ATT&CK coverage assessment.">
+       Bu sayfa, SIEM telemetrisi, CTI entegrasyonu ve MITRE ATT&CK kapsamasını değerlendirmek için geliştirilen açıklanabilir graf tabanlı SACI görünürlük skorlama modelinin final destekleyici kanıt paketini yayınlar.
     </p>
   </div>
 </header>
@@ -193,117 +122,160 @@ td{
 
 <section class="grid">
   <div class="card">
-    <h3><a href="lab_topology.html">Controlled Lab Architecture</a></h3>
-    <p>An anonymized logical architecture of the controlled Wazuh-based SACI evaluation environment.</p>
+    <h3><a href="lab_topology.html" data-tr="Kontrollü Lab Mimarisi" data-en="Controlled Lab Architecture">Kontrollü Lab Mimarisi</a></h3>
+    <p data-tr="Wazuh tabanlı kontrollü SACI değerlendirme ortamının anonimleştirilmiş mantıksal mimarisi."
+       data-en="An anonymized logical architecture of the controlled Wazuh-based SACI evaluation environment.">
+       Wazuh tabanlı kontrollü SACI değerlendirme ortamının anonimleştirilmiş mantıksal mimarisi.
+    </p>
   </div>
+
   <div class="card">
-    <h3><a href="evidence/graph.html">Interactive Evidence Graph</a></h3>
-    <p>Full graph artifact showing observed and missing visibility relationships.</p>
+    <h3><a href="evidence/graph.html" data-tr="Etkileşimli Kanıt Grafı" data-en="Interactive Evidence Graph">Etkileşimli Kanıt Grafı</a></h3>
+    <p data-tr="Gözlenen ve eksik görünürlük ilişkilerini gösteren tam kanıt grafı."
+       data-en="Full graph artifact showing observed and missing visibility relationships.">
+       Gözlenen ve eksik görünürlük ilişkilerini gösteren tam kanıt grafı.
+    </p>
   </div>
+
   <div class="card">
-    <h3><a href="evidence/paper_clean/index.html">Paper Clean View</a></h3>
-    <p>Paper-ready figures and scenario visualizations prepared for academic presentation.</p>
+    <h3><a href="evidence/paper_clean/index.html" data-tr="Makale Görsel Görünümü" data-en="Paper Clean View">Makale Görsel Görünümü</a></h3>
+    <p data-tr="Akademik sunum için hazırlanmış makale uyumlu figürler ve senaryo görselleri."
+       data-en="Paper-ready figures and scenario visualizations prepared for academic presentation.">
+       Akademik sunum için hazırlanmış makale uyumlu figürler ve senaryo görselleri.
+    </p>
   </div>
+
   <div class="card">
-    <h3><a href="evidence/llm_report.html">Explanation Report</a></h3>
-    <p>Policy-guided natural-language explanation of deterministic SACI outputs.</p>
+    <h3><a href="evidence/llm_report.html" data-tr="Açıklama Raporu" data-en="Explanation Report">Açıklama Raporu</a></h3>
+    <p data-tr="Deterministik SACI çıktılarının politika yönlendirmeli doğal dil açıklaması."
+       data-en="Policy-guided natural-language explanation of deterministic SACI outputs.">
+       Deterministik SACI çıktılarının politika yönlendirmeli doğal dil açıklaması.
+    </p>
   </div>
 </section>
 
 <section class="section warning">
-  <h2>Important interpretation note</h2>
-  <p>
-    SACI=100 does not mean that the environment is secure. It only means that the expected visibility relationships were observed within the defined evaluation scope.
-    The explanation layer does not calculate or modify SACI scores; it only explains deterministic outputs produced by the SACI engine.
+  <h2 data-tr="Önemli yorumlama notu" data-en="Important interpretation note">Önemli yorumlama notu</h2>
+  <p data-tr="SACI=100, ortamın güvenli olduğu anlamına gelmez. Yalnızca tanımlı değerlendirme kapsamındaki beklenen görünürlük ilişkilerinin gözlendiğini ifade eder. Açıklama katmanı SACI skorlarını hesaplamaz veya değiştirmez; yalnızca SACI motoru tarafından üretilen deterministik çıktıları açıklar."
+     data-en="SACI=100 does not mean that the environment is secure. It only means that the expected visibility relationships were observed within the defined evaluation scope. The explanation layer does not calculate or modify SACI scores; it only explains deterministic outputs produced by the SACI engine.">
+     SACI=100, ortamın güvenli olduğu anlamına gelmez. Yalnızca tanımlı değerlendirme kapsamındaki beklenen görünürlük ilişkilerinin gözlendiğini ifade eder. Açıklama katmanı SACI skorlarını hesaplamaz veya değiştirmez; yalnızca SACI motoru tarafından üretilen deterministik çıktıları açıklar.
   </p>
 </section>
 
 <section class="section ok">
-  <h2>Final validation snapshot</h2>
+  <h2 data-tr="Final doğrulama özeti" data-en="Final validation snapshot">Final doğrulama özeti</h2>
   <div class="metrics">
-    <div class="metric"><div class="k">Scenario count</div><div class="v">20</div></div>
-    <div class="metric"><div class="k">Final closure</div><div class="v">S8</div></div>
-    <div class="metric"><div class="k">S8 SACI</div><div class="v">100</div></div>
-    <div class="metric"><div class="k">S8 missing edges</div><div class="v">0</div></div>
-    <div class="metric"><div class="k">Final graph edges</div><div class="v">173</div></div>
+    <div class="metric"><div class="k" data-tr="Senaryo sayısı" data-en="Scenario count">Senaryo sayısı</div><div class="v">20</div></div>
+    <div class="metric"><div class="k" data-tr="Final kapanış" data-en="Final closure">Final kapanış</div><div class="v">S8</div></div>
+    <div class="metric"><div class="k" data-tr="S8 SACI" data-en="S8 SACI">S8 SACI</div><div class="v">100</div></div>
+    <div class="metric"><div class="k" data-tr="S8 eksik ilişki" data-en="S8 missing edges">S8 eksik ilişki</div><div class="v">0</div></div>
+    <div class="metric"><div class="k" data-tr="Final graf ilişkisi" data-en="Final graph edges">Final graf ilişkisi</div><div class="v">173</div></div>
   </div>
 </section>
 
 <section class="section">
-  <h2>Scenario taxonomy</h2>
+  <h2 data-tr="Senaryo sınıflandırması" data-en="Scenario taxonomy">Senaryo sınıflandırması</h2>
   <table>
     <thead>
       <tr>
-        <th>Scenario group</th>
-        <th>Scenario IDs</th>
-        <th>Purpose</th>
+        <th data-tr="Senaryo grubu" data-en="Scenario group">Senaryo grubu</th>
+        <th data-tr="Senaryo ID'leri" data-en="Scenario IDs">Senaryo ID'leri</th>
+        <th data-tr="Amaç" data-en="Purpose">Amaç</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Baseline / limited visibility</td>
+        <td data-tr="Başlangıç / sınırlı görünürlük" data-en="Baseline / limited visibility">Başlangıç / sınırlı görünürlük</td>
         <td>S0-S2</td>
-        <td>Shows the initial low-visibility state before meaningful telemetry and inventory coverage are established.</td>
+        <td data-tr="Anlamlı telemetri ve envanter kapsaması kurulmadan önceki düşük görünürlük durumunu gösterir."
+            data-en="Shows the initial low-visibility state before meaningful telemetry and inventory coverage are established.">
+            Anlamlı telemetri ve envanter kapsaması kurulmadan önceki düşük görünürlük durumunu gösterir.
+        </td>
       </tr>
       <tr>
-        <td>Visibility progression</td>
+        <td data-tr="Görünürlük ilerlemesi" data-en="Visibility progression">Görünürlük ilerlemesi</td>
         <td>S3-S6</td>
-        <td>Demonstrates how SACI increases as domain controller, endpoint, firewall and CTI visibility are introduced.</td>
+        <td data-tr="Domain controller, endpoint, firewall ve CTI görünürlüğü eklendikçe SACI skorunun nasıl yükseldiğini gösterir."
+            data-en="Demonstrates how SACI increases as domain controller, endpoint, firewall and CTI visibility are introduced.">
+            Domain controller, endpoint, firewall ve CTI görünürlüğü eklendikçe SACI skorunun nasıl yükseldiğini gösterir.
+        </td>
       </tr>
       <tr>
-        <td>Criticality regression</td>
+        <td data-tr="Kritiklik regresyonu" data-en="Criticality regression">Kritiklik regresyonu</td>
         <td>S7A-S7B</td>
-        <td>Compares critical and non-critical telemetry loss. Critical DC01 Sysmon loss produces a stronger regression.</td>
+        <td data-tr="Kritik ve kritik olmayan telemetri kaybını karşılaştırır. Kritik DC01 Sysmon kaybı daha güçlü düşüş üretir."
+            data-en="Compares critical and non-critical telemetry loss. Critical DC01 Sysmon loss produces a stronger regression.">
+            Kritik ve kritik olmayan telemetri kaybını karşılaştırır. Kritik DC01 Sysmon kaybı daha güçlü düşüş üretir.
+        </td>
       </tr>
       <tr>
-        <td>Final closure</td>
+        <td data-tr="Final görünürlük kapanışı" data-en="Final visibility closure">Final görünürlük kapanışı</td>
         <td>S8</td>
-        <td>Represents complete expected visibility closure within the defined evaluation scope.</td>
+        <td data-tr="Tanımlı değerlendirme kapsamında beklenen görünürlük ilişkilerinin tamamen kapandığı durumu temsil eder."
+            data-en="Represents complete expected visibility closure within the defined evaluation scope.">
+            Tanımlı değerlendirme kapsamında beklenen görünürlük ilişkilerinin tamamen kapandığı durumu temsil eder.
+        </td>
       </tr>
       <tr>
-        <td>Post-closure sensitivity</td>
+        <td data-tr="Kapanış sonrası hassasiyet testi" data-en="Post-closure sensitivity">Kapanış sonrası hassasiyet testi</td>
         <td>S9-S16</td>
-        <td>Injects isolated visibility faults after final closure. Scores may remain high when only limited or low-weight relationships are affected.</td>
+        <td data-tr="Final kapanış sonrasında izole görünürlük bozulmaları enjekte eder. Sınırlı veya düşük ağırlıklı ilişkiler etkilendiğinde skorlar yüksek kalabilir."
+            data-en="Injects isolated visibility faults after final closure. Scores may remain high when only limited or low-weight relationships are affected.">
+            Final kapanış sonrasında izole görünürlük bozulmaları enjekte eder. Sınırlı veya düşük ağırlıklı ilişkiler etkilendiğinde skorlar yüksek kalabilir.
+        </td>
       </tr>
       <tr>
-        <td>Recovery and scope validation</td>
+        <td data-tr="İyileşme ve kapsam doğrulama" data-en="Recovery and scope validation">İyileşme ve kapsam doğrulama</td>
         <td>S17-S18</td>
-        <td>Validates recovery after fix and confirms that legacy out-of-scope controls do not incorrectly reduce the final score.</td>
+        <td data-tr="Düzeltme sonrası iyileşmeyi ve kapsam dışı eski kontrollerin final skoru yanlış düşürmediğini doğrular."
+            data-en="Validates recovery after fix and confirms that legacy out-of-scope controls do not incorrectly reduce the final score.">
+            Düzeltme sonrası iyileşmeyi ve kapsam dışı eski kontrollerin final skoru yanlış düşürmediğini doğrular.
+        </td>
       </tr>
     </tbody>
   </table>
 </section>
 
 <section class="section">
-  <h2>Why some post-closure scores remain high</h2>
-  <p>
-    S9-S18 scenarios are not catastrophic outage scenarios. They are isolated post-closure fault-injection and sensitivity cases.
-    Therefore, SACI scores remain relatively high when only a limited number of visibility relationships or a low-weight component is affected.
-    Stronger visibility regression is demonstrated in S7A, where critical DC01 Sysmon telemetry loss reduces SACI to 78.53 and produces 57 missing visibility edges.
+  <h2 data-tr="Bazı kapanış sonrası skorlar neden yüksek?" data-en="Why some post-closure scores remain high">Bazı kapanış sonrası skorlar neden yüksek?</h2>
+  <p data-tr="S9-S18 senaryoları yıkıcı kesinti senaryoları değildir. Bunlar final görünürlük kapanışı sonrasında uygulanan izole hata enjeksiyonu ve hassasiyet senaryolarıdır. Bu nedenle yalnızca sınırlı sayıda görünürlük ilişkisi veya düşük ağırlıklı bir bileşen etkilendiğinde SACI skorları görece yüksek kalabilir. Daha güçlü görünürlük düşüşü S7A senaryosunda gösterilmiştir; kritik DC01 Sysmon telemetri kaybı SACI skorunu 78.53'e düşürmüş ve 57 eksik görünürlük ilişkisi üretmiştir."
+     data-en="S9-S18 scenarios are not catastrophic outage scenarios. They are isolated post-closure fault-injection and sensitivity cases. Therefore, SACI scores remain relatively high when only a limited number of visibility relationships or a low-weight component is affected. Stronger visibility regression is demonstrated in S7A, where critical DC01 Sysmon telemetry loss reduces SACI to 78.53 and produces 57 missing visibility edges.">
+     S9-S18 senaryoları yıkıcı kesinti senaryoları değildir. Bunlar final görünürlük kapanışı sonrasında uygulanan izole hata enjeksiyonu ve hassasiyet senaryolarıdır. Bu nedenle yalnızca sınırlı sayıda görünürlük ilişkisi veya düşük ağırlıklı bir bileşen etkilendiğinde SACI skorları görece yüksek kalabilir. Daha güçlü görünürlük düşüşü S7A senaryosunda gösterilmiştir; kritik DC01 Sysmon telemetri kaybı SACI skorunu 78.53'e düşürmüş ve 57 eksik görünürlük ilişkisi üretmiştir.
   </p>
 </section>
 
 <section class="section">
-  <h2>Validation artifacts</h2>
+  <h2 data-tr="Doğrulama dosyaları" data-en="Validation artifacts">Doğrulama dosyaları</h2>
   <div class="links">
-    <a class="linkbox" href="data/VALIDATION.txt">VALIDATION.txt <span>Final scenario values, edge arithmetic and closure checks.</span></a>
-    <a class="linkbox" href="data/FINAL_AUDIT_RESULT.md">FINAL_AUDIT_RESULT.md <span>Final audit summary and consistency checks.</span></a>
-    <a class="linkbox" href="data/saci_llm_report.md">Explanation report markdown <span>Policy-guided explanation source artifact.</span></a>
-    <a class="linkbox" href="evidence/index.html">Evidence package index <span>Original evidence package landing page.</span></a>
+    <a class="linkbox" href="data/VALIDATION.txt">VALIDATION.txt <span data-tr="Final senaryo değerleri, ilişki aritmetiği ve kapanış kontrolleri." data-en="Final scenario values, edge arithmetic and closure checks.">Final senaryo değerleri, ilişki aritmetiği ve kapanış kontrolleri.</span></a>
+    <a class="linkbox" href="data/FINAL_AUDIT_RESULT.md">FINAL_AUDIT_RESULT.md <span data-tr="Final denetim özeti ve tutarlılık kontrolleri." data-en="Final audit summary and consistency checks.">Final denetim özeti ve tutarlılık kontrolleri.</span></a>
+    <a class="linkbox" href="data/saci_llm_report.md" data-tr="Açıklama raporu kaynak dosyası" data-en="Explanation report source file">Açıklama raporu kaynak dosyası <span data-tr="Politika yönlendirmeli açıklama kaynağı." data-en="Policy-guided explanation source artifact.">Politika yönlendirmeli açıklama kaynağı.</span></a>
+    <a class="linkbox" href="evidence/index.html" data-tr="Kanıt paketi dizini" data-en="Evidence package index">Kanıt paketi dizini <span data-tr="Orijinal kanıt paketi giriş sayfası." data-en="Original evidence package landing page.">Orijinal kanıt paketi giriş sayfası.</span></a>
   </div>
 </section>
 
-<section class="section">
-  <h2>Suggested citation text for supplementary material</h2>
-  <p>
-    The final SACI evidence package, including the controlled lab architecture, scenario results, interactive evidence graph, validation outputs and paper-ready diagrams, is available as supplementary material at this GitHub Pages site.
-  </p>
-</section>
-
-<p class="footer">
-  This supplementary package is anonymized and intended to support reproducibility, transparency and academic review of the SACI evaluation workflow.
+<p class="footer"
+   data-tr="Bu destekleyici paket anonimleştirilmiştir ve SACI değerlendirme iş akışının tekrarlanabilirliğini, şeffaflığını ve akademik incelemesini desteklemek amacıyla hazırlanmıştır."
+   data-en="This supplementary package is anonymized and intended to support reproducibility, transparency and academic review of the SACI evaluation workflow.">
+   Bu destekleyici paket anonimleştirilmiştir ve SACI değerlendirme iş akışının tekrarlanabilirliğini, şeffaflığını ve akademik incelemesini desteklemek amacıyla hazırlanmıştır.
 </p>
 
 </main>
+
+<script>
+function setLang(lang){
+  document.documentElement.lang = lang;
+  localStorage.setItem("saci_lang", lang);
+
+  document.querySelectorAll("[data-tr][data-en]").forEach(el => {
+    el.textContent = el.getAttribute("data-" + lang);
+  });
+
+  document.getElementById("btn-tr").classList.toggle("active", lang === "tr");
+  document.getElementById("btn-en").classList.toggle("active", lang === "en");
+}
+setLang(localStorage.getItem("saci_lang") || "tr");
+</script>
+
 </body>
 </html>
