@@ -3,318 +3,388 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SACI Controlled Lab Topology</title>
+<title>SACI Controlled Lab Architecture</title>
 <style>
-body{
-  margin:0;
-  background:#0f172a;
-  color:#e5e7eb;
-  font-family:Arial, sans-serif;
-}
-header{
-  padding:24px 30px;
-  background:#020617;
-  border-bottom:1px solid #334155;
-}
-header h1{
-  margin:0 0 8px 0;
-}
-header p{
-  margin:0;
-  color:#94a3b8;
-}
-main{
-  max-width:1420px;
-  margin:auto;
-  padding:24px;
-}
-.card{
-  background:#111827;
-  border:1px solid #334155;
-  border-radius:14px;
-  padding:18px;
-  margin-bottom:18px;
-}
-.paper{
-  background:#ffffff;
-  color:#0f172a;
-  border-radius:14px;
-  padding:24px;
-  overflow:auto;
-}
-svg{
-  width:100%;
-  min-width:1180px;
-  height:auto;
-}
-.box{
-  fill:#f8fafc;
-  stroke:#334155;
-  stroke-width:2;
-  rx:14;
-}
-.asset{fill:#dbeafe;}
-.telemetry{fill:#ffedd5;}
-.platform{fill:#ccfbf1;}
-.cti{fill:#f3e8ff;}
-.score{fill:#fef9c3;}
-.output{fill:#e5e7eb;}
-.boundary{
-  fill:none;
-  stroke:#94a3b8;
-  stroke-width:2;
-  stroke-dasharray:8 6;
-  rx:18;
-}
-.title{
-  font-size:18px;
-  font-weight:700;
-  fill:#0f172a;
-}
-.text{
-  font-size:14px;
-  font-weight:600;
-  fill:#0f172a;
-}
-.small{
-  font-size:12px;
-  fill:#334155;
-}
-.arrow{
-  stroke:#334155;
-  stroke-width:2.5;
-  fill:none;
-  marker-end:url(#arrow);
-}
-.arrow2{
-  stroke:#7c3aed;
-  stroke-width:2.5;
-  fill:none;
-  stroke-dasharray:7 5;
-  marker-end:url(#arrowPurple);
-}
-.note{
-  margin-top:18px;
-  padding:14px 16px;
-  background:#f8fafc;
-  border-left:5px solid #2563eb;
-  color:#0f172a;
-  font-weight:700;
-}
-.links a{
-  color:#93c5fd;
-  margin-right:16px;
-}
-table{
-  width:100%;
-  border-collapse:collapse;
-  background:#ffffff;
-  color:#0f172a;
-}
-th,td{
-  border:1px solid #cbd5e1;
-  padding:9px;
-  text-align:left;
-}
-th{
-  background:#e5e7eb;
-}
+  :root{
+    --bg:#0f172a;
+    --panel:#ffffff;
+    --ink:#0f172a;
+    --muted:#475569;
+    --line:#94a3b8;
+    --soft:#e2e8f0;
+
+    --blue1:#dbeafe;
+    --blue2:#60a5fa;
+
+    --sand1:#fef3c7;
+    --sand2:#f59e0b;
+
+    --mint1:#ccfbf1;
+    --mint2:#14b8a6;
+
+    --violet1:#ede9fe;
+    --violet2:#8b5cf6;
+
+    --yellow1:#fef9c3;
+    --yellow2:#eab308;
+
+    --gray1:#f1f5f9;
+    --gray2:#64748b;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:#e5e7eb;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  header{
+    background:#020617;
+    border-bottom:1px solid #1e293b;
+    padding:22px 28px;
+  }
+  header h1{
+    margin:0 0 6px 0;
+    font-size:28px;
+  }
+  header p{
+    margin:0;
+    color:#94a3b8;
+    font-size:14px;
+  }
+  main{
+    max-width:1500px;
+    margin:0 auto;
+    padding:24px;
+  }
+  .toolbar{
+    background:#111827;
+    border:1px solid #334155;
+    border-radius:14px;
+    padding:14px 18px;
+    margin-bottom:18px;
+  }
+  .toolbar a{
+    color:#93c5fd;
+    text-decoration:none;
+    margin-right:16px;
+    font-weight:600;
+  }
+  .card{
+    background:#111827;
+    border:1px solid #334155;
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:18px;
+  }
+  .canvas{
+    background:var(--panel);
+    border-radius:14px;
+    padding:18px;
+    overflow:auto;
+  }
+  svg{
+    width:100%;
+    min-width:1400px;
+    height:auto;
+    display:block;
+  }
+
+  .zone{
+    fill:#fafafa;
+    stroke:#cbd5e1;
+    stroke-width:2;
+    stroke-dasharray:6 6;
+    rx:18;
+  }
+  .zone-title{
+    font-size:18px;
+    font-weight:700;
+    fill:var(--ink);
+  }
+
+  .box{
+    stroke:#334155;
+    stroke-width:2;
+    rx:18;
+    ry:18;
+  }
+
+  .asset{ fill:var(--blue1); }
+  .telemetry{ fill:#f8e7c8; }
+  .platform{ fill:#bfe8df; }
+  .saci{ fill:#ece6b1; }
+  .cti{ fill:#ddd0ea; }
+  .output{ fill:#e5e7eb; }
+  .score{ fill:#dcfce7; }
+
+  .title{
+    font-size:15px;
+    font-weight:700;
+    fill:#0f172a;
+    text-anchor:middle;
+  }
+  .sub{
+    font-size:12px;
+    fill:#334155;
+    text-anchor:middle;
+  }
+  .tiny{
+    font-size:11px;
+    fill:#475569;
+    text-anchor:middle;
+  }
+  .label{
+    font-size:12px;
+    fill:#334155;
+  }
+
+  .line{
+    stroke:#334155;
+    stroke-width:2.5;
+    fill:none;
+    marker-end:url(#arrow);
+  }
+  .line-soft{
+    stroke:#64748b;
+    stroke-width:2;
+    fill:none;
+    marker-end:url(#arrowSoft);
+  }
+  .line-cti{
+    stroke:#8b5cf6;
+    stroke-width:2.5;
+    fill:none;
+    stroke-dasharray:7 6;
+    marker-end:url(#arrowCti);
+  }
+
+  .foot{
+    margin-top:16px;
+    background:#f8fafc;
+    color:#0f172a;
+    border-left:5px solid #2563eb;
+    padding:14px 16px;
+    font-weight:700;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    color:#0f172a;
+    margin-top:10px;
+  }
+  th,td{
+    border:1px solid #cbd5e1;
+    padding:10px;
+    text-align:left;
+    vertical-align:top;
+    font-size:14px;
+  }
+  th{ background:#e2e8f0; }
 </style>
 </head>
-
 <body>
 <header>
-  <h1>SACI Controlled Lab Topology</h1>
-  <p>Anonymized topology of the controlled SACI evaluation environment. No real IP address, credential, token, API key, or institution-specific hostname is included.</p>
+  <h1>SACI Controlled Lab Architecture</h1>
+  <p>Wazuh tabanlı kontrollü görünürlük değerlendirme ortamı, SACI skorlama motoru ve GitHub Pages kanıt çıktıları</p>
 </header>
 
 <main>
 
-<section class="card links">
-  <a href="index.html">Main evidence page</a>
-  <a href="evidence/graph.html">Interactive evidence graph</a>
-  <a href="evidence/paper_clean_v2/index.html">Paper clean view v2</a>
-  <a href="evidence/llm_report.html">Policy-guided explanation report</a>
-</section>
+  <section class="toolbar">
+    <a href="index.html">Ana sayfa</a>
+    <a href="evidence/graph.html">Interactive evidence graph</a>
+    <a href="evidence/paper_clean_v2/index.html">Paper clean view v2</a>
+    <a href="evidence/llm_report.html">LLM explanation report</a>
+  </section>
 
-<section class="card">
-<div class="paper">
+  <section class="card">
+    <div class="canvas">
+      <svg viewBox="0 0 1500 760" xmlns="http://www.w3.org/2000/svg" aria-label="SACI architecture diagram">
 
-<svg viewBox="0 0 1380 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SACI controlled lab topology">
+        <defs>
+          <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+            <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+          </marker>
+          <marker id="arrowSoft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+            <path d="M2,2 L10,6 L2,10 Z" fill="#64748b"/>
+          </marker>
+          <marker id="arrowCti" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+            <path d="M2,2 L10,6 L2,10 Z" fill="#8b5cf6"/>
+          </marker>
+        </defs>
 
-<defs>
-  <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-    <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
-  </marker>
-  <marker id="arrowPurple" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-    <path d="M2,2 L10,6 L2,10 Z" fill="#7c3aed"/>
-  </marker>
-</defs>
+        <!-- zones -->
+        <rect class="zone" x="30" y="65" width="330" height="570"/>
+        <text class="zone-title" x="195" y="95" text-anchor="middle">Endpoints / Sources</text>
 
-<!-- Boundaries -->
-<rect class="boundary" x="30" y="70" width="390" height="560"/>
-<text class="title" x="155" y="100">Controlled Lab Assets</text>
+        <rect class="zone" x="415" y="65" width="500" height="570"/>
+        <text class="zone-title" x="665" y="95" text-anchor="middle">Wazuh central components</text>
 
-<rect class="boundary" x="470" y="70" width="380" height="560"/>
-<text class="title" x="575" y="100">SOC Collection Layer</text>
+        <rect class="zone" x="970" y="65" width="360" height="570"/>
+        <text class="zone-title" x="1150" y="95" text-anchor="middle">SACI evaluation layer</text>
 
-<rect class="boundary" x="900" y="70" width="430" height="560"/>
-<text class="title" x="1010" y="100">SACI Evaluation Layer</text>
+        <rect class="zone" x="1360" y="150" width="110" height="310"/>
+        <text class="zone-title" x="1415" y="180" text-anchor="middle">Outputs</text>
 
-<!-- Assets -->
-<rect class="box asset" x="70" y="135" width="300" height="70"/>
-<text class="text" x="170" y="163">A01 / DC01</text>
-<text class="small" x="132" y="186">Critical domain controller</text>
+        <!-- Left asset boxes -->
+        <rect class="box asset" x="70" y="130" width="250" height="76"/>
+        <text class="title" x="195" y="158">A01 / DC01</text>
+        <text class="sub" x="195" y="180">Critical domain controller</text>
 
-<rect class="box asset" x="70" y="235" width="300" height="70"/>
-<text class="text" x="170" y="263">A04 / WS01</text>
-<text class="small" x="142" y="286">Windows endpoint</text>
+        <rect class="box asset" x="70" y="238" width="250" height="76"/>
+        <text class="title" x="195" y="266">A04 / WS01</text>
+        <text class="sub" x="195" y="288">Windows endpoint</text>
 
-<rect class="box asset" x="70" y="335" width="300" height="70"/>
-<text class="text" x="162" y="363">A05 / Linux Host</text>
-<text class="small" x="146" y="386">authlog / syslog</text>
+        <rect class="box asset" x="70" y="346" width="250" height="76"/>
+        <text class="title" x="195" y="374">A05 / Linux Host</text>
+        <text class="sub" x="195" y="396">authlog / syslog</text>
 
-<rect class="box asset" x="70" y="435" width="300" height="70"/>
-<text class="text" x="184" y="463">FW01</text>
-<text class="small" x="143" y="486">Firewall / syslog</text>
+        <rect class="box asset" x="70" y="454" width="250" height="76"/>
+        <text class="title" x="195" y="482">FW01</text>
+        <text class="sub" x="195" y="504">Firewall / syslog</text>
 
-<!-- Telemetry -->
-<rect class="box telemetry" x="505" y="120" width="300" height="75"/>
-<text class="text" x="586" y="148">Wazuh Agent</text>
-<text class="small" x="548" y="171">Security / Sysmon / PowerShell</text>
+        <!-- collection / transport boxes -->
+        <rect class="box telemetry" x="455" y="120" width="290" height="80"/>
+        <text class="title" x="600" y="150">Windows collection</text>
+        <text class="sub" x="600" y="172">Wazuh agent</text>
+        <text class="tiny" x="600" y="188">Security / Sysmon / PowerShell</text>
 
-<rect class="box telemetry" x="505" y="230" width="300" height="75"/>
-<text class="text" x="568" y="258">Linux Log Collection</text>
-<text class="small" x="582" y="281">authlog / syslog</text>
+        <rect class="box telemetry" x="455" y="245" width="290" height="80"/>
+        <text class="title" x="600" y="275">Linux collection</text>
+        <text class="sub" x="600" y="297">authlog / syslog</text>
 
-<rect class="box telemetry" x="505" y="340" width="300" height="75"/>
-<text class="text" x="572" y="368">Firewall Syslog</text>
-<text class="small" x="555" y="391">network / IOC evidence</text>
+        <rect class="box telemetry" x="455" y="370" width="290" height="80"/>
+        <text class="title" x="600" y="400">Firewall collection</text>
+        <text class="sub" x="600" y="422">syslog / IOC evidence</text>
 
-<!-- SOC Platform -->
-<rect class="box platform" x="505" y="470" width="300" height="85"/>
-<text class="text" x="573" y="500">Wazuh Manager</text>
-<text class="small" x="548" y="523">decoders / rules / alerts</text>
+        <!-- manager -->
+        <rect class="box platform" x="525" y="495" width="300" height="88"/>
+        <text class="title" x="675" y="525">Wazuh manager</text>
+        <text class="sub" x="675" y="547">analysis / decoders / rules</text>
+        <text class="tiny" x="675" y="565">alert production</text>
 
-<rect class="box platform" x="505" y="585" width="300" height="70"/>
-<text class="text" x="576" y="613">OpenSearch</text>
-<text class="small" x="562" y="636">SACI visibility index</text>
+        <!-- index -->
+        <rect class="box platform" x="565" y="615" width="220" height="70"/>
+        <text class="title" x="675" y="642">OpenSearch / Indexer</text>
+        <text class="sub" x="675" y="664">SACI visibility index</text>
 
-<!-- CTI -->
-<rect class="box cti" x="930" y="120" width="330" height="80"/>
-<text class="text" x="1048" y="149">MISP / CTI</text>
-<text class="small" x="1005" y="173">IOC lookup and enrichment</text>
+        <!-- right side -->
+        <rect class="box cti" x="1010" y="110" width="280" height="85"/>
+        <text class="title" x="1150" y="140">MISP / CTI</text>
+        <text class="sub" x="1150" y="162">IOC lookup and enrichment</text>
 
-<!-- SACI engine -->
-<rect class="box score" x="930" y="250" width="330" height="90"/>
-<text class="text" x="1036" y="282">SACI Engine</text>
-<text class="small" x="972" y="306">LC / CAC / MDC / CTIC / TF</text>
-<text class="small" x="986" y="326">deterministic scoring</text>
+        <rect class="box saci" x="1010" y="245" width="280" height="92"/>
+        <text class="title" x="1150" y="275">SACI engine</text>
+        <text class="sub" x="1150" y="297">LC / CAC / MDC / CTIC / TF</text>
+        <text class="tiny" x="1150" y="315">deterministic scoring</text>
 
-<rect class="box score" x="930" y="390" width="330" height="85"/>
-<text class="text" x="1032" y="421">Evidence Graph</text>
-<text class="small" x="991" y="444">observed / missing relations</text>
+        <rect class="box saci" x="1010" y="385" width="280" height="85"/>
+        <text class="title" x="1150" y="415">Evidence graph</text>
+        <text class="sub" x="1150" y="437">observed / missing relations</text>
 
-<rect class="box output" x="930" y="525" width="330" height="85"/>
-<text class="text" x="985" y="555">Policy-guided Explanation</text>
-<text class="small" x="993" y="578">does not calculate score</text>
+        <rect class="box output" x="1010" y="520" width="280" height="85"/>
+        <text class="title" x="1150" y="550">Policy-guided explanation</text>
+        <text class="sub" x="1150" y="572">local LLM explanation only</text>
+        <text class="tiny" x="1150" y="590">does not calculate score</text>
 
-<rect class="box output" x="930" y="650" width="330" height="65"/>
-<text class="text" x="1004" y="679">GitHub Pages Output</text>
-<text class="small" x="987" y="701">results / topology / graph viewer</text>
+        <!-- output column -->
+        <rect class="box score" x="1380" y="210" width="70" height="68"/>
+        <text class="tiny" x="1415" y="236">Interactive</text>
+        <text class="tiny" x="1415" y="252">graph</text>
 
-<!-- Arrows assets to telemetry -->
-<path class="arrow" d="M370 170 C430 170, 445 158, 505 158"/>
-<text class="small" x="404" y="150">agent events</text>
+        <rect class="box score" x="1380" y="300" width="70" height="68"/>
+        <text class="tiny" x="1415" y="326">LLM</text>
+        <text class="tiny" x="1415" y="342">report</text>
 
-<path class="arrow" d="M370 270 C430 270, 445 158, 505 158"/>
-<text class="small" x="392" y="248">agent events</text>
+        <rect class="box score" x="1380" y="390" width="70" height="68"/>
+        <text class="tiny" x="1415" y="416">Paper</text>
+        <text class="tiny" x="1415" y="432">views</text>
 
-<path class="arrow" d="M370 370 C430 370, 445 268, 505 268"/>
-<text class="small" x="404" y="345">authlog</text>
+        <!-- main arrows -->
+        <path class="line" d="M320 168 C380 168, 395 160, 455 160"/>
+        <text class="label" x="370" y="152">agent events</text>
 
-<path class="arrow" d="M370 470 C430 470, 445 378, 505 378"/>
-<text class="small" x="402" y="445">syslog</text>
+        <path class="line" d="M320 276 C380 276, 395 182, 455 182"/>
+        <text class="label" x="372" y="258">agent events</text>
 
-<!-- Telemetry to Wazuh -->
-<path class="arrow" d="M655 195 L655 470"/>
-<path class="arrow" d="M655 305 L655 470"/>
-<path class="arrow" d="M655 415 L655 470"/>
+        <path class="line" d="M320 384 C380 384, 395 285, 455 285"/>
+        <text class="label" x="392" y="365">authlog</text>
 
-<!-- Wazuh to OpenSearch -->
-<path class="arrow" d="M655 555 L655 585"/>
-<text class="small" x="674" y="575">indexed alerts</text>
+        <path class="line" d="M320 492 C380 492, 395 410, 455 410"/>
+        <text class="label" x="394" y="473">syslog</text>
 
-<!-- CTI links -->
-<path class="arrow2" d="M930 160 C860 160, 840 500, 805 510"/>
-<text class="small" x="825" y="245">IOC enrichment</text>
+        <path class="line" d="M600 200 L600 245"/>
+        <path class="line" d="M600 325 L600 370"/>
+        <path class="line" d="M600 450 L600 495"/>
 
-<!-- OpenSearch to SACI -->
-<path class="arrow" d="M805 620 C870 620, 890 295, 930 295"/>
-<text class="small" x="830" y="500">queries</text>
+        <path class="line" d="M675 583 L675 615"/>
+        <text class="label" x="696" y="608">indexed alerts</text>
 
-<!-- CTI to SACI -->
-<path class="arrow2" d="M1095 200 L1095 250"/>
-<text class="small" x="1110" y="229">CTIC</text>
+        <path class="line" d="M785 650 C930 650, 910 290, 1010 290"/>
+        <text class="label" x="886" y="520">queries</text>
 
-<!-- SACI to graph -->
-<path class="arrow" d="M1095 340 L1095 390"/>
-<text class="small" x="1110" y="368">builds</text>
+        <path class="line" d="M1150 337 L1150 385"/>
+        <text class="label" x="1164" y="365">builds</text>
 
-<!-- Graph to explanation -->
-<path class="arrow" d="M1095 475 L1095 525"/>
-<text class="small" x="1110" y="505">explains</text>
+        <path class="line" d="M1150 470 L1150 520"/>
+        <text class="label" x="1168" y="500">explains</text>
 
-<!-- Explanation to GitHub -->
-<path class="arrow" d="M1095 610 L1095 650"/>
-<text class="small" x="1110" y="633">publishes</text>
+        <path class="line-soft" d="M1290 560 C1335 560, 1340 245, 1380 245"/>
+        <path class="line-soft" d="M1290 560 C1345 560, 1345 335, 1380 335"/>
+        <path class="line-soft" d="M1290 560 C1350 560, 1350 425, 1380 425"/>
+        <text class="label" x="1324" y="548">publishes</text>
 
-<!-- Footer notes -->
-<text class="small" x="55" y="690">SACI does not measure whether the organization is secure.</text>
-<text class="small" x="55" y="715">It measures whether expected telemetry, detection, CTI, MITRE and freshness relationships are observable.</text>
+        <!-- CTI integration -->
+        <path class="line-cti" d="M1010 152 C930 152, 930 525, 825 535"/>
+        <text class="label" x="928" y="250" fill="#7c3aed">IOC enrichment</text>
 
-</svg>
+        <path class="line-cti" d="M1150 195 L1150 245"/>
+        <text class="label" x="1162" y="226" fill="#7c3aed">CTIC</text>
 
-<div class="note">
-SACI=100 means expected visibility closure within the defined evaluation scope. It is not a general security guarantee.
-</div>
+        <!-- small explanation texts -->
+        <text class="label" x="70" y="710">SACI does not measure whether the organization is secure.</text>
+        <text class="label" x="70" y="730">It measures whether expected telemetry, detection, CTI, MITRE and freshness relationships are observable.</text>
+      </svg>
 
-</div>
-</section>
+      <div class="foot">
+        SACI=100 means expected visibility closure within the defined evaluation scope. It is not a general security guarantee.
+      </div>
+    </div>
+  </section>
 
-<section class="card">
-<h2>Topology Interpretation</h2>
-<table>
-<thead>
-<tr>
-<th>Layer</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Controlled Lab Assets</td>
-<td>DC01, WS01, Linux host and firewall represent the controlled evaluation assets. They generate expected telemetry relationships.</td>
-</tr>
-<tr>
-<td>SOC Collection Layer</td>
-<td>Wazuh Agent, Linux log collection and firewall syslog deliver telemetry to Wazuh Manager, where rules and alerts are produced.</td>
-</tr>
-<tr>
-<td>CTI Integration</td>
-<td>MISP provides IOC enrichment and contributes to CTIC closure in the SACI model.</td>
-</tr>
-<tr>
-<td>SACI Evaluation Layer</td>
-<td>The deterministic SACI engine queries indexed evidence, computes SACI components and builds the observed/missing evidence graph.</td>
-</tr>
-<tr>
-<td>Outputs</td>
-<td>Policy-guided explanations, paper-ready views and interactive evidence graphs are published through GitHub Pages.</td>
-</tr>
-</tbody>
-</table>
-</section>
+  <section class="card">
+    <h2>Mimari katmanlarının anlamı</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Katman</th>
+          <th>Açıklama</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Endpoints / Sources</td>
+          <td>Kontrollü değerlendirme ortamındaki varlıkları temsil eder: domain controller, Windows endpoint, Linux host ve firewall.</td>
+        </tr>
+        <tr>
+          <td>Wazuh central components</td>
+          <td>Logların toplanması, kuralların çalıştırılması, alert üretimi ve OpenSearch tarafına indekslenmesini gösterir.</td>
+        </tr>
+        <tr>
+          <td>SACI evaluation layer</td>
+          <td>SACI engine deterministik skor hesaplar; evidence graph observed/missing ilişkileri üretir; policy-guided explanation katmanı ise bu çıktıları doğal dille açıklar.</td>
+        </tr>
+        <tr>
+          <td>Outputs</td>
+          <td>Interactive evidence graph, LLM report, paper-clean görseller ve GitHub Pages üzerinden yayınlanan kanıt ekranlarıdır.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
 </main>
 </body>
