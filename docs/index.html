@@ -3,137 +3,307 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SACI Final Evidence Viewer</title>
+<title>SACI Final Evidence Portal</title>
 <style>
-:root{--bg:#0f172a;--panel:#111827;--panel2:#1f2937;--line:#334155;--text:#e5e7eb;--muted:#94a3b8}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
-header{padding:24px 30px;background:#020617;border-bottom:1px solid var(--line)} header h1{margin:0 0 8px}
-header p{margin:0;color:var(--muted);max-width:1100px} main{padding:22px;max-width:1380px;margin:auto}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:18px}
-.kpis{display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:12px}
-.kpi{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px}
-.kpi .label{color:var(--muted);font-size:13px}.kpi .value{font-size:30px;font-weight:800;margin-top:4px}
-.tabs{display:flex;flex-wrap:wrap;gap:8px}.tabs button,select{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 13px;cursor:pointer}
-.tabs button.active{background:#2563eb;border-color:#60a5fa}.panel{display:none}.panel.active{display:block}
-.paper{background:white;color:#0f172a;border-radius:14px;padding:34px;border:1px solid #cbd5e1;overflow-x:auto}
-.paper h2{text-align:center;margin:0 0 28px;font-size:28px}.flow{display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:18px;margin-bottom:18px}
-.flow-5{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:16px;margin-bottom:18px}.flow-3{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:18px;margin-bottom:18px}
-.node{min-height:105px;border:2px solid #334155;border-radius:16px;padding:16px;text-align:center;line-height:1.35;font-size:16px;font-weight:650;display:flex;align-items:center;justify-content:center;overflow-wrap:anywhere}
-.node.big{min-height:125px;font-size:18px}.blue{background:#dbeafe}.orange{background:#ffedd5}.green{background:#dcfce7}.red{background:#fee2e2}.purple{background:#f3e8ff}.yellow{background:#fef9c3}.cyan{background:#ccfbf1}.gray{background:#e5e7eb}
-.note{margin-top:22px;padding:14px 16px;background:#f8fafc;border-left:5px solid #2563eb;font-size:16px;font-weight:650}
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:22px}.compare-card{border:2px solid #334155;border-radius:16px;padding:18px}.bars{margin-top:24px}
-.bar-row{display:grid;grid-template-columns:130px 1fr 80px;gap:12px;align-items:center;margin-bottom:12px}.bar-bg{height:26px;background:#e5e7eb;border-radius:999px;overflow:hidden}.bar-red{height:100%;background:#ef4444}.bar-orange{height:100%;background:#f97316}
-.matrix{display:grid;grid-template-columns:repeat(5,minmax(170px,1fr));gap:14px}.matrix .node{min-height:125px;font-size:14px}
-table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:8px 9px;border-bottom:1px solid var(--line)}th{color:#bfdbfe;text-align:left}.paper table th{color:#0f172a;background:#e5e7eb}.paper table td,.paper table th{border:1px solid #cbd5e1}
-a{color:#93c5fd}.paper a{color:#1d4ed8}.scenario-detail{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#1e3a8a;color:#bfdbfe;font-size:12px;font-weight:700}
-svg.chart{width:100%;max-width:1150px;height:auto;background:white;border-radius:14px}.small{font-size:12px;fill:#334155}.axis{stroke:#64748b;stroke-width:1}.grid{stroke:#e2e8f0;stroke-width:1}
-@media(max-width:900px){.kpis,.flow,.flow-3,.flow-5,.compare,.matrix{grid-template-columns:1fr}}
+:root{
+  --bg:#0f172a;
+  --panel:#111827;
+  --panel2:#1e293b;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --line:#334155;
+  --blue:#93c5fd;
+  --green:#86efac;
+  --yellow:#fde68a;
+  --red:#fca5a5;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#020617 0%,#0f172a 48%,#111827 100%);
+  color:var(--text);
+  font-family:Arial, Helvetica, sans-serif;
+}
+header{
+  padding:42px 28px 30px;
+  border-bottom:1px solid var(--line);
+}
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+}
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border:1px solid #2563eb;
+  border-radius:999px;
+  color:#bfdbfe;
+  background:rgba(37,99,235,.15);
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:16px;
+}
+h1{
+  font-size:42px;
+  margin:0 0 12px;
+  letter-spacing:-.6px;
+}
+.lead{
+  max-width:900px;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.6;
+  margin:0;
+}
+main{
+  max-width:1180px;
+  margin:0 auto;
+  padding:26px 24px 48px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin:22px 0;
+}
+.card{
+  background:rgba(17,24,39,.92);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  min-height:150px;
+}
+.card h2,.card h3{
+  margin:0 0 10px;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.5;
+  font-size:14px;
+}
+.card a{
+  color:var(--blue);
+  text-decoration:none;
+  font-weight:700;
+}
+.card a:hover{text-decoration:underline}
+.section{
+  background:rgba(17,24,39,.86);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:22px;
+  margin:18px 0;
+}
+.section h2{
+  margin:0 0 14px;
+}
+.warning{
+  border-left:5px solid var(--yellow);
+  background:rgba(253,230,138,.08);
+}
+.ok{
+  border-left:5px solid var(--green);
+  background:rgba(134,239,172,.08);
+}
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+.metric{
+  background:#020617;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+}
+.metric .k{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:8px;
+}
+.metric .v{
+  font-size:24px;
+  font-weight:800;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  overflow:hidden;
+  border-radius:14px;
+}
+th,td{
+  border:1px solid var(--line);
+  padding:11px;
+  text-align:left;
+  vertical-align:top;
+  font-size:14px;
+}
+th{
+  background:#020617;
+}
+td{
+  color:#d1d5db;
+}
+.links{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.linkbox{
+  display:block;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#020617;
+  color:var(--blue);
+  text-decoration:none;
+  font-weight:700;
+}
+.linkbox span{
+  display:block;
+  color:var(--muted);
+  font-weight:400;
+  font-size:13px;
+  margin-top:6px;
+}
+.footer{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:20px;
+}
+@media(max-width:980px){
+  .grid,.metrics,.links{grid-template-columns:1fr}
+  h1{font-size:32px}
+}
 </style>
 </head>
 <body>
 <header>
-<h1>SACI Final Evidence Viewer</h1>
-<p>Bu sayfa yüklenen <b>saci_evaluation_progression.csv</b> çıktısındaki değerlerden üretilmiştir. SACI skoru deterministik SACI engine çıktısıdır; açıklama katmanı skoru hesaplamaz.</p>
+  <div class="wrap">
+    <div class="badge">Final verified SACI evidence package</div>
+    <h1>SACI Final Evidence Portal</h1>
+    <p class="lead">
+      This page publishes the final supplementary evidence package for SACI, an explainable graph-based visibility scoring model for SIEM telemetry, CTI integration and MITRE ATT&CK coverage assessment.
+    </p>
+  </div>
 </header>
+
 <main>
-<section class="card"><div class="kpis">
-<div class="kpi"><div class="label">Toplam senaryo</div><div class="value" id="k-scenarios">-</div></div>
-<div class="kpi"><div class="label">S8 SACI</div><div class="value" id="k-s8">-</div></div>
-<div class="kpi"><div class="label">S8 missing edge</div><div class="value" id="k-missing">-</div></div>
-<div class="kpi"><div class="label">Açıklama katmanı</div><div class="value" style="font-size:22px">Policy-guided</div></div>
-</div></section>
-<section class="card"><div class="tabs">
-<button class="active" onclick="showPanel('model',this)">Model</button>
-<button onclick="showPanel('score',this)">Score graph</button>
-<button onclick="showPanel('missingChart',this)">Missing graph</button>
-<button onclick="showPanel('closure',this)">S8 closure</button>
-<button onclick="showPanel('criticality',this)">Criticality</button>
-<button onclick="showPanel('taxonomy',this)">Taxonomy</button>
-<button onclick="showPanel('matrix',this)">Fault matrix</button>
-<button onclick="showPanel('scenario',this)">Scenario detail</button>
-<button onclick="showPanel('table',this)">Full table</button>
-</div></section>
 
-<section id="model" class="panel active card"><div class="paper"><h2>SACI Conceptual Model</h2>
-<div class="flow"><div class="node blue">Assets<br>DC / endpoint / firewall</div><div class="node orange">Log sources<br>Security / Sysmon / PowerShell / authlog / firewall</div><div class="node green">Detection controls<br>expected visibility rules</div><div class="node red">Wazuh rules<br>observed alerts</div></div>
-<div class="flow"><div class="node purple">MITRE ATT&CK<br>technique coverage</div><div class="node cyan">CTI / MISP<br>IOC closure</div><div class="node yellow">SACI metrics<br>LC / CAC / MDC / CTIC / TF</div><div class="node green big">SACI score<br>deterministic visibility score</div></div>
-<div class="flow-3"><div class="node gray">Graph relation state<br>observed / missing</div><div class="node cyan">Policy-guided explanation<br>explains deterministic outputs<br>does not calculate score</div><div class="node yellow">Human-readable report<br>scenario-level interpretation</div></div>
-<div class="note">SACI does not decide whether an organization is secure. It measures whether expected visibility relationships are observable.</div>
-</div></section>
+<section class="grid">
+  <div class="card">
+    <h3><a href="lab_topology.html">Controlled Lab Architecture</a></h3>
+    <p>An anonymized logical architecture of the controlled Wazuh-based SACI evaluation environment.</p>
+  </div>
+  <div class="card">
+    <h3><a href="evidence/graph.html">Interactive Evidence Graph</a></h3>
+    <p>Full graph artifact showing observed and missing visibility relationships.</p>
+  </div>
+  <div class="card">
+    <h3><a href="evidence/paper_clean/index.html">Paper Clean View</a></h3>
+    <p>Paper-ready figures and scenario visualizations prepared for academic presentation.</p>
+  </div>
+  <div class="card">
+    <h3><a href="evidence/llm_report.html">Explanation Report</a></h3>
+    <p>Policy-guided natural-language explanation of deterministic SACI outputs.</p>
+  </div>
+</section>
 
-<section id="score" class="panel card"><div class="paper"><h2>SACI Score Progression</h2><div id="scoreSvg"></div><div class="note">CSV değerlerinden üretilmiştir.</div></div></section>
-<section id="missingChart" class="panel card"><div class="paper"><h2>Missing Edge Progression</h2><div id="missingSvg"></div><div class="note">Missing edges, kanıt grafında doğrulanamayan beklenen görünürlük ilişkileridir.</div></div></section>
-
-<section id="closure" class="panel card"><div class="paper"><h2>S8 Final Visibility Closure</h2>
-<div class="flow"><div class="node blue">A04 / WS01<br>Windows endpoint</div><div class="node orange">Security<br>Sysmon<br>PowerShell logs</div><div class="node green">Controls C023-C027<br>seen=1</div><div class="node red">Wazuh rules<br>110240-110244</div></div>
-<div class="flow"><div class="node red">Wazuh SIEM<br>alerts observed</div><div class="node purple">MITRE coverage<br>T1078 / T1087<br>T1071.004 / T1016</div><div class="node cyan">CTI closure<br>IOC evidence converted to alert</div><div class="node green big" id="closure-result">S8 final closure</div></div>
-<div class="note">Full evidence graph ayrı ek materyal olarak verilebilir; makale için bu sade görünüm daha okunabilir.</div>
-</div></section>
-
-<section id="criticality" class="panel card"><div class="paper"><h2>Critical vs Non-critical Telemetry Loss</h2>
-<div class="compare"><div class="compare-card red"><div class="node red big" id="crit-s7a">S7A</div><div class="node red" id="crit-impact-a" style="margin-top:12px"></div></div><div class="compare-card orange"><div class="node orange big" id="crit-s7b">S7B</div><div class="node orange" id="crit-impact-b" style="margin-top:12px"></div></div></div>
-<div class="bars"><div class="bar-row"><div>S7A drop</div><div class="bar-bg"><div id="bar-s7a" class="bar-red"></div></div><div id="drop-s7a">-</div></div><div class="bar-row"><div>S7B drop</div><div class="bar-bg"><div id="bar-s7b" class="bar-orange"></div></div><div id="drop-s7b">-</div></div></div>
-<div class="note">Kritik varlık telemetri kaybı, non-critical endpoint kaybından daha güçlü skor regresyonu üretir.</div>
-</div></section>
-
-<section id="taxonomy" class="panel card"><div class="paper"><h2>SACI Evaluation Scenario Taxonomy</h2>
-<div class="flow-5"><div class="node gray">Baseline<br>S0-S2<br>No / limited visibility</div><div class="node blue">Visibility progression<br>S3-S6<br>DC / endpoint / firewall / CTI</div><div class="node green big">Final closure<br>S8<br>SACI=100 / missing=0</div><div class="node red">Regression<br>S7A-S7B<br>critical vs non-critical</div><div class="node orange">Fault injection<br>S9-S16<br>telemetry / CTI / MITRE / rule / freshness</div></div>
-<div class="flow-3"><div class="node green">Recovery<br>S17<br>returns to closure</div><div class="node purple">Scope validation<br>S18<br>legacy control handling</div><div class="node cyan">Total scenarios<br><span id="tax-total">-</span></div></div>
-<div class="note">Host sayısı sınırlı olduğu için değerlendirme kontrollü senaryo çeşitliliği ile genişletilmiştir.</div>
-</div></section>
-
-<section id="matrix" class="panel card"><div class="paper"><h2>Reviewer-oriented Fault-injection Matrix</h2><div class="matrix" id="fault-matrix"></div></div></section>
-<section id="scenario" class="panel card"><h2>Scenario detail</h2><p><select id="scenarioSelect" onchange="renderScenario()"></select></p><div id="scenarioDetail" class="scenario-detail"></div></section>
-<section id="table" class="panel card"><h2>Full evaluation table</h2><table id="fullTable"><thead><tr><th>Stage</th><th>Name</th><th>Type</th><th>LC</th><th>CAC</th><th>MDC</th><th>CTIC</th><th>TF</th><th>SACI</th><th>Observed</th><th>Missing</th><th>Total</th></tr></thead><tbody></tbody></table></section>
-
-<section class="card"><h2>Repository data links</h2><ul>
-<li><a href="data/saci_evaluation_progression.csv">saci_evaluation_progression.csv</a></li>
-<li><a href="data/progression.json">progression.json</a></li>
-<li><a href="data/VALIDATION.txt">VALIDATION.txt</a></li>
-<li><a href="data/FINAL_AUDIT_RESULT.md">FINAL_AUDIT_RESULT.md</a></li>
-</ul></section>
-
-<section class="card">
-  <h2>SACI Graph & Lab Topology</h2>
+<section class="section warning">
+  <h2>Important interpretation note</h2>
   <p>
-    <a href="lab_topology.html">Lab topology</a> |
-    <a href="evidence/graph.html">Interactive evidence graph</a> |
-    <a href="evidence/paper_clean/index.html">Paper clean view</a> |
-    <a href="evidence/llm_report.html">Policy-guided explanation report</a>
-  </p>
-  <p>
-    Lab topology is anonymized. Full scenario graph artifacts are served from the final evidence package.
+    SACI=100 does not mean that the environment is secure. It only means that the expected visibility relationships were observed within the defined evaluation scope.
+    The explanation layer does not calculate or modify SACI scores; it only explains deterministic outputs produced by the SACI engine.
   </p>
 </section>
 
+<section class="section ok">
+  <h2>Final validation snapshot</h2>
+  <div class="metrics">
+    <div class="metric"><div class="k">Scenario count</div><div class="v">20</div></div>
+    <div class="metric"><div class="k">Final closure</div><div class="v">S8</div></div>
+    <div class="metric"><div class="k">S8 SACI</div><div class="v">100</div></div>
+    <div class="metric"><div class="k">S8 missing edges</div><div class="v">0</div></div>
+    <div class="metric"><div class="k">Final graph edges</div><div class="v">173</div></div>
+  </div>
+</section>
 
-<section class="card">
-  <h2>SACI Final Evidence Package</h2>
+<section class="section">
+  <h2>Scenario taxonomy</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Scenario group</th>
+        <th>Scenario IDs</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Baseline / limited visibility</td>
+        <td>S0-S2</td>
+        <td>Shows the initial low-visibility state before meaningful telemetry and inventory coverage are established.</td>
+      </tr>
+      <tr>
+        <td>Visibility progression</td>
+        <td>S3-S6</td>
+        <td>Demonstrates how SACI increases as domain controller, endpoint, firewall and CTI visibility are introduced.</td>
+      </tr>
+      <tr>
+        <td>Criticality regression</td>
+        <td>S7A-S7B</td>
+        <td>Compares critical and non-critical telemetry loss. Critical DC01 Sysmon loss produces a stronger regression.</td>
+      </tr>
+      <tr>
+        <td>Final closure</td>
+        <td>S8</td>
+        <td>Represents complete expected visibility closure within the defined evaluation scope.</td>
+      </tr>
+      <tr>
+        <td>Post-closure sensitivity</td>
+        <td>S9-S16</td>
+        <td>Injects isolated visibility faults after final closure. Scores may remain high when only limited or low-weight relationships are affected.</td>
+      </tr>
+      <tr>
+        <td>Recovery and scope validation</td>
+        <td>S17-S18</td>
+        <td>Validates recovery after fix and confirms that legacy out-of-scope controls do not incorrectly reduce the final score.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section">
+  <h2>Why some post-closure scores remain high</h2>
   <p>
-    <a href="lab_topology.html">Lab topology</a> |
-    <a href="evidence/graph.html">Interactive evidence graph</a> |
-    <a href="evidence/paper_clean/index.html">Paper clean view</a> |
-    <a href="evidence/llm_report.html">Policy-guided explanation report</a>
-  </p>
-  <p>
-    The evidence graph, scenario outputs, validation artifacts and paper-ready diagrams are served from the final verified SACI package.
+    S9-S18 scenarios are not catastrophic outage scenarios. They are isolated post-closure fault-injection and sensitivity cases.
+    Therefore, SACI scores remain relatively high when only a limited number of visibility relationships or a low-weight component is affected.
+    Stronger visibility regression is demonstrated in S7A, where critical DC01 Sysmon telemetry loss reduces SACI to 78.53 and produces 57 missing visibility edges.
   </p>
 </section>
+
+<section class="section">
+  <h2>Validation artifacts</h2>
+  <div class="links">
+    <a class="linkbox" href="data/VALIDATION.txt">VALIDATION.txt <span>Final scenario values, edge arithmetic and closure checks.</span></a>
+    <a class="linkbox" href="data/FINAL_AUDIT_RESULT.md">FINAL_AUDIT_RESULT.md <span>Final audit summary and consistency checks.</span></a>
+    <a class="linkbox" href="data/saci_llm_report.md">Explanation report markdown <span>Policy-guided explanation source artifact.</span></a>
+    <a class="linkbox" href="evidence/index.html">Evidence package index <span>Original evidence package landing page.</span></a>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Suggested citation text for supplementary material</h2>
+  <p>
+    The final SACI evidence package, including the controlled lab architecture, scenario results, interactive evidence graph, validation outputs and paper-ready diagrams, is available as supplementary material at this GitHub Pages site.
+  </p>
+</section>
+
+<p class="footer">
+  This supplementary package is anonymized and intended to support reproducibility, transparency and academic review of the SACI evaluation workflow.
+</p>
 
 </main>
-<script>
-const rows = [{"stage_id": "S0", "stage_name": "no_siem", "scenario_type": "controlled_evaluation_scenario", "LC": 0, "CAC": 0, "MDC": 0, "CTIC": 0, "TF": 0, "SACI": 0, "nodes": 95, "edges": 173, "observed_edges": 6, "missing_edges": 167, "description": "Kurumda merkezi SIEM ve log görünürlüğü yok."}, {"stage_id": "S1", "stage_name": "siem_deployed", "scenario_type": "controlled_evaluation_scenario", "LC": 18.52, "CAC": 0, "MDC": 0, "CTIC": 0, "TF": 50, "SACI": 10.56, "nodes": 95, "edges": 173, "observed_edges": 10, "missing_edges": 163, "description": "Wazuh/SIEM altyapısı kuruldu ancak uç sistemlerden anlamlı telemetri henüz alınmıyor."}, {"stage_id": "S2", "stage_name": "inventory_defined", "scenario_type": "controlled_evaluation_scenario", "LC": 18.52, "CAC": 0, "MDC": 0, "CTIC": 0, "TF": 60, "SACI": 11.56, "nodes": 95, "edges": 173, "observed_edges": 10, "missing_edges": 163, "description": "Varlık envanteri çıkarıldı ve kritik sistemler kapsamda tanımlandı; ancak log coverage sınırlı."}, {"stage_id": "S3", "stage_name": "dc_visibility", "scenario_type": "controlled_evaluation_scenario", "LC": 37.04, "CAC": 40, "MDC": 69.23, "CTIC": 0, "TF": 80, "SACI": 42.96, "nodes": 95, "edges": 173, "observed_edges": 64, "missing_edges": 109, "description": "Domain Controller Security/Sysmon görünürlüğü sağlandı."}, {"stage_id": "S4", "stage_name": "endpoint_visibility", "scenario_type": "controlled_evaluation_scenario", "LC": 66.67, "CAC": 84, "MDC": 100, "CTIC": 0, "TF": 80, "SACI": 69, "nodes": 95, "edges": 173, "observed_edges": 131, "missing_edges": 42, "description": "Windows ve Linux endpoint telemetrisi eklendi."}, {"stage_id": "S5", "stage_name": "firewall_visibility", "scenario_type": "controlled_evaluation_scenario", "LC": 85.19, "CAC": 84, "MDC": 100, "CTIC": 0, "TF": 80, "SACI": 74.56, "nodes": 95, "edges": 173, "observed_edges": 133, "missing_edges": 40, "description": "Firewall/pfSense logları merkezi SIEM görünürlüğüne eklendi."}, {"stage_id": "S6", "stage_name": "cti_integration", "scenario_type": "controlled_evaluation_scenario", "LC": 100, "CAC": 84, "MDC": 100, "CTIC": 100, "TF": 80, "SACI": 94, "nodes": 95, "edges": 173, "observed_edges": 143, "missing_edges": 30, "description": "MISP/CTI entegrasyonu yapıldı; IOC zinciri görünür hale geldi."}, {"stage_id": "S7A", "stage_name": "critical_dc01_sysmon_loss", "scenario_type": "controlled_visibility_regression", "LC": 90.74, "CAC": 64, "MDC": 61.54, "CTIC": 100, "TF": 80, "SACI": 78.53, "nodes": 95, "edges": 173, "observed_edges": 116, "missing_edges": 57, "description": "Kritik A01/DC01 varlığından Sysmon log kaynağı kesildi."}, {"stage_id": "S7B", "stage_name": "noncritical_ws01_sysmon_loss", "scenario_type": "controlled_visibility_regression", "LC": 95.06, "CAC": 84, "MDC": 100, "CTIC": 100, "TF": 80, "SACI": 92.52, "nodes": 95, "edges": 173, "observed_edges": 141, "missing_edges": 32, "description": "Daha düşük kritiklikteki A04/WS01 varlığından Sysmon log kaynağı kesildi."}, {"stage_id": "S8", "stage_name": "final_closure", "scenario_type": "final_lab_measurement", "LC": 100, "CAC": 100, "MDC": 100, "CTIC": 100, "TF": 100, "SACI": 100, "nodes": 95, "edges": 173, "observed_edges": 173, "missing_edges": 0, "description": "Final kontrollü laboratuvar koşusunda tüm beklenen görünürlük ilişkileri kapandı."}, {"stage_id": "S9", "stage_name": "critical_dc01_security_loss", "scenario_type": "fault_injection", "LC": 90.74, "CAC": 97, "MDC": 100, "CTIC": 100, "TF": 100, "SACI": 96.47, "nodes": 95, "edges": 173, "observed_edges": 166, "missing_edges": 7, "description": "Critical DC01 Security log source is removed to test critical authentication visibility loss."}, {"stage_id": "S10", "stage_name": "endpoint_powershell_loss", "scenario_type": "fault_injection", "LC": 95.06, "CAC": 92.27, "MDC": 92.31, "CTIC": 100, "TF": 100, "SACI": 95.05, "nodes": 95, "edges": 173, "observed_edges": 161, "missing_edges": 12, "description": "Endpoint PowerShell telemetry is removed to test script execution visibility loss."}, {"stage_id": "S11", "stage_name": "linux_authlog_loss", "scenario_type": "fault_injection", "LC": 95.06, "CAC": 95.71, "MDC": 92.31, "CTIC": 100, "TF": 100, "SACI": 95.91, "nodes": 95, "edges": 173, "observed_edges": 166, "missing_edges": 7, "description": "Linux authlog visibility is removed to test Linux authentication telemetry loss."}, {"stage_id": "S12", "stage_name": "firewall_ioc_without_cti", "scenario_type": "cti_failure", "LC": 100, "CAC": 100, "MDC": 100, "CTIC": 50, "TF": 100, "SACI": 92.5, "nodes": 95, "edges": 173, "observed_edges": 167, "missing_edges": 6, "description": "Firewall IOC evidence exists but CTI closure is broken, reducing CTI integration coverage."}, {"stage_id": "S13", "stage_name": "misp_lookup_without_ioc_hit", "scenario_type": "cti_failure", "LC": 100, "CAC": 100, "MDC": 100, "CTIC": 50, "TF": 100, "SACI": 92.5, "nodes": 95, "edges": 173, "observed_edges": 167, "missing_edges": 6, "description": "MISP lookup is modeled without IOC hit/alert closure for the lab domain indicator."}, {"stage_id": "S14", "stage_name": "mitre_scope_expansion_gap", "scenario_type": "coverage_gap", "LC": 100, "CAC": 95.88, "MDC": 92.86, "CTIC": 100, "TF": 100, "SACI": 97.54, "nodes": 98, "edges": 178, "observed_edges": 173, "missing_edges": 5, "description": "A new in-scope MITRE technique is added without an observed detection control."}, {"stage_id": "S15", "stage_name": "freshness_decay", "scenario_type": "sensitivity_test", "LC": 100, "CAC": 100, "MDC": 100, "CTIC": 100, "TF": 50, "SACI": 95, "nodes": 95, "edges": 173, "observed_edges": 173, "missing_edges": 0, "description": "All graph relationships remain closed, but telemetry freshness score decays."}, {"stage_id": "S16", "stage_name": "detection_rule_gap", "scenario_type": "control_failure", "LC": 100, "CAC": 95.71, "MDC": 100, "CTIC": 100, "TF": 100, "SACI": 98.93, "nodes": 95, "edges": 173, "observed_edges": 168, "missing_edges": 5, "description": "Telemetry exists, but an expected detection rule/control does not produce observable alert evidence."}, {"stage_id": "S17", "stage_name": "recovery_after_fix", "scenario_type": "recovery", "LC": 100, "CAC": 100, "MDC": 100, "CTIC": 100, "TF": 100, "SACI": 100, "nodes": 95, "edges": 173, "observed_edges": 173, "missing_edges": 0, "description": "Recovery scenario after missing telemetry/control relation is fixed; returns to final closure."}, {"stage_id": "S18", "stage_name": "legacy_control_out_of_scope", "scenario_type": "scope_validation", "LC": 100, "CAC": 100, "MDC": 100, "CTIC": 100, "TF": 100, "SACI": 100, "nodes": 95, "edges": 173, "observed_edges": 173, "missing_edges": 0, "description": "Legacy controls C003 and C004 are explicitly marked out of active scoring scope to avoid double counting older mappings."}];
-function showPanel(id,btn){document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));btn.classList.add("active")}
-function byId(id){return rows.find(r=>r.stage_id===id)||{}}
-function num(v){const n=Number(v);return Number.isFinite(n)?n:0}
-function setHtml(id,value){const el=document.getElementById(id);if(el)el.innerHTML=value}
-function drawLineChart(targetId,valueKey,title,yMax){const w=1120,h=430,ml=55,mr=20,mt=25,mb=80,plotW=w-ml-mr,plotH=h-mt-mb,maxVal=yMax||Math.max(...rows.map(r=>num(r[valueKey])))*1.1;const x=i=>ml+(rows.length===1?plotW/2:i*plotW/(rows.length-1));const y=v=>mt+plotH-(num(v)/maxVal)*plotH;let points=rows.map((r,i)=>`${x(i)},${y(r[valueKey])}`).join(" ");let grid="";for(let g=0;g<=5;g++){const gy=mt+g*plotH/5,val=Math.round(maxVal-g*maxVal/5);grid+=`<line class="grid" x1="${ml}" y1="${gy}" x2="${w-mr}" y2="${gy}"></line><text class="small" x="8" y="${gy+4}">${val}</text>`}let labels=rows.map((r,i)=>`<text class="small" transform="translate(${x(i)-8},${h-48}) rotate(45)">${r.stage_id}</text>`).join("");let dots=rows.map((r,i)=>`<circle cx="${x(i)}" cy="${y(r[valueKey])}" r="4"><title>${r.stage_id} ${r.stage_name}: ${r[valueKey]}</title></circle>`).join("");document.getElementById(targetId).innerHTML=`<svg class="chart" viewBox="0 0 ${w} ${h}"><text x="${w/2}" y="20" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">${title}</text>${grid}<line class="axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"></line><line class="axis" x1="${ml}" y1="${mt+plotH}" x2="${w-mr}" y2="${mt+plotH}"></line><polyline fill="none" stroke="#2563eb" stroke-width="3" points="${points}"></polyline><g fill="#2563eb">${dots}</g>${labels}</svg>`}
-function drawBarChart(targetId,valueKey,title){const w=1120,h=430,ml=55,mr=20,mt=25,mb=80,plotW=w-ml-mr,plotH=h-mt-mb,maxVal=Math.max(...rows.map(r=>num(r[valueKey])))*1.1,band=plotW/rows.length;let grid="";for(let g=0;g<=5;g++){const gy=mt+g*plotH/5,val=Math.round(maxVal-g*maxVal/5);grid+=`<line class="grid" x1="${ml}" y1="${gy}" x2="${w-mr}" y2="${gy}"></line><text class="small" x="8" y="${gy+4}">${val}</text>`}let bars=rows.map((r,i)=>{const bh=(num(r[valueKey])/maxVal)*plotH,x=ml+i*band+band*.18,y=mt+plotH-bh,bw=band*.64;return`<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="4"><title>${r.stage_id} ${r.stage_name}: ${r[valueKey]}</title></rect>`}).join("");let labels=rows.map((r,i)=>`<text class="small" transform="translate(${ml+i*band+band*.3},${h-48}) rotate(45)">${r.stage_id}</text>`).join("");document.getElementById(targetId).innerHTML=`<svg class="chart" viewBox="0 0 ${w} ${h}"><text x="${w/2}" y="20" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">${title}</text>${grid}<line class="axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"></line><line class="axis" x1="${ml}" y1="${mt+plotH}" x2="${w-mr}" y2="${mt+plotH}"></line><g fill="#dc2626">${bars}</g>${labels}</svg>`}
-function renderScenario(){const row=byId(document.getElementById("scenarioSelect").value);setHtml("scenarioDetail",`<p><span class="badge">${row.stage_id}</span> <b>${row.stage_name}</b></p><div class="kpis"><div class="kpi"><div class="label">SACI</div><div class="value">${row.SACI}</div></div><div class="kpi"><div class="label">Missing edges</div><div class="value">${row.missing_edges}</div></div><div class="kpi"><div class="label">Observed edges</div><div class="value">${row.observed_edges}</div></div><div class="kpi"><div class="label">Total edges</div><div class="value">${row.edges}</div></div></div><p><b>Type:</b> ${row.scenario_type}</p><p><b>Description:</b> ${row.description||"-"}</p><p><b>Components:</b> LC=${row.LC}, CAC=${row.CAC}, MDC=${row.MDC}, CTIC=${row.CTIC}, TF=${row.TF}</p>`)}
-function renderMatrix(){const ids=["S9","S10","S11","S12","S13","S14","S15","S16","S17","S18"],matrix=document.getElementById("fault-matrix");matrix.innerHTML="";ids.forEach(id=>{const r=byId(id),cls=id==="S17"||id==="S18"?"green":(id==="S12"||id==="S13"?"purple":(id==="S15"?"yellow":"orange"));const div=document.createElement("div");div.className=`node ${cls}`;div.innerHTML=`<b>${id}</b><br>${r.stage_name||""}<br>SACI=${r.SACI??"-"}<br>missing=${r.missing_edges??"-"}`;matrix.appendChild(div)})}
-function renderTable(){const tbody=document.querySelector("#fullTable tbody");tbody.innerHTML="";rows.forEach(row=>{const tr=document.createElement("tr");tr.innerHTML=`<td>${row.stage_id}</td><td>${row.stage_name}</td><td>${row.scenario_type}</td><td>${row.LC}</td><td>${row.CAC}</td><td>${row.MDC}</td><td>${row.CTIC}</td><td>${row.TF}</td><td><b>${row.SACI}</b></td><td>${row.observed_edges}</td><td>${row.missing_edges}</td><td>${row.edges}</td>`;tbody.appendChild(tr)})}
-function load(){const s8=byId("S8"),s7a=byId("S7A"),s7b=byId("S7B");setHtml("k-scenarios",rows.length);setHtml("k-s8",s8.SACI??"-");setHtml("k-missing",s8.missing_edges??"-");setHtml("closure-result",`S8 final closure<br>SACI=${s8.SACI}<br>missing=${s8.missing_edges}`);setHtml("crit-s7a",`S7A<br>Critical DC01 Sysmon loss<br>SACI=${s7a.SACI}<br>missing=${s7a.missing_edges}`);setHtml("crit-impact-a","Impact<br>critical telemetry loss<br>strong score regression");setHtml("crit-s7b",`S7B<br>Non-critical WS01 Sysmon loss<br>SACI=${s7b.SACI}<br>missing=${s7b.missing_edges}`);setHtml("crit-impact-b","Impact<br>non-critical telemetry loss<br>smaller score regression");const dropA=Math.max(0,100-num(s7a.SACI)),dropB=Math.max(0,100-num(s7b.SACI));document.getElementById("bar-s7a").style.width=`${Math.min(100,dropA*3)}%`;document.getElementById("bar-s7b").style.width=`${Math.min(100,dropB*3)}%`;setHtml("drop-s7a",dropA.toFixed(2));setHtml("drop-s7b",dropB.toFixed(2));setHtml("tax-total",rows.length);const select=document.getElementById("scenarioSelect");rows.forEach(r=>{const opt=document.createElement("option");opt.value=r.stage_id;opt.textContent=`${r.stage_id} - ${r.stage_name}`;select.appendChild(opt)});select.value="S8";drawLineChart("scoreSvg","SACI","SACI score progression across evaluation scenarios",105);drawBarChart("missingSvg","missing_edges","Missing visibility edges across evaluation scenarios");renderScenario();renderMatrix();renderTable()}
-load();
-</script>
 </body>
 </html>
