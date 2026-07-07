@@ -3,446 +3,837 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SACI Kontrollü Lab Mimarisi</title>
+<title>SACI Lab Architecture</title>
+
 <style>
 :root{
-  --bg:#0f172a;
-  --panel:#ffffff;
+  --bg:#07111f;
+  --bg2:#0f172a;
+  --panel:#f8fafc;
   --ink:#0f172a;
-  --muted:#475569;
-  --line:#94a3b8;
+  --muted:#64748b;
+  --line:#cbd5e1;
+
+  --blue:#2563eb;
+  --blue-soft:#dbeafe;
+
+  --cyan:#0891b2;
+  --cyan-soft:#cffafe;
+
+  --amber:#d97706;
+  --amber-soft:#fef3c7;
+
+  --violet:#7c3aed;
+  --violet-soft:#ede9fe;
+
+  --green:#16a34a;
+  --green-soft:#dcfce7;
+
+  --slate:#334155;
+  --slate-soft:#e2e8f0;
 }
+
 *{box-sizing:border-box}
+
 body{
   margin:0;
-  background:var(--bg);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(37,99,235,.24), transparent 34%),
+    radial-gradient(circle at 95% 15%, rgba(124,58,237,.20), transparent 32%),
+    linear-gradient(180deg,#020617 0%,#07111f 48%,#0f172a 100%);
   color:#e5e7eb;
   font-family:Arial, Helvetica, sans-serif;
 }
+
 header{
-  background:#020617;
-  border-bottom:1px solid #1e293b;
-  padding:22px 28px;
+  border-bottom:1px solid rgba(148,163,184,.22);
+  background:rgba(2,6,23,.82);
+  backdrop-filter:blur(14px);
+  padding:24px 28px;
 }
-header h1{
-  margin:0 0 6px 0;
-  font-size:28px;
+
+.header-inner{
+  max-width:1500px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-start;
 }
-header p{
+
+.eyebrow{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:7px 12px;
+  border:1px solid rgba(147,197,253,.45);
+  border-radius:999px;
+  color:#bfdbfe;
+  background:rgba(37,99,235,.16);
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+h1{
+  margin:0 0 8px;
+  font-size:34px;
+  letter-spacing:-.5px;
+}
+
+.subtitle{
   margin:0;
   color:#94a3b8;
-  font-size:14px;
+  line-height:1.55;
+  max-width:900px;
 }
+
+.lang{
+  display:flex;
+  gap:8px;
+}
+
+.lang button{
+  border:1px solid #475569;
+  background:#020617;
+  color:#e5e7eb;
+  padding:9px 13px;
+  border-radius:11px;
+  cursor:pointer;
+  font-weight:800;
+}
+
+.lang button.active{
+  background:#2563eb;
+  border-color:#60a5fa;
+}
+
 main{
   max-width:1500px;
   margin:0 auto;
   padding:24px;
 }
+
 .toolbar{
-  background:#111827;
-  border:1px solid #334155;
-  border-radius:14px;
-  padding:14px 18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
   margin-bottom:18px;
 }
+
 .toolbar a{
-  color:#93c5fd;
+  color:#dbeafe;
   text-decoration:none;
-  margin-right:16px;
-  font-weight:600;
+  background:rgba(15,23,42,.78);
+  border:1px solid rgba(148,163,184,.28);
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:800;
+  font-size:14px;
 }
-.card{
-  background:#111827;
-  border:1px solid #334155;
-  border-radius:16px;
-  padding:18px;
-  margin-bottom:18px;
-}
+
 .canvas{
-  background:#ffffff;
-  border-radius:14px;
-  padding:18px;
-  overflow:auto;
-}
-svg{
-  width:100%;
-  min-width:1400px;
-  height:auto;
-  display:block;
-}
-.zone{
-  fill:#fafafa;
-  stroke:#cbd5e1;
-  stroke-width:2;
-  stroke-dasharray:6 6;
-  rx:18;
-}
-.zone-title{
-  font-size:18px;
-  font-weight:700;
-  fill:#0f172a;
-}
-.box{
-  stroke:#334155;
-  stroke-width:2;
-  rx:18;
-  ry:18;
-}
-.asset{fill:#dbeafe;}
-.telemetry{fill:#f8e7c8;}
-.platform{fill:#bfe8df;}
-.saci{fill:#fef9c3;}
-.cti{fill:#ede9fe;}
-.output{fill:#e5e7eb;}
-.score{fill:#dcfce7;}
-.title{
-  font-size:15px;
-  font-weight:700;
-  fill:#0f172a;
-  text-anchor:middle;
-}
-.sub{
-  font-size:12px;
-  fill:#334155;
-  text-anchor:middle;
-}
-.tiny{
-  font-size:11px;
-  fill:#475569;
-  text-anchor:middle;
-}
-.label{
-  font-size:12px;
-  fill:#334155;
-}
-.line{
-  stroke:#334155;
-  stroke-width:2.5;
-  fill:none;
-  marker-end:url(#arrow);
-}
-.line-soft{
-  stroke:#64748b;
-  stroke-width:2;
-  fill:none;
-  marker-end:url(#arrowSoft);
-}
-.line-cti{
-  stroke:#8b5cf6;
-  stroke-width:2.5;
-  fill:none;
-  stroke-dasharray:7 6;
-  marker-end:url(#arrowCti);
-}
-.foot{
-  margin-top:16px;
   background:#f8fafc;
   color:#0f172a;
-  border-left:5px solid #2563eb;
-  padding:14px 16px;
-  font-weight:700;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 28px 80px rgba(0,0,0,.34);
+  padding:28px;
+  overflow-x:auto;
 }
+
+.diagram{
+  min-width:1320px;
+  display:grid;
+  grid-template-columns: 285px 86px 360px 86px 360px 86px 255px;
+  align-items:stretch;
+}
+
+.layer{
+  position:relative;
+  border-radius:24px;
+  padding:18px;
+  min-height:650px;
+  border:2px solid var(--line);
+  background:white;
+  overflow:hidden;
+}
+
+.layer:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.78;
+  pointer-events:none;
+}
+
+.layer-content{
+  position:relative;
+  z-index:1;
+}
+
+.layer.sources{
+  border-color:#93c5fd;
+  background:linear-gradient(180deg,#eff6ff,#ffffff);
+}
+
+.layer.wazuh{
+  border-color:#fbbf24;
+  background:linear-gradient(180deg,#fffbeb,#ffffff);
+}
+
+.layer.saci{
+  border-color:#c4b5fd;
+  background:linear-gradient(180deg,#f5f3ff,#ffffff);
+}
+
+.layer.outputs{
+  border-color:#86efac;
+  background:linear-gradient(180deg,#f0fdf4,#ffffff);
+}
+
+.layer-title{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:18px;
+  min-height:42px;
+}
+
+.layer-title h2{
+  margin:0;
+  font-size:20px;
+  text-align:center;
+}
+
+.layer-icon{
+  width:38px;
+  height:38px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  color:white;
+  font-weight:900;
+  box-shadow:0 10px 20px rgba(15,23,42,.16);
+}
+
+.i-blue{background:linear-gradient(135deg,#2563eb,#60a5fa)}
+.i-amber{background:linear-gradient(135deg,#d97706,#fbbf24)}
+.i-violet{background:linear-gradient(135deg,#7c3aed,#c4b5fd)}
+.i-green{background:linear-gradient(135deg,#16a34a,#86efac)}
+
+.node{
+  position:relative;
+  border-radius:18px;
+  border:1.8px solid #334155;
+  background:white;
+  padding:14px 14px 14px 58px;
+  margin-bottom:14px;
+  min-height:78px;
+  box-shadow:0 10px 24px rgba(15,23,42,.08);
+}
+
+.node:before{
+  content:attr(data-icon);
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  width:32px;
+  height:32px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  color:white;
+  font-weight:900;
+  font-size:13px;
+}
+
+.node strong{
+  display:block;
+  font-size:16px;
+  margin-bottom:5px;
+  color:#0f172a;
+}
+
+.node span{
+  display:block;
+  color:#475569;
+  font-size:12.5px;
+  line-height:1.35;
+}
+
+.node.asset{
+  background:#eff6ff;
+  border-color:#1e3a8a;
+}
+
+.node.asset:before{background:#2563eb}
+
+.node.collect{
+  background:#fff7ed;
+  border-color:#92400e;
+}
+
+.node.collect:before{background:#d97706}
+
+.node.platform{
+  background:#ecfeff;
+  border-color:#0e7490;
+}
+
+.node.platform:before{background:#0891b2}
+
+.node.cti{
+  background:#f5f3ff;
+  border-color:#6d28d9;
+}
+
+.node.cti:before{background:#7c3aed}
+
+.node.saci-node{
+  background:#fefce8;
+  border-color:#a16207;
+}
+
+.node.saci-node:before{background:#ca8a04}
+
+.node.explain{
+  background:#f1f5f9;
+  border-color:#334155;
+}
+
+.node.explain:before{background:#475569}
+
+.node.result{
+  background:#f0fdf4;
+  border-color:#15803d;
+  padding-left:16px;
+  text-align:center;
+}
+
+.node.result:before{display:none}
+
+.mini-section{
+  border:1px solid rgba(148,163,184,.45);
+  background:rgba(255,255,255,.66);
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:14px;
+}
+
+.mini-label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#64748b;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.45px;
+  text-transform:uppercase;
+  margin:0 0 10px;
+}
+
+.mini-label:before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:#2563eb;
+}
+
+.down{
+  height:34px;
+  display:grid;
+  place-items:center;
+  color:#334155;
+  font-size:28px;
+  font-weight:900;
+}
+
+.bridge{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.bridge-track{
+  width:76px;
+  height:72px;
+  border-radius:22px;
+  background:
+    linear-gradient(90deg, transparent 0 14px, rgba(15,23,42,.12) 14px 16px, transparent 16px 100%),
+    linear-gradient(180deg,#ffffff,#f1f5f9);
+  border:1px solid #dbe3ef;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);
+}
+
+.bridge-arrow{
+  width:48px;
+  height:12px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#2563eb,#0891b2);
+  position:relative;
+}
+
+.bridge-arrow:after{
+  content:"";
+  position:absolute;
+  right:-10px;
+  top:50%;
+  transform:translateY(-50%);
+  width:0;
+  height:0;
+  border-top:10px solid transparent;
+  border-bottom:10px solid transparent;
+  border-left:14px solid #0891b2;
+}
+
+.bridge-label{
+  position:absolute;
+  top:calc(50% + 47px);
+  left:50%;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  background:white;
+  border:1px solid #cbd5e1;
+  color:#334155;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:900;
+  box-shadow:0 8px 18px rgba(15,23,42,.08);
+}
+
+.bridge.violet .bridge-arrow{
+  background:linear-gradient(90deg,#0891b2,#7c3aed);
+}
+.bridge.violet .bridge-arrow:after{
+  border-left-color:#7c3aed;
+}
+
+.bridge.green .bridge-arrow{
+  background:linear-gradient(90deg,#7c3aed,#16a34a);
+}
+.bridge.green .bridge-arrow:after{
+  border-left-color:#16a34a;
+}
+
+.kpi-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:14px;
+}
+
+.kpi{
+  background:#020617;
+  color:white;
+  border-radius:16px;
+  padding:12px;
+  text-align:center;
+}
+
+.kpi small{
+  display:block;
+  color:#94a3b8;
+  font-size:11px;
+  margin-bottom:5px;
+}
+
+.kpi b{
+  font-size:20px;
+}
+
+.note{
+  margin-top:24px;
+  border-radius:20px;
+  background:linear-gradient(90deg,#eff6ff,#ffffff);
+  border:1px solid #bfdbfe;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  color:#0f172a;
+  font-weight:900;
+  line-height:1.5;
+}
+
+.shield{
+  flex:0 0 auto;
+  width:48px;
+  height:48px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#2563eb,#60a5fa);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  box-shadow:0 12px 26px rgba(37,99,235,.24);
+}
+
+.info-grid{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.info{
+  background:rgba(15,23,42,.82);
+  border:1px solid rgba(148,163,184,.24);
+  border-radius:20px;
+  padding:18px;
+}
+
+.info h2{
+  margin:0 0 12px;
+  color:#e5e7eb;
+}
+
+.path{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+
+.pill{
+  background:#020617;
+  border:1px solid #334155;
+  border-radius:999px;
+  color:#e5e7eb;
+  padding:9px 11px;
+  font-weight:800;
+  font-size:13px;
+}
+
+.path-arrow{
+  color:#93c5fd;
+  font-weight:900;
+}
+
 table{
   width:100%;
   border-collapse:collapse;
-  background:#ffffff;
-  color:#0f172a;
-  margin-top:10px;
+  color:#e5e7eb;
 }
+
 th,td{
-  border:1px solid #cbd5e1;
+  border:1px solid #334155;
   padding:10px;
   text-align:left;
   vertical-align:top;
   font-size:14px;
 }
-th{background:#e2e8f0;}
 
-.lang button{border:1px solid #475569;background:#020617;color:#e5e7eb;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700}
-.lang button.active{background:#2563eb;border-color:#60a5fa}
+th{
+  background:#020617;
+  color:#bfdbfe;
+}
+
+td{
+  color:#d1d5db;
+}
+
+@media(max-width:1050px){
+  .header-inner{flex-direction:column}
+  .diagram{
+    min-width:unset;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .layer{min-height:auto}
+  .bridge{
+    height:72px;
+  }
+  .bridge-track{
+    transform:rotate(90deg);
+  }
+  .bridge-label{
+    top:auto;
+    bottom:-2px;
+  }
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+}
 </style>
-
 </head>
 
 <body>
-<header>
-<div class="lang" style="float:right">
-  <button id="btn-tr" onclick="setLang('tr')">TR</button>
-  <button id="btn-en" onclick="setLang('en')">EN</button>
-</div>
 
-  <h1>SACI Kontrollü Lab Mimarisi</h1>
-  <p>Wazuh tabanlı kontrollü görünürlük değerlendirme ortamı, SACI skorlama motoru ve kanıt çıktıları</p>
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="eyebrow" data-tr="Final SACI kanıt mimarisi" data-en="Final SACI evidence architecture">Final SACI kanıt mimarisi</div>
+      <h1 data-tr="SACI Kontrollü Lab Mimarisi" data-en="SACI Controlled Lab Architecture">SACI Kontrollü Lab Mimarisi</h1>
+      <p class="subtitle"
+         data-tr="Uç sistemlerden Wazuh merkezi bileşenlerine, oradan SACI değerlendirme katmanına ve yayınlanan kanıt çıktılarına uzanan temiz mantıksal mimari görünümü."
+         data-en="A clean logical architecture view from endpoint sources to Wazuh central components, SACI evaluation layer and published evidence outputs.">
+         Uç sistemlerden Wazuh merkezi bileşenlerine, oradan SACI değerlendirme katmanına ve yayınlanan kanıt çıktılarına uzanan temiz mantıksal mimari görünümü.
+      </p>
+    </div>
+
+    <div class="lang">
+      <button id="btn-tr" onclick="setLang('tr')">TR</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
 </header>
 
 <main>
 
-<section class="toolbar">
-  <a href="index.html">Ana sayfa</a>
-  <a href="evidence/graf.html">Etkileşimli kanıt grafı</a>
-  <a href="evidence/paper_clean/index.html">Makale görsel görünümü</a>
-  <a href="evidence/llm_raporu.html">Açıklama raporu</a>
+<nav class="toolbar">
+  <a href="index.html" data-tr="Ana sayfa" data-en="Home">Ana sayfa</a>
+  <a href="evidence/graph.html" data-tr="Etkileşimli kanıt grafı" data-en="Interactive evidence graph">Etkileşimli kanıt grafı</a>
+  <a href="evidence/paper_clean/index.html" data-tr="Makale görsel görünümü" data-en="Paper clean view">Makale görsel görünümü</a>
+  <a href="evidence/llm_report.html" data-tr="Açıklama raporu" data-en="Explanation report">Açıklama raporu</a>
+</nav>
+
+<section class="canvas">
+
+  <div class="diagram">
+
+    <section class="layer sources">
+      <div class="layer-content">
+        <div class="layer-title">
+          <div class="layer-icon i-blue">01</div>
+          <h2 data-tr="Uç sistemler / Kaynaklar" data-en="Endpoints / Sources">Uç sistemler / Kaynaklar</h2>
+        </div>
+
+        <div class="node asset" data-icon="DC">
+          <strong>A01 / DC01</strong>
+          <span data-tr="Kritik domain controller" data-en="Critical domain controller">Kritik domain controller</span>
+        </div>
+
+        <div class="node asset" data-icon="WS">
+          <strong>A04 / WS01</strong>
+          <span>Windows endpoint</span>
+        </div>
+
+        <div class="node asset" data-icon="LX">
+          <strong>A05 / Linux Host</strong>
+          <span>authlog · syslog</span>
+        </div>
+
+        <div class="node asset" data-icon="FW">
+          <strong>FW01</strong>
+          <span>Firewall · syslog</span>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi"><small data-tr="Varlık" data-en="Assets">Varlık</small><b>4</b></div>
+          <div class="kpi"><small data-tr="Kaynak" data-en="Sources">Kaynak</small><b>5+</b></div>
+          <div class="kpi"><small data-tr="Kapsam" data-en="Scope">Kapsam</small><b>Lab</b></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bridge">
+      <div class="bridge-track"><div class="bridge-arrow"></div></div>
+      <div class="bridge-label" data-tr="telemetri akışı" data-en="telemetry flow">telemetri akışı</div>
+    </div>
+
+    <section class="layer wazuh">
+      <div class="layer-content">
+        <div class="layer-title">
+          <div class="layer-icon i-amber">02</div>
+          <h2 data-tr="Wazuh merkezi bileşenleri" data-en="Wazuh central components">Wazuh merkezi bileşenleri</h2>
+        </div>
+
+        <div class="mini-section">
+          <p class="mini-label" data-tr="Toplama katmanı" data-en="Collection layer">Toplama katmanı</p>
+
+          <div class="node collect" data-icon="W">
+            <strong data-tr="Windows log toplama" data-en="Windows log collection">Windows log toplama</strong>
+            <span>Wazuh agent · Security · Sysmon · PowerShell</span>
+          </div>
+
+          <div class="node collect" data-icon="L">
+            <strong data-tr="Linux log toplama" data-en="Linux log collection">Linux log toplama</strong>
+            <span>authlog · syslog</span>
+          </div>
+
+          <div class="node collect" data-icon="F">
+            <strong data-tr="Firewall log toplama" data-en="Firewall log collection">Firewall log toplama</strong>
+            <span>syslog · IOC evidence</span>
+          </div>
+        </div>
+
+        <div class="down">↓</div>
+
+        <div class="node platform" data-icon="WM">
+          <strong>Wazuh Manager</strong>
+          <span data-tr="analiz · decoder · kural · alarm üretimi" data-en="analysis · decoder · rule · alert production">analiz · decoder · kural · alarm üretimi</span>
+        </div>
+
+        <div class="down">↓</div>
+
+        <div class="node platform" data-icon="OS">
+          <strong>OpenSearch / Indexer</strong>
+          <span data-tr="SACI görünürlük indeksi" data-en="SACI visibility index">SACI görünürlük indeksi</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="bridge violet">
+      <div class="bridge-track"><div class="bridge-arrow"></div></div>
+      <div class="bridge-label" data-tr="kanıt sorgusu" data-en="evidence query">kanıt sorgusu</div>
+    </div>
+
+    <section class="layer saci">
+      <div class="layer-content">
+        <div class="layer-title">
+          <div class="layer-icon i-violet">03</div>
+          <h2 data-tr="SACI değerlendirme katmanı" data-en="SACI evaluation layer">SACI değerlendirme katmanı</h2>
+        </div>
+
+        <div class="node cti" data-icon="TI">
+          <strong>MISP / CTI</strong>
+          <span data-tr="IOC sorgulama ve zenginleştirme" data-en="IOC lookup and enrichment">IOC sorgulama ve zenginleştirme</span>
+        </div>
+
+        <div class="down">↓</div>
+
+        <div class="node saci-node" data-icon="SC">
+          <strong data-tr="SACI motoru" data-en="SACI engine">SACI motoru</strong>
+          <span>LC · CAC · MDC · CTIC · TF</span>
+          <span data-tr="deterministik skorlama" data-en="deterministic scoring">deterministik skorlama</span>
+        </div>
+
+        <div class="down">↓</div>
+
+        <div class="node saci-node" data-icon="G">
+          <strong data-tr="Kanıt grafı" data-en="Evidence graph">Kanıt grafı</strong>
+          <span data-tr="gözlenen / eksik ilişkiler" data-en="observed / missing relationships">gözlenen / eksik ilişkiler</span>
+        </div>
+
+        <div class="down">↓</div>
+
+        <div class="node explain" data-icon="EX">
+          <strong data-tr="Politika yönlendirmeli açıklama" data-en="Policy-guided explanation">Politika yönlendirmeli açıklama</strong>
+          <span data-tr="deterministik çıktıları açıklar" data-en="explains deterministic outputs">deterministik çıktıları açıklar</span>
+          <span data-tr="skoru hesaplamaz" data-en="does not calculate score">skoru hesaplamaz</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="bridge green">
+      <div class="bridge-track"><div class="bridge-arrow"></div></div>
+      <div class="bridge-label" data-tr="yayın" data-en="publish">yayın</div>
+    </div>
+
+    <section class="layer outputs">
+      <div class="layer-content">
+        <div class="layer-title">
+          <div class="layer-icon i-green">04</div>
+          <h2 data-tr="Çıktılar" data-en="Outputs">Çıktılar</h2>
+        </div>
+
+        <div class="node result">
+          <strong data-tr="Etkileşimli graf" data-en="Interactive graph">Etkileşimli graf</strong>
+          <span data-tr="tam kanıt ağı" data-en="full evidence network">tam kanıt ağı</span>
+        </div>
+
+        <div class="node result">
+          <strong data-tr="Açıklama raporu" data-en="Explanation report">Açıklama raporu</strong>
+          <span data-tr="senaryo bazlı açıklama" data-en="scenario-level explanation">senaryo bazlı açıklama</span>
+        </div>
+
+        <div class="node result">
+          <strong data-tr="Makale görselleri" data-en="Paper figures">Makale görselleri</strong>
+          <span data-tr="temiz akademik görünüm" data-en="clean academic view">temiz akademik görünüm</span>
+        </div>
+
+        <div class="node result">
+          <strong>GitHub Pages</strong>
+          <span data-tr="destekleyici kanıt portalı" data-en="supplementary evidence portal">destekleyici kanıt portalı</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="note">
+    <div class="shield">✓</div>
+    <div data-tr="SACI=100, tanımlı değerlendirme kapsamında beklenen görünürlük kapanışının sağlandığını ifade eder. Genel bir güvenlik garantisi değildir."
+         data-en="SACI=100 means expected visibility closure within the defined evaluation scope. It is not a general security guarantee.">
+      SACI=100, tanımlı değerlendirme kapsamında beklenen görünürlük kapanışının sağlandığını ifade eder. Genel bir güvenlik garantisi değildir.
+    </div>
+  </div>
+
 </section>
 
-<section class="card">
-<div class="canvas">
-<svg viewBox="0 0 1500 760" xmlns="http://www.w3.org/2000/svg" aria-label="SACI architecture diagram">
+<section class="info-grid">
 
-<defs>
-  <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-    <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
-  </marker>
-  <marker id="arrowSoft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-    <path d="M2,2 L10,6 L2,10 Z" fill="#64748b"/>
-  </marker>
-  <marker id="arrowCti" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-    <path d="M2,2 L10,6 L2,10 Z" fill="#8b5cf6"/>
-  </marker>
-</defs>
+  <div class="info">
+    <h2 data-tr="Ana kanıt yolu" data-en="Key evidence path">Ana kanıt yolu</h2>
+    <div class="path">
+      <span class="pill">DC01</span>
+      <span class="path-arrow">→</span>
+      <span class="pill">Sysmon / Security</span>
+      <span class="path-arrow">→</span>
+      <span class="pill">Wazuh</span>
+      <span class="path-arrow">→</span>
+      <span class="pill">MISP / CTI</span>
+      <span class="path-arrow">→</span>
+      <span class="pill">MITRE</span>
+      <span class="path-arrow">→</span>
+      <span class="pill">SACI Score</span>
+    </div>
+  </div>
 
-<!-- zones -->
-<rect class="zone" x="30" y="65" width="330" height="570"/>
-<text class="zone-title" x="195" y="95" text-anchor="middle">Uç sistemler / Kaynaklar</text>
+  <div class="info">
+    <h2 data-tr="Katman özeti" data-en="Layer summary">Katman özeti</h2>
+    <table>
+      <thead>
+        <tr>
+          <th data-tr="Katman" data-en="Layer">Katman</th>
+          <th data-tr="Görev" data-en="Role">Görev</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-tr="Uç sistemler" data-en="Endpoints">Uç sistemler</td>
+          <td data-tr="Beklenen telemetriyi üretir." data-en="Produce expected telemetry.">Beklenen telemetriyi üretir.</td>
+        </tr>
+        <tr>
+          <td>Wazuh</td>
+          <td data-tr="Logları toplar, kuralları çalıştırır ve alarm üretir." data-en="Collects logs, runs rules and produces alerts.">Logları toplar, kuralları çalıştırır ve alarm üretir.</td>
+        </tr>
+        <tr>
+          <td>SACI</td>
+          <td data-tr="Kanıtları sorgular, skoru hesaplar ve görünürlük grafını üretir." data-en="Queries evidence, calculates the score and builds the visibility graph.">Kanıtları sorgular, skoru hesaplar ve görünürlük grafını üretir.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<rect class="zone" x="415" y="65" width="500" height="570"/>
-<text class="zone-title" x="665" y="95" text-anchor="middle">Wazuh merkezi bileşenleri</text>
-
-<rect class="zone" x="970" y="65" width="360" height="570"/>
-<text class="zone-title" x="1150" y="95" text-anchor="middle">SACI değerlendirme katmanı</text>
-
-<rect class="zone" x="1360" y="150" width="110" height="310"/>
-<text class="zone-title" x="1415" y="180" text-anchor="middle">Çıktılar</text>
-
-<!-- Left asset boxes -->
-<rect class="box asset" x="70" y="130" width="250" height="76"/>
-<text class="title" x="195" y="158">A01 / DC01</text>
-<text class="sub" x="195" y="180">Kritik domain controller</text>
-
-<rect class="box asset" x="70" y="238" width="250" height="76"/>
-<text class="title" x="195" y="266">A04 / WS01</text>
-<text class="sub" x="195" y="288">Windows endpoint</text>
-
-<rect class="box asset" x="70" y="346" width="250" height="76"/>
-<text class="title" x="195" y="374">A05 / Linux Host</text>
-<text class="sub" x="195" y="396">authlog / syslog</text>
-
-<rect class="box asset" x="70" y="454" width="250" height="76"/>
-<text class="title" x="195" y="482">FW01</text>
-<text class="sub" x="195" y="504">Firewall / syslog</text>
-
-<!-- collection boxes -->
-<rect class="box telemetry" x="455" y="120" width="290" height="80"/>
-<text class="title" x="600" y="150">Windows log toplama</text>
-<text class="sub" x="600" y="172">Wazuh agent</text>
-<text class="tiny" x="600" y="188">Security / Sysmon / PowerShell</text>
-
-<rect class="box telemetry" x="455" y="245" width="290" height="80"/>
-<text class="title" x="600" y="275">Linux log toplama</text>
-<text class="sub" x="600" y="297">authlog / syslog</text>
-
-<rect class="box telemetry" x="455" y="370" width="290" height="80"/>
-<text class="title" x="600" y="400">Firewall log toplama</text>
-<text class="sub" x="600" y="422">syslog / IOC kanıtı</text>
-
-<!-- manager/index -->
-<rect class="box platform" x="525" y="495" width="300" height="88"/>
-<text class="title" x="675" y="525">Wazuh manager</text>
-<text class="sub" x="675" y="547">analiz / decoder / kural</text>
-<text class="tiny" x="675" y="565">alarm üretimi</text>
-
-<rect class="box platform" x="565" y="615" width="220" height="70"/>
-<text class="title" x="675" y="642">OpenSearch / Indexer</text>
-<text class="sub" x="675" y="664">SACI görünürlük indeksi</text>
-
-<!-- right side -->
-<rect class="box cti" x="1010" y="110" width="280" height="85"/>
-<text class="title" x="1150" y="140">MISP / CTI</text>
-<text class="sub" x="1150" y="162">IOC sorgulama ve zenginleştirme</text>
-
-<rect class="box saci" x="1010" y="245" width="280" height="92"/>
-<text class="title" x="1150" y="275">SACI motoru</text>
-<text class="sub" x="1150" y="297">LC / CAC / MDC / CTIC / TF</text>
-<text class="tiny" x="1150" y="315">deterministik skorlama</text>
-
-<rect class="box saci" x="1010" y="385" width="280" height="85"/>
-<text class="title" x="1150" y="415">Kanıt grafı</text>
-<text class="sub" x="1150" y="437">gözlenen / eksik ilişkiler</text>
-
-<rect class="box output" x="1010" y="520" width="280" height="85"/>
-<text class="title" x="1150" y="550">Politika yönlendirmeli açıklama</text>
-<text class="sub" x="1150" y="572">deterministik çıktıları açıklar</text>
-<text class="tiny" x="1150" y="590">skoru hesaplamaz</text>
-
-<!-- output column -->
-<rect class="box score" x="1380" y="210" width="70" height="68"/>
-<text class="tiny" x="1415" y="236">Etkileşimli</text>
-<text class="tiny" x="1415" y="252">graf</text>
-
-<rect class="box score" x="1380" y="300" width="70" height="68"/>
-<text class="tiny" x="1415" y="326">Açıklama</text>
-<text class="tiny" x="1415" y="342">raporu</text>
-
-<rect class="box score" x="1380" y="390" width="70" height="68"/>
-<text class="tiny" x="1415" y="416">Makale</text>
-<text class="tiny" x="1415" y="432">görselleri</text>
-
-<!-- arrows -->
-<path class="line" d="M320 168 C380 168, 395 160, 455 160"/>
-<text class="label" x="370" y="152">agent olayları</text>
-
-<path class="line" d="M320 276 C380 276, 395 182, 455 182"/>
-<text class="label" x="372" y="258">agent olayları</text>
-
-<path class="line" d="M320 384 C380 384, 395 285, 455 285"/>
-<text class="label" x="392" y="365">authlog</text>
-
-<path class="line" d="M320 492 C380 492, 395 410, 455 410"/>
-<text class="label" x="394" y="473">syslog</text>
-
-<path class="line" d="M600 200 L600 245"/>
-<path class="line" d="M600 325 L600 370"/>
-<path class="line" d="M600 450 L600 495"/>
-
-<path class="line" d="M675 583 L675 615"/>
-<text class="label" x="696" y="608">indekslenen alarmlar</text>
-
-<path class="line" d="M785 650 C930 650, 910 290, 1010 290"/>
-<text class="label" x="886" y="520">sorgular</text>
-
-<path class="line" d="M1150 337 L1150 385"/>
-<text class="label" x="1164" y="365">oluşturur</text>
-
-<path class="line" d="M1150 470 L1150 520"/>
-<text class="label" x="1168" y="500">açıklar</text>
-
-<path class="line-soft" d="M1290 560 C1335 560, 1340 245, 1380 245"/>
-<path class="line-soft" d="M1290 560 C1345 560, 1345 335, 1380 335"/>
-<path class="line-soft" d="M1290 560 C1350 560, 1350 425, 1380 425"/>
-<text class="label" x="1324" y="548">yayınlar</text>
-
-<!-- CTI integration -->
-<path class="line-cti" d="M1010 152 C930 152, 930 525, 825 535"/>
-<text class="label" x="928" y="250" fill="#7c3aed">IOC zenginleştirme</text>
-
-<path class="line-cti" d="M1150 195 L1150 245"/>
-<text class="label" x="1162" y="226" fill="#7c3aed">CTIC</text>
-
-<!-- footer text -->
-<text class="label" x="70" y="710">SACI, kurumun güvenli olup olmadığını ölçmez.</text>
-<text class="label" x="70" y="730">Beklenen telemetri, tespit, CTI, MITRE ve güncellik ilişkilerinin gözlenebilir olup olmadığını ölçer.</text>
-
-</svg>
-
-<div class="foot">
-SACI=100, tanımlı değerlendirme kapsamında beklenen görünürlük kapanışının sağlandığını ifade eder. Genel bir güvenlik garantisi değildir.
-</div>
-
-</div>
-</section>
-
-<section class="card">
-<h2>Mimari katmanlarının anlamı</h2>
-<table>
-<thead>
-<tr>
-<th>Katman</th>
-<th>Açıklama</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Uç sistemler / Kaynaklar</td>
-<td>Kontrollü değerlendirme ortamındaki varlıkları temsil eder: domain controller, Windows endpoint, Linux host ve firewall.</td>
-</tr>
-<tr>
-<td>Wazuh merkezi bileşenleri</td>
-<td>Logların toplanması, kuralların çalıştırılması, alarm üretimi ve OpenSearch tarafına indekslenmesini gösterir.</td>
-</tr>
-<tr>
-<td>SACI değerlendirme katmanı</td>
-<td>SACI motoru deterministik skor hesaplar; evidence graf observed/missing ilişkileri üretir; policy-guided explanation katmanı ise bu çıktıları doğal dille açıklar.</td>
-</tr>
-<tr>
-<td>Çıktılar</td>
-<td>Etkileşimli kanıt grafı, explanation raporu, paper-clean görseller ve GitHub Pages üzerinden yayınlanan kanıt ekranlarıdır.</td>
-</tr>
-</tbody>
-</table>
 </section>
 
 </main>
 
 <script>
-const enMap = {
-  "SACI Kontrollü Lab Mimarisi":"SACI Controlled Lab Architecture",
-  "Wazuh tabanlı kontrollü görünürlük değerlendirme ortamı, SACI skorlama motoru ve kanıt çıktıları":"Controlled Wazuh-based visibility evaluation environment, SACI scoring engine and evidence outputs",
-  "Ana sayfa":"Home",
-  "Etkileşimli kanıt grafı":"Interactive evidence graph",
-  "Makale görsel görünümü":"Paper clean view",
-  "Açıklama raporu":"Explanation report",
-  "Uç sistemler / Kaynaklar":"Endpoints / Sources",
-  "Wazuh merkezi bileşenleri":"Wazuh central components",
-  "SACI değerlendirme katmanı":"SACI evaluation layer",
-  "Çıktılar":"Outputs",
-  "Kritik domain controller":"Critical domain controller",
-  "Windows log toplama":"Windows collection",
-  "Linux log toplama":"Linux collection",
-  "Firewall log toplama":"Firewall collection",
-  "syslog / IOC kanıtı":"syslog / IOC evidence",
-  "analiz / decoder / kural":"analysis / decoders / rules",
-  "alarm üretimi":"alert production",
-  "SACI görünürlük indeksi":"SACI visibility index",
-  "IOC sorgulama ve zenginleştirme":"IOC lookup and enrichment",
-  "SACI motoru":"SACI engine",
-  "deterministik skorlama":"deterministic scoring",
-  "Kanıt grafı":"Evidence graph",
-  "gözlenen / eksik ilişkiler":"observed / missing relations",
-  "Politika yönlendirmeli açıklama":"Policy-guided explanation",
-  "deterministik çıktıları açıklar":"explains deterministic outputs",
-  "skoru hesaplamaz":"does not calculate score",
-  "Etkileşimli":"Interactive",
-  "graf":"graph",
-  "Açıklama":"Explanation",
-  "raporu":"report",
-  "Makale":"Paper",
-  "görselleri":"views",
-  "agent olayları":"agent events",
-  "indekslenen alarmlar":"indexed alerts",
-  "sorgular":"queries",
-  "oluşturur":"builds",
-  "açıklar":"explains",
-  "yayınlar":"publishes",
-  "IOC zenginleştirme":"IOC enrichment",
-  "SACI, kurumun güvenli olup olmadığını ölçmez.":"SACI does not measure whether the organization is secure.",
-  "Beklenen telemetri, tespit, CTI, MITRE ve güncellik ilişkilerinin gözlenebilir olup olmadığını ölçer.":"It measures whether expected telemetry, detection, CTI, MITRE and freshness relationships are observable.",
-  "SACI=100, tanımlı değerlendirme kapsamında beklenen görünürlük kapanışının sağlandığını ifade eder. Genel bir güvenlik garantisi değildir.":"SACI=100 means expected visibility closure within the defined evaluation scope. It is not a general security guarantee.",
-  "Mimari katmanlarının anlamı":"Meaning of architecture layers",
-  "Katman":"Layer",
-  "Açıklama":"Description"
-};
-const trMap = {};
-for (const [tr,en] of Object.entries(enMap)) trMap[en] = tr;
-
-function walkText(node, map){
-  if(node.nodeType === Node.TEXT_NODE){
-    let v = node.nodeValue;
-    for(const [a,b] of Object.entries(map)){
-      if(v.includes(a)) v = v.split(a).join(b);
-    }
-    node.nodeValue = v;
-  } else {
-    node.childNodes.forEach(n => walkText(n,map));
-  }
-}
-
 function setLang(lang){
   document.documentElement.lang = lang;
   localStorage.setItem("saci_lang", lang);
-  walkText(document.body, lang === "en" ? enMap : trMap);
+
+  document.querySelectorAll("[data-tr][data-en]").forEach(el => {
+    el.textContent = el.getAttribute("data-" + lang);
+  });
+
   document.getElementById("btn-tr").classList.toggle("active", lang === "tr");
   document.getElementById("btn-en").classList.toggle("active", lang === "en");
 }
+
 setLang(localStorage.getItem("saci_lang") || "tr");
 </script>
+
 </body>
 </html>
