@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<title>SACI Paper Clean View v2</title>
+<title>SACI Paper Clean View</title>
 <style>
 :root {
   --bg: #0f172a;
@@ -332,7 +332,7 @@ pre {
 
 <body>
 <header>
-  <h1>SACI Paper Clean View v2</h1>
+  <h1>SACI Paper Clean View</h1>
   <p>Okunabilir makale diyagramları, senaryo bazlı interaktif çıktı ve tam graph bağlantıları.</p>
 </header>
 
@@ -353,8 +353,8 @@ pre {
       <div class="value" id="k-missing">-</div>
     </div>
     <div class="kpi">
-      <div class="label">Açıklama modeli</div>
-      <div class="value" style="font-size:22px">Qwen2.5:3b</div>
+      <div class="label">Açıklama katmanı</div>
+      <div class="value" style="font-size:22px">Policy-guided</div>
     </div>
   </div>
 </section>
@@ -399,7 +399,7 @@ pre {
 
     <div class="flow-3">
       <div class="node gray">Graph relation state<br>observed / missing</div>
-      <div class="node cyan">Local LLM<br>explains outputs<br>does not calculate score</div>
+      <div class="node cyan">Policy-guided explanation<br>explains outputs<br>does not calculate score</div>
       <div class="node yellow">Human-readable report<br>scenario-level interpretation</div>
     </div>
 
@@ -482,7 +482,7 @@ pre {
     <div class="flow-3">
       <div class="node purple">MITRE coverage affected<br>T1071.004 / T1059.001<br>T1482 / T1087</div>
       <div class="node yellow">Graph impact<br>missing visibility edges increase</div>
-      <div class="node cyan">LLM explanation<br>natural-language reason<br>for score drop</div>
+      <div class="node cyan">Policy-guided explanation<br>natural-language reason<br>for score drop</div>
     </div>
 
     <div class="note warn">
@@ -606,7 +606,7 @@ function renderScenario() {
     <p>
       <a href="../graph.html?stage=${encodeURIComponent(dir)}" target="_blank">Full interactive graph</a>
       |
-      <a href="../data/${dir}/saci_llm_explanation.md" target="_blank">LLM explanation</a>
+      <a href="../data/${dir}/saci_llm_explanation.md" target="_blank">Policy-guided explanation</a>
       |
       <a href="../data/${dir}/saci_graph_summary.md" target="_blank">Graph summary</a>
     </p>

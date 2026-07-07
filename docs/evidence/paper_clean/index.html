@@ -2,199 +2,562 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<title>SACI Clean Interactive Evidence</title>
+<title>SACI Paper Clean View</title>
 <style>
 :root {
   --bg: #0f172a;
-  --card: #111827;
-  --muted: #94a3b8;
+  --panel: #111827;
+  --panel2: #1f2937;
+  --line: #334155;
   --text: #e5e7eb;
-  --border: #334155;
-  --accent: #60a5fa;
+  --muted: #94a3b8;
+
+  --blue: #dbeafe;
+  --orange: #ffedd5;
+  --green: #dcfce7;
+  --red: #fee2e2;
+  --purple: #f3e8ff;
+  --yellow: #fef9c3;
+  --cyan: #ccfbf1;
+  --gray: #e5e7eb;
 }
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: Arial, sans-serif;
 }
+
 header {
-  padding: 24px 32px;
+  padding: 22px 28px;
   background: #020617;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--line);
 }
+
+header h1 {
+  margin: 0 0 6px 0;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+
 main {
-  padding: 24px 32px;
+  padding: 22px;
 }
+
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: var(--panel);
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: 18px;
   margin-bottom: 18px;
 }
-.tabs button {
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  background: #1f2937;
-  color: var(--text);
-  border-radius: 10px;
-  cursor: pointer;
-  margin-right: 8px;
-  margin-bottom: 8px;
-}
-.tabs button.active {
-  background: #2563eb;
-}
-.panel {
-  display: none;
-}
-.panel.active {
-  display: block;
-}
-.grid {
+
+.kpis {
   display: grid;
-  grid-template-columns: repeat(4, minmax(170px, 1fr));
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
   gap: 12px;
 }
-.metric {
-  background: #1f2937;
-  border: 1px solid var(--border);
+
+.kpi {
+  background: var(--panel2);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 14px;
 }
-.metric .value {
+
+.kpi .label {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.kpi .value {
   font-size: 30px;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tabs button,
+select {
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 13px;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: #2563eb;
+  border-color: #60a5fa;
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+.paper {
+  background: white;
+  color: #0f172a;
+  border-radius: 14px;
+  padding: 34px;
+  border: 1px solid #cbd5e1;
+  overflow-x: auto;
+}
+
+.paper h2 {
+  text-align: center;
+  margin: 0 0 28px 0;
+  font-size: 28px;
+}
+
+.flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.flow-5 {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.flow-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.node {
+  min-height: 105px;
+  border: 2px solid #334155;
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  line-height: 1.35;
+  font-size: 16px;
+  font-weight: 650;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.node.small {
+  min-height: 86px;
+  font-size: 14px;
+}
+
+.node.big {
+  min-height: 125px;
+  font-size: 18px;
+}
+
+.blue { background: var(--blue); }
+.orange { background: var(--orange); }
+.green { background: var(--green); }
+.red { background: var(--red); }
+.purple { background: var(--purple); }
+.yellow { background: var(--yellow); }
+.cyan { background: var(--cyan); }
+.gray { background: var(--gray); }
+
+.arrow-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: -6px 0 18px 0;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.note {
+  margin-top: 22px;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border-left: 5px solid #2563eb;
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.note.warn {
+  border-left-color: #dc2626;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.compare-card {
+  border: 2px solid #334155;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.bars {
+  margin-top: 24px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 80px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.bar-bg {
+  height: 26px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-red {
+  height: 100%;
+  background: #ef4444;
+}
+
+.bar-orange {
+  height: 100%;
+  background: #f97316;
+}
+
+.matrix {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+.matrix .node {
+  min-height: 125px;
+  font-size: 14px;
+}
+
+.scenario-detail {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #1e3a8a;
+  color: #bfdbfe;
+  font-size: 12px;
   font-weight: 700;
 }
-img {
-  width: 100%;
-  background: white;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-}
-select {
-  padding: 10px;
-  border-radius: 10px;
-  background: #1f2937;
-  color: var(--text);
-  border: 1px solid var(--border);
-}
+
 table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
 }
+
 th, td {
-  padding: 8px 10px;
-  border-bottom: 1px solid var(--border);
+  padding: 8px 9px;
+  border-bottom: 1px solid var(--line);
 }
+
 th {
   color: #bfdbfe;
   text-align: left;
 }
+
 a {
   color: #93c5fd;
 }
-.small {
-  color: var(--muted);
-  font-size: 13px;
-}
+
 pre {
   background: #020617;
+  color: #e5e7eb;
   padding: 14px;
   border-radius: 10px;
   overflow: auto;
+  white-space: pre-wrap;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  header,
+  .tabs,
+  .nonprint {
+    display: none;
+  }
+
+  .panel {
+    display: block !important;
+    page-break-after: always;
+  }
+
+  .card {
+    border: none;
+    padding: 0;
+  }
 }
 </style>
 </head>
+
 <body>
 <header>
-  <h1>SACI Clean Interactive Evidence</h1>
-  <p>Paper-ready simplified diagrams plus scenario-level interaction. Full graph remains available in the evidence package.</p>
+  <h1>SACI Paper Clean View</h1>
+  <p>Okunabilir makale diyagramları, senaryo bazlı interaktif çıktı ve tam graph bağlantıları.</p>
 </header>
+
 <main>
-  <section class="card">
-    <div class="grid">
-      <div class="metric"><div>Total scenarios</div><div class="value" id="m-scenarios">-</div></div>
-      <div class="metric"><div>S8 SACI</div><div class="value" id="m-s8">-</div></div>
-      <div class="metric"><div>S8 missing edges</div><div class="value" id="m-missing">-</div></div>
-      <div class="metric"><div>LLM model</div><div class="value" style="font-size:22px">Qwen2.5:3b</div></div>
+
+<section class="card nonprint">
+  <div class="kpis">
+    <div class="kpi">
+      <div class="label">Toplam senaryo</div>
+      <div class="value" id="k-scenarios">-</div>
     </div>
-  </section>
-
-  <section class="card">
-    <div class="tabs">
-      <button class="active" onclick="showPanel('model', this)">Model</button>
-      <button onclick="showPanel('s8', this)">S8 closure</button>
-      <button onclick="showPanel('critical', this)">Criticality</button>
-      <button onclick="showPanel('s7a', this)">S7A missing path</button>
-      <button onclick="showPanel('taxonomy', this)">Scenario taxonomy</button>
-      <button onclick="showPanel('matrix', this)">Fault matrix</button>
-      <button onclick="showPanel('scenario', this)">Scenario detail</button>
-      <button onclick="showPanel('table', this)">Full table</button>
+    <div class="kpi">
+      <div class="label">S8 SACI</div>
+      <div class="value" id="k-s8">-</div>
     </div>
-  </section>
+    <div class="kpi">
+      <div class="label">S8 missing edge</div>
+      <div class="value" id="k-missing">-</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Açıklama katmanı</div>
+      <div class="value" style="font-size:22px">Policy-guided</div>
+    </div>
+  </div>
+</section>
 
-  <section id="model" class="panel active card">
-    <h2>SACI conceptual model</h2>
-    <img src="figures/fig_01_clean_saci_model.svg">
-  </section>
+<section class="card nonprint">
+  <div class="tabs">
+    <button class="active" onclick="showPanel('model', this)">Model</button>
+    <button onclick="showPanel('closure', this)">S8 closure</button>
+    <button onclick="showPanel('criticality', this)">Criticality</button>
+    <button onclick="showPanel('missing', this)">S7A missing</button>
+    <button onclick="showPanel('taxonomy', this)">Taxonomy</button>
+    <button onclick="showPanel('matrix', this)">Fault matrix</button>
+    <button onclick="showPanel('scenario', this)">Scenario detail</button>
+    <button onclick="showPanel('table', this)">Full table</button>
+  </div>
+</section>
 
-  <section id="s8" class="panel card">
-    <h2>S8 final visibility closure</h2>
-    <img src="figures/fig_02_clean_s8_closure.svg">
-  </section>
+<section id="model" class="panel active card">
+  <div class="paper">
+    <h2>SACI Conceptual Model</h2>
 
-  <section id="critical" class="panel card">
-    <h2>Critical vs non-critical telemetry loss</h2>
-    <img src="figures/fig_03_clean_criticality_comparison.svg">
-  </section>
+    <div class="flow">
+      <div class="node blue">Assets<br>DC / endpoint / firewall</div>
+      <div class="node orange">Log sources<br>Security / Sysmon / PowerShell / authlog / firewall</div>
+      <div class="node green">Detection controls<br>expected visibility rules</div>
+      <div class="node red">Wazuh rules<br>observed alerts</div>
+    </div>
 
-  <section id="s7a" class="panel card">
-    <h2>S7A critical missing path</h2>
-    <img src="figures/fig_04_clean_s7a_missing_path.svg">
-  </section>
+    <div class="arrow-row">
+      <div>asset inventory</div>
+      <div>telemetry collection</div>
+      <div>control evidence</div>
+      <div>alert evidence</div>
+    </div>
 
-  <section id="taxonomy" class="panel card">
-    <h2>Scenario taxonomy</h2>
-    <img src="figures/fig_05_clean_scenario_taxonomy.svg">
-  </section>
+    <div class="flow">
+      <div class="node purple">MITRE ATT&CK<br>technique coverage</div>
+      <div class="node cyan">CTI / MISP<br>IOC closure</div>
+      <div class="node yellow">SACI metrics<br>LC / CAC / MDC / CTIC / TF</div>
+      <div class="node green big">SACI score<br>deterministic visibility score</div>
+    </div>
 
-  <section id="matrix" class="panel card">
-    <h2>Reviewer-oriented fault matrix</h2>
-    <img src="figures/fig_06_clean_fault_matrix.svg">
-  </section>
+    <div class="flow-3">
+      <div class="node gray">Graph relation state<br>observed / missing</div>
+      <div class="node cyan">Policy-guided explanation<br>explains outputs<br>does not calculate score</div>
+      <div class="node yellow">Human-readable report<br>scenario-level interpretation</div>
+    </div>
 
-  <section id="scenario" class="panel card">
-    <h2>Scenario detail</h2>
-    <p>
-      <select id="scenarioSelect" onchange="renderScenario()"></select>
-    </p>
-    <div id="scenarioDetail"></div>
-  </section>
+    <div class="note">
+      SACI does not decide whether an organization is secure. It measures whether expected visibility relationships are observable.
+    </div>
+  </div>
+</section>
 
-  <section id="table" class="panel card">
-    <h2>Full evaluation table</h2>
-    <table id="rowsTable">
-      <thead>
-        <tr>
-          <th>Stage</th><th>Name</th><th>Type</th><th>LC</th><th>CAC</th><th>MDC</th><th>CTIC</th><th>TF</th><th>SACI</th><th>Observed</th><th>Missing</th><th>Full graph</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </section>
+<section id="closure" class="panel card">
+  <div class="paper">
+    <h2>S8 Final Visibility Closure</h2>
+
+    <div class="flow">
+      <div class="node blue">A04 / WS01<br>Windows endpoint</div>
+      <div class="node orange">Security<br>Sysmon<br>PowerShell logs</div>
+      <div class="node green">Controls C023-C027<br>seen=1</div>
+      <div class="node red">Wazuh rules<br>110240-110244</div>
+    </div>
+
+    <div class="flow">
+      <div class="node red">Wazuh SIEM<br>alerts observed</div>
+      <div class="node purple">MITRE coverage<br>T1078 / T1087<br>T1071.004 / T1016</div>
+      <div class="node cyan">CTI closure<br>IOC evidence converted to alert</div>
+      <div class="node green big" id="closure-result">S8 final closure</div>
+    </div>
+
+    <div class="note">
+      This is a simplified evidence path. The full evidence graph remains available as an interactive supplementary artifact.
+    </div>
+  </div>
+</section>
+
+<section id="criticality" class="panel card">
+  <div class="paper">
+    <h2>Critical vs Non-critical Telemetry Loss</h2>
+
+    <div class="compare">
+      <div class="compare-card red">
+        <div class="node red big" id="crit-s7a">S7A</div>
+        <div class="node red" id="crit-impact-a" style="margin-top:12px">Impact A</div>
+      </div>
+
+      <div class="compare-card orange">
+        <div class="node orange big" id="crit-s7b">S7B</div>
+        <div class="node orange" id="crit-impact-b" style="margin-top:12px">Impact B</div>
+      </div>
+    </div>
+
+    <div class="bars">
+      <div class="bar-row">
+        <div>S7A drop</div>
+        <div class="bar-bg"><div id="bar-s7a" class="bar-red"></div></div>
+        <div id="drop-s7a">-</div>
+      </div>
+      <div class="bar-row">
+        <div>S7B drop</div>
+        <div class="bar-bg"><div id="bar-s7b" class="bar-orange"></div></div>
+        <div id="drop-s7b">-</div>
+      </div>
+    </div>
+
+    <div class="note">
+      Critical asset telemetry loss creates stronger score regression than non-critical endpoint telemetry loss.
+    </div>
+  </div>
+</section>
+
+<section id="missing" class="panel card">
+  <div class="paper">
+    <h2>S7A Critical DC01 Sysmon Loss</h2>
+
+    <div class="flow">
+      <div class="node blue">A01 / DC01<br>critical asset</div>
+      <div class="node red">Lost source<br>Sysmon telemetry<br>not observed</div>
+      <div class="node red">Affected controls<br>C001 / C002 / C003<br>C004 / C007 / C008</div>
+      <div class="node red big" id="missing-impact">Score impact</div>
+    </div>
+
+    <div class="flow-3">
+      <div class="node purple">MITRE coverage affected<br>T1071.004 / T1059.001<br>T1482 / T1087</div>
+      <div class="node yellow">Graph impact<br>missing visibility edges increase</div>
+      <div class="node cyan">Policy-guided explanation<br>natural-language reason<br>for score drop</div>
+    </div>
+
+    <div class="note warn">
+      This clean view abstracts the full graph and shows the causal path from missing critical telemetry to lower SACI score and higher missing-edge count.
+    </div>
+  </div>
+</section>
+
+<section id="taxonomy" class="panel card">
+  <div class="paper">
+    <h2>SACI Evaluation Scenario Taxonomy</h2>
+
+    <div class="flow-5">
+      <div class="node gray">Baseline<br>S0-S2<br>No / limited visibility</div>
+      <div class="node blue">Visibility progression<br>S3-S6<br>DC / endpoint / firewall / CTI</div>
+      <div class="node green big">Final closure<br>S8<br>SACI=100 / missing=0</div>
+      <div class="node red">Regression<br>S7A-S7B<br>critical vs non-critical</div>
+      <div class="node orange">Fault injection<br>S9-S16<br>telemetry / CTI / MITRE / rule / freshness</div>
+    </div>
+
+    <div class="flow-3">
+      <div class="node green">Recovery<br>S17<br>returns to closure</div>
+      <div class="node purple">Scope validation<br>S18<br>legacy control handling</div>
+      <div class="node cyan">Total scenarios<br><span id="tax-total">-</span></div>
+    </div>
+
+    <div class="note">
+      Since host count is limited, the evaluation is expanded through controlled scenario diversity.
+    </div>
+  </div>
+</section>
+
+<section id="matrix" class="panel card">
+  <div class="paper">
+    <h2>Reviewer-oriented Fault-injection Matrix</h2>
+    <div class="matrix" id="fault-matrix"></div>
+    <div class="note">
+      These scenarios address reviewer concerns about limited host count, CTI dependency, MITRE scope gaps, rule failures, freshness decay and recovery behavior.
+    </div>
+  </div>
+</section>
+
+<section id="scenario" class="panel card">
+  <h2>Scenario detail</h2>
+  <p><select id="scenarioSelect" onchange="renderScenario()"></select></p>
+  <div id="scenarioDetail" class="scenario-detail"></div>
+</section>
+
+<section id="table" class="panel card">
+  <h2>Full evaluation table</h2>
+  <table id="fullTable">
+    <thead>
+      <tr>
+        <th>Stage</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>LC</th>
+        <th>CAC</th>
+        <th>MDC</th>
+        <th>CTIC</th>
+        <th>TF</th>
+        <th>SACI</th>
+        <th>Observed</th>
+        <th>Missing</th>
+        <th>Graph</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</section>
+
 </main>
 
 <script>
 let rows = [];
-
-function dirFor(row) {
-  if (row.stage_id === "S7A") return "S7A_critical_dc01_sysmon_loss";
-  if (row.stage_id === "S7B") return "S7B_noncritical_ws01_sysmon_loss";
-  return `${row.stage_id}_${row.stage_name}`;
-}
 
 function showPanel(id, btn) {
   document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
@@ -204,60 +567,81 @@ function showPanel(id, btn) {
   btn.classList.add("active");
 }
 
-function renderScenario() {
-  const sid = document.getElementById("scenarioSelect").value;
-  const row = rows.find(r => r.stage_id === sid);
-  if (!row) return;
-
-  const dir = dirFor(row);
-  const detail = document.getElementById("scenarioDetail");
-  detail.innerHTML = `
-    <div class="grid">
-      <div class="metric"><div>SACI</div><div class="value">${row.SACI}</div></div>
-      <div class="metric"><div>Missing edges</div><div class="value">${row.missing_edges}</div></div>
-      <div class="metric"><div>Observed edges</div><div class="value">${row.observed_edges}</div></div>
-      <div class="metric"><div>Total edges</div><div class="value">${row.edges}</div></div>
-    </div>
-    <h3>${row.stage_id} - ${row.stage_name}</h3>
-    <p><b>Type:</b> ${row.scenario_type}</p>
-    <p><b>Description:</b> ${row.description || "-"}</p>
-    <p><b>Scores:</b> LC=${row.LC}, CAC=${row.CAC}, MDC=${row.MDC}, CTIC=${row.CTIC}, TF=${row.TF}</p>
-    <p>
-      <a href="../graph.html?stage=${encodeURIComponent(dir)}" target="_blank">Open full interactive graph</a>
-      |
-      <a href="../data/${dir}/saci_llm_explanation.md" target="_blank">Open LLM explanation</a>
-      |
-      <a href="../data/${dir}/saci_graph_summary.md" target="_blank">Open graph summary</a>
-    </p>
-    <pre>${JSON.stringify(row, null, 2)}</pre>
-  `;
+function dirFor(row) {
+  if (row.stage_id === "S7A") return "S7A_critical_dc01_sysmon_loss";
+  if (row.stage_id === "S7B") return "S7B_noncritical_ws01_sysmon_loss";
+  return `${row.stage_id}_${row.stage_name}`;
 }
 
-async function load() {
-  rows = await fetch("data/progression.json").then(r => r.json());
+function byId(id) {
+  return rows.find(r => r.stage_id === id) || {};
+}
 
-  document.getElementById("m-scenarios").textContent = rows.length;
+function num(v) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : 0;
+}
 
-  const s8 = rows.find(r => r.stage_id === "S8");
-  if (s8) {
-    document.getElementById("m-s8").textContent = s8.SACI;
-    document.getElementById("m-missing").textContent = s8.missing_edges;
-  }
+function setHtml(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = value;
+}
 
-  const select = document.getElementById("scenarioSelect");
-  rows.forEach(r => {
-    const opt = document.createElement("option");
-    opt.value = r.stage_id;
-    opt.textContent = `${r.stage_id} - ${r.stage_name}`;
-    select.appendChild(opt);
+function renderScenario() {
+  const sid = document.getElementById("scenarioSelect").value;
+  const row = byId(sid);
+  const dir = dirFor(row);
+
+  setHtml("scenarioDetail", `
+    <p><span class="badge">${row.stage_id}</span> <b>${row.stage_name}</b></p>
+    <div class="kpis">
+      <div class="kpi"><div class="label">SACI</div><div class="value">${row.SACI}</div></div>
+      <div class="kpi"><div class="label">Missing edges</div><div class="value">${row.missing_edges}</div></div>
+      <div class="kpi"><div class="label">Observed edges</div><div class="value">${row.observed_edges}</div></div>
+      <div class="kpi"><div class="label">Total edges</div><div class="value">${row.edges}</div></div>
+    </div>
+    <p><b>Type:</b> ${row.scenario_type}</p>
+    <p><b>Description:</b> ${row.description || "-"}</p>
+    <p><b>Components:</b> LC=${row.LC}, CAC=${row.CAC}, MDC=${row.MDC}, CTIC=${row.CTIC}, TF=${row.TF}</p>
+    <p>
+      <a href="../graph.html?stage=${encodeURIComponent(dir)}" target="_blank">Full interactive graph</a>
+      |
+      <a href="../data/${dir}/saci_llm_explanation.md" target="_blank">Policy-guided explanation</a>
+      |
+      <a href="../data/${dir}/saci_graph_summary.md" target="_blank">Graph summary</a>
+    </p>
+    <pre>${JSON.stringify(row, null, 2)}</pre>
+  `);
+}
+
+function renderMatrix() {
+  const ids = ["S9","S10","S11","S12","S13","S14","S15","S16","S17","S18"];
+  const matrix = document.getElementById("fault-matrix");
+  matrix.innerHTML = "";
+
+  ids.forEach(id => {
+    const r = byId(id);
+    const cls = id === "S17" || id === "S18"
+      ? "green"
+      : (id === "S12" || id === "S13"
+      ? "purple"
+      : (id === "S15" ? "yellow" : "orange"));
+
+    const div = document.createElement("div");
+    div.className = `node ${cls}`;
+    div.innerHTML = `<b>${id}</b><br>${r.stage_name || ""}<br>SACI=${r.SACI || "-"}<br>missing=${r.missing_edges || "-"}`;
+    matrix.appendChild(div);
   });
-  select.value = "S8";
-  renderScenario();
+}
 
-  const tbody = document.querySelector("#rowsTable tbody");
+function renderTable() {
+  const tbody = document.querySelector("#fullTable tbody");
+  tbody.innerHTML = "";
+
   rows.forEach(row => {
     const dir = dirFor(row);
     const tr = document.createElement("tr");
+
     tr.innerHTML = `
       <td>${row.stage_id}</td>
       <td>${row.stage_name}</td>
@@ -270,12 +654,61 @@ async function load() {
       <td><b>${row.SACI}</b></td>
       <td>${row.observed_edges}</td>
       <td>${row.missing_edges}</td>
-      <td><a href="../graph.html?stage=${encodeURIComponent(dir)}" target="_blank">full graph</a></td>
+      <td><a href="../graph.html?stage=${encodeURIComponent(dir)}" target="_blank">graph</a></td>
     `;
+
     tbody.appendChild(tr);
   });
 }
+
+async function load() {
+  rows = await fetch("data/progression.json").then(r => r.json());
+
+  const s8 = byId("S8");
+  const s7a = byId("S7A");
+  const s7b = byId("S7B");
+
+  setHtml("k-scenarios", rows.length);
+  setHtml("k-s8", s8.SACI || "-");
+  setHtml("k-missing", s8.missing_edges || "-");
+
+  setHtml("closure-result", `S8 final closure<br>SACI=${s8.SACI}<br>missing=${s8.missing_edges}`);
+
+  setHtml("crit-s7a", `S7A<br>Critical DC01 Sysmon loss<br>SACI=${s7a.SACI}<br>missing=${s7a.missing_edges}`);
+  setHtml("crit-impact-a", `Impact<br>critical telemetry loss<br>strong score regression`);
+
+  setHtml("crit-s7b", `S7B<br>Non-critical WS01 Sysmon loss<br>SACI=${s7b.SACI}<br>missing=${s7b.missing_edges}`);
+  setHtml("crit-impact-b", `Impact<br>non-critical telemetry loss<br>smaller score regression`);
+
+  const dropA = Math.max(0, 100 - num(s7a.SACI));
+  const dropB = Math.max(0, 100 - num(s7b.SACI));
+
+  document.getElementById("bar-s7a").style.width = `${Math.min(100, dropA * 3)}%`;
+  document.getElementById("bar-s7b").style.width = `${Math.min(100, dropB * 3)}%`;
+
+  setHtml("drop-s7a", dropA.toFixed(2));
+  setHtml("drop-s7b", dropB.toFixed(2));
+
+  setHtml("missing-impact", `Score impact<br>SACI=${s7a.SACI}<br>missing=${s7a.missing_edges}`);
+  setHtml("tax-total", rows.length);
+
+  const select = document.getElementById("scenarioSelect");
+  rows.forEach(r => {
+    const opt = document.createElement("option");
+    opt.value = r.stage_id;
+    opt.textContent = `${r.stage_id} - ${r.stage_name}`;
+    select.appendChild(opt);
+  });
+
+  select.value = "S8";
+
+  renderScenario();
+  renderMatrix();
+  renderTable();
+}
+
 load();
 </script>
+
 </body>
 </html>

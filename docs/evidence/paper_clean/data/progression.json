@@ -112,38 +112,6 @@
     "description": "MISP/CTI entegrasyonu yapıldı; IOC zinciri görünür hale geldi."
   },
   {
-    "stage_id": "S7A",
-    "stage_name": "critical_dc01_sysmon_loss",
-    "scenario_type": "controlled_visibility_regression",
-    "LC": "90.74",
-    "CAC": "64.0",
-    "MDC": "61.54",
-    "CTIC": "100.0",
-    "TF": "80.0",
-    "SACI": "78.53",
-    "nodes": "95",
-    "edges": "173",
-    "observed_edges": "116",
-    "missing_edges": "57",
-    "description": "Kritik A01/DC01 varlığından Sysmon log kaynağı kesildi."
-  },
-  {
-    "stage_id": "S7B",
-    "stage_name": "noncritical_ws01_sysmon_loss",
-    "scenario_type": "controlled_visibility_regression",
-    "LC": "95.06",
-    "CAC": "84.0",
-    "MDC": "100.0",
-    "CTIC": "100.0",
-    "TF": "80.0",
-    "SACI": "92.52",
-    "nodes": "95",
-    "edges": "173",
-    "observed_edges": "141",
-    "missing_edges": "32",
-    "description": "Daha düşük kritiklikteki A04/WS01 varlığından Sysmon log kaynağı kesildi."
-  },
-  {
     "stage_id": "S8",
     "stage_name": "final_closure",
     "scenario_type": "final_lab_measurement",
@@ -318,5 +286,37 @@
     "observed_edges": "173",
     "missing_edges": "0",
     "description": "Legacy controls C003 and C004 are explicitly marked out of active scoring scope to avoid double counting older mappings."
+  },
+  {
+    "stage_id": "S7A",
+    "stage_name": "critical_dc01_sysmon_loss",
+    "scenario_type": "controlled_visibility_regression",
+    "LC": "90.74",
+    "CAC": "64.0",
+    "MDC": "61.54",
+    "CTIC": "100.0",
+    "TF": "80.0",
+    "SACI": "78.53",
+    "nodes": "95",
+    "edges": "173",
+    "observed_edges": "116",
+    "missing_edges": "57",
+    "description": "Kritik A01/DC01 varlığından Sysmon log kaynağı kesildi."
+  },
+  {
+    "stage_id": "S7B",
+    "stage_name": "noncritical_ws01_sysmon_loss",
+    "scenario_type": "controlled_visibility_regression",
+    "LC": "95.06",
+    "CAC": "84.0",
+    "MDC": "100.0",
+    "CTIC": "100.0",
+    "TF": "80.0",
+    "SACI": "92.52",
+    "nodes": "95",
+    "edges": "173",
+    "observed_edges": "141",
+    "missing_edges": "32",
+    "description": "Daha düşük kritiklikteki A04/WS01 varlığından Sysmon log kaynağı kesildi."
   }
 ]
