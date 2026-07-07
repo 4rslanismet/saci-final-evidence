@@ -6,6 +6,8 @@ S3,dc_visibility,controlled_evaluation_scenario,37.04,40.0,69.23,0.0,80.0,42.96,
 S4,endpoint_visibility,controlled_evaluation_scenario,66.67,84.0,100.0,0.0,80.0,69.0,95,173,131,42,Windows ve Linux endpoint telemetrisi eklendi.
 S5,firewall_visibility,controlled_evaluation_scenario,85.19,84.0,100.0,0.0,80.0,74.56,95,173,133,40,Firewall/pfSense logları merkezi SIEM görünürlüğüne eklendi.
 S6,cti_integration,controlled_evaluation_scenario,100.0,84.0,100.0,100.0,80.0,94.0,95,173,143,30,MISP/CTI entegrasyonu yapıldı; IOC zinciri görünür hale geldi.
+S7A,critical_dc01_sysmon_loss,controlled_visibility_regression,90.74,64.0,61.54,100.0,80.0,78.53,95,173,116,57,Kritik A01/DC01 varlığından Sysmon log kaynağı kesildi.
+S7B,noncritical_ws01_sysmon_loss,controlled_visibility_regression,95.06,84.0,100.0,100.0,80.0,92.52,95,173,141,32,Daha düşük kritiklikteki A04/WS01 varlığından Sysmon log kaynağı kesildi.
 S8,final_closure,final_lab_measurement,100.0,100.0,100.0,100.0,100.0,100.0,95,173,173,0,Final kontrollü laboratuvar koşusunda tüm beklenen görünürlük ilişkileri kapandı.
 S9,critical_dc01_security_loss,fault_injection,90.74,97.0,100.0,100.0,100.0,96.47,95,173,166,7,Critical DC01 Security log source is removed to test critical authentication visibility loss.
 S10,endpoint_powershell_loss,fault_injection,95.06,92.27,92.31,100.0,100.0,95.05,95,173,161,12,Endpoint PowerShell telemetry is removed to test script execution visibility loss.
@@ -17,5 +19,3 @@ S15,freshness_decay,sensitivity_test,100.0,100.0,100.0,100.0,50.0,95.0,95,173,17
 S16,detection_rule_gap,control_failure,100.0,95.71,100.0,100.0,100.0,98.93,95,173,168,5,"Telemetry exists, but an expected detection rule/control does not produce observable alert evidence."
 S17,recovery_after_fix,recovery,100.0,100.0,100.0,100.0,100.0,100.0,95,173,173,0,Recovery scenario after missing telemetry/control relation is fixed; returns to final closure.
 S18,legacy_control_out_of_scope,scope_validation,100.0,100.0,100.0,100.0,100.0,100.0,95,173,173,0,Legacy controls C003 and C004 are explicitly marked out of active scoring scope to avoid double counting older mappings.
-S7A,critical_dc01_sysmon_loss,controlled_visibility_regression,90.74,64.0,61.54,100.0,80.0,78.53,95,173,116,57,Kritik A01/DC01 varlığından Sysmon log kaynağı kesildi.
-S7B,noncritical_ws01_sysmon_loss,controlled_visibility_regression,95.06,84.0,100.0,100.0,80.0,92.52,95,173,141,32,Daha düşük kritiklikteki A04/WS01 varlığından Sysmon log kaynağı kesildi.
