@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviewer-oriented Fault-injection Matrix</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../../assets/saci-i18n.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>SACI Paper Clean View</h1>
+    <p class="lead">Readable paper diagrams, scenario-level interactive output, and full graph links.</p>
+  </div>
+</header>
+<main>
+<nav class="nav"><a href="../../index.html">Evidence package index</a>
+<a href="../graph.html">Full interactive graph</a>
+<a href="../llm_report.html">Policy-guided explanation</a>
+<a href="index.html">Overview</a>
+<a href="model.html">Model</a>
+<a href="s8_closure.html">S8 closure</a>
+<a href="criticality.html">Criticality</a>
+<a href="s7a_missing.html">S7A missing</a>
+<a href="taxonomy.html">Taxonomy</a>
+<a class="active" href="fault_matrix.html">Fault matrix</a>
+<a href="scenario_detail.html">Scenario detail</a>
+<a href="full_table.html">Full table</a></nav>
+
+<section class="kpis">
+  <div class="kpi"><span>Fault scenarios</span><strong>S9-S18</strong><small>10 controlled tests</small></div>
+  <div class="kpi"><span>Lowest SACI</span><strong>92.50</strong><small>S12 / S13 CTI gap</small></div>
+  <div class="kpi"><span>Recovery</span><strong>100.00</strong><small>S17 after fix</small></div>
+  <div class="kpi"><span>Scope validation</span><strong>100.00</strong><small>S18 out-of-scope</small></div>
+</section>
+<section class="figure">
+  <h2>Reviewer-oriented Fault-injection Matrix</h2>
+  <p class="sub">Post-closure scenarios test isolated degradation after the S8 reference state.</p>
+  <div class="grid g3">
+    <div class="card beige"><h3>S9 Critical DC01 Security Loss</h3><p>Authentication/security log degradation.</p><div class="metric"><div><span>SACI</span><strong>96.47</strong></div><div><span>Missing edges</span><strong>7</strong></div></div></div>
+    <div class="card beige"><h3>S10 Endpoint PowerShell Loss</h3><p>Command and script telemetry degradation.</p><div class="metric"><div><span>SACI</span><strong>95.05</strong></div><div><span>Missing edges</span><strong>12</strong></div></div></div>
+    <div class="card beige"><h3>S11 Linux Authlog Loss</h3><p>Linux authentication visibility degradation.</p><div class="metric"><div><span>SACI</span><strong>95.91</strong></div><div><span>Missing edges</span><strong>7</strong></div></div></div>
+    <div class="card purple"><h3>S12 Firewall IOC Without CTI</h3><p>IOC evidence exists, CTI closure incomplete.</p><div class="metric"><div><span>SACI</span><strong>92.50</strong></div><div><span>Missing edges</span><strong>6</strong></div></div></div>
+    <div class="card purple"><h3>S13 MISP Lookup Without IOC Hit</h3><p>Lookup exists but no positive IOC match.</p><div class="metric"><div><span>SACI</span><strong>92.50</strong></div><div><span>Missing edges</span><strong>6</strong></div></div></div>
+    <div class="card yellow"><h3>S14 MITRE Scope Expansion Gap</h3><p>New expected MITRE relations create a gap.</p><div class="metric"><div><span>SACI</span><strong>97.54</strong></div><div><span>Missing edges</span><strong>5</strong></div></div></div>
+    <div class="card yellow"><h3>S15 Freshness Decay</h3><p>Relations closed, freshness reduced.</p><div class="metric"><div><span>SACI</span><strong>95.00</strong></div><div><span>Missing edges</span><strong>0</strong></div></div></div>
+    <div class="card beige"><h3>S16 Detection Rule Gap</h3><p>Expected detection rule not evidenced.</p><div class="metric"><div><span>SACI</span><strong>98.93</strong></div><div><span>Missing edges</span><strong>5</strong></div></div></div>
+    <div class="card green"><h3>S17 / S18</h3><p>Recovery and scope validation.</p><div class="metric"><div><span>S17</span><strong>100.00</strong></div><div><span>S18</span><strong>100.00</strong></div></div></div>
+  </div>
+</section>
+
+</main>
+
+<script defer src="../../assets/saci-i18n.js"></script>
+</body>
+</html>

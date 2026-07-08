@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scenario detail</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../../assets/saci-i18n.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>SACI Paper Clean View</h1>
+    <p class="lead">Readable paper diagrams, scenario-level interactive output, and full graph links.</p>
+  </div>
+</header>
+<main>
+<nav class="nav"><a href="../../index.html">Evidence package index</a>
+<a href="../graph.html">Full interactive graph</a>
+<a href="../llm_report.html">Policy-guided explanation</a>
+<a href="index.html">Overview</a>
+<a href="model.html">Model</a>
+<a href="s8_closure.html">S8 closure</a>
+<a href="criticality.html">Criticality</a>
+<a href="s7a_missing.html">S7A missing</a>
+<a href="taxonomy.html">Taxonomy</a>
+<a href="fault_matrix.html">Fault matrix</a>
+<a class="active" href="scenario_detail.html">Scenario detail</a>
+<a href="full_table.html">Full table</a></nav>
+
+<section class="figure">
+  <h2>Scenario detail</h2>
+  <p class="sub">Select a scenario to inspect its score, missing edges, observed edges and component values.</p>
+  <select id="scenarioSelect"></select>
+  <div id="scenarioCard" class="detail"></div>
+</section>
+
+</main>
+
+<script src="scenario-data.js"></script>
+<script>
+function renderSelect(){
+  const rows = window.SACI_SCENARIOS || [];
+  const sel = document.getElementById("scenarioSelect");
+  sel.innerHTML = rows.map(r => `<option value="${r.stage}">${r.stage} — ${r.name}</option>`).join("");
+  sel.value = localStorage.getItem("saci_selected_scenario_stage") || "S8";
+  sel.onchange = () => {
+    localStorage.setItem("saci_selected_scenario_stage", sel.value);
+    renderCard();
+  };
+  renderCard();
+}
+function renderCard(){
+  const rows = window.SACI_SCENARIOS || [];
+  const sel = document.getElementById("scenarioSelect");
+  const r = rows.find(x => x.stage === sel.value) || rows.find(x => x.stage === "S8") || rows[0];
+  if(!r) return;
+  document.getElementById("scenarioCard").innerHTML = `
+    <h3>${r.stage} — ${r.name}</h3>
+    <div class="metric">
+      <div><span>SACI</span><strong>${r.SACI}</strong></div>
+      <div><span>Missing edges</span><strong>${r.missing}</strong></div>
+      <div><span>Observed edges</span><strong>${r.observed}</strong></div>
+      <div><span>Graph</span><strong>${r.graph}</strong></div>
+    </div>
+    <p><b>Type:</b> ${r.type}</p>
+    <p><b>Description:</b> ${r.description}</p>
+    <p><b>Components:</b> LC=${r.LC}, CAC=${r.CAC}, MDC=${r.MDC}, CTIC=${r.CTIC}, TF=${r.TF}</p>
+    <p><a href="../graph.html">Full interactive graph</a> | <a href="../llm_report.html">Policy-guided explanation</a></p>
+    <details><summary>Raw scenario JSON</summary><pre>${JSON.stringify(r, null, 2)}</pre></details>
+  `;
+  if(window.SACI_I18N) window.SACI_I18N.apply();
+}
+renderSelect();
+</script>
+
+<script defer src="../../assets/saci-i18n.js"></script>
+</body>
+</html>

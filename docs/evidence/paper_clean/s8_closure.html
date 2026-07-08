@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SACI Paper Clean View</title>
+<title>S8 Final Visibility Closure</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="../../assets/saci-i18n.css">
 </head>
@@ -18,9 +18,9 @@
 <nav class="nav"><a href="../../index.html">Evidence package index</a>
 <a href="../graph.html">Full interactive graph</a>
 <a href="../llm_report.html">Policy-guided explanation</a>
-<a class="active" href="index.html">Overview</a>
+<a href="index.html">Overview</a>
 <a href="model.html">Model</a>
-<a href="s8_closure.html">S8 closure</a>
+<a class="active" href="s8_closure.html">S8 closure</a>
 <a href="criticality.html">Criticality</a>
 <a href="s7a_missing.html">S7A missing</a>
 <a href="taxonomy.html">Taxonomy</a>
@@ -36,19 +36,16 @@
 </section>
 
 <section class="figure">
-  <h2>Overview</h2>
-  <p class="sub">This section separates the paper-ready SACI figures into independent pages.</p>
+  <h2>S8 Final Visibility Closure</h2>
+  <p class="sub">S8 is the controlled reference state where all expected visibility relations are observed.</p>
+  <div class="flow"><span>asset</span><b>→</b><span>telemetry</span><b>→</b><span>alert evidence</span><b>→</b><span>closure</span></div>
   <div class="grid g4">
-    <a class="card blue" href="model.html"><h3>Model</h3><p>Conceptual model and scoring structure.</p></a>
-    <a class="card green" href="s8_closure.html"><h3>S8 closure</h3><p>Final visibility closure reference state.</p></a>
-    <a class="card purple" href="criticality.html"><h3>Criticality</h3><p>Critical vs non-critical telemetry loss.</p></a>
-    <a class="card red" href="s7a_missing.html"><h3>S7A missing</h3><p>Critical DC01 Sysmon loss path.</p></a>
-    <a class="card yellow" href="taxonomy.html"><h3>Taxonomy</h3><p>Scenario taxonomy and evaluation design.</p></a>
-    <a class="card beige" href="fault_matrix.html"><h3>Fault matrix</h3><p>Post-closure fault-injection matrix.</p></a>
-    <a class="card gray" href="scenario_detail.html"><h3>Scenario detail</h3><p>Interactive scenario-level output.</p></a>
-    <a class="card blue" href="full_table.html"><h3>Full table</h3><p>Complete S0-S18 evaluation table.</p></a>
+    <div class="card blue"><h3>A04 / WS01</h3><p>Windows endpoint with Security, Sysmon and PowerShell telemetry.</p></div>
+    <div class="card green"><h3>Controls C023-C027</h3><p>Expected Wazuh rule evidence is observed.</p></div>
+    <div class="card purple"><h3>MITRE + CTI</h3><p>Technique coverage and IOC closure are complete.</p></div>
+    <div class="card yellow"><h3>S8 result</h3><div class="metric"><div><span>SACI</span><strong>100.0</strong></div><div><span>Missing edges</span><strong>0</strong></div></div></div>
   </div>
-  <div class="note">SACI measures visibility closure within the defined scope; it does not claim that the organization is secure.</div>
+  <div class="note">S8 is used as the final visibility closure reference before post-closure fault-injection and recovery tests.</div>
 </section>
 
 </main>

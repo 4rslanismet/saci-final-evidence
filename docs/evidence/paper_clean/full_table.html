@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full evaluation table</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../../assets/saci-i18n.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>SACI Paper Clean View</h1>
+    <p class="lead">Readable paper diagrams, scenario-level interactive output, and full graph links.</p>
+  </div>
+</header>
+<main>
+<nav class="nav"><a href="../../index.html">Evidence package index</a>
+<a href="../graph.html">Full interactive graph</a>
+<a href="../llm_report.html">Policy-guided explanation</a>
+<a href="index.html">Overview</a>
+<a href="model.html">Model</a>
+<a href="s8_closure.html">S8 closure</a>
+<a href="criticality.html">Criticality</a>
+<a href="s7a_missing.html">S7A missing</a>
+<a href="taxonomy.html">Taxonomy</a>
+<a href="fault_matrix.html">Fault matrix</a>
+<a href="scenario_detail.html">Scenario detail</a>
+<a class="active" href="full_table.html">Full table</a></nav>
+
+<section class="figure">
+  <h2>Full evaluation table</h2>
+  <p class="sub">Complete S0-S18 evaluation table with SACI components, observed relations and missing relations.</p>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>Name</th><th>Type</th><th>LC</th><th>CAC</th><th>MDC</th><th>CTIC</th><th>TF</th><th>SACI</th><th>Observed</th><th>Missing</th><th>Graph</th></tr>
+      </thead>
+      <tbody id="scenarioRows"></tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<script src="scenario-data.js"></script>
+<script>
+const rows = window.SACI_SCENARIOS || [];
+document.getElementById("scenarioRows").innerHTML = rows.map(r => `
+  <tr>
+    <td>${r.stage}</td><td>${r.name}</td><td>${r.type}</td>
+    <td>${r.LC}</td><td>${r.CAC}</td><td>${r.MDC}</td><td>${r.CTIC}</td><td>${r.TF}</td>
+    <td><b>${r.SACI}</b></td><td>${r.observed}</td><td>${r.missing}</td><td>${r.graph}</td>
+  </tr>
+`).join("");
+if(window.SACI_I18N) window.SACI_I18N.apply();
+</script>
+
+<script defer src="../../assets/saci-i18n.js"></script>
+</body>
+</html>
