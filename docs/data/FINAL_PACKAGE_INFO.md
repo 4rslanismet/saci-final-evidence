@@ -17,7 +17,7 @@ Verified.
 - SACI_FINAL_EVIDENCE_VERIFIED/evidence_package/final_latest/VALIDATION.txt
 - SACI_FINAL_EVIDENCE_VERIFIED/evidence_package/final_latest/FINAL_AUDIT_RESULT.md
 - SACI_FINAL_EVIDENCE_VERIFIED/evidence_package/final_latest/web/llm_report.html
-- SACI_FINAL_EVIDENCE_VERIFIED/evidence_package/final_latest/web/paper_clean_v2/index.html
+- SACI_FINAL_EVIDENCE_VERIFIED/evidence_package/final_latest/web/paper_clean/index.html
 - SACI_FINAL_EVIDENCE_VERIFIED/evidence_package/final_latest/web/graph.html
 - SACI_FINAL_EVIDENCE_VERIFIED/outputs/saci_llm_report.html
 

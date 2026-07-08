@@ -22,7 +22,7 @@ Bu paket SACI çalışmasının makale yazımı ve kanıt doğrulama dosyaların
   - VALIDATION.txt
   - FINAL_AUDIT_RESULT.md
   - saci_llm_report.md
-  - paper_clean_v2/
+  - paper_clean/
 
 ## Final Evidence Package SHA256
 

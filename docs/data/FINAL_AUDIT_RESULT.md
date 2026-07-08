@@ -30,6 +30,6 @@ SACI=100 must be interpreted as expected visibility closure within the defined e
 
 - web/llm_report.html
 - web/llm_report.md
-- web/paper_clean_v2/index.html
+- web/paper_clean/index.html
 - web/graph.html
 - VALIDATION.txt
