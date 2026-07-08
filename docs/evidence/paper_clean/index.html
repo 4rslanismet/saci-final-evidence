@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>SACI Paper Clean View</title>
@@ -818,12 +818,69 @@ pre {
   }
 </style>
 
+
+
+
+<style id="saci-kpi-hard-reset">
+  .kpis{
+    display:grid !important;
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    gap:12px !important;
+  }
+
+  .kpi{
+    min-height:104px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    gap:6px !important;
+    overflow:hidden !important;
+  }
+
+  .kpi .kpi-label{
+    color:#93c5fd !important;
+    font-size:12px !important;
+    font-weight:700 !important;
+    line-height:1.2 !important;
+  }
+
+  .kpi .kpi-value{
+    color:#ffffff !important;
+    font-size:28px !important;
+    font-weight:900 !important;
+    line-height:1 !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  .kpi .kpi-context{
+    color:#bfdbfe !important;
+    font-size:11px !important;
+    line-height:1.25 !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  @media(max-width:900px){
+    .kpis{
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    }
+  }
+
+  @media(max-width:560px){
+    .kpis{
+      grid-template-columns:1fr !important;
+    }
+  }
+</style>
+
+
+
+<link rel="stylesheet" href="../../assets/saci-i18n.css">
 </head>
 
 <body>
 <header>
   <h1>SACI Paper Clean View</h1>
-  <p>Okunabilir makale diyagramları, senaryo bazlı interaktif çıktı ve tam graph bağlantıları.</p>
+  <p>Readable paper diagrams, scenario-level interactive output, and full graph links.</p>
 </header>
 
 <main>
@@ -831,7 +888,7 @@ pre {
 <section class="card nonprint">
   <div class="kpis">
     <div class="kpi">
-      <div class="label">Toplam senaryo</div>
+      <div class="label">Total scenarios</div>
       <div class="value" id="k-scenarios">-</div>
     </div>
     <div class="kpi">
@@ -839,11 +896,11 @@ pre {
       <div class="value" id="k-s8">-</div>
     </div>
     <div class="kpi">
-      <div class="label">S8 missing edge</div>
+      <div class="label">S8 missing edgess</div>
       <div class="value" id="k-missing">-</div>
     </div>
     <div class="kpi">
-      <div class="label">Açıklama katmanı</div>
+      <div class="label">Explanation layer</div>
       <div class="value" style="font-size:22px">Policy-guided</div>
     </div>
   </div>
@@ -1688,5 +1745,114 @@ load();
 })();
 </script>
 
+
+
+
+<script id="saci-kpi-hard-reset">
+(function(){
+  const rows = {
+    S7A: {name:"critical_dc01_sysmon_loss", type:"criticality", saci:"78.53", missing:"57", observed:"116", graph:"116/173"},
+    S7B: {name:"noncritical_ws01_sysmon_loss", type:"criticality", saci:"92.52", missing:"32", observed:"141", graph:"141/173"},
+    S8:  {name:"final_closure", type:"closure", saci:"100.0", missing:"0", observed:"173", graph:"173/173"},
+    S12: {name:"firewall_ioc_without_cti", type:"cti-gap", saci:"92.50", missing:"6", observed:"167", graph:"167/173"},
+    S13: {name:"misp_lookup_without_ioc_hit", type:"cti-gap", saci:"92.50", missing:"6", observed:"167", graph:"167/173"},
+    S15: {name:"freshness_decay", type:"freshness", saci:"95.00", missing:"0", observed:"173", graph:"173/173"},
+    S17: {name:"recovery_after_fix", type:"recovery", saci:"100.00", missing:"0", observed:"173", graph:"173/173"},
+    S18: {name:"legacy_control_out_of_scope", type:"scope-validation", saci:"100.00", missing:"0", observed:"173", graph:"173/173"}
+  };
+
+  function cards(){
+    const c = Array.from(document.querySelectorAll(".kpis .kpi"));
+    return c.length >= 4 ? c.slice(0,4) : Array.from(document.querySelectorAll(".kpi")).slice(0,4);
+  }
+
+  function write(card, label, value, context){
+    if(!card) return;
+    card.innerHTML = `
+      <div class="kpi-label">${label}</div>
+      <div class="kpi-value">${value}</div>
+      <div class="kpi-context">${context || ""}</div>
+    `;
+  }
+
+  function setSummary(){
+    const c = cards();
+    write(c[0], "Total scenarios", "20", "S0-S18");
+    write(c[1], "S8 SACI", "100.0", "final_closure");
+    write(c[2], "S8 missing edgess", "0", "173/173 closed");
+    write(c[3], "Explanation layer", "Policy-guided", "explains, does not calculate the score");
+  }
+
+  function setScenario(stage){
+    const r = rows[stage] || rows.S8;
+    const c = cards();
+    write(c[0], "Active scenario", stage, r.name);
+    write(c[1], stage + " SACI", r.saci, r.type);
+    write(c[2], stage + " missing edges", r.missing, "observed " + r.observed);
+    write(c[3], "Graph closure", r.graph, "observed/expected");
+  }
+
+  function setCriticality(){
+    const c = cards();
+    write(c[0], "Comparison", "S7A / S7B", "critical vs non-critical");
+    write(c[1], "S7A SACI", rows.S7A.saci, "missing " + rows.S7A.missing);
+    write(c[2], "S7B SACI", rows.S7B.saci, "missing " + rows.S7B.missing);
+    write(c[3], "Delta", "14.0", "critical asset impact");
+  }
+
+  function setFault(){
+    const c = cards();
+    write(c[0], "Fault scenarios", "S9-S18", "10 controlled tests");
+    write(c[1], "Lowest SACI", "92.50", "S12 / S13 CTI gap");
+    write(c[2], "Recovery", "100.00", "S17 after fix");
+    write(c[3], "Scope validation", "100.00", "S18 out-of-scope");
+  }
+
+  function activeTab(){
+    const active = document.querySelector(".tab.active, button.active, .nav .active");
+    return active ? active.textContent.trim().toLowerCase() : "";
+  }
+
+  function selectedScenario(){
+    const select = document.querySelector("select");
+    return select && select.value ? select.value : localStorage.getItem("saci_selected_scenario_stage") || "S8";
+  }
+
+  function update(){
+    const t = activeTab();
+
+    if(t.includes("criticality")){
+      setCriticality();
+    } else if(t.includes("s7a")){
+      setScenario("S7A");
+    } else if(t.includes("s8")){
+      setScenario("S8");
+    } else if(t.includes("fault")){
+      setFault();
+    } else if(t.includes("scenario")){
+      setScenario(selectedScenario());
+    } else {
+      setSummary();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", update);
+  document.addEventListener("click", () => {
+    setTimeout(update, 50);
+    setTimeout(update, 250);
+  });
+  document.addEventListener("change", () => {
+    setTimeout(update, 50);
+    setTimeout(update, 250);
+  });
+
+  setTimeout(update, 300);
+  setTimeout(update, 900);
+})();
+</script>
+
+
+
+<script defer src="../../assets/saci-i18n.js"></script>
 </body>
 </html>
