@@ -573,7 +573,7 @@ def main():
             tf_score=tf_score,
         ))
 
-    # 9) Overall SACI v2 with active-weight normalization
+    # 9) Overall SACI with active-weight normalization
     metrics_0_1 = {
         "CWLC": None if cwlc_score is None else cwlc_score / 100,
         "CAC": None if cac_score is None else cac_score / 100,
