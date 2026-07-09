@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SACI Lab Evidence</title>
+<link rel="stylesheet" href="../../assets/saci-i18n.css">
+<style>
+body{margin:0;background:#0f172a;color:#e5e7eb;font-family:Arial,Helvetica,sans-serif}
+header{background:#020617;border-bottom:1px solid #334155;padding:28px 18px}
+main,.wrap{max-width:1180px;margin:0 auto}
+main{padding:22px 16px 48px}
+h1{margin:0 0 8px;font-size:34px}
+p{line-height:1.55;color:#cbd5e1}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px;padding:14px;background:#111827;border:1px solid #334155;border-radius:16px}
+.nav a{color:#dbeafe;text-decoration:none;background:#1e293b;border:1px solid #334155;border-radius:999px;padding:10px 14px;font-weight:800}
+.card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:16px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.kpi strong{display:block;font-size:28px;color:#fff}
+.kpi span{display:block;color:#93c5fd;font-weight:800;font-size:12px}
+a{color:#93c5fd}
+code{background:#020617;border:1px solid #334155;border-radius:8px;padding:2px 6px}
+ul{line-height:1.8}
+@media(max-width:850px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>SACI Lab Evidence</h1>
+    <p>Versioned laboratory evidence for the SACI model.</p>
+  </div>
+</header>
+
+<main>
+<nav class="nav">
+  <a href="../../index.html">Evidence package index</a>
+  <a href="../../lab_topology.html">Lab topology</a>
+  <a href="../graph.html">Full interactive graph</a>
+  <a href="../llm_report.html">Policy-guided explanation</a>
+  <a href="../paper_clean/index.html">Paper clean view</a>
+</nav>
+
+<section class="grid">
+  <div class="card kpi">
+    <span>Final SACI v2</span>
+    <strong>100.0</strong>
+    <p>Corrected final lab closure score.</p>
+  </div>
+
+  <div class="card kpi">
+    <span>Graph closure</span>
+    <strong>171/171</strong>
+    <p>All expected in-scope graph relations observed.</p>
+  </div>
+
+  <div class="card kpi">
+    <span>Missing edges</span>
+    <strong>0</strong>
+    <p>No missing in-scope visibility relation.</p>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Versioned lab evidence</h2>
+  <ul>
+    <li><a href="final_v2/saci_graph_summary_v2.md">Final v2 closure evidence</a> — corrected SACI v2 result, 171/171 observed edges, 0 missing edges, SACI 100.0.</li>
+    <li><a href="old_version/index.html">Old Version / Legacy PoC</a> — earlier PoC outputs preserved for traceability only.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Final v2 files</h2>
+  <ul>
+    <li><a href="final_v2/saci_scores_v2.csv">saci_scores_v2.csv</a></li>
+    <li><a href="final_v2/ctic_coverage_v2.csv">ctic_coverage_v2.csv</a></li>
+    <li><a href="final_v2/reason_codes_v2.csv">reason_codes_v2.csv</a></li>
+    <li><a href="final_v2/saci_graph_summary_v2.md">saci_graph_summary_v2.md</a></li>
+    <li><a href="final_v2/saci_nodes_v2.csv">saci_nodes_v2.csv</a></li>
+    <li><a href="final_v2/saci_edges_v2.csv">saci_edges_v2.csv</a></li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Method note</h2>
+  <p>Disabled or out-of-scope controls are not counted as expected visibility relations in the final v2 closure graph. Therefore, the final v2 graph reports 171 expected edges, 171 observed edges and 0 missing edges.</p>
+</section>
+</main>
+
+<script defer src="../../assets/saci-i18n.js"></script>
+</body>
+</html>
