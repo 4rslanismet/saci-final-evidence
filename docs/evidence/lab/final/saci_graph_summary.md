@@ -1,4 +1,4 @@
-# SACI Graph Model Summary v2
+# SACI Graph Model Summary
 
 ## Graph Definition
 
