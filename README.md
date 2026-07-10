@@ -2,7 +2,7 @@
 
 **SACI (Security Attack Surface Coverage Index)** is an explainable, graph-based SIEM visibility scoring model designed to evaluate whether expected security visibility relationships are observed and closed within a declared SOC evaluation scope.
 
-This repository publishes the final supporting evidence package for the SACI v2 laboratory evaluation.
+This repository publishes the final supporting evidence package for the SACI final laboratory evaluation.
 
 ## Public Evidence Portal
 
@@ -12,9 +12,9 @@ https://4rslanismet.github.io/saci-final-evidence/
 
 SACI, bir kurumun tamamen güvenli olup olmadığını ölçen bir güvenlik garantisi modeli değildir. SACI, tanımlı değerlendirme kapsamı içinde beklenen görünürlük ilişkilerinin SIEM, CTI, MITRE ATT&CK ve kanıt grafı üzerinden gözlemlenip gözlemlenmediğini ölçen açıklanabilir bir görünürlük skorlama modelidir.
 
-Bu repository, SACI v2 final kanıt paketini yayınlar.
+Bu repository, SACI final kanıt paketini yayınlar.
 
-## Final v2 Evidence Summary
+## Final Evidence Summary
 
 | Metric | Meaning | Final Value |
 |---|---|---:|
@@ -36,7 +36,7 @@ Bu repository, SACI v2 final kanıt paketini yayınlar.
 
 ## Core Components
 
-SACI v2 evaluates visibility through the following layers:
+SACI evaluates visibility through the following layers:
 
 - Asset and expected log source coverage
 - Criticality-weighted log coverage
@@ -57,7 +57,7 @@ SACI v2 evaluates visibility through the following layers:
 - docs/evidence/explanation_report.html: Policy-guided explanation report
 - docs/data/VALIDATION.txt: Final validation note
 - docs/data/FINAL_AUDIT_RESULT.md: Final audit result
-- docs/data/v2/: Final SACI v2 CSV, JSON and graph data
+- docs/data/final/: Final SACI CSV, JSON and graph data
 - archive/saci_lab_old_version/: Legacy PoC files retained for traceability only
 
 ## Important Interpretation Note

@@ -1,35 +1,23 @@
 # SACI Final Audit Result
 
-## Validation Status
+## Summary
 
-- Scenario count: 20
-- Formula consistency: OK
-- Edge arithmetic consistency: OK
-- S8 final closure: OK
-- Policy-guided explanation report: OK
-- Old/invalid LLM terms: Not found
-- Final web artifacts: Available
+The final SACI evidence package verifies that the declared visibility relations in the controlled laboratory scope were fully observed and closed in the final closure scenario.
 
-## Key Results
+## Final Result
 
-- S8 final_closure: SACI=100.0, missing=0, observed=173/173
-- S7A critical_dc01_sysmon_loss: SACI=78.53, missing=57
-- S7B noncritical_ws01_sysmon_loss: SACI=92.52, missing=32
-- S14 mitre_scope_expansion_gap: SACI=97.54, missing=5, observed=173, edges=178
-- S15 freshness_decay: SACI=95.0, missing=0, TF=50.0
-- S17 recovery_after_fix: SACI=100.0, missing=0
-- S18 legacy_control_out_of_scope: SACI=100.0, missing=0
+| Item | Value |
+|---|---:|
+| Final closure scenario | S8 |
+| Final SACI score | 100.0 |
+| Final graph closure | 171/171 |
+| Missing relations | 0 |
+| Evidence status | Closed within declared scope |
 
 ## Interpretation
 
-The final SACI outputs are internally consistent. SACI scores match the defined formula, graph edge counts are arithmetically valid, and the final closure scenario has no missing visibility edges.
+This result does not mean that the environment is fully secure. It means that the expected telemetry, detection, CTI and graph relations defined in the SACI evaluation scope were successfully observed.
 
-SACI=100 must be interpreted as expected visibility closure within the defined evaluation scope, not as a general security guarantee.
+## Scope Note
 
-## Primary Artifacts
-
-- web/llm_report.html
-- web/llm_report.md
-- web/paper_clean/index.html
-- web/graph.html
-- VALIDATION.txt
+Legacy proof-of-concept files are retained only for traceability and should not be cited as final evidence.

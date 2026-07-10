@@ -471,11 +471,15 @@ td{
     word-break: break-word !important;
   }
 </style>
-
-<link rel="stylesheet" href="assets/saci-i18n.css">
+  <link rel="stylesheet" href="assets/saci-clean.css">
 </head>
 
 <body>
+  <div class="clean-topbar">
+    <a class="backlink" href="index.html">← Ana kanıt portalına dön</a>
+    <span class="topnote">SACI Final Evidence</span>
+  </div>
+
 
 <header>
   <div class="header-inner">
@@ -752,7 +756,6 @@ function setLang(lang){
 
 setLang(localStorage.getItem("saci_lang") || "tr");
 </script>
-
-<script defer src="assets/saci-i18n.js"></script>
+  <script defer src="assets/saci-clean.js"></script>
 </body>
 </html>

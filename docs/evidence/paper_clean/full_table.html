@@ -5,9 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Full evaluation table</title>
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="../../assets/saci-i18n.css">
+  <link rel="stylesheet" href="../../assets/saci-clean.css">
 </head>
 <body>
+  <div class="clean-topbar">
+    <a class="backlink" href="../../index.html">← Ana kanıt portalına dön</a>
+    <span class="topnote">SACI Final Evidence</span>
+  </div>
+
 <header>
   <div class="wrap">
     <h1>SACI Paper Clean View</h1>
@@ -55,7 +60,6 @@ document.getElementById("scenarioRows").innerHTML = rows.map(r => `
 `).join("");
 if(window.SACI_I18N) window.SACI_I18N.apply();
 </script>
-
-<script defer src="../../assets/saci-i18n.js"></script>
+  <script defer src="../../assets/saci-clean.js"></script>
 </body>
 </html>

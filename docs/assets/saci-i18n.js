@@ -116,6 +116,13 @@
       const nodes = [];
       while(walker.nextNode()) nodes.push(walker.currentNode);
       nodes.forEach(n => n.nodeValue = lang === "tr" ? toTurkish(n.nodeValue) : normalizeToEnglish(n.nodeValue));
+      
+      document.querySelectorAll("[data-tr][data-en]").forEach(el => {
+        if (el.children && el.children.length) return;
+        const value = el.getAttribute("data-" + lang);
+        if (value) el.textContent = value;
+      });
+
       document.querySelectorAll(".saci-global-lang-toggle button").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.saciLang === lang);
       });
