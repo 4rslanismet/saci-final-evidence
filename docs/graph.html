@@ -1,21 +1,128 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Etkileşimli Evidence Graph</title>
-  <link rel="stylesheet" href="assets/saci-clean.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACI Evidence | Graph</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/app.js"></script>
 </head>
 <body>
-  <div class="clean-topbar">
-    <a class="backlink" href="index.html">← Ana kanıt portalına dön</a>
-    <span class="topnote">SACI Final Evidence</span>
-  </div>
+    <div class="topbar">
+        <nav class="nav">
+            <a href="index.html" class="brand"><span class="brand-dot"></span>SACI Evidence Portal</a>
+            <div class="nav-right">
+                <div class="nav-links"><a href="index.html" ><span class="tr">Genel Bakış</span><span class="en">Overview</span></a><a href="architecture.html" ><span class="tr">Mimari</span><span class="en">Architecture</span></a><a href="data.html" ><span class="tr">Kanıt Verileri</span><span class="en">Evidence Data</span></a><a href="graph.html" class="active"><span class="tr">Etkileşimli Graf</span><span class="en">Interactive Graph</span></a></div>
+                <div class="lang-switch">
+                    <button data-lang="tr">TR</button>
+                    <button data-lang="en">EN</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="shell">
+        
+<h1><span class="tr">SACI Kanıt Grafı</span><span class="en">SACI Evidence Graph</span></h1>
+<p class="lead"><span class="tr">Tüm SIEM, CTI ve MITRE ilişkilerini doğrulayan fCOSE algoritmalı etkileşimli model. Yakınlaştırmak ve detay görmek için düğümlere tıklayın.</span><span class="en">Interactive model verifying all SIEM, CTI, and MITRE relationships using the fCOSE layout. Click nodes to explore details.</span></p>
 
-<main class="clean-shell">
-    <h1>Etkileşimli Evidence Graph</h1>
-    <p class="lead">Bu sayfa interaktif kanıt grafı için ayrılmıştır.</p>
-  </main>
-  <script defer src="assets/saci-clean.js"></script>
+<div class="arch-box" style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom: 20px;">
+    <span class="pill" style="background:#38bdf8; color:#000;">Asset (Hexagon)</span>
+    <span class="pill" style="background:#34d399; color:#000;">Log Source (Barrel)</span>
+    <span class="pill" style="background:#fbbf24; color:#000;">Control (Rectangle)</span>
+    <span class="pill" style="background:#c084fc; color:#000;">Wazuh Rule (Tag)</span>
+    <span class="pill" style="background:#f87171; color:#000;">MITRE (Diamond)</span>
+    <span class="pill" style="background:#2dd4bf; color:#000;">CTI Object (Triangle)</span>
+</div>
+
+<div class="controls">
+    <button id="fitBtn"><span class="tr">Ekrana Sığdır</span><span class="en">Fit to Screen</span></button>
+    <button id="resetBtn"><span class="tr">Sıfırla</span><span class="en">Reset</span></button>
+</div>
+
+<div id="cy"></div>
+
+<!-- Cytoscape kütüphaneleri -->
+<script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+<script src="https://unpkg.com/layout-base/layout-base.js"></script>
+<script src="https://unpkg.com/cose-base/cose-base.js"></script>
+<script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+
+<script>
+const typeConfig = {
+  asset:           { color: "#38bdf8", shape: "hexagon" },
+  log_source:      { color: "#34d399", shape: "barrel" },
+  control:         { color: "#fbbf24", shape: "round-rectangle" },
+  wazuh_rule:      { color: "#c084fc", shape: "tag" },
+  mitre_technique: { color: "#f87171", shape: "diamond" },
+  cti_object:      { color: "#2dd4bf", shape: "triangle" },
+  platform:        { color: "#818cf8", shape: "ellipse" },
+  metric:          { color: "#facc15", shape: "star" },
+  score:           { color: "#10b981", shape: "star" },
+  integration:     { color: "#a78bfa", shape: "vee" },
+  external:        { color: "#64748b", shape: "ellipse" }
+};
+
+fetch("data/final/saci_graph_v2.cyjs")
+  .then(r => r.ok ? r : fetch("data/v2/saci_graph_v2.cyjs"))
+  .then(r => r.json())
+  .then(data => {
+    const nodes = data.elements.nodes || [];
+    const edges = data.elements.edges || [];
+    
+    // Eksik linkleri doldur
+    const ids = new Set(nodes.map(n => n.data.id));
+    edges.forEach(edge => {
+      ["source","target"].forEach(k => {
+        const id = edge.data[k];
+        if (id && !ids.has(id)) { ids.add(id); nodes.push({data: {id, label: id, type: "external"}}); }
+      });
+    });
+    
+    const cy = cytoscape({
+      container: document.getElementById("cy"),
+      elements: [...nodes, ...edges],
+      wheelSensitivity: 0.15,
+      style: [
+        {
+          selector: "node",
+          style: {
+            "background-color": ele => (typeConfig[ele.data("type")] || typeConfig.external).color,
+            "shape": ele => (typeConfig[ele.data("type")] || typeConfig.external).shape,
+            "label": ele => ele.data("label") || ele.data("id"),
+            "color": "#f1f5f9",
+            "font-size": 11, "font-family": "'Inter', monospace", "font-weight": 700,
+            "text-outline-width": 3, "text-outline-color": "#020617",
+            "text-valign": "center", "text-halign": "center",
+            "width": 36, "height": 36
+          }
+        },
+        {
+          selector: "node[type='asset'], node[type='platform']",
+          style: { "width": 50, "height": 50, "font-size": 13 }
+        },
+        {
+          selector: "edge",
+          style: {
+            "width": 2,
+            "line-color": ele => Number(ele.data("observed")) === 1 ? "#334155" : "#ef4444",
+            "target-arrow-color": ele => Number(ele.data("observed")) === 1 ? "#334155" : "#ef4444",
+            "target-arrow-shape": "triangle", "curve-style": "bezier",
+            "label": ele => ele.data("relationship") || "",
+            "font-size": 9, "font-family": "'JetBrains Mono', monospace", "color": "#94a3b8",
+            "text-background-color": "#020617", "text-background-opacity": 0.8, "text-rotation": "autorotate"
+          }
+        },
+        { selector: ":selected", style: { "border-width": 4, "border-color": "#fff", "line-color": "#38bdf8", "target-arrow-color": "#38bdf8", "z-index": 9999 } }
+      ],
+      layout: { name: "fcose", quality: "proof", randomize: true, animate: true, animationDuration: 1000, fit: true, padding: 40, nodeSeparation: 120, idealEdgeLength: 100, edgeElasticity: 0.45 }
+    });
+
+    document.getElementById("fitBtn").onclick = () => cy.fit(null, 40);
+    document.getElementById("resetBtn").onclick = () => cy.layout({ name: "fcose", animate: true, animationDuration: 800 }).run();
+  })
+  .catch(err => document.getElementById("cy").innerHTML = "<p style='padding:20px; color:red'>Graph JSON yüklenemedi: " + err + "</p>");
+</script>
+
+    </div>
 </body>
 </html>

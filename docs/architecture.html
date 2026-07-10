@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACI Evidence | Architecture</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/app.js"></script>
+</head>
+<body>
+    <div class="topbar">
+        <nav class="nav">
+            <a href="index.html" class="brand"><span class="brand-dot"></span>SACI Evidence Portal</a>
+            <div class="nav-right">
+                <div class="nav-links"><a href="index.html" ><span class="tr">Genel Bakış</span><span class="en">Overview</span></a><a href="architecture.html" class="active"><span class="tr">Mimari</span><span class="en">Architecture</span></a><a href="data.html" ><span class="tr">Kanıt Verileri</span><span class="en">Evidence Data</span></a><a href="graph.html" ><span class="tr">Etkileşimli Graf</span><span class="en">Interactive Graph</span></a></div>
+                <div class="lang-switch">
+                    <button data-lang="tr">TR</button>
+                    <button data-lang="en">EN</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="shell">
+        
+<h1><span class="tr">Laboratuvar Mimari ve Veri Akışı</span><span class="en">Laboratory Architecture & Data Flow</span></h1>
+<p class="lead"><span class="tr">SACI değerlendirmesini besleyen kontrollü laboratuvarın yapısal topolojisi.</span><span class="en">The structural topology of the controlled laboratory feeding the SACI evaluation.</span></p>
+
+<div class="arch-container">
+    <!-- Endpoints -->
+    <div class="arch-column">
+        <h2 style="margin-top:0;">1. <span class="tr">Telemetri Kaynakları</span><span class="en">Telemetry Sources</span></h2>
+        <div class="arch-box">
+            <h3>DC01 (Domain Controller)</h3>
+            <p><span class="tr">Sysmon & Security Olayları (Kimlik, Keşif)</span><span class="en">Sysmon & Security Events (Identity, Discovery)</span></p>
+        </div>
+        <div class="arch-box">
+            <h3>WS01 (Windows Endpoint)</h3>
+            <p><span class="tr">PowerShell & Uç Nokta Telemetrisi</span><span class="en">PowerShell & Endpoint Telemetry</span></p>
+        </div>
+        <div class="arch-box">
+            <h3>uhost (Linux Server)</h3>
+            <p><span class="tr">Authlog, Syslog & Süreç Olayları</span><span class="en">Authlog, Syslog & Process Events</span></p>
+        </div>
+        <div class="arch-box">
+            <h3>FW01 (pfSense)</h3>
+            <p><span class="tr">Ağ Trafiği ve IOC Engellemeleri</span><span class="en">Network Traffic and IOC Blocks</span></p>
+        </div>
+    </div>
+    
+    <!-- SIEM & CTI -->
+    <div class="arch-column">
+        <h2 style="margin-top:0;">2. <span class="tr">Merkezi Yönetim</span><span class="en">Central Management</span></h2>
+        <div class="arch-box" style="border-color: var(--accent-green);">
+            <h3>Wazuh SIEM</h3>
+            <p><span class="tr">Ajan yönetimi, log ayrıştırma (decoding), kural eşleştirme ve alarm üretimi.</span><span class="en">Agent management, log decoding, rule matching, and alert generation.</span></p>
+        </div>
+        <div class="arch-box" style="border-color: var(--accent-green);">
+            <h3>MISP Platform</h3>
+            <p><span class="tr">Tehdit istihbaratı nesneleri (IOC, Kampanya, Aktör) barındırma.</span><span class="en">Hosting Threat Intelligence objects (IOCs, Campaigns, Actors).</span></p>
+        </div>
+        <div class="arch-box">
+            <h3>Custom Integration</h3>
+            <p><span class="tr">Wazuh alarmlarını MISP API ile zenginleştirme köprüsü.</span><span class="en">Bridge enriching Wazuh alerts via MISP API.</span></p>
+        </div>
+    </div>
+
+    <!-- Evaluation Engine -->
+    <div class="arch-column">
+        <h2 style="margin-top:0;">3. <span class="tr">SACI Değerlendirme</span><span class="en">SACI Evaluation</span></h2>
+        <div class="arch-box" style="border-color: var(--accent-blue); background: rgba(56, 189, 248, 0.1);">
+            <h3>SACI Graph Engine</h3>
+            <p><span class="tr">Python & NetworkX tabanlı motor. Logları, alarmları ve CTI eşleşmelerini yönlü graf modeline çevirir.</span><span class="en">Python & NetworkX engine. Converts logs, alerts, and CTI hits into a directed graph model.</span></p>
+        </div>
+        <div class="arch-box" style="border-color: var(--accent-blue);">
+            <h3>Score Calculator</h3>
+            <p>CWLC (0.30), CAC (0.25), MDC (0.20), CTIC (0.15), TF (0.10)</p>
+        </div>
+    </div>
+</div>
+
+    </div>
+</body>
+</html>

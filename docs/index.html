@@ -1,90 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SACI Final Evidence Portalı</title>
-  <meta name="description" content="SACI final supporting evidence portal for SIEM visibility scoring, MITRE ATT&CK coverage and CTI enrichment.">
-  <link rel="stylesheet" href="assets/saci-clean.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACI Evidence | Overview</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/app.js"></script>
 </head>
 <body>
-  <main class="clean-shell">
-    <section class="clean-hero">
-      <div class="clean-nav">
-        <span class="badge" data-tr="SACI final evidence paketi" data-en="SACI final evidence package">SACI final evidence paketi</span>
-        <div class="clean-lang" aria-label="Language switch">
-          <button type="button" data-lang-switch="tr">TR</button>
-          <button type="button" data-lang-switch="en">EN</button>
-        </div>
-      </div>
+    <div class="topbar">
+        <nav class="nav">
+            <a href="index.html" class="brand"><span class="brand-dot"></span>SACI Evidence Portal</a>
+            <div class="nav-right">
+                <div class="nav-links"><a href="index.html" class="active"><span class="tr">Genel Bakış</span><span class="en">Overview</span></a><a href="architecture.html" ><span class="tr">Mimari</span><span class="en">Architecture</span></a><a href="data.html" ><span class="tr">Kanıt Verileri</span><span class="en">Evidence Data</span></a><a href="graph.html" ><span class="tr">Etkileşimli Graf</span><span class="en">Interactive Graph</span></a></div>
+                <div class="lang-switch">
+                    <button data-lang="tr">TR</button>
+                    <button data-lang="en">EN</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="shell">
+        
+<h1><span class="tr">Açıklanabilir Graf Tabanlı SOC Görünürlük Modeli</span><span class="en">Explainable Graph-Based SOC Visibility Model</span></h1>
+<p class="lead">
+<span class="tr">SACI (Security Attack Surface Coverage Index), kurumların güvenlik operasyon merkezi (SOC) görünürlüğünü; varlık telemetrisi, algılama kuralları, MITRE ATT&CK eşleşmeleri ve CTI kapanışları üzerinden deterministik bir graf modeliyle ölçen metodolojidir. Bu portal, son değerlendirmenin kanıt verilerini sunar.</span><span class="en">SACI (Security Attack Surface Coverage Index) is a methodology that measures SOC visibility through a deterministic graph model evaluating asset telemetry, detection rules, MITRE ATT&CK mappings, and CTI closures. This portal presents the supplementary evidence data for the final evaluation.</span>
+</p>
 
-      <h1 data-tr="SACI Final Evidence Portalı" data-en="SACI Final Evidence Portal">SACI Final Evidence Portalı</h1>
+<h2><span class="tr">Final Kapanış Sonuçları (S8)</span><span class="en">Final Closure Results (S8)</span></h2>
+<div class="grid-stats">
+    <div class="stat-card">
+        <div class="stat-value">100.0</div>
+        <div class="stat-label"><span class="tr">SACI Skoru</span><span class="en">SACI Score</span></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">97</div>
+        <div class="stat-label"><span class="tr">Graf Düğümü</span><span class="en">Graph Nodes</span></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">171</div>
+        <div class="stat-label"><span class="tr">Gözlemlenen İlişki</span><span class="en">Observed Edges</span></div>
+    </div>
+    <div class="stat-card" style="border-color: var(--accent-green);">
+        <div class="stat-value" style="color: #fff;">0</div>
+        <div class="stat-label"><span class="tr">Eksik İlişki</span><span class="en">Missing Edges</span></div>
+    </div>
+</div>
 
-      <p class="lead"
-         data-tr="Bu sayfa, SIEM telemetrisi, CTI entegrasyonu ve MITRE ATT&CK kapsamını değerlendirmek için geliştirilen açıklanabilir graf tabanlı SACI görünürlük skorlama modelinin final destekleyici kanıt paketini yayınlar."
-         data-en="This page publishes the final supporting evidence package for the explainable graph-based SACI visibility scoring model developed to evaluate SIEM telemetry, CTI integration and MITRE ATT&CK coverage.">
-         Bu sayfa, SIEM telemetrisi, CTI entegrasyonu ve MITRE ATT&CK kapsamını değerlendirmek için geliştirilen açıklanabilir graf tabanlı SACI görünürlük skorlama modelinin final destekleyici kanıt paketini yayınlar.
-      </p>
-    </section>
+<div class="arch-box" style="margin-top: 40px; border-color: var(--accent-blue);">
+    <h3><span class="tr">Akademik Yorum Notu</span><span class="en">Academic Interpretation Note</span></h3>
+    <p><span class="tr">SACI = 100 değeri kurumun <b>tamamen güvenli olduğunu göstermez</b>. Bu skor, tanımlanan değerlendirme kapsamı (scope) içerisindeki beklenen tüm telemetri, kontrol, CTI ve MITRE ilişkilerinin kanıt grafı üzerinde yapısal olarak gözlemlendiğini (kapanış sağlandığını) garanti eder.</span><span class="en">A SACI score of 100 <b>does not imply total environment security</b>. Rather, it guarantees that all expected telemetry, control, CTI, and MITRE relationships defined within the explicit evaluation scope have been structurally observed (closed) within the evidence graph.</span></p>
+</div>
 
-    <section class="stats">
-      <div class="stat">
-        <strong>100.0</strong>
-        <span data-tr="Final SACI skoru" data-en="Final SACI score">Final SACI skoru</span>
-      </div>
-      <div class="stat">
-        <strong>171/171</strong>
-        <span data-tr="Observed final graph relations" data-en="Observed final graph relations">Observed final graph relations</span>
-      </div>
-      <div class="stat">
-        <strong>0</strong>
-        <span data-tr="Missing edge" data-en="Missing edges">Missing edge</span>
-      </div>
-      <div class="stat">
-        <strong>S8</strong>
-        <span data-tr="Final closure senaryosu" data-en="Final closure scenario">Final closure senaryosu</span>
-      </div>
-    </section>
-
-    <section class="grid">
-      
-      <a class="card" href="lab_topology.html">
-        <h3 data-tr="Kontrollü Lab Mimarisi" data-en="Controlled Lab Architecture">Kontrollü Lab Mimarisi</h3>
-        <p data-tr="Wazuh tabanlı kontrollü SACI değerlendirme ortamının anonimleştirilmiş mantıksal mimarisi." data-en="An anonymized logical architecture of the Wazuh-based controlled SACI evaluation environment.">Wazuh tabanlı kontrollü SACI değerlendirme ortamının anonimleştirilmiş mantıksal mimarisi.</p>
-      </a>
-      <a class="card" href="graph.html">
-        <h3 data-tr="Etkileşimli Kanıt Grafı" data-en="Interactive Evidence Graph">Etkileşimli Kanıt Grafı</h3>
-        <p data-tr="Observed ve eksik visibility ilişkilerini gösteren tam kanıt grafı." data-en="The full evidence graph showing observed and missing visibility relations.">Observed ve eksik visibility ilişkilerini gösteren tam kanıt grafı.</p>
-      </a>
-      <a class="card" href="evidence/paper_clean/index.html">
-        <h3 data-tr="Makale Görsel Görünümü" data-en="Paper Visual View">Makale Görsel Görünümü</h3>
-        <p data-tr="Akademik sunum için hazırlanmış makale uyumlu figürler ve senaryo görselleri." data-en="Paper-oriented figures and scenario visuals prepared for academic presentation.">Akademik sunum için hazırlanmış makale uyumlu figürler ve senaryo görselleri.</p>
-      </a>
-      <a class="card" href="evidence/description_report.html">
-        <h3 data-tr="Açıklama Raporu" data-en="Explanation Report">Açıklama Raporu</h3>
-        <p data-tr="Deterministik SACI çıktılarının politika yönlendirmeli doğal dil açıklaması." data-en="A policy-guided natural language explanation of deterministic SACI outputs.">Deterministik SACI çıktılarının politika yönlendirmeli doğal dil açıklaması.</p>
-      </a>
-      <a class="card" href="evidence/lab/index.html">
-        <h3 data-tr="Final Lab Evidence" data-en="Final Lab Evidence">Final Lab Evidence</h3>
-        <p data-tr="SACI 100.0, 171/171 observed graph relations ve 0 missing edge ile final kapanış kanıt paketi." data-en="Final closure evidence package with SACI 100.0, 171/171 observed graph relations and 0 missing edges.">SACI 100.0, 171/171 observed graph relations ve 0 missing edge ile final kapanış kanıt paketi.</p>
-      </a>
-      <a class="card" href="data/VALIDATION.txt">
-        <h3 data-tr="Doğrulama Dosyası" data-en="Validation File">Doğrulama Dosyası</h3>
-        <p data-tr="Final skorun nasıl yorumlanacağını açıklayan doğrulama notu." data-en="Validation note explaining how the final score should be interpreted.">Final skorun nasıl yorumlanacağını açıklayan doğrulama notu.</p>
-      </a>
-      <a class="card" href="data/FINAL_AUDIT_RESULT.md">
-        <h3 data-tr="Final Audit Result" data-en="Final Audit Result">Final Audit Result</h3>
-        <p data-tr="Final evidence paketinin kısa denetim sonucu ve kapsam notu." data-en="Short audit result and scope note for the final evidence package.">Final evidence paketinin kısa denetim sonucu ve kapsam notu.</p>
-      </a>
-    </section>
-
-    <section class="note"
-      data-tr="<strong>Yorum notu:</strong> SACI=100 ortamın tamamen güvenli olduğunu değil, beyan edilen değerlendirme kapsamındaki beklenen visibility ilişkilerinin gözlendiğini ve kapandığını ifade eder."
-      data-en="<strong>Interpretation note:</strong> SACI=100 does not mean that the environment is fully secure. It means that the expected visibility relations within the declared evaluation scope were observed and closed.">
-      <strong>Yorum notu:</strong> SACI=100 ortamın tamamen güvenli olduğunu değil, beyan edilen değerlendirme kapsamındaki beklenen visibility ilişkilerinin gözlendiğini ve kapandığını ifade eder.
-    </section>
-  </main>
-
-  <script defer src="assets/saci-clean.js"></script>
+    </div>
 </body>
 </html>

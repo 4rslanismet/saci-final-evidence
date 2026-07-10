@@ -1,1 +1,0 @@
-Legacy controls C003 and C004 are retained for traceability but excluded from active scoring scope in this scenario. This prevents double counting of older mappings while preserving graph auditability.

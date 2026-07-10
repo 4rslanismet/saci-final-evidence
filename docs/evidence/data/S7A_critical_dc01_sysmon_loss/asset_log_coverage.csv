@@ -1,7 +1,0 @@
-asset_id,hostname,expected_sources,received_sources,coverage_percent,criticality
-A01,DC01,Security;Sysmon,Security,50.0,5.0
-A02,WSIEM,ossec;misp_enrichment,misp_enrichment;ossec,100.0,5.0
-A03,CTI01,misp_api,misp_api,100.0,4.0
-A07,FW01-PFSENSE,pfsense_syslog,pfsense_syslog,100.0,5.0
-A04,WS01,Security;Sysmon;PowerShell,PowerShell;Security;Sysmon,100.0,4.0
-A05,uhost,authlog;syslog;process,authlog;process;syslog,100.0,4.0
