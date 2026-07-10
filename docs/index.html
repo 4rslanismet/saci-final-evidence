@@ -10,9 +10,9 @@
 <body>
     <div class="topbar">
         <nav class="nav">
-            <a href="index.html" class="brand"><span class="brand-dot"></span>SACI Evidence Portal</a>
+            <a href="index.html" class="brand"><span class="brand-dot"></span>SACI Portal</a>
             <div class="nav-right">
-                <div class="nav-links"><a href="index.html" class="active"><span class="tr">Genel Bakış</span><span class="en">Overview</span></a><a href="architecture.html" ><span class="tr">Mimari</span><span class="en">Architecture</span></a><a href="data.html" ><span class="tr">Kanıt Verileri</span><span class="en">Evidence Data</span></a><a href="graph.html" ><span class="tr">Etkileşimli Graf</span><span class="en">Interactive Graph</span></a></div>
+                <div class="nav-links"><a href="index.html" class="active"><span class="tr">Genel Bakış</span><span class="en">Overview</span></a><a href="architecture.html" ><span class="tr">Mimari & Kurulum</span><span class="en">Architecture & Config</span></a><a href="data.html" ><span class="tr">Kanıt Verileri</span><span class="en">Evidence Data</span></a><a href="graph.html" ><span class="tr">Etkileşimli Graf</span><span class="en">Interactive Graph</span></a><a href="scenarios.html" ><span class="tr">Senaryolar & Değerlendirme</span><span class="en">Scenarios & LLM</span></a></div>
                 <div class="lang-switch">
                     <button data-lang="tr">TR</button>
                     <button data-lang="en">EN</button>
@@ -24,7 +24,7 @@
         
 <h1><span class="tr">Açıklanabilir Graf Tabanlı SOC Görünürlük Modeli</span><span class="en">Explainable Graph-Based SOC Visibility Model</span></h1>
 <p class="lead">
-<span class="tr">SACI (Security Attack Surface Coverage Index), kurumların güvenlik operasyon merkezi (SOC) görünürlüğünü; varlık telemetrisi, algılama kuralları, MITRE ATT&CK eşleşmeleri ve CTI kapanışları üzerinden deterministik bir graf modeliyle ölçen metodolojidir. Bu portal, son değerlendirmenin kanıt verilerini sunar.</span><span class="en">SACI (Security Attack Surface Coverage Index) is a methodology that measures SOC visibility through a deterministic graph model evaluating asset telemetry, detection rules, MITRE ATT&CK mappings, and CTI closures. This portal presents the supplementary evidence data for the final evaluation.</span>
+<span class="tr">SACI (Security Attack Surface Coverage Index), kurumların güvenlik operasyon merkezi görünürlüğünü deterministik bir graf modeliyle ölçen bir metodolojidir. Eski Legacy PoC dosyaları tamamen kaldırılmış olup, bu portal son v2 değerlendirmesinin kanıtlarını sunar.</span><span class="en">SACI (Security Attack Surface Coverage Index) is a methodology that measures SOC visibility through a deterministic graph model. Legacy PoC files have been entirely removed, and this portal presents the explicit v2 evaluation evidence.</span>
 </p>
 
 <h2><span class="tr">Final Kapanış Sonuçları (S8)</span><span class="en">Final Closure Results (S8)</span></h2>
@@ -42,14 +42,9 @@
         <div class="stat-label"><span class="tr">Gözlemlenen İlişki</span><span class="en">Observed Edges</span></div>
     </div>
     <div class="stat-card" style="border-color: var(--accent-green);">
-        <div class="stat-value" style="color: #fff;">0</div>
+        <div class="stat-value" style="color: var(--text-main);">0</div>
         <div class="stat-label"><span class="tr">Eksik İlişki</span><span class="en">Missing Edges</span></div>
     </div>
-</div>
-
-<div class="arch-box" style="margin-top: 40px; border-color: var(--accent-blue);">
-    <h3><span class="tr">Akademik Yorum Notu</span><span class="en">Academic Interpretation Note</span></h3>
-    <p><span class="tr">SACI = 100 değeri kurumun <b>tamamen güvenli olduğunu göstermez</b>. Bu skor, tanımlanan değerlendirme kapsamı (scope) içerisindeki beklenen tüm telemetri, kontrol, CTI ve MITRE ilişkilerinin kanıt grafı üzerinde yapısal olarak gözlemlendiğini (kapanış sağlandığını) garanti eder.</span><span class="en">A SACI score of 100 <b>does not imply total environment security</b>. Rather, it guarantees that all expected telemetry, control, CTI, and MITRE relationships defined within the explicit evaluation scope have been structurally observed (closed) within the evidence graph.</span></p>
 </div>
 
     </div>

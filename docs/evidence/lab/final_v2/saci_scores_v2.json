@@ -1,0 +1,44 @@
+[
+  {
+    "metric": "CWLC",
+    "name": "Criticality-Weighted Log Coverage",
+    "weight": 0.3,
+    "score": 100.0,
+    "applicable": 1
+  },
+  {
+    "metric": "CAC",
+    "name": "Control / Alert Coverage",
+    "weight": 0.25,
+    "score": 100.0,
+    "applicable": 1
+  },
+  {
+    "metric": "MDC",
+    "name": "MITRE Detection Coverage",
+    "weight": 0.2,
+    "score": 100.0,
+    "applicable": 1
+  },
+  {
+    "metric": "CTIC",
+    "name": "CTI Integration Coverage",
+    "weight": 0.15,
+    "score": 100.0,
+    "applicable": 1
+  },
+  {
+    "metric": "TF",
+    "name": "Timeliness / Freshness",
+    "weight": 0.1,
+    "score": 100,
+    "applicable": 1
+  },
+  {
+    "metric": "SACI",
+    "name": "Overall SACI Visibility Score",
+    "weight": 1.0,
+    "score": 100.0,
+    "applicable": 1
+  }
+]
