@@ -43,13 +43,6 @@ finalize_*.py
 README_INTEGRITY_*PHASE*.txt
 
 # Local release work
-backups/
-archive/
-*.zip
-apply_*.py
-repair_*.py
-finalize_*.py
-README_INTEGRITY_*PHASE*.txt
 
 # SACI_LOCAL_RELEASE_WORK_START
 
@@ -90,3 +83,9 @@ README_INTEGRITY_*PHASE*.txt
 /docs/evidence/lab/final/
 
 # SACI_LOCAL_RELEASE_WORK_END
+
+# Local SACI maintenance artifacts
+/.cleanup-backup/
+/README_*.txt
+/README.txt
+/README_APPLY.txt

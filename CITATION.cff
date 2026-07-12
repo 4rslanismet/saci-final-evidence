@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this research artifact, please cite it using the metadata below."
+title: "SACI Final Evidence Package"
+type: software
+authors:
+  - family-names: "Arslan"
+    given-names: "İsmet"
+repository-code: "https://github.com/4rslanismet/saci-final-evidence"
+url: "https://4rslanismet.github.io/saci-final-evidence/"
+version: "v1.0.0-integrity-valid"
+date-released: "2026-07-12"
+abstract: >-
+  A scope-bounded, graph-supported SIEM-CTI evidence coverage
+  measurement and integrity-validation research artifact.
+keywords:
+  - cybersecurity
+  - SIEM
+  - Wazuh
+  - MISP
+  - MITRE ATT&CK
+  - threat intelligence
+  - provenance graph
+  - research artifact
