@@ -1,0 +1,118 @@
+{
+  "fault_matrix": [
+    {
+      "case": "baseline",
+      "expected_status": "VALID",
+      "observed_status": "VALID",
+      "pass": 1,
+      "finding_codes": ""
+    },
+    {
+      "case": "undeclared_endpoint",
+      "expected_status": "INVALID",
+      "observed_status": "INVALID",
+      "pass": 1,
+      "finding_codes": "undeclared_endpoint"
+    },
+    {
+      "case": "duplicate_node_id",
+      "expected_status": "INVALID",
+      "observed_status": "INVALID",
+      "pass": 1,
+      "finding_codes": "duplicate_node_id"
+    },
+    {
+      "case": "conflicting_mapping",
+      "expected_status": "INVALID",
+      "observed_status": "INVALID",
+      "pass": 1,
+      "finding_codes": "conflicting_direct_mapping"
+    },
+    {
+      "case": "representation_mismatch",
+      "expected_status": "INVALID",
+      "observed_status": "INVALID",
+      "pass": 1,
+      "finding_codes": "csv_cyjs_mismatch"
+    },
+    {
+      "case": "missing_required_field",
+      "expected_status": "INVALID",
+      "observed_status": "INVALID",
+      "pass": 1,
+      "finding_codes": "missing_required_edge_field"
+    },
+    {
+      "case": "parallel_identity_collision",
+      "expected_status": "INVALID",
+      "observed_status": "INVALID",
+      "pass": 1,
+      "finding_codes": "parallel_edge_identity"
+    },
+    {
+      "case": "undocumented_isolated_node",
+      "expected_status": "VALID_WITH_WARNINGS",
+      "observed_status": "VALID_WITH_WARNINGS",
+      "pass": 1,
+      "finding_codes": "undocumented_isolated_node"
+    },
+    {
+      "case": "documented_isolated_node",
+      "expected_status": "VALID",
+      "observed_status": "VALID",
+      "pass": 1,
+      "finding_codes": ""
+    }
+  ],
+  "scalability": [
+    {
+      "multiplier": 1,
+      "nodes": 99,
+      "edge_rows": 171,
+      "unique_triples": 165,
+      "status": "VALID",
+      "median_time_ms": 0.778,
+      "min_time_ms": 0.699,
+      "max_time_ms": 0.93,
+      "median_peak_mib": 0.035,
+      "repeats": 7
+    },
+    {
+      "multiplier": 10,
+      "nodes": 990,
+      "edge_rows": 1710,
+      "unique_triples": 1650,
+      "status": "VALID",
+      "median_time_ms": 5.763,
+      "min_time_ms": 5.644,
+      "max_time_ms": 9.372,
+      "median_peak_mib": 0.308,
+      "repeats": 7
+    },
+    {
+      "multiplier": 100,
+      "nodes": 9900,
+      "edge_rows": 17100,
+      "unique_triples": 16500,
+      "status": "VALID",
+      "median_time_ms": 67.691,
+      "min_time_ms": 66.732,
+      "max_time_ms": 92.224,
+      "median_peak_mib": 4.27,
+      "repeats": 7
+    },
+    {
+      "multiplier": 1000,
+      "nodes": 99000,
+      "edge_rows": 171000,
+      "unique_triples": 165000,
+      "status": "VALID",
+      "median_time_ms": 883.438,
+      "min_time_ms": 860.457,
+      "max_time_ms": 1048.322,
+      "median_peak_mib": 41.17,
+      "repeats": 7
+    }
+  ],
+  "scope_note": "Synthetic cardinality benchmark; not an operational SOC throughput test."
+}

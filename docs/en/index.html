@@ -658,7 +658,8 @@
   <link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1">
   <link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=1">
   <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
-<link rel="stylesheet" href="../assets/integrity.css?v=f01"></head>
+<link rel="stylesheet" href="../assets/integrity.css?v=f01"><link rel="stylesheet" href="../assets/portal-paper-sync.css">
+</head>
 <body data-page="home">
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="top">
@@ -947,6 +948,27 @@
     an absolute security guarantee.
   </p>
 </section>
+
+<!-- CANONICAL_RELEASE_SYNC_START -->
+<section class="portal-sync-section" id="canonical-release">
+  <div class="kicker">CANONICAL RELEASE STATUS</div>
+  <h2>The paper and portal report the same validated release</h2>
+  <p>The current canonical package was corrected after the F-01 pre-release case and passed the independent integrity gate. The values below are verified from <code>docs/data/final/integrity_summary.json</code>.</p>
+  <div class="portal-sync-grid">
+    <div class="portal-sync-metric"><span>SACI</span><strong>100.0</strong></div>
+    <div class="portal-sync-metric"><span>Nodes</span><strong>99 / 99</strong></div>
+    <div class="portal-sync-metric"><span>Relations</span><strong>171 / 171</strong></div>
+    <div class="portal-sync-metric"><span>Active findings</span><strong>0</strong></div>
+    <div class="portal-sync-metric"><span>Integrity</span><strong>VALID</strong></div>
+    <div class="portal-sync-metric"><span>Publication gate</span><strong>OPEN</strong></div>
+  </div>
+  <div class="portal-sync-links">
+    <a href="../integrity.html">F-01 pre-release case and correction</a>
+    <a href="../data/final/integrity_summary.json">Canonical integrity summary</a>
+    <a href="../data/validation/benchmark_summary.json">Validation experiments</a>
+  </div>
+</section>
+<!-- CANONICAL_RELEASE_SYNC_END -->
 </main>
 <script>
     (function () {
