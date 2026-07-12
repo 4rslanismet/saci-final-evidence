@@ -50,3 +50,43 @@ apply_*.py
 repair_*.py
 finalize_*.py
 README_INTEGRITY_*PHASE*.txt
+
+# SACI_LOCAL_RELEASE_WORK_START
+
+# Yerel yedekler ve geçici release araçları
+/backups/
+/archive/legacy_published_final_v2_*/
+/*.zip
+
+# Yayınlanması gereken kanonik ZIP istisnası
+!/docs/data/final/saci_final_data_package.zip
+
+/apply_*.py
+/repair_*.py
+/finalize_*.py
+/fix_*.py
+/patch_*.py
+
+# Geçici kurulum açıklamaları
+/README*.txt
+/AGENTS.md
+
+# Yerel çalışma ve makale üretim dizinleri
+/arch.png
+/code/
+/data/
+/deliverables/
+/doc_work_idap26/
+/saci-methodology-rhythm.css
+
+# HTML/JS yedekleri ve tasarım denemeleri
+/docs/*.backup.*.html
+/docs/assets/*.backup.*.js
+/docs/home_concepts.html
+/docs/home_10_concepts.html
+
+# Artık kanonik olmayan yayımlanmamış veri kopyaları
+/docs/evidence/data/
+/docs/evidence/lab/final/
+
+# SACI_LOCAL_RELEASE_WORK_END
