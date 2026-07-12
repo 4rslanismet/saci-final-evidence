@@ -1,0 +1,515 @@
+<!doctype html>
+<html  lang="tr" data-theme="dim" data-font-level="0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SACI bulgular özeti — SACI Final Evidence</title>
+  <meta name="description" content="SACI final ve senaryo sonuçlarını makale figürleri, özet metrikler ve kısa akademik yorumlarla sunan bulgular görünümü.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/paper.html">
+
+  <link rel="stylesheet" href="assets/saci-standard.css?v=paper-view-5">
+  <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="assets/paper.css?v=paper-view-5">
+  <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
+<link rel="stylesheet" href="assets/integrity.css?v=f01"></head>
+
+<body data-page="paper">
+
+<a class="skip-link" href="#main">Ana içeriğe geç</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a class="active" href="paper.html">Paper View</a>
+    </nav>
+
+    <div class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+
+
+<main id="main" class="paper-page">
+<!-- SACI_INTEGRITY_BANNER_START --><aside class="saci-integrity-banner" data-integrity-banner><p><strong data-integrity-status>Integrity</strong> — <span data-integrity-copy>Yükleniyor.</span></p><a href="integrity.html">Bulgu F-01 →</a></aside><!-- SACI_INTEGRITY_BANNER_END -->
+  <section class="paper-hero">
+    <div class="kicker">BULGULAR</div>
+    <h1>SACI bulgular özeti</h1>
+    <p class="lead">Bu sayfa SACI modelinin final nicel sonuçlarını, kanıt graph'ı kapanışını, MITRE/CTI kapsamını ve senaryo tabanlı doğrulama bulgularını bir araya getirir.</p>
+    <p class="paper-scope">Yayına esas final veri kümesi ile S0–S18 tarihsel doğrulama serisi ayrı yorumlanır. Figürler SVG biçiminde dışa aktarılabilir ve makaleye uyarlanabilir.</p>
+
+    <div class="paper-actions">
+      <button type="button" id="printPage">Yazdır / PDF olarak kaydet</button>
+      <a href="evidence.html">Final kanıtı aç</a>
+    </div>
+  </section>
+
+  <div id="loadingState" class="empty-state">Bulgular yükleniyor...</div>
+
+  <div id="paperContent" hidden>
+    <section class="paper-section">
+      <div class="paper-section-head">
+        <h2>Final sonuçlar</h2>
+        <p>Yayına esas final kanıt paketinden türetilen temel göstergeler.</p>
+      </div>
+
+      <div class="paper-summary-grid">
+        <article class="paper-summary-card">
+          <span>Final SACI skoru</span>
+          <strong id="scoreValue">-</strong>
+          <small id="scoreSub"></small>
+        </article>
+
+        <article class="paper-summary-card">
+          <span>Graph kapanışı</span>
+          <strong id="closureValue">-</strong>
+          <small id="closureSub"></small>
+        </article>
+
+        <article class="paper-summary-card">
+          <span>MITRE kapsamı</span>
+          <strong id="mitreValue">-</strong>
+          <small id="mitreSub"></small>
+        </article>
+
+        <article class="paper-summary-card">
+          <span>CTI/MISP kapsamı</span>
+          <strong id="ctiValue">-</strong>
+          <small id="ctiSub"></small>
+        </article>
+      </div>
+
+      <div class="paper-boundary"><strong>Yorumlama sınırı:</strong> SACI=100, beyan edilen görünürlük ilişkilerinin kapandığını gösterir. Mutlak güvenlik garantisi değildir.</div>
+    </section>
+
+
+    <section class="paper-section" id="scenarioExplorer">
+      <div class="paper-section-head">
+        <h2>Senaryo görünümü</h2>
+        <p>Final veri kümesi ile manifestte bulunan tüm S0–S18 doğrulama senaryolarını tek tek inceleyin.</p>
+      </div>
+
+      <div class="paper-scenario-menu">
+        <div class="paper-scenario-field">
+          <label id="paperScenarioPickerLabel" for="paperScenarioTrigger">Veri kümesi / senaryo</label>
+
+          <div class="paper-scenario-picker" id="paperScenarioPicker">
+            <button type="button"
+                    id="paperScenarioTrigger"
+                    class="paper-scenario-trigger"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-labelledby="paperScenarioPickerLabel paperScenarioTriggerText">
+              <span id="paperScenarioTriggerText">Final — Final görünürlük kapanışı</span>
+              <span class="paper-scenario-chevron" aria-hidden="true">⌄</span>
+            </button>
+
+            <div id="paperScenarioPopover"
+                 class="paper-scenario-popover"
+                 hidden>
+              <div class="paper-scenario-search">
+                <input type="search"
+                       id="paperScenarioSearch"
+                       placeholder="Senaryo ara"
+                       autocomplete="off"
+                       aria-label="Senaryo ara">
+              </div>
+
+              <div id="paperScenarioOptions"
+                   class="paper-scenario-options"
+                   role="listbox"
+                   aria-labelledby="paperScenarioPickerLabel"></div>
+            </div>
+          </div>
+
+          <select id="paperScenarioSelect"
+                  class="paper-scenario-native-select"
+                  tabindex="-1"
+                  aria-hidden="true"></select>
+        </div>
+
+        <div class="paper-scenario-actions">
+          <button type="button" id="previousPaperScenario">← Önceki</button>
+          <button type="button" id="nextPaperScenario">Sonraki →</button>
+          <a id="paperScenarioGraphLink" href="graph.html">Graph'ta aç</a>
+          <a id="paperScenarioEvidenceLink" href="evidence.html">Kanıtta aç</a>
+        </div>
+      </div>
+
+      <article class="paper-scenario-panel">
+        <div class="paper-scenario-heading">
+          <div>
+            <span id="paperScenarioCode" class="paper-scenario-code">FINAL</span>
+            <h3 id="paperScenarioTitle">Final görünürlük kapanışı</h3>
+            <p id="paperScenarioFocus"></p>
+          </div>
+
+          <span id="paperScenarioStatus" class="paper-scenario-status"></span>
+        </div>
+
+        <div id="paperScenarioMetrics" class="paper-scenario-metrics"></div>
+
+        <div class="paper-scenario-insights">
+          <section>
+            <h4>Graph özeti</h4>
+            <p id="paperScenarioGraphSummary"></p>
+          </section>
+
+          <section>
+            <h4>Birincil etki</h4>
+            <p id="paperScenarioPrimaryImpact"></p>
+          </section>
+
+          <section>
+            <h4>Akademik yorum</h4>
+            <p id="paperScenarioInterpretation"></p>
+          </section>
+        </div>
+
+        <figure class="paper-figure paper-scenario-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3 id="paperScenarioFigureTitle">Senaryo bileşen profili</h3>
+              <p>Seçilen veri kümesinin aktif SACI bileşenleri.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      id="paperScenarioDownload"
+                      data-download-figure="paperScenarioFigure"
+                      data-filename="saci-scenario-component-profile.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="paperScenarioFigure" class="figure-canvas tall"></div>
+          <figcaption id="paperScenarioCaption"></figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section class="paper-section">
+      <div class="paper-section-head">
+        <h2>Sistem ve kanıt yapısı</h2>
+        <p>Skorlama modelini destekleyen mimari ve final graph düzeyindeki sonuçlar.</p>
+      </div>
+
+      <div class="figure-grid">
+        <figure class="paper-figure wide">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Laboratuvar mimarisi ve kanıt akışı</h3>
+              <p>Telemetri, Wazuh, detection, MITRE/CTI, SACI ve graph çıktı katmanları.</p>
+            </div>
+
+            <div class="figure-tools">
+              <a href="assets/arch-tr.png" target="_blank" rel="noopener">Görseli aç</a>
+            </div>
+          </div>
+
+          <div class="figure-canvas">
+            <img class="architecture-figure"
+                 src="assets/arch-tr.png"
+                 alt="SACI laboratuvar mimarisi">
+          </div>
+
+          <figcaption>Şekil 1. SACI laboratuvar mimarisi ve uçtan uca kanıt akışı.</figcaption>
+        </figure>
+
+        <figure class="paper-figure wide">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Final SACI bileşen profili</h3>
+              <p>Aktif görünürlük boyutlarının normalize edilmiş skorları.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="componentFigure"
+                      data-filename="saci-final-component-profile.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="componentFigure" class="figure-canvas tall"></div>
+          <figcaption>Şekil 2. Final SACI bileşen profili.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Kanıt graph'ı kapanışı</h3>
+              <p>Final kanıt graph'ındaki observed ve missing ilişkiler.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="closureFigure"
+                      data-filename="saci-evidence-graph-closure.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="closureFigure" class="figure-canvas"></div>
+          <figcaption>Şekil 3. Yayına esas final veri kümesinde kanıt graph'ı kapanışı.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>MITRE ve CTI kapsamı</h3>
+              <p>ATT&CK teknik kapsamı ve aşamalı CTI/MISP kapanışı.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="coverageFigure"
+                      data-filename="saci-mitre-cti-coverage.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="coverageFigure" class="figure-canvas"></div>
+          <figcaption>Şekil 4. MITRE ATT&CK ve CTI/MISP kapsamı.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="paper-section">
+      <div class="paper-section-head">
+        <h2>Senaryo tabanlı doğrulama</h2>
+        <p>Skor değişimi, missing ilişki kapanışı, kritiklik duyarlılığı, CTI davranışı, freshness düşüşü ve aktif kapsam normalizasyonunu gösteren figürler.</p>
+      </div>
+
+      <div class="figure-grid">
+        <figure class="paper-figure wide">
+          <div class="paper-figure-head">
+            <div>
+              <h3>S0–S18 SACI değişimi</h3>
+              <p>Skorun aşamalı görünürlük iyileştirmelerine ve kontrollü bozulmalara duyarlılığı.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="scenarioScoreFigure"
+                      data-filename="saci-scenario-progression.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="scenarioScoreFigure" class="figure-canvas tall"></div>
+          <figcaption>Şekil 5. S0–S18 doğrulama serisinde SACI değişimi.</figcaption>
+        </figure>
+
+        <figure class="paper-figure wide">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Missing ilişki değişimi</h3>
+              <p>Kontrollü doğrulama serisinde eksik kanıt ilişkilerinin azalması ve yeniden ortaya çıkması.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="missingFigure"
+                      data-filename="saci-missing-edge-progression.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="missingFigure" class="figure-canvas tall"></div>
+          <figcaption>Şekil 6. Doğrulama serisinde missing edge değişimi.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Kritiklik duyarlılığı</h3>
+              <p>S7A kritik DC01 Sysmon kaybı ile S7B kritik olmayan WS01 Sysmon kaybının karşılaştırılması.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="criticalityFigure"
+                      data-filename="saci-criticality-sensitivity.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="criticalityFigure" class="figure-canvas"></div>
+          <figcaption>Şekil 7. Benzer Sysmon kayıplarında kritiklik duyarlılığı.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>CTI aşamalarının davranışı</h3>
+              <p>Enrichment etkinleştirme, açık CTI zinciri ve no-hit lookup sonuçlarının karşılaştırılması.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="ctiScenarioFigure"
+                      data-filename="saci-cti-stage-behavior.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="ctiScenarioFigure" class="figure-canvas"></div>
+          <figcaption>Şekil 8. Enrichment senaryolarında CTI aşamalarının davranışı.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Freshness düşüşü ve toparlanma</h3>
+              <p>S15 freshness düşüşünün S17 düzeltme sonrası toparlanma ile karşılaştırılması.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="freshnessFigure"
+                      data-filename="saci-freshness-recovery.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="freshnessFigure" class="figure-canvas"></div>
+          <figcaption>Şekil 9. Freshness düşüşü ve düzeltme sonrası toparlanma.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Aktif kapsam normalizasyonu</h3>
+              <p>S18 senaryosunda aktif değerlendirme kapsamı dışındaki legacy kontrolün ele alınması.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="scopeFigure"
+                      data-filename="saci-active-scope-normalization.svg">
+                SVG indir
+              </button>
+            </div>
+          </div>
+
+          <div id="scopeFigure" class="figure-canvas"></div>
+          <figcaption>Şekil 10. S18 aktif kapsam normalizasyonu; N/A bileşenler aktif paydanın dışında tutulur.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="paper-section">
+      <div class="paper-section-head">
+        <h2>Yorum ve sınırlılıklar</h2>
+        <p>Final ve senaryo tabanlı sonuçların akademik yorumu.</p>
+      </div>
+
+      <div id="academicNotes" class="academic-grid"></div>
+      <div id="structuralNote" class="structural-note" hidden></div>
+    </section>
+  </div>
+</main>
+
+<script src="assets/paper.js?v=paper-view-5"></script>
+<script src="assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="assets/saci-compact-controls.js?v=2"></script>
+<script src="assets/integrity-badge.js?v=f01"></script></body>
+</html>

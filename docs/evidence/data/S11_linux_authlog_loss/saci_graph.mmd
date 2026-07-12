@@ -1,0 +1,269 @@
+graph LR
+  platform_Wazuh["Wazuh<br/>platform"]
+  platform_MISP["MISP<br/>platform"]
+  score_SACI["SACI<br/>score"]
+  asset_A01["A01<br/>asset"]
+  logsource_Security["Security<br/>logsource"]
+  logsource_Sysmon["Sysmon<br/>logsource"]
+  asset_A02["A02<br/>asset"]
+  logsource_ossec["ossec<br/>logsource"]
+  logsource_misp_enrichment["misp_enrichment<br/>logsource"]
+  asset_A03["CTI01<br/>asset"]
+  logsource_misp_api["misp_api<br/>logsource"]
+  asset_A07["A07<br/>asset"]
+  logsource_pfsense_syslog["pfsense_syslog<br/>logsource"]
+  asset_A04["A04<br/>asset"]
+  logsource_PowerShell["PowerShell<br/>logsource"]
+  asset_A05["A05<br/>asset"]
+  logsource_authlog["authlog<br/>logsource"]
+  logsource_syslog["syslog<br/>logsource"]
+  logsource_process["process<br/>logsource"]
+  control_C001["C001<br/>control"]
+  rule_110006["110006<br/>wazuh_rule"]
+  mitre_T1071_004["T1071.004<br/>mitre"]
+  control_C002["C002<br/>control"]
+  rule_110005["110005<br/>wazuh_rule"]
+  control_C003["C003<br/>control"]
+  rule_92057["92057<br/>wazuh_rule"]
+  mitre_T1059_001["T1059.001<br/>mitre"]
+  control_C004["C004<br/>control"]
+  rule_92052["92052<br/>wazuh_rule"]
+  mitre_T1059_003["T1059.003<br/>mitre"]
+  control_C005["C005<br/>control"]
+  rule_60106["60106<br/>wazuh_rule"]
+  mitre_T1078["T1078<br/>mitre"]
+  control_C006["C006<br/>control"]
+  logsource_Wazuh["Wazuh<br/>logsource"]
+  rule_110100["110100<br/>wazuh_rule"]
+  control_C007["C007<br/>control"]
+  rule_110010["110010<br/>wazuh_rule"]
+  mitre_T1087["T1087<br/>mitre"]
+  control_C008["C008<br/>control"]
+  rule_110011["110011<br/>wazuh_rule"]
+  mitre_T1482["T1482<br/>mitre"]
+  control_C009["C009<br/>control"]
+  rule_110012["110012<br/>wazuh_rule"]
+  mitre_T1016["T1016<br/>mitre"]
+  control_C010["C010<br/>control"]
+  rule_110013["110013<br/>wazuh_rule"]
+  mitre_T1105["T1105<br/>mitre"]
+  control_C011["C011<br/>control"]
+  rule_110014["110014<br/>wazuh_rule"]
+  mitre_T1135["T1135<br/>mitre"]
+  control_C012["C012<br/>control"]
+  mitre_T1018["T1018<br/>mitre"]
+  control_C013["C013<br/>control"]
+  mitre_T1049["T1049<br/>mitre"]
+  control_C014["C014<br/>control"]
+  rule_110200["110200<br/>wazuh_rule"]
+  mitre_T1046["T1046<br/>mitre"]
+  control_C015["C015<br/>control"]
+  rule_110201["110201<br/>wazuh_rule"]
+  control_C016["C016<br/>control"]
+  rule_110203["110203<br/>wazuh_rule"]
+  mitre_T1071_001["T1071.001<br/>mitre"]
+  control_C017["C017<br/>control"]
+  rule_110223["110223<br/>wazuh_rule"]
+  control_C018["C018<br/>control"]
+  rule_110220["110220<br/>wazuh_rule"]
+  control_C019["C019<br/>control"]
+  rule_110222["110222<br/>wazuh_rule"]
+  control_C020["C020<br/>control"]
+  rule_110230["110230<br/>wazuh_rule"]
+  mitre_T1110["T1110<br/>mitre"]
+  control_C021["C021<br/>control"]
+  rule_110231["110231<br/>wazuh_rule"]
+  mitre_T1082["T1082<br/>mitre"]
+  control_C022["C022<br/>control"]
+  rule_110232["110232<br/>wazuh_rule"]
+  control_C023["C023<br/>control"]
+  rule_110240["110240<br/>wazuh_rule"]
+  control_C024["C024<br/>control"]
+  rule_110241["110241<br/>wazuh_rule"]
+  control_C025["C025<br/>control"]
+  rule_110242["110242<br/>wazuh_rule"]
+  control_C026["C026<br/>control"]
+  rule_110243["110243<br/>wazuh_rule"]
+  control_C027["C027<br/>control"]
+  rule_110244["110244<br/>wazuh_rule"]
+  ioc_cti_test_example_com["cti-test.example.com<br/>ioc"]
+  ioc_203_0_113_66["203.0.113.66<br/>ioc"]
+  metric_LC["LC<br/>metric"]
+  metric_CAC["CAC<br/>metric"]
+  metric_MDC["MDC<br/>metric"]
+  metric_CTIC["CTIC<br/>metric"]
+  metric_TF["TF<br/>metric"]
+  metric_SACI["SACI<br/>metric"]
+  asset_A01 -- "emits / observed" --> logsource_Security
+  logsource_Security -- "collected_by / observed" --> platform_Wazuh
+  asset_A01 -- "emits / observed" --> logsource_Sysmon
+  logsource_Sysmon -- "collected_by / observed" --> platform_Wazuh
+  asset_A02 -- "emits / observed" --> logsource_ossec
+  logsource_ossec -- "collected_by / observed" --> platform_Wazuh
+  asset_A02 -- "emits / observed" --> logsource_misp_enrichment
+  logsource_misp_enrichment -- "collected_by / observed" --> platform_Wazuh
+  asset_A03 -- "emits / observed" --> logsource_misp_api
+  logsource_misp_api -- "collected_by / observed" --> platform_Wazuh
+  asset_A07 -- "emits / observed" --> logsource_pfsense_syslog
+  logsource_pfsense_syslog -- "collected_by / observed" --> platform_Wazuh
+  asset_A04 -- "emits / observed" --> logsource_Security
+  logsource_Security -- "collected_by / observed" --> platform_Wazuh
+  asset_A04 -- "emits / observed" --> logsource_Sysmon
+  logsource_Sysmon -- "collected_by / observed" --> platform_Wazuh
+  asset_A04 -- "emits / observed" --> logsource_PowerShell
+  logsource_PowerShell -- "collected_by / observed" --> platform_Wazuh
+  asset_A05 -- "emits / missing" --> logsource_authlog
+  logsource_authlog -- "collected_by / missing" --> platform_Wazuh
+  asset_A05 -- "emits / observed" --> logsource_syslog
+  logsource_syslog -- "collected_by / observed" --> platform_Wazuh
+  asset_A05 -- "emits / observed" --> logsource_process
+  logsource_process -- "collected_by / observed" --> platform_Wazuh
+  asset_A01 -- "protected_by / observed" --> control_C001
+  control_C001 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C001 -- "produces_rule / observed" --> rule_110006
+  rule_110006 -- "alerted_in / observed" --> platform_Wazuh
+  control_C001 -- "detects_technique / observed" --> mitre_T1071_004
+  asset_A01 -- "protected_by / observed" --> control_C002
+  control_C002 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C002 -- "produces_rule / observed" --> rule_110005
+  rule_110005 -- "alerted_in / observed" --> platform_Wazuh
+  control_C002 -- "detects_technique / observed" --> mitre_T1071_004
+  asset_A01 -- "protected_by / observed" --> control_C003
+  control_C003 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C003 -- "produces_rule / observed" --> rule_92057
+  rule_92057 -- "alerted_in / observed" --> platform_Wazuh
+  control_C003 -- "detects_technique / observed" --> mitre_T1059_001
+  asset_A01 -- "protected_by / observed" --> control_C004
+  control_C004 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C004 -- "produces_rule / observed" --> rule_92052
+  rule_92052 -- "alerted_in / observed" --> platform_Wazuh
+  control_C004 -- "detects_technique / observed" --> mitre_T1059_003
+  asset_A01 -- "protected_by / observed" --> control_C005
+  control_C005 -- "uses_log_source / observed" --> logsource_Security
+  control_C005 -- "produces_rule / observed" --> rule_60106
+  rule_60106 -- "alerted_in / observed" --> platform_Wazuh
+  control_C005 -- "detects_technique / observed" --> mitre_T1078
+  asset_A02 -- "protected_by / observed" --> control_C006
+  control_C006 -- "uses_log_source / observed" --> logsource_Wazuh
+  control_C006 -- "produces_rule / observed" --> rule_110100
+  rule_110100 -- "alerted_in / observed" --> platform_Wazuh
+  control_C006 -- "detects_technique / observed" --> mitre_T1071_004
+  asset_A01 -- "protected_by / observed" --> control_C007
+  control_C007 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C007 -- "produces_rule / observed" --> rule_110010
+  rule_110010 -- "alerted_in / observed" --> platform_Wazuh
+  control_C007 -- "detects_technique / observed" --> mitre_T1087
+  asset_A01 -- "protected_by / observed" --> control_C008
+  control_C008 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C008 -- "produces_rule / observed" --> rule_110011
+  rule_110011 -- "alerted_in / observed" --> platform_Wazuh
+  control_C008 -- "detects_technique / observed" --> mitre_T1482
+  asset_A01 -- "protected_by / observed" --> control_C009
+  control_C009 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C009 -- "produces_rule / observed" --> rule_110012
+  rule_110012 -- "alerted_in / observed" --> platform_Wazuh
+  control_C009 -- "detects_technique / observed" --> mitre_T1016
+  asset_A01 -- "protected_by / observed" --> control_C010
+  control_C010 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C010 -- "produces_rule / observed" --> rule_110013
+  rule_110013 -- "alerted_in / observed" --> platform_Wazuh
+  control_C010 -- "detects_technique / observed" --> mitre_T1105
+  asset_A01 -- "protected_by / observed" --> control_C011
+  control_C011 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C011 -- "produces_rule / observed" --> rule_110014
+  rule_110014 -- "alerted_in / observed" --> platform_Wazuh
+  control_C011 -- "detects_technique / observed" --> mitre_T1135
+  asset_A01 -- "protected_by / observed" --> control_C012
+  control_C012 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C012 -- "produces_rule / observed" --> rule_110011
+  rule_110011 -- "alerted_in / observed" --> platform_Wazuh
+  control_C012 -- "detects_technique / observed" --> mitre_T1018
+  asset_A01 -- "protected_by / observed" --> control_C013
+  control_C013 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C013 -- "produces_rule / observed" --> rule_110012
+  rule_110012 -- "alerted_in / observed" --> platform_Wazuh
+  control_C013 -- "detects_technique / observed" --> mitre_T1049
+  asset_A07 -- "protected_by / observed" --> control_C014
+  control_C014 -- "uses_log_source / observed" --> logsource_pfsense_syslog
+  control_C014 -- "produces_rule / observed" --> rule_110200
+  rule_110200 -- "alerted_in / observed" --> platform_Wazuh
+  control_C014 -- "detects_technique / observed" --> mitre_T1046
+  asset_A07 -- "protected_by / observed" --> control_C015
+  control_C015 -- "uses_log_source / observed" --> logsource_pfsense_syslog
+  control_C015 -- "produces_rule / observed" --> rule_110201
+  rule_110201 -- "alerted_in / observed" --> platform_Wazuh
+  control_C015 -- "detects_technique / observed" --> mitre_T1046
+  asset_A07 -- "protected_by / observed" --> control_C016
+  control_C016 -- "uses_log_source / observed" --> logsource_pfsense_syslog
+  control_C016 -- "produces_rule / observed" --> rule_110203
+  rule_110203 -- "alerted_in / observed" --> platform_Wazuh
+  control_C016 -- "detects_technique / observed" --> mitre_T1071_001
+  asset_A04 -- "protected_by / observed" --> control_C017
+  control_C017 -- "uses_log_source / observed" --> logsource_Security
+  control_C017 -- "produces_rule / observed" --> rule_110223
+  rule_110223 -- "alerted_in / observed" --> platform_Wazuh
+  control_C017 -- "detects_technique / observed" --> mitre_T1078
+  asset_A04 -- "protected_by / observed" --> control_C018
+  control_C018 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C018 -- "produces_rule / observed" --> rule_110220
+  rule_110220 -- "alerted_in / observed" --> platform_Wazuh
+  control_C018 -- "detects_technique / observed" --> mitre_T1087
+  asset_A04 -- "protected_by / observed" --> control_C019
+  control_C019 -- "uses_log_source / observed" --> logsource_PowerShell
+  control_C019 -- "produces_rule / observed" --> rule_110222
+  rule_110222 -- "alerted_in / observed" --> platform_Wazuh
+  control_C019 -- "detects_technique / observed" --> mitre_T1059_001
+  asset_A05 -- "protected_by / missing" --> control_C020
+  control_C020 -- "uses_log_source / missing" --> logsource_authlog
+  control_C020 -- "produces_rule / missing" --> rule_110230
+  rule_110230 -- "alerted_in / missing" --> platform_Wazuh
+  control_C020 -- "detects_technique / missing" --> mitre_T1110
+  asset_A05 -- "protected_by / observed" --> control_C021
+  control_C021 -- "uses_log_source / observed" --> logsource_syslog
+  control_C021 -- "produces_rule / observed" --> rule_110231
+  rule_110231 -- "alerted_in / observed" --> platform_Wazuh
+  control_C021 -- "detects_technique / observed" --> mitre_T1082
+  asset_A05 -- "protected_by / observed" --> control_C022
+  control_C022 -- "uses_log_source / observed" --> logsource_process
+  control_C022 -- "produces_rule / observed" --> rule_110232
+  rule_110232 -- "alerted_in / observed" --> platform_Wazuh
+  control_C022 -- "detects_technique / observed" --> mitre_T1046
+  asset_A04 -- "protected_by / observed" --> control_C023
+  control_C023 -- "uses_log_source / observed" --> logsource_Security
+  control_C023 -- "produces_rule / observed" --> rule_110240
+  rule_110240 -- "alerted_in / observed" --> platform_Wazuh
+  control_C023 -- "detects_technique / observed" --> mitre_T1078
+  asset_A04 -- "protected_by / observed" --> control_C024
+  control_C024 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C024 -- "produces_rule / observed" --> rule_110241
+  rule_110241 -- "alerted_in / observed" --> platform_Wazuh
+  control_C024 -- "detects_technique / observed" --> mitre_T1087
+  asset_A04 -- "protected_by / observed" --> control_C025
+  control_C025 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C025 -- "produces_rule / observed" --> rule_110242
+  rule_110242 -- "alerted_in / observed" --> platform_Wazuh
+  control_C025 -- "detects_technique / observed" --> mitre_T1016
+  asset_A04 -- "protected_by / observed" --> control_C026
+  control_C026 -- "uses_log_source / observed" --> logsource_PowerShell
+  control_C026 -- "produces_rule / observed" --> rule_110243
+  rule_110243 -- "alerted_in / observed" --> platform_Wazuh
+  control_C026 -- "detects_technique / observed" --> mitre_T1059_001
+  asset_A04 -- "protected_by / observed" --> control_C027
+  control_C027 -- "uses_log_source / observed" --> logsource_Sysmon
+  control_C027 -- "produces_rule / observed" --> rule_110244
+  rule_110244 -- "alerted_in / observed" --> platform_Wazuh
+  control_C027 -- "detects_technique / observed" --> mitre_T1071_004
+  platform_MISP -- "contains_ioc / observed" --> ioc_cti_test_example_com
+  platform_Wazuh -- "queries / observed" --> platform_MISP
+  ioc_cti_test_example_com -- "converted_to_alert / observed" --> rule_110100
+  rule_110100 -- "alerted_in / observed" --> platform_Wazuh
+  platform_MISP -- "contains_ioc / observed" --> ioc_203_0_113_66
+  platform_Wazuh -- "queries / observed" --> platform_MISP
+  ioc_203_0_113_66 -- "converted_to_alert / observed" --> rule_110203
+  rule_110203 -- "alerted_in / observed" --> platform_Wazuh
+  metric_LC -- "contributes_to / observed" --> score_SACI
+  metric_CAC -- "contributes_to / observed" --> score_SACI
+  metric_MDC -- "contributes_to / observed" --> score_SACI
+  metric_CTIC -- "contributes_to / observed" --> score_SACI
+  metric_TF -- "contributes_to / observed" --> score_SACI
+  metric_SACI -- "contributes_to / observed" --> score_SACI

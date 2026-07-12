@@ -1,0 +1,133 @@
+<!doctype html>
+<html  lang="en" data-theme="dim" data-font-level="0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scenario analysis - SACI Final Evidence</title>
+  <meta name="description" content="Effects of telemetry, detection, MITRE, CTI and freshness changes across the controlled S0–S18 validation series.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/en/scenarios.html">
+  <link rel="stylesheet" href="../assets/saci-standard.css?v=scenario-analysis-2">
+  <link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="../assets/scenarios.css?v=scenario-analysis-2">
+  <link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
+</head>
+<body data-page="scenarios">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a class="active" href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+    <div class="top-actions" aria-label="Display controls">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Smaller</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Reset</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Larger</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Theme</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<main id="main" class="scenario-page">
+  <section class="scenario-hero"><div class="kicker">SCENARIO ANALYSIS</div><h1>Scenario analysis</h1><p class="lead">This page evaluates how SACI responds to telemetry losses, detection gaps, MITRE scope changes, CTI interruptions, freshness decay and remediation.</p><p class="scenario-context">The publication final and the historical S0-S18 validation series are kept separate. Scenario node, edge and score values are not merged into the final publication dataset.</p></section>
+  <section class="scenario-summary">
+    <div class="scenario-summary-card"><span>Historical scenarios</span><strong id="summaryTotal">-</strong></div>
+    <div class="scenario-summary-card"><span>Detailed scenarios</span><strong id="summaryRepresentative">-</strong></div>
+    <div class="scenario-summary-card"><span>No missing relations</span><strong id="summaryComplete">-</strong></div>
+    <div class="scenario-summary-card"><span>Scenarios with gaps</span><strong id="summaryWithGaps">-</strong></div>
+    <div class="scenario-summary-card"><span>MITRE mapping rows</span><strong id="summaryMitre">-</strong></div>
+  </section>
+  <div id="loadingState" class="empty-state">Loading scenario data...</div>
+  <section class="scenario-section"><div class="scenario-section-head"><h2>Detailed scenario reviews</h2><p>Detailed views of the scenarios that best demonstrate sensitivity, explainability and recovery behavior.</p></div><div id="representativeGrid" class="scenario-cards"></div></section>
+  <section class="scenario-section"><div class="scenario-section-head"><h2>Methodological comparisons</h2><p>These comparisons show why the scenario series is more informative than a single final score.</p></div><div id="comparisonGrid" class="comparison-grid"></div></section>
+  <section class="scenario-section"><div class="scenario-section-head"><h2>All historical scenarios</h2><p>Every scenario is listed with component scores, observed and missing relations, MITRE coverage and a short interpretation.</p></div>
+    <div class="scenario-toolbar"><div><label for="scenarioSearch">Search scenarios</label><input id="scenarioSearch" type="search" placeholder="S7A, CTI, freshness..."></div><div><label for="categoryFilter">Category</label><select id="categoryFilter"></select></div><button type="button" id="clearFilter">Clear</button></div>
+    <div class="table-shell"><table class="scenario-table"><thead><tr><th>Scenario</th><th>Change and interpretation</th><th>CWLC</th><th>CAC</th><th>MDC</th><th>CTIC</th><th>TF</th><th>SACI</th><th>Observed</th><th>Missing</th><th>MITRE</th><th>Open</th></tr></thead><tbody id="scenarioTableBody"></tbody></table></div>
+  </section>
+</main>
+<script src="../assets/scenarios.js?v=scenario-analysis-2"></script>
+<script src="../assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="../assets/saci-compact-controls.js?v=2"></script>
+</body></html>

@@ -1,0 +1,328 @@
+{
+  "stage": {
+    "stage_id": "S6",
+    "stage_name": "cti_integration",
+    "scenario_type": "controlled_evaluation_scenario",
+    "description": "MISP/CTI entegrasyonu yapıldı; IOC zinciri görünür hale geldi.",
+    "created_at": "2026-07-02T01:22:24.236733+00:00",
+    "graph": {
+      "nodes": 95,
+      "edges": 173,
+      "observed_edges": 143,
+      "missing_edges": 30
+    }
+  },
+  "scores": {
+    "LC": "100.0",
+    "CAC": "84.0",
+    "MDC": "100.0",
+    "CTIC": "100.0",
+    "TF": "80.0",
+    "SACI": "94.0"
+  },
+  "graph_summary": "# SACI Graph Summary\n\nNodes: 95\nEdges: 173\nObserved edges: 143\nMissing edges: 30\n\n## Node types\n- asset: 6\n- control: 27\n- ioc: 2\n- logsource: 11\n- metric: 6\n- mitre: 15\n- platform: 2\n- score: 1\n- wazuh_rule: 25\n\n## Missing edge examples\n- asset:A01 --protected_by--> control:C003 evidence=C003\n- control:C003 --uses_log_source--> logsource:Sysmon evidence=C003\n- control:C003 --produces_rule--> rule:92057 evidence=C003\n- rule:92057 --alerted_in--> platform:Wazuh evidence=C003\n- control:C003 --detects_technique--> mitre:T1059.001 evidence=C003\n- asset:A01 --protected_by--> control:C004 evidence=C004\n- control:C004 --uses_log_source--> logsource:Sysmon evidence=C004\n- control:C004 --produces_rule--> rule:92052 evidence=C004\n- rule:92052 --alerted_in--> platform:Wazuh evidence=C004\n- control:C004 --detects_technique--> mitre:T1059.003 evidence=C004\n- asset:A02 --protected_by--> control:C006 evidence=C006\n- control:C006 --uses_log_source--> logsource:Wazuh evidence=C006\n- control:C006 --produces_rule--> rule:110100 evidence=C006\n- rule:110100 --alerted_in--> platform:Wazuh evidence=C006\n- control:C006 --detects_technique--> mitre:T1071.004 evidence=C006\n- asset:A07 --protected_by--> control:C014 evidence=C014\n- control:C014 --uses_log_source--> logsource:pfsense_syslog evidence=C014\n- control:C014 --produces_rule--> rule:110200 evidence=C014\n- rule:110200 --alerted_in--> platform:Wazuh evidence=C014\n- control:C014 --detects_technique--> mitre:T1046 evidence=C014\n- asset:A07 --protected_by--> control:C015 evidence=C015\n- control:C015 --uses_log_source--> logsource:pfsense_syslog evidence=C015\n- control:C015 --produces_rule--> rule:110201 evidence=C015\n- rule:110201 --alerted_in--> platform:Wazuh evidence=C015\n- control:C015 --detects_technique--> mitre:T1046 evidence=C015\n- asset:A07 --protected_by--> control:C016 evidence=C016\n- control:C016 --uses_log_source--> logsource:pfsense_syslog evidence=C016\n- control:C016 --produces_rule--> rule:110203 evidence=C016\n- rule:110203 --alerted_in--> platform:Wazuh evidence=C016\n- control:C016 --detects_technique--> mitre:T1071.001 evidence=C016",
+  "weak_assets": [],
+  "critical_asset_gaps": [],
+  "missing_controls": [
+    {
+      "control_id": "C006",
+      "asset_id": "A02",
+      "source": "Wazuh",
+      "rule_id": "110100",
+      "mitre_technique": "T1071.004",
+      "description": "MISP IOC match converted to Wazuh alert"
+    },
+    {
+      "control_id": "C014",
+      "asset_id": "A07",
+      "source": "pfsense_syslog",
+      "rule_id": "110200",
+      "mitre_technique": "T1046",
+      "description": "pfSense firewall event observed"
+    },
+    {
+      "control_id": "C015",
+      "asset_id": "A07",
+      "source": "pfsense_syslog",
+      "rule_id": "110201",
+      "mitre_technique": "T1046",
+      "description": "pfSense blocked traffic observed"
+    },
+    {
+      "control_id": "C016",
+      "asset_id": "A07",
+      "source": "pfsense_syslog",
+      "rule_id": "110203",
+      "mitre_technique": "T1071.001",
+      "description": "pfSense observed CTI IOC IP traffic"
+    }
+  ],
+  "missing_mitre": [],
+  "weak_cti": [],
+  "missing_edges_examples": [
+    {
+      "source": "asset:A01",
+      "target": "control:C003",
+      "relation": "protected_by",
+      "evidence": "C003"
+    },
+    {
+      "source": "control:C003",
+      "target": "logsource:Sysmon",
+      "relation": "uses_log_source",
+      "evidence": "C003"
+    },
+    {
+      "source": "control:C003",
+      "target": "rule:92057",
+      "relation": "produces_rule",
+      "evidence": "C003"
+    },
+    {
+      "source": "rule:92057",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C003"
+    },
+    {
+      "source": "control:C003",
+      "target": "mitre:T1059.001",
+      "relation": "detects_technique",
+      "evidence": "C003"
+    },
+    {
+      "source": "asset:A01",
+      "target": "control:C004",
+      "relation": "protected_by",
+      "evidence": "C004"
+    },
+    {
+      "source": "control:C004",
+      "target": "logsource:Sysmon",
+      "relation": "uses_log_source",
+      "evidence": "C004"
+    },
+    {
+      "source": "control:C004",
+      "target": "rule:92052",
+      "relation": "produces_rule",
+      "evidence": "C004"
+    },
+    {
+      "source": "rule:92052",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C004"
+    },
+    {
+      "source": "control:C004",
+      "target": "mitre:T1059.003",
+      "relation": "detects_technique",
+      "evidence": "C004"
+    },
+    {
+      "source": "asset:A02",
+      "target": "control:C006",
+      "relation": "protected_by",
+      "evidence": "C006"
+    },
+    {
+      "source": "control:C006",
+      "target": "logsource:Wazuh",
+      "relation": "uses_log_source",
+      "evidence": "C006"
+    },
+    {
+      "source": "control:C006",
+      "target": "rule:110100",
+      "relation": "produces_rule",
+      "evidence": "C006"
+    },
+    {
+      "source": "rule:110100",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C006"
+    },
+    {
+      "source": "control:C006",
+      "target": "mitre:T1071.004",
+      "relation": "detects_technique",
+      "evidence": "C006"
+    },
+    {
+      "source": "asset:A07",
+      "target": "control:C014",
+      "relation": "protected_by",
+      "evidence": "C014"
+    },
+    {
+      "source": "control:C014",
+      "target": "logsource:pfsense_syslog",
+      "relation": "uses_log_source",
+      "evidence": "C014"
+    },
+    {
+      "source": "control:C014",
+      "target": "rule:110200",
+      "relation": "produces_rule",
+      "evidence": "C014"
+    },
+    {
+      "source": "rule:110200",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C014"
+    },
+    {
+      "source": "control:C014",
+      "target": "mitre:T1046",
+      "relation": "detects_technique",
+      "evidence": "C014"
+    },
+    {
+      "source": "asset:A07",
+      "target": "control:C015",
+      "relation": "protected_by",
+      "evidence": "C015"
+    },
+    {
+      "source": "control:C015",
+      "target": "logsource:pfsense_syslog",
+      "relation": "uses_log_source",
+      "evidence": "C015"
+    },
+    {
+      "source": "control:C015",
+      "target": "rule:110201",
+      "relation": "produces_rule",
+      "evidence": "C015"
+    },
+    {
+      "source": "rule:110201",
+      "target": "platform:Wazuh",
+      "relation": "alerted_in",
+      "evidence": "C015"
+    },
+    {
+      "source": "control:C015",
+      "target": "mitre:T1046",
+      "relation": "detects_technique",
+      "evidence": "C015"
+    }
+  ],
+  "detected_reasons": [
+    {
+      "metric": "CAC",
+      "reason": "Aktif tespit kontrollerinden bazıları beklenen rule çıktısını üretmedi.",
+      "evidence": [
+        {
+          "control_id": "C006",
+          "asset_id": "A02",
+          "source": "Wazuh",
+          "rule_id": "110100",
+          "mitre_technique": "T1071.004",
+          "description": "MISP IOC match converted to Wazuh alert"
+        },
+        {
+          "control_id": "C014",
+          "asset_id": "A07",
+          "source": "pfsense_syslog",
+          "rule_id": "110200",
+          "mitre_technique": "T1046",
+          "description": "pfSense firewall event observed"
+        },
+        {
+          "control_id": "C015",
+          "asset_id": "A07",
+          "source": "pfsense_syslog",
+          "rule_id": "110201",
+          "mitre_technique": "T1046",
+          "description": "pfSense blocked traffic observed"
+        },
+        {
+          "control_id": "C016",
+          "asset_id": "A07",
+          "source": "pfsense_syslog",
+          "rule_id": "110203",
+          "mitre_technique": "T1071.001",
+          "description": "pfSense observed CTI IOC IP traffic"
+        }
+      ]
+    },
+    {
+      "metric": "TF",
+      "reason": "Son gözlenen kanıt freshness penceresini geçtiği için tazelik skoru düştü.",
+      "evidence": {
+        "TF": "80.0"
+      }
+    },
+    {
+      "metric": "Graph",
+      "reason": "Graph üzerinde beklenen ancak gözlemlenemeyen ilişkiler bulunmaktadır.",
+      "evidence": [
+        {
+          "source": "asset:A01",
+          "target": "control:C003",
+          "relation": "protected_by",
+          "evidence": "C003"
+        },
+        {
+          "source": "control:C003",
+          "target": "logsource:Sysmon",
+          "relation": "uses_log_source",
+          "evidence": "C003"
+        },
+        {
+          "source": "control:C003",
+          "target": "rule:92057",
+          "relation": "produces_rule",
+          "evidence": "C003"
+        },
+        {
+          "source": "rule:92057",
+          "target": "platform:Wazuh",
+          "relation": "alerted_in",
+          "evidence": "C003"
+        },
+        {
+          "source": "control:C003",
+          "target": "mitre:T1059.001",
+          "relation": "detects_technique",
+          "evidence": "C003"
+        },
+        {
+          "source": "asset:A01",
+          "target": "control:C004",
+          "relation": "protected_by",
+          "evidence": "C004"
+        },
+        {
+          "source": "control:C004",
+          "target": "logsource:Sysmon",
+          "relation": "uses_log_source",
+          "evidence": "C004"
+        },
+        {
+          "source": "control:C004",
+          "target": "rule:92052",
+          "relation": "produces_rule",
+          "evidence": "C004"
+        },
+        {
+          "source": "rule:92052",
+          "target": "platform:Wazuh",
+          "relation": "alerted_in",
+          "evidence": "C004"
+        },
+        {
+          "source": "control:C004",
+          "target": "mitre:T1059.003",
+          "relation": "detects_technique",
+          "evidence": "C004"
+        }
+      ]
+    }
+  ],
+  "important_note": "LLM skor hesaplamaz. SACI skorları deterministik olarak hesaplanır. LLM yalnızca skor, coverage ve graph çıktılarını doğal dille açıklar."
+}

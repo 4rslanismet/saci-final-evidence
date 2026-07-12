@@ -1,13 +1,2 @@
 
-document.addEventListener("DOMContentLoaded", () => {
-    const lang = localStorage.getItem('saci-lang') || 'tr';
-    document.documentElement.lang = lang;
-    
-    document.querySelectorAll('.lang-switch button').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const selected = e.target.getAttribute('data-lang');
-            document.documentElement.lang = selected;
-            localStorage.setItem('saci-lang', selected);
-        });
-    });
-});
+(function(){function setLang(lang){localStorage.setItem("saci-lang",lang);document.documentElement.lang=lang==="en"?"en":"tr";document.querySelectorAll("[data-tr][data-en]").forEach(el=>{el.textContent=lang==="en"?el.getAttribute("data-en"):el.getAttribute("data-tr")});document.querySelectorAll("[data-lang]").forEach(btn=>{btn.classList.toggle("active",btn.getAttribute("data-lang")===lang)})}document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("[data-lang]").forEach(btn=>btn.addEventListener("click",()=>setLang(btn.getAttribute("data-lang"))));setLang(localStorage.getItem("saci-lang")||"tr")})})();

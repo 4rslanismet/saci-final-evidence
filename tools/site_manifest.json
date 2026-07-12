@@ -1,0 +1,38 @@
+[
+  {
+    "file": "index.html",
+    "label": "Home"
+  },
+  {
+    "file": "methodology.html",
+    "label": "Methodology"
+  },
+  {
+    "file": "architecture.html",
+    "label": "Architecture"
+  },
+  {
+    "file": "evidence.html",
+    "label": "Evidence"
+  },
+  {
+    "file": "artifacts.html",
+    "label": "Artifacts"
+  },
+  {
+    "file": "graph.html",
+    "label": "Graph"
+  },
+  {
+    "file": "explanation.html",
+    "label": "Explanation"
+  },
+  {
+    "file": "paper.html",
+    "label": "Paper View"
+  },
+  {
+    "file": "validation.html",
+    "label": "Validation"
+  }
+]

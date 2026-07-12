@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Reproduction scaffold for the SACI controlled laboratory; not a byte-identical archive of the original run.",
+  "boxes": {
+    "linux": {
+      "name": "bento/ubuntu-24.04",
+      "version": ""
+    }
+  },
+  "versions": {
+    "wazuh": "4.14.5",
+    "wazuh_docker_ref": "v4.14.5",
+    "misp_docker_ref": "latest"
+  },
+  "machines": {
+    "wsiem": {
+      "asset_id": "A02",
+      "role": "SIEM manager/indexer/dashboard",
+      "historical_ip": "192.168.56.10",
+      "native_guest": "linux",
+      "memory_mb": 8192,
+      "cpus": 4,
+      "forwarded_ports": {
+        "dashboard": {
+          "guest": 443,
+          "host": 8443
+        }
+      }
+    },
+    "dc01": {
+      "asset_id": "A01",
+      "role": "GOAD domain controller",
+      "historical_ip": "192.168.56.11",
+      "native_guest": "windows",
+      "memory_mb": 4096,
+      "cpus": 2,
+      "forwarded_ports": {}
+    },
+    "ws01": {
+      "asset_id": "A04",
+      "role": "Windows endpoint",
+      "historical_ip": "192.168.56.12",
+      "native_guest": "windows",
+      "memory_mb": 4096,
+      "cpus": 2,
+      "forwarded_ports": {}
+    },
+    "uhost": {
+      "asset_id": "A05",
+      "role": "Linux telemetry host",
+      "historical_ip": "192.168.56.13",
+      "native_guest": "linux",
+      "memory_mb": 2048,
+      "cpus": 2,
+      "forwarded_ports": {}
+    },
+    "cti01": {
+      "asset_id": "A03",
+      "role": "MISP CTI server",
+      "historical_ip": "192.168.56.14",
+      "native_guest": "linux",
+      "memory_mb": 6144,
+      "cpus": 4,
+      "forwarded_ports": {
+        "https": {
+          "guest": 443,
+          "host": 8444
+        }
+      }
+    },
+    "fw01-pfsense": {
+      "asset_id": "A07",
+      "role": "pfSense firewall",
+      "historical_ip": "192.168.56.15",
+      "native_guest": "freebsd",
+      "memory_mb": 2048,
+      "cpus": 2,
+      "forwarded_ports": {
+        "web": {
+          "guest": 443,
+          "host": 8445
+        }
+      }
+    }
+  }
+}

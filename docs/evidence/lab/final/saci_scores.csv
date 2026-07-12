@@ -1,0 +1,7 @@
+metric,name,weight,score,applicable
+CWLC,Criticality-Weighted Log Coverage,0.3,100.0,1
+CAC,Control / Alert Coverage,0.25,100.0,1
+MDC,MITRE Detection Coverage,0.2,100.0,1
+CTIC,CTI Integration Coverage,0.15,100.0,1
+TF,Timeliness / Freshness,0.1,100,1
+SACI,Overall SACI Visibility Score,1.0,100.0,1

@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SACI Home Concepts</title>
+
+  <style>
+    :root {
+      --bg: #0f141c;
+      --text: #edf2f7;
+      --muted: #aebdcc;
+      --line: #3b4655;
+      --accent: #9bb7d4;
+      --soft: #151b24;
+      --warning: #d6bd7c;
+      --max: 1120px;
+    }
+
+    html[data-theme="light"] {
+      --bg: #f5f2ec;
+      --text: #111827;
+      --muted: #475569;
+      --line: #c8c0b4;
+      --accent: #24547a;
+      --soft: #ebe7df;
+      --warning: #8a6418;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .top-inner {
+      width: min(var(--max), calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 850;
+      letter-spacing: -.02em;
+      color: var(--text);
+    }
+
+    .switcher {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      padding: 7px 11px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    button.active,
+    button:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .theme {
+      margin-left: 8px;
+    }
+
+    main {
+      width: min(var(--max), calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 56px 0 90px;
+    }
+
+    .concept {
+      display: none;
+    }
+
+    .concept.active {
+      display: block;
+    }
+
+    .kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(46px, 7vw, 96px);
+      line-height: .95;
+      letter-spacing: -.075em;
+      margin: 0 0 26px;
+      max-width: 980px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1;
+      letter-spacing: -.055em;
+      margin: 54px 0 18px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 840px;
+    }
+
+    .lead {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 920px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .actions a {
+      color: var(--text);
+      font-weight: 850;
+    }
+
+    .actions a span {
+      color: var(--accent);
+    }
+
+    .rule {
+      border-top: 1px solid var(--line);
+      margin: 42px 0;
+    }
+
+    .summary {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      font-size: 17px;
+    }
+
+    .summary tr {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .summary td {
+      padding: 14px 0;
+      vertical-align: top;
+    }
+
+    .summary td:first-child {
+      color: var(--muted);
+      width: 280px;
+      font-weight: 750;
+    }
+
+    .summary td:last-child {
+      color: var(--text);
+      font-weight: 850;
+      text-align: right;
+    }
+
+    .routes {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+    }
+
+    .route {
+      display: grid;
+      grid-template-columns: 210px 1fr auto;
+      gap: 22px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    .route b {
+      color: var(--text);
+    }
+
+    .route p {
+      font-size: 15px;
+    }
+
+    .route span {
+      color: var(--accent);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .note {
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .note b {
+      color: var(--warning);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .big-number {
+      font-size: clamp(72px, 12vw, 160px);
+      line-height: .85;
+      letter-spacing: -.09em;
+      color: var(--number, var(--accent));
+      font-weight: 900;
+      margin: 0;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 850;
+    }
+
+    .thin-list {
+      margin-top: 28px;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .thin-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .thin-list span {
+      color: var(--muted);
+    }
+
+    .thin-list b {
+      color: var(--text);
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      letter-spacing: -.03em;
+    }
+
+    .abstract {
+      max-width: 900px;
+      font-size: 19px;
+      color: var(--muted);
+    }
+
+    .abstract p + p {
+      margin-top: 18px;
+    }
+
+    .index-list {
+      counter-reset: item;
+      margin-top: 40px;
+      border-top: 1px solid var(--line);
+    }
+
+    .index-row {
+      counter-increment: item;
+      display: grid;
+      grid-template-columns: 70px 240px 1fr;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .index-row::before {
+      content: counter(item, decimal-leading-zero);
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .status-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 40px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .status-line div {
+      min-width: 140px;
+    }
+
+    .status-line strong {
+      display: block;
+      color: var(--text);
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .status-line span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 860px) {
+      .top-inner,
+      .two-col,
+      .route,
+      .index-row {
+        grid-template-columns: 1fr;
+      }
+
+      .top-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .summary td:last-child {
+        text-align: left;
+      }
+
+      .summary td {
+        display: block;
+        width: 100%;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/saci-standard.css?v=repair-bilingual-1">
+  <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
+</head>
+
+<body data-page="home_concepts">
+<a class="skip-link" href="#main">Ana içeriğe geç</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html" data-i18n="navHome">Home</a>
+      <a href="methodology.html" data-i18n="navMethodology">Methodology</a>
+      <a href="architecture.html" data-i18n="navArchitecture">Architecture</a>
+      <a href="evidence.html" data-i18n="navEvidence">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+<a href="artifacts.html" data-i18n="navArtifacts">Artifacts</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html" data-i18n="navGraph">Graph</a>
+      <a href="explanation.html" data-i18n="navExplanation">Explanation</a>
+      <a href="paper.html" data-i18n="navPaper">Paper View</a>
+    </nav>
+
+    <div class="top-actions" aria-label="Display controls">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+
+<main id="main">
+    <!-- 1 -->
+    <section class="concept active" id="view-1">
+      <div class="kicker">Öneri 1 — Executive summary</div>
+      <div class="two-col">
+        <div>
+          <h1>SACI Final Evidence Portal</h1>
+          <p class="lead">
+            Graph-based visibility scoring model for SIEM telemetry, CTI enrichment and MITRE ATT&CK coverage.
+            This portal publishes the final deterministic evidence package and its explanation layer.
+          </p>
+
+          <div class="actions">
+            <a href="graph.html">Interactive graph <span>→</span></a>
+            <a href="evidence.html">Final evidence <span>→</span></a>
+            <a href="methodology.html">Methodology <span>→</span></a>
+          </div>
+        </div>
+
+        <aside>
+          <div class="caption">Final result</div>
+          <p class="big-number">100</p>
+          <ul class="thin-list">
+            <li><span>Status</span><b>Closed within declared scope</b></li>
+            <li><span>Graph closure</span><b>171/171</b></li>
+            <li><span>Missing relations</span><b>0</b></li>
+            <li><span>Final scenario</span><b>S8</b></li>
+          </ul>
+        </aside>
+      </div>
+
+      <p class="note">
+        <b>Interpretation note:</b> SACI=100 does not mean that the monitored environment is fully secure.
+        It means that all expected visibility relations defined within the declared evaluation scope were observed.
+      </p>
+    </section>
+
+    <!-- 2 -->
+    <section class="concept" id="view-2">
+      <div class="kicker">Öneri 2 — Akademik abstract sayfası</div>
+      <h1>SACI: graph-based SIEM visibility evidence</h1>
+
+      <div class="abstract">
+        <p>
+          SACI is an explainable graph-based scoring model designed to evaluate whether expected visibility
+          relationships are observed across SIEM telemetry, detection controls, CTI enrichment and MITRE ATT&CK mapping.
+        </p>
+        <p>
+          The final evidence package reports complete graph closure in the declared evaluation scope:
+          97 nodes, 171 edges, 171 observed relations and 0 missing relations. The score is interpreted as
+          a visibility closure indicator, not as an absolute security guarantee.
+        </p>
+      </div>
+
+      <table class="summary">
+        <tr><td>SACI score</td><td>100</td></tr>
+        <tr><td>Graph closure</td><td>171/171 observed relations</td></tr>
+        <tr><td>Missing relations</td><td>0</td></tr>
+        <tr><td>Evidence status</td><td>Closed within declared scope</td></tr>
+      </table>
+
+      <div class="actions">
+        <a href="paper.html">Paper view <span>→</span></a>
+        <a href="methodology.html">Methodology <span>→</span></a>
+        <a href="graph.html">Graph <span>→</span></a>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="concept" id="view-3">
+      <div class="kicker">Öneri 3 — Sade index / documentation landing</div>
+      <h1>Final evidence package</h1>
+      <p class="lead">
+        A static publication portal for SACI outputs: deterministic scoring results, evidence graph,
+        coverage tables and policy-guided scenario interpretations.
+      </p>
+
+      <div class="index-list">
+        <a class="index-row" href="methodology.html">
+          <b>Methodology</b>
+          <p>Scoring formula, metric boundaries, N/A handling and explanation-layer separation.</p>
+        </a>
+        <a class="index-row" href="architecture.html">
+          <b>Architecture</b>
+          <p>Telemetry flow across Wazuh, Windows, Linux, pfSense, MISP and detection components.</p>
+        </a>
+        <a class="index-row" href="evidence.html">
+          <b>Evidence</b>
+          <p>Final coverage tables, scores, asset/log-source status, controls, MITRE and CTI outputs.</p>
+        </a>
+        <a class="index-row" href="graph.html">
+          <b>Graph</b>
+          <p>Scenario-based interactive graph with observed and missing visibility relationships.</p>
+        </a>
+        <a class="index-row" href="explanation.html">
+          <b>Explanation</b>
+          <p>Policy-guided natural-language interpretation of deterministic SACI outputs.</p>
+        </a>
+      </div>
+
+      <div class="status-line">
+        <div><strong>100</strong><span>SACI</span></div>
+        <div><strong>97</strong><span>Nodes</span></div>
+        <div><strong>171</strong><span>Edges</span></div>
+        <div><strong>0</strong><span>Missing</span></div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="concept" id="view-4">
+      <div class="kicker">Öneri 4 — Teknik rapor kapağı</div>
+      <h1 class="mono">SACI_FINAL_EVIDENCE</h1>
+      <p class="lead mono">
+        deterministic scoring output / graph closure package / policy-guided explanation layer
+      </p>
+
+      <div class="rule"></div>
+
+      <table class="summary mono">
+        <tr><td>MODEL</td><td>SACI</td></tr>
+        <tr><td>TYPE</td><td>Graph-based SIEM visibility scoring</td></tr>
+        <tr><td>FINAL_SCORE</td><td>100</td></tr>
+        <tr><td>GRAPH_NODES</td><td>97</td></tr>
+        <tr><td>GRAPH_EDGES</td><td>171</td></tr>
+        <tr><td>OBSERVED_EDGES</td><td>171</td></tr>
+        <tr><td>MISSING_EDGES</td><td>0</td></tr>
+        <tr><td>INTERPRETATION</td><td>Visibility closure within declared scope</td></tr>
+      </table>
+
+      <div class="actions mono">
+        <a href="evidence.html">./evidence <span>→</span></a>
+        <a href="graph.html">./graph <span>→</span></a>
+        <a href="data/VALIDATION.txt">./validation <span>→</span></a>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="concept" id="view-5">
+      <div class="kicker">Öneri 5 — Yayın / proje vitrini</div>
+      <div class="two-col">
+        <div>
+          <h1>Explainable evidence closure for SIEM visibility</h1>
+          <p class="lead">
+            SACI converts telemetry, control coverage, CTI enrichment and MITRE mapping evidence into
+            an auditable graph-based visibility score.
+          </p>
+        </div>
+
+        <aside>
+          <table class="summary">
+            <tr><td>Final SACI</td><td>100</td></tr>
+            <tr><td>Coverage closure</td><td>Complete</td></tr>
+            <tr><td>Missing edges</td><td>0</td></tr>
+          </table>
+        </aside>
+      </div>
+
+      <h2>What is published?</h2>
+      <div class="routes">
+        <a class="route" href="methodology.html">
+          <b>Method</b>
+          <p>How the score is calculated and how metric edge cases are handled.</p>
+          <span>Open →</span>
+        </a>
+        <a class="route" href="evidence.html">
+          <b>Evidence</b>
+          <p>Final deterministic outputs and coverage tables.</p>
+          <span>Open →</span>
+        </a>
+        <a class="route" href="graph.html">
+          <b>Graph</b>
+          <p>Interactive scenario graph with node and edge explanations.</p>
+          <span>Open →</span>
+        </a>
+        <a class="route" href="explanation.html">
+          <b>Explanation</b>
+          <p>Policy-guided interpretation based on deterministic SACI outputs.</p>
+          <span>Open →</span>
+        </a>
+      </div>
+
+      <p class="note">
+        <b>Boundary:</b> SACI measures declared visibility closure. It does not claim absolute security.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll("[data-view]");
+    const views = document.querySelectorAll(".concept");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.view;
+
+        buttons.forEach(b => b.classList.remove("active"));
+        views.forEach(v => v.classList.remove("active"));
+
+        btn.classList.add("active");
+        document.getElementById("view-" + id).classList.add("active");
+      });
+    });
+
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "light" ? "dark" : "light";
+    });
+  </script>
+  <script src="assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="assets/saci-compact-controls.js?v=2"></script>
+</body>
+</html>

@@ -1,31 +1,133 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!doctype html>
+<html  lang="tr" data-theme="dim" data-font-level="0">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SACI Evidence | Scenarios & LLM</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="assets/app.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Senaryo analizi - SACI Final Evidence</title>
+  <meta name="description" content="S0–S18 kontrollü doğrulama serisinde telemetri, detection, MITRE, CTI ve freshness değişimlerinin SACI üzerindeki etkisi.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/scenarios.html">
+  <link rel="stylesheet" href="assets/saci-standard.css?v=scenario-analysis-2">
+  <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="assets/scenarios.css?v=scenario-analysis-2">
+  <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
 </head>
-<body>
-    <div class="topbar">
-        <nav class="nav">
-            <a href="index.html" class="brand"><span class="brand-dot"></span>SACI Portal</a>
-            <div class="nav-right">
-                <div class="nav-links"><a href="index.html" ><span class="tr">Genel Bakış</span><span class="en">Overview</span></a><a href="architecture.html" ><span class="tr">Mimari & Kurulum</span><span class="en">Architecture & Config</span></a><a href="data.html" ><span class="tr">Kanıt Verileri</span><span class="en">Evidence Data</span></a><a href="graph.html" ><span class="tr">Etkileşimli Graf</span><span class="en">Interactive Graph</span></a><a href="scenarios.html" class="active"><span class="tr">Senaryolar & Değerlendirme</span><span class="en">Scenarios & LLM</span></a></div>
-                <div class="lang-switch">
-                    <button data-lang="tr">TR</button>
-                    <button data-lang="en">EN</button>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div class="shell">
-        
-<h1><span class="tr">Senaryolar ve Deterministik Rapor</span><span class="en">Scenarios and Deterministic Report</span></h1>
-<p class="lead"><span class="tr">Serbest metin (LLM) halüsinasyonlarını engelleyen, doğrudan Reason Codes JSON çıktısıyla beslenen politika yönlendirmeli analiz.</span><span class="en">Policy-guided analysis fed directly by the Reason Codes JSON output, preventing free-text LLM hallucinations.</span></p>
-<div class="scenario-card"><h3 style="margin-top:0; color:var(--accent-green);"><span class="tr">S8 Final Kapanış</span><span class="en">S8 Final Closure</span></h3><p><span class="tr">Aktif metrik boşluğu (reason code) bulunamadı. Değerlendirme %100 kapanış ile tamamlandı.</span><span class="en">No active metric gaps (reason codes) found. Evaluation completed with 100% closure.</span></p></div>
+<body data-page="scenarios">
+<a class="skip-link" href="#main">Ana içeriğe geç</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a class="active" href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+    <div class="top-actions" aria-label="Display controls">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
 
-    </div>
-</body>
-</html>
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<main id="main" class="scenario-page">
+  <section class="scenario-hero"><div class="kicker">SENARYO ANALİZİ</div><h1>Senaryo analizi</h1><p class="lead">Bu sayfa SACI modelinin telemetri kayıpları, detection boşlukları, MITRE kapsam değişiklikleri, CTI kesintileri, freshness düşüşü ve düzeltmeler karşısındaki davranışını değerlendirir.</p><p class="scenario-context">Yayına esas final veri kümesi ile S0-S18 tarihsel doğrulama serisi ayrı tutulur. Senaryo node, edge ve skor değerleri final yayın veri kümesiyle birleştirilmez.</p></section>
+  <section class="scenario-summary">
+    <div class="scenario-summary-card"><span>Tarihsel senaryo</span><strong id="summaryTotal">-</strong></div>
+    <div class="scenario-summary-card"><span>Ayrıntılı senaryo</span><strong id="summaryRepresentative">-</strong></div>
+    <div class="scenario-summary-card"><span>Missing ilişkisi olmayan</span><strong id="summaryComplete">-</strong></div>
+    <div class="scenario-summary-card"><span>Boşluk içeren senaryo</span><strong id="summaryWithGaps">-</strong></div>
+    <div class="scenario-summary-card"><span>MITRE eşleşme satırı</span><strong id="summaryMitre">-</strong></div>
+  </section>
+  <div id="loadingState" class="empty-state">Senaryo verileri yükleniyor...</div>
+  <section class="scenario-section"><div class="scenario-section-head"><h2>Ayrıntılı incelenen senaryolar</h2><p>Duyarlılık, açıklanabilirlik ve toparlanma davranışını en güçlü biçimde gösteren senaryolar.</p></div><div id="representativeGrid" class="scenario-cards"></div></section>
+  <section class="scenario-section"><div class="scenario-section-head"><h2>Metodolojik karşılaştırmalar</h2><p>Bu karşılaştırmalar, tek bir final skor yerine senaryo serisinin neden gerekli olduğunu gösterir.</p></div><div id="comparisonGrid" class="comparison-grid"></div></section>
+  <section class="scenario-section"><div class="scenario-section-head"><h2>Tüm tarihsel senaryolar</h2><p>Her senaryo bileşen skorları, observed ve missing ilişkiler, MITRE kapsamı ve kısa yorumuyla listelenir.</p></div>
+    <div class="scenario-toolbar"><div><label for="scenarioSearch">Senaryolarda ara</label><input id="scenarioSearch" type="search" placeholder="S7A, CTI, freshness..."></div><div><label for="categoryFilter">Kategori</label><select id="categoryFilter"></select></div><button type="button" id="clearFilter">Temizle</button></div>
+    <div class="table-shell"><table class="scenario-table"><thead><tr><th>Senaryo</th><th>Değişiklik ve kısa yorum</th><th>CWLC</th><th>CAC</th><th>MDC</th><th>CTIC</th><th>TF</th><th>SACI</th><th>Observed</th><th>Missing</th><th>MITRE</th><th>Aç</th></tr></thead><tbody id="scenarioTableBody"></tbody></table></div>
+  </section>
+</main>
+<script src="assets/scenarios.js?v=scenario-analysis-2"></script>
+<script src="assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="assets/saci-compact-controls.js?v=2"></script>
+</body></html>

@@ -1,0 +1,96 @@
+<!doctype html><html lang="tr" data-theme="dim" data-font-level="0"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kanıt bütünlüğü ve Bulgu F-01 — SACI</title><link rel="stylesheet" href="assets/saci-standard.css"><link rel="stylesheet" href="assets/saci-global-ui.css"><link rel="stylesheet" href="assets/saci-methodology-rhythm.css"><link rel="stylesheet" href="assets/integrity.css"></head><body data-page="integrity"><header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a class="active" href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+    <div class="top-actions" aria-label="Display controls">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header><main id="main" class="integrity-page"><section class="integrity-hero"><div class="kicker">KANIT BÜTÜNLÜĞÜ</div><h1>Kanıt bütünlüğü ve Bulgu F-01</h1><p class="lead">Sayısal kapsama skoru ile kanıt graph'ının yapısal geçerliliği bağımsız boyutlar olarak değerlendirilir.</p><div class="integrity-summary"><article><span>Hesaplanan SACI</span><strong id="integrityScore">—</strong></article><article><span>İlişki kapanışı</span><strong id="integrityClosure">—</strong></article><article><span>Integrity durumu</span><strong id="integrityStatus" class="integrity-status">—</strong></article><article><span>Yayın kapısı</span><strong id="integrityGate">—</strong></article></div></section><div id="integrityLoading">Integrity çıktıları yükleniyor...</div><div id="integrityContent" hidden><section class="integrity-section"><h2>F-01 — İlişki kapanışı ile graph bütünlüğü ayrı doğrulama boyutlarıdır</h2><p>Tam ilişki kapanışı, graph bütünlüğünü tek başına kanıtlamaz. SACI bu nedenle hesaplanan kapsama skorunu integrity durumu ve kanonik yayın kararından ayrı raporlar.</p><div class="integrity-rule"><strong>Yayın kuralı:</strong> Yalnızca VALID kanonik yayın kapısını açar.</div><div class="integrity-actions"><a href="data/final/INTEGRITY_RESULT.md">INTEGRITY_RESULT.md</a><a href="data/final/FINDING_F01.md">FINDING_F01.md</a><a href="data/final/integrity_findings.csv">integrity_findings.csv</a></div></section><section class="integrity-section"><h2>Aktif bulgular</h2><p id="integrityCounts"></p><div class="integrity-table-wrap"><table class="integrity-table"><thead><tr><th>ID</th><th>Seviye</th><th>Bulgu</th><th>Nesne</th><th>Düzeltici işlem</th></tr></thead><tbody id="integrityRows"></tbody></table></div></section></div></main><script src="assets/integrity.js"></script><script src="assets/saci-ui.js"></script></body></html>

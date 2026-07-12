@@ -1,0 +1,950 @@
+/*
+ * SACI Global Page Standard
+ * Applies to every Turkish and English page.
+ */
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  margin: 0 !important;
+  overflow-x: hidden;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif !important;
+}
+
+.skip-link {
+  position: fixed !important;
+  top: 10px !important;
+  left: 10px !important;
+  z-index: 9999 !important;
+  transform: translateY(-180%) !important;
+  padding: 9px 12px !important;
+  border-radius: 8px !important;
+  background: var(--text) !important;
+  color: var(--bg) !important;
+  text-decoration: none !important;
+}
+
+.skip-link:focus {
+  transform: translateY(0) !important;
+}
+
+
+/* =========================================================
+   GLOBAL TOP HEADER
+   ========================================================= */
+
+.top {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+
+  width: 100% !important;
+  min-height: 76px !important;
+
+  border-bottom:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--line) 76%,
+      transparent
+    ) !important;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--bg) 91%,
+      transparent
+    ) !important;
+
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+.top-inner {
+  width: min(calc(100% - 48px), 1460px) !important;
+  max-width: none !important;
+  min-height: 76px !important;
+
+  margin-inline: auto !important;
+  padding: 0 !important;
+
+  display: grid !important;
+  grid-template-columns:
+    max-content
+    minmax(0, 1fr)
+    max-content !important;
+
+  align-items: center !important;
+  gap: clamp(20px, 2.2vw, 38px) !important;
+}
+
+
+/* Brand */
+
+.brand {
+  display: inline-flex !important;
+  align-items: center !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: var(--text) !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+
+  font-size: 16px !important;
+  font-weight: 750 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.015em !important;
+}
+
+
+/* Main navigation */
+
+.nav {
+  min-width: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+
+  gap: clamp(13px, 1.45vw, 24px) !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.nav a {
+  position: relative !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+
+  min-height: 38px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+
+  font-size: 14px !important;
+  font-weight: 580 !important;
+  line-height: 1.2 !important;
+
+  transition:
+    color .15s ease,
+    opacity .15s ease !important;
+}
+
+.nav a:hover {
+  color: var(--text) !important;
+}
+
+.nav a.active {
+  color: var(--text) !important;
+  font-weight: 680 !important;
+}
+
+.nav a.active::after {
+  content: "" !important;
+
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 1px !important;
+
+  height: 1px !important;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 76%,
+      var(--text)
+    ) !important;
+}
+
+
+/* Header controls */
+
+.top-actions {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex-wrap: nowrap !important;
+
+  gap: 13px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  white-space: nowrap !important;
+}
+
+.top-control {
+  display: inline-flex !important;
+  align-items: center !important;
+
+  gap: 6px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: var(--muted) !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+}
+
+.top-control > span {
+  margin-right: 1px !important;
+  color: var(--muted) !important;
+  font-size: 12px !important;
+  font-weight: 540 !important;
+}
+
+.top-control button {
+  appearance: none !important;
+
+  min-width: 22px !important;
+  min-height: 28px !important;
+
+  margin: 0 !important;
+  padding: 3px 4px !important;
+
+  border: 0 !important;
+  border-radius: 5px !important;
+
+  background: transparent !important;
+  color: var(--muted) !important;
+
+  font: inherit !important;
+  font-size: 12px !important;
+  font-weight: 580 !important;
+  line-height: 1 !important;
+
+  cursor: pointer !important;
+}
+
+.top-control button:hover {
+  color: var(--text) !important;
+  background:
+    color-mix(
+      in srgb,
+      var(--text) 6%,
+      transparent
+    ) !important;
+}
+
+.top-control button.active,
+.top-control button[aria-pressed="true"] {
+  color: var(--text) !important;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 8%,
+      transparent
+    ) !important;
+
+  outline:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--accent) 42%,
+      var(--line)
+    ) !important;
+}
+
+
+/* =========================================================
+   GLOBAL CONTENT WIDTH AND TOP SPACING
+   ========================================================= */
+
+main,
+.page,
+.page-main,
+.page-wrap,
+.content,
+.content-wrap {
+  margin-top: 0 !important;
+}
+
+main,
+main.page,
+main.page-main,
+.page-main {
+  width:
+    min(
+      calc(100% - clamp(40px, 8vw, 128px)),
+      1340px
+    ) !important;
+
+  max-width: none !important;
+
+  margin-inline: auto !important;
+
+  padding-top: clamp(34px, 4.2vw, 58px) !important;
+  padding-bottom: clamp(56px, 7vw, 96px) !important;
+}
+
+
+/*
+ * Graph uses a wider working surface.
+ */
+
+body[data-page="graph"] main {
+  width:
+    min(
+      calc(100% - clamp(32px, 6vw, 96px)),
+      1760px
+    ) !important;
+}
+
+
+/* =========================================================
+   GLOBAL HERO / PAGE INTRO
+   ========================================================= */
+
+.graph-hero,
+.page-hero,
+.hero,
+.hero-section,
+.page-intro,
+.page-header,
+.page-header-block,
+.content-hero,
+.intro-section,
+main > section:first-child {
+  margin-top: 0 !important;
+}
+
+
+/* Kicker / eyebrow */
+
+.kicker,
+.eyebrow,
+.overline,
+.page-kicker,
+.page-eyebrow,
+.hero-kicker,
+.section-kicker,
+.intro-kicker,
+.page-label,
+.graph-hero .kicker,
+main > section:first-child > .kicker,
+main > section:first-child > .eyebrow {
+  display: inline-flex !important;
+  align-items: center !important;
+
+  margin: 0 0 17px 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  background: transparent !important;
+
+  color: var(--accent) !important;
+
+  font-size: 12px !important;
+  font-weight: 740 !important;
+  line-height: 1.25 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+
+  opacity: .96 !important;
+}
+
+
+/* Main title */
+
+.graph-hero h1,
+.page-hero h1,
+.hero h1,
+.hero-section h1,
+.page-intro h1,
+.page-header h1,
+.page-header-block h1,
+.content-hero h1,
+.intro-section h1,
+main > section:first-child > h1 {
+  max-width: 19ch !important;
+
+  margin: 0 0 20px 0 !important;
+
+  color: var(--text) !important;
+
+  font-size:
+    clamp(
+      46px,
+      5.6vw,
+      78px
+    ) !important;
+
+  font-weight: 720 !important;
+  line-height: 1.01 !important;
+  letter-spacing: -.05em !important;
+
+  text-wrap: balance !important;
+}
+
+
+/* Lead / intro paragraphs */
+
+.graph-hero .lead,
+.page-hero .lead,
+.hero .lead,
+.hero-section .lead,
+.page-intro .lead,
+.page-header .lead,
+.page-header-block .lead,
+.content-hero .lead,
+.intro-section .lead,
+.page-summary,
+.page-lead,
+main > section:first-child > p {
+  max-width: 78ch !important;
+
+  margin: 0 0 15px 0 !important;
+
+  color: var(--muted) !important;
+
+  font-size:
+    clamp(
+      17px,
+      .5vw + 15px,
+      21px
+    ) !important;
+
+  line-height: 1.72 !important;
+  letter-spacing: 0 !important;
+
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+
+/* Scope note or smaller paragraph in hero */
+
+.scope-note,
+.hero-note,
+.intro-note,
+.architecture-scope-note,
+.graph-scope-note {
+  max-width: 78ch !important;
+
+  margin-top: 19px !important;
+
+  color: var(--muted) !important;
+
+  font-size: 14.5px !important;
+  line-height: 1.72 !important;
+}
+
+
+/* Prevent old oversized empty hero containers */
+
+.graph-hero,
+.page-hero,
+.hero,
+.hero-section,
+.page-intro,
+.page-header,
+.page-header-block,
+.content-hero,
+.intro-section {
+  min-height: 0 !important;
+  height: auto !important;
+
+  padding-top: 0 !important;
+  padding-bottom: clamp(18px, 2.8vw, 32px) !important;
+}
+
+
+/* =========================================================
+   HEADINGS AND PARAGRAPHS
+   ========================================================= */
+
+main h2 {
+  max-width: 30ch;
+
+  margin-top: clamp(48px, 6vw, 82px);
+  margin-bottom: 18px;
+
+  color: var(--text);
+
+  font-size: clamp(30px, 3.2vw, 44px);
+  font-weight: 680;
+  line-height: 1.1;
+  letter-spacing: -.035em;
+}
+
+main h3 {
+  color: var(--text);
+  line-height: 1.25;
+}
+
+main p {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+
+/* =========================================================
+   GRAPH PAGE SPECIFIC TOP AREA
+   ========================================================= */
+
+body[data-page="graph"] .graph-hero {
+  margin-bottom: 8px !important;
+}
+
+body[data-page="graph"] .graph-hero h1 {
+  max-width: 20ch !important;
+}
+
+body[data-page="graph"] .graph-toolbar {
+  margin-top: 12px !important;
+}
+
+
+/* =========================================================
+   ARCHITECTURE PAGE SPECIFIC TOP AREA
+   ========================================================= */
+
+body[data-page="architecture"] .page-hero h1,
+body[data-page="architecture"] .hero h1,
+body[data-page="architecture"] .page-intro h1,
+body[data-page="architecture"] main > section:first-child > h1 {
+  max-width: 22ch !important;
+}
+
+body[data-page="architecture"] .architecture-final-intro {
+  max-width: 86ch !important;
+}
+
+body[data-page="architecture"] .architecture-final-intro p {
+  max-width: 82ch !important;
+  line-height: 1.76 !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE HEADER
+   ========================================================= */
+
+@media (max-width: 1280px) {
+  .top-inner {
+    grid-template-columns:
+      max-content
+      minmax(0, 1fr) !important;
+
+    gap:
+      8px
+      24px !important;
+
+    padding-block: 12px !important;
+  }
+
+  .top-actions {
+    grid-column: 1 / -1 !important;
+    justify-self: end !important;
+  }
+
+  .nav {
+    justify-content: flex-end !important;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .top {
+    position: relative !important;
+  }
+
+  .top-inner {
+    width: min(calc(100% - 30px), 1460px) !important;
+
+    grid-template-columns: 1fr !important;
+
+    gap: 8px !important;
+
+    padding-block: 14px !important;
+  }
+
+  .brand {
+    justify-self: start !important;
+  }
+
+  .nav {
+    width: 100% !important;
+
+    justify-content: flex-start !important;
+
+    overflow-x: auto !important;
+    overscroll-behavior-inline: contain !important;
+
+    padding-bottom: 3px !important;
+
+    scrollbar-width: thin;
+  }
+
+  .top-actions {
+    grid-column: auto !important;
+    justify-self: start !important;
+
+    width: 100% !important;
+
+    overflow-x: auto !important;
+
+    padding-bottom: 3px !important;
+  }
+
+  main,
+  main.page,
+  main.page-main,
+  .page-main,
+  body[data-page="graph"] main {
+    width: min(calc(100% - 34px), 1340px) !important;
+    padding-top: 28px !important;
+  }
+
+  .graph-hero h1,
+  .page-hero h1,
+  .hero h1,
+  .hero-section h1,
+  .page-intro h1,
+  .page-header h1,
+  .page-header-block h1,
+  .content-hero h1,
+  .intro-section h1,
+  main > section:first-child > h1 {
+    max-width: 100% !important;
+
+    font-size:
+      clamp(
+        38px,
+        9vw,
+        58px
+      ) !important;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .top-control > span {
+    display: none !important;
+  }
+
+  .top-actions {
+    gap: 9px !important;
+  }
+
+  main,
+  main.page,
+  main.page-main,
+  .page-main,
+  body[data-page="graph"] main {
+    width: min(calc(100% - 24px), 1340px) !important;
+    padding-top: 22px !important;
+  }
+
+  .kicker,
+  .eyebrow,
+  .overline,
+  .page-kicker,
+  .page-eyebrow,
+  .hero-kicker,
+  .section-kicker,
+  .intro-kicker,
+  .page-label,
+  .graph-hero .kicker {
+    margin-bottom: 13px !important;
+
+    font-size: 11px !important;
+    letter-spacing: .12em !important;
+  }
+
+  .graph-hero .lead,
+  .page-hero .lead,
+  .hero .lead,
+  .hero-section .lead,
+  .page-intro .lead,
+  .page-header .lead,
+  .page-header-block .lead,
+  .content-hero .lead,
+  .intro-section .lead,
+  .page-summary,
+  .page-lead,
+  main > section:first-child > p {
+    font-size: 16px !important;
+    line-height: 1.66 !important;
+  }
+}
+
+/* SACI_RESPONSIVE_HEADER_START */
+
+/*
+ * Responsive header shell.
+ * The JavaScript measures the actual brand + navigation + control widths.
+ * The menu collapses only when the complete header no longer fits.
+ */
+
+.top-inner.saci-nav-enhanced {
+  position: relative !important;
+  grid-template-columns: max-content minmax(0, 1fr) !important;
+  gap: clamp(18px, 2vw, 34px) !important;
+}
+
+.saci-nav-panel {
+  min-width: 0 !important;
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) max-content !important;
+  align-items: center !important;
+  gap: clamp(18px, 2vw, 34px) !important;
+}
+
+.nav-toggle {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+
+  min-height: 38px !important;
+  padding: 0 12px !important;
+
+  border: 1px solid color-mix(in srgb, var(--line) 72%, transparent) !important;
+  border-radius: 9px !important;
+
+  background: color-mix(in srgb, var(--bg) 88%, transparent) !important;
+  color: var(--text) !important;
+
+  font: inherit !important;
+  font-size: 12px !important;
+  font-weight: 680 !important;
+  line-height: 1 !important;
+
+  cursor: pointer !important;
+}
+
+.nav-toggle:hover,
+.nav-toggle[aria-expanded="true"] {
+  border-color: color-mix(in srgb, var(--accent) 48%, var(--line)) !important;
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg)) !important;
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 62%, transparent) !important;
+  outline-offset: 2px !important;
+}
+
+.nav-toggle-icon {
+  position: relative !important;
+  width: 16px !important;
+  height: 12px !important;
+  display: inline-block !important;
+}
+
+.nav-toggle-icon::before,
+.nav-toggle-icon::after,
+.nav-toggle-icon > span {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  width: 16px !important;
+  height: 1.5px !important;
+  border-radius: 2px !important;
+  background: currentColor !important;
+  transition: transform .16s ease, top .16s ease, opacity .16s ease !important;
+}
+
+.nav-toggle-icon::before { top: 0 !important; }
+.nav-toggle-icon > span { top: 5px !important; }
+.nav-toggle-icon::after { top: 10px !important; }
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::before {
+  top: 5px !important;
+  transform: rotate(45deg) !important;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon > span {
+  opacity: 0 !important;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::after {
+  top: 5px !important;
+  transform: rotate(-45deg) !important;
+}
+
+/* Dynamic collapsed state: applied after real-width measurement. */
+.top.saci-nav-collapsed .top-inner.saci-nav-enhanced {
+  grid-template-columns: minmax(0, 1fr) max-content !important;
+  min-height: 68px !important;
+}
+
+.top.saci-nav-collapsed .nav-toggle {
+  display: inline-flex !important;
+}
+
+.top.saci-nav-collapsed .saci-nav-panel {
+  position: absolute !important;
+  z-index: 120 !important;
+  top: calc(100% + 1px) !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  display: none !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+
+  max-height: calc(100vh - 92px) !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+
+  padding: 16px !important;
+
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent) !important;
+  border-top: 0 !important;
+  border-radius: 0 0 14px 14px !important;
+
+  background: color-mix(in srgb, var(--bg) 97%, transparent) !important;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, .28) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+}
+
+.top.saci-nav-collapsed.saci-nav-open .saci-nav-panel {
+  display: grid !important;
+}
+
+.top.saci-nav-collapsed .nav {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+  gap: 5px !important;
+}
+
+.top.saci-nav-collapsed .nav a {
+  min-width: 0 !important;
+  min-height: 42px !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+  justify-content: flex-start !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.top.saci-nav-collapsed .nav a:hover,
+.top.saci-nav-collapsed .nav a.active {
+  background: color-mix(in srgb, var(--accent) 7%, transparent) !important;
+}
+
+.top.saci-nav-collapsed .nav a.active::after {
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 5px !important;
+}
+
+.top.saci-nav-collapsed .top-actions {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+  flex-wrap: wrap !important;
+  gap: 12px 18px !important;
+  padding-top: 14px !important;
+  border-top: 1px solid color-mix(in srgb, var(--line) 62%, transparent) !important;
+  white-space: normal !important;
+}
+
+.top.saci-nav-collapsed .top-control {
+  min-height: 32px !important;
+  flex-wrap: nowrap !important;
+}
+
+/* Prevent the page behind the open panel from scrolling on compact screens. */
+html.saci-nav-lock,
+html.saci-nav-lock body {
+  overflow: hidden !important;
+}
+
+@media (max-width: 860px) {
+  .top-inner {
+    width: min(calc(100% - 28px), 1460px) !important;
+  }
+
+  .top.saci-nav-collapsed .nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .top.saci-nav-collapsed .saci-nav-panel {
+    padding: 13px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .top-inner {
+    width: min(calc(100% - 20px), 1460px) !important;
+  }
+
+  .brand {
+    max-width: calc(100vw - 130px) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .nav-toggle-label {
+    display: none !important;
+  }
+
+  .nav-toggle {
+    width: 40px !important;
+    padding-inline: 0 !important;
+  }
+
+  .top.saci-nav-collapsed .nav {
+    grid-template-columns: 1fr !important;
+  }
+
+  .top.saci-nav-collapsed .top-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .top.saci-nav-collapsed .top-control {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after,
+  .nav-toggle-icon > span {
+    transition: none !important;
+  }
+}
+
+/* SACI_RESPONSIVE_HEADER_END */

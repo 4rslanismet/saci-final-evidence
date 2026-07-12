@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-07-12T17:32:01.332090+00:00",
+  "policy_version": "1.0",
+  "integrity_status": "VALID",
+  "publication_allowed": true,
+  "publication_gate": "OPEN",
+  "calculated_saci": 100.0,
+  "declared_nodes": 99,
+  "rendered_nodes": 99,
+  "edges": 171,
+  "unique_edge_triples": 165,
+  "observed_edges": 171,
+  "missing_edges": 0,
+  "relation_closure_percent": 100.0,
+  "finding_counts": {
+    "INCOMPLETE": 0,
+    "INVALID": 0,
+    "WARNING": 0,
+    "INFO": 0
+  },
+  "finding_f01": {
+    "id": "F-01",
+    "title_tr": "İlişki kapanışı ile graph bütünlüğü ayrı doğrulama boyutlarıdır",
+    "title_en": "Relation closure and graph integrity are distinct validation dimensions"
+  }
+}

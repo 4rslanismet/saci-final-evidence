@@ -1,0 +1,165 @@
+<!doctype html>
+<html  lang="tr" data-theme="dim" data-font-level="0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Açıklama raporu — SACI Final Evidence</title>
+  <meta name="description" content="Deterministik SACI çıktılarının policy-guided açıklama katmanı üzerinden senaryo bazlı operasyonel yorumları.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/explanation.html">
+  <link rel="stylesheet" href="assets/saci-standard.css?v=explanation-report-1">
+  <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="assets/explanation.css?v=explanation-report-1">
+  <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
+</head>
+<body data-page="explanation">
+
+<a class="skip-link" href="#main">Ana içeriğe geç</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a class="active" href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+    <div class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+
+<main id="main" class="explanation-page">
+  <section class="explanation-hero">
+    <div class="kicker">AÇIKLAMA RAPORU</div>
+    <h1>Açıklama raporu</h1>
+    <p class="lead">Bu sayfa deterministik SACI metriklerini, graph ilişkilerini, reason code kayıtlarını ve senaryo durumlarını policy-guided raporlama katmanı üzerinden uzun biçimli operasyonel açıklamalara dönüştürür.</p>
+    <div class="explanation-boundary"><strong>Yöntem sınırı:</strong> açıklama katmanı SACI skorunu hesaplamaz, değiştirmez veya geçersiz kılmaz. Deterministik çıktıları yorumlar. Opsiyonel LLM yalnızca politikanın ürettiği yapılandırılmış raporu yeniden ifade edebilir.</div>
+  </section>
+
+  <section class="explanation-section">
+    <div class="explanation-section-head"><h2>Policy-guided açıklama katmanı</h2><p>Raporlama politikası hangi ifadenin kurulabileceğini, hangi kanıtın gerekli olduğunu ve kapsam sınırlarının nasıl aktarılacağını belirler.</p></div>
+    <div class="policy-grid">
+      <article class="policy-card"><span>01</span><h3>Deterministik kaynak</h3><p>Metrikler, graph ilişkileri ve reason code kayıtları otorite kabul edilen girdilerdir.</p></article><article class="policy-card"><span>02</span><h3>Politika sınırı</h3><p>Politika; ifade biçimini, güven düzeyini ve kapsam cümlelerini sınırlar.</p></article><article class="policy-card"><span>03</span><h3>Opsiyonel LLM</h3><p>LLM yapılandırılmış raporu yeniden ifade edebilir; skoru çıkaramaz veya değiştiremez.</p></article><article class="policy-card"><span>04</span><h3>Denetlenebilir çıktı</h3><p>Her ifade bir metrik, ilişki veya reason code kaydına geri izlenebilir olmalıdır.</p></article>
+    </div>
+  </section>
+
+  <div id="loadingState" class="empty-state">Açıklama verileri yükleniyor...</div>
+
+  <div id="reportContent" hidden>
+    <section class="explanation-section">
+      <div class="explanation-section-head"><h2>Final closure raporu</h2><p>Yayına esas final veri kümesinin uzun biçimli yorumu.</p></div>
+      <div id="finalReport" class="final-report"></div>
+    </section>
+
+    <section class="explanation-section">
+      <div class="explanation-section-head"><h2>Senaryo bazlı doğal dil açıklamaları</h2><p>Uzun biçimli bulgu, kanıt yorumu, operasyonel anlam ve önerilen doğrulamayı görmek için bir senaryo seç.</p></div>
+      <div class="scenario-report-shell">
+        <aside class="scenario-selector">
+          <label for="scenarioSelect">Veri kümesi / senaryo</label>
+          <select id="scenarioSelect"></select>
+          <div class="selector-actions">
+            <a id="openGraph" href="graph.html">Graph'ta aç</a>
+            <a id="openEvidence" href="evidence.html">Kanıtı aç</a>
+          </div>
+        </aside>
+        <article id="scenarioReport" class="scenario-report"></article>
+      </div>
+    </section>
+  </div>
+
+  <section class="explanation-section">
+    <div class="explanation-section-head"><h2>Açıklama üretim akışı</h2><p>Deterministik sonuçlar otorite olarak kalır; doğal dil üretimi yalnızca sunum katmanıdır.</p></div>
+    <div class="pipeline">
+      <article class="pipeline-step"><span>01</span><h3>Deterministik SACI çıktısı</h3><p>Bileşen skorları, graph kapanışı, missing ilişkiler, MITRE, CTI ve freshness.</p></article><article class="pipeline-step"><span>02</span><h3>Raporlama politikası</h3><p>Yorum kurallarını, senaryo bağlamını ve kapsam sınırlarını uygular.</p></article><article class="pipeline-step"><span>03</span><h3>Yapılandırılmış rapor</h3><p>Bulgu, kanıt yorumu, operasyonel anlam ve doğrulama önerisi üretir.</p></article><article class="pipeline-step"><span>04</span><h3>Opsiyonel dil modeli</h3><p>Skoru hesaplamadan veya değiştirmeden okunabilirliği artırabilir.</p></article>
+    </div>
+  </section>
+</main>
+<script src="assets/explanation.js?v=explanation-report-1"></script>
+<script src="assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="assets/saci-compact-controls.js?v=2"></script>
+</body>
+</html>

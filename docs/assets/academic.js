@@ -18,6 +18,9 @@
     document.querySelectorAll("[data-tr-aria][data-en-aria]").forEach((element) => {
       element.setAttribute("aria-label", element.getAttribute(`data-${next}-aria`) || "");
     });
+    document.querySelectorAll("[data-tr-placeholder][data-en-placeholder]").forEach((element) => {
+      element.setAttribute("placeholder", element.getAttribute(`data-${next}-placeholder`) || "");
+    });
     document.querySelectorAll("[data-lang]").forEach((button) => {
       const active = button.dataset.lang === next;
       button.classList.toggle("active", active);
@@ -41,16 +44,35 @@
   function initNavigation() {
     const toggle = document.querySelector(".nav-toggle");
     if (toggle) {
+      const panel = document.querySelector(".nav-panel");
+      const hiddenLabel = toggle.querySelector(".sr-only");
+      const updateToggleLabel = (open) => {
+        const label = preferredLanguage() === "en"
+          ? (open ? "Close menu" : "Open menu")
+          : (open ? "Menüyü kapat" : "Menüyü aç");
+        toggle.setAttribute("aria-label", label);
+        if (hiddenLabel) hiddenLabel.textContent = label;
+      };
+      const closeNavigation = (restoreFocus = false) => {
+        document.body.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+        updateToggleLabel(false);
+        if (restoreFocus) toggle.focus();
+      };
       toggle.addEventListener("click", () => {
         const open = document.body.classList.toggle("nav-open");
         toggle.setAttribute("aria-expanded", String(open));
+        updateToggleLabel(open);
+        if (open) window.requestAnimationFrame(() => panel?.querySelector("a, button")?.focus());
       });
       document.querySelectorAll(".nav-panel a").forEach((link) => {
-        link.addEventListener("click", () => {
-          document.body.classList.remove("nav-open");
-          toggle.setAttribute("aria-expanded", "false");
-        });
+        link.addEventListener("click", () => closeNavigation(false));
       });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && document.body.classList.contains("nav-open")) closeNavigation(true);
+      });
+      window.addEventListener("saci:language", () => updateToggleLabel(document.body.classList.contains("nav-open")));
+      updateToggleLabel(false);
     }
 
     const anchors = [...document.querySelectorAll('.nav-links a[href^="#"]')];
@@ -262,10 +284,10 @@
     rows.forEach((item) => appendRow(body, [
       item.indicator,
       item.type,
-      statusCell(item.lookup_executed === "1", { trTrue: "Kayıtlı", trFalse: "Yok", enTrue: "Recorded", enFalse: "Absent" }),
-      statusCell(item.misp_hit === "1", { trTrue: "Kayıtlı", trFalse: "Yok", enTrue: "Recorded", enFalse: "Absent" }),
-      statusCell(item.wazuh_alert === "1", { trTrue: "Kayıtlı", trFalse: "Yok", enTrue: "Recorded", enFalse: "Absent" }),
-      statusCell(item.mapped_to_mitre === "1", { trTrue: "Kayıtlı", trFalse: "Yok", enTrue: "Recorded", enFalse: "Absent" }),
+      statusCell(item.lookup_executed === "1", { trTrue: "Bayrak=1", trFalse: "Bayrak=0", enTrue: "Flag=1", enFalse: "Flag=0" }),
+      statusCell(item.misp_hit === "1", { trTrue: "Bayrak=1", trFalse: "Bayrak=0", enTrue: "Flag=1", enFalse: "Flag=0" }),
+      statusCell(item.wazuh_alert === "1", { trTrue: "Bayrak=1", trFalse: "Bayrak=0", enTrue: "Flag=1", enFalse: "Flag=0" }),
+      statusCell(item.mapped_to_mitre === "1", { trTrue: "Bayrak=1", trFalse: "Bayrak=0", enTrue: "Flag=1", enFalse: "Flag=0" }),
       item.expected_alert_rule,
       item.mitre_technique
     ]));

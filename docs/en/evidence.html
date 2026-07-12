@@ -1,0 +1,132 @@
+<!doctype html>
+<html  lang="en" data-theme="dim" data-font-level="0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Final evidence package — SACI Final Evidence</title>
+  <meta name="description" content="Final SACI evidence including log and control coverage, MITRE and CTI closure, reason codes and audit notes.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/en/evidence.html">
+  <link rel="stylesheet" href="../assets/saci-standard.css?v=final-evidence-reason-audit-3">
+  <link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="../assets/evidence.css?v=final-evidence-reason-audit-3">
+  <link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
+<link rel="stylesheet" href="../assets/integrity.css?v=f01"></head>
+<body data-page="evidence">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a class="active" href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+    <div class="top-actions" aria-label="Display controls">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Smaller</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Reset</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Larger</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Theme</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<main id="main" class="evidence-page" data-evidence-base="data/final" data-scenario-manifest="data/scenarios/manifest.json">
+<!-- SACI_INTEGRITY_BANNER_START --><aside class="saci-integrity-banner" data-integrity-banner><p><strong data-integrity-status>Integrity</strong> — <span data-integrity-copy>Loading.</span></p><a href="integrity.html">Finding F-01 →</a></aside><!-- SACI_INTEGRITY_BANNER_END -->
+  <section class="evidence-hero"><div class="kicker">FINAL EVIDENCE</div><h1>Final evidence package</h1><p class="lead">This page brings together the deterministic outputs used to verify the final SACI result: score components, asset and log-source coverage, control evidence, MITRE ATT&CK coverage, CTI/MISP closure, reason codes and audit notes.</p></section>
+  <div id="evidenceStatus" class="validation-note">Loading final evidence…</div>
+  <section class="evidence-summary" aria-label="SACI summary">
+    <div class="evidence-metric"><span>CWLC</span><strong id="metric-cwlc">-</strong></div>
+    <div class="evidence-metric"><span>CAC</span><strong id="metric-cac">-</strong></div>
+    <div class="evidence-metric"><span>MDC</span><strong id="metric-mdc">-</strong></div>
+    <div class="evidence-metric"><span>CTIC</span><strong id="metric-ctic">-</strong></div>
+    <div class="evidence-metric"><span>TF</span><strong id="metric-tf">-</strong></div>
+    <div class="evidence-metric"><span>SACI</span><strong id="metric-saci">-</strong></div>
+  </section>
+  <nav class="evidence-nav" aria-label="Evidence sections"><a href="#score">Score</a><a href="#scenarios">Scenarios</a><a href="#assets">Assets</a><a href="#logs">Log sources</a><a href="#controls">Controls</a><a href="#mitre">MITRE</a><a href="#ctic">CTI/MISP</a><a href="#reasons">Reason codes</a><a href="#audit">Audit</a></nav>
+  <section id="score" class="evidence-section"><div class="evidence-section-head"><h2>Final SACI score table</h2><a class="raw-link" href="../data/final/saci_scores.csv" target="_blank" rel="noopener">Open CSV</a></div><p class="section-copy">Active SACI components, declared weights and final normalized scores.</p><div id="scoreTable"><div class="empty-state">Loading…</div></div></section><section id="scenarios" class="evidence-section"><div class="evidence-section-head"><h2>Historical scenario validation series</h2><span class="status muted"><span id="scenarioCount">-</span>&nbsp;scenarios</span></div><p class="section-copy">All S0–S18 scenario outputs are listed together. Each scenario includes SACI components, graph closure values and linked MITRE ATT&CK tactics and techniques.</p><div class="scenario-summary-note">The canonical final evidence remains separate from the historical scenario validation series; counts are not merged across datasets.</div><div id="scenarioTable"><div class="empty-state">Loading…</div></div><div id="scenarioContent"></div></section><section id="assets" class="evidence-section"><div class="evidence-section-head"><h2>Asset and log-source coverage</h2><a class="raw-link" href="../data/final/asset_log_coverage.csv" target="_blank" rel="noopener">Open CSV</a></div><p class="section-copy">Expected and received telemetry sources are compared for every asset in the declared scope.</p><div id="assetTable"><div class="empty-state">Loading…</div></div></section><section id="logs" class="evidence-section"><div class="evidence-section-head"><h2>Log-source status</h2><a class="raw-link" href="../data/final/log_source_status.csv" target="_blank" rel="noopener">Open CSV</a></div><p class="section-copy">Source-level evidence, observed state, weighting and last-seen timestamps.</p><div id="logTable"><div class="empty-state">Loading…</div></div></section><section id="controls" class="evidence-section"><div class="evidence-section-head"><h2>Control and alert coverage</h2><a class="raw-link" href="../data/final/control_coverage.csv" target="_blank" rel="noopener">Open CSV</a></div><p class="section-copy">Detection controls, Wazuh rules, MITRE mappings and observed alert evidence.</p><div id="controlTable"><div class="empty-state">Loading…</div></div></section><section id="mitre" class="evidence-section"><div class="evidence-section-head"><h2>MITRE ATT&CK coverage</h2><a class="raw-link" href="../data/final/mitre_coverage.csv" target="_blank" rel="noopener">Open CSV</a></div><p class="section-copy">In-scope tactics and techniques are shown with direct links to the official ATT&CK pages.</p><div id="mitreTable"><div class="empty-state">Loading…</div></div></section><section id="ctic" class="evidence-section"><div class="evidence-section-head"><h2>CTI/MISP coverage</h2><a class="raw-link" href="../data/final/ctic_coverage.csv" target="_blank" rel="noopener">Open CSV</a></div><p class="section-copy">Indicator lookup, MISP match, Wazuh alert and MITRE-link closure are verified together.</p><div id="cticTable"><div class="empty-state">Loading…</div></div></section><section id="reasons" class="evidence-section"><div class="evidence-section-head"><h2>Reason codes</h2><a class="raw-link" href="../data/final/reason_codes.csv" target="_blank" rel="noopener">Open CSV</a></div><p class="section-copy">Reason codes explain why an expected visibility relation is missing or excluded from the active scope.</p><div id="reasonContent"><div class="empty-state">Loading…</div></div></section><section id="audit" class="evidence-section"><div class="evidence-section-head"><h2>Final audit and validation notes</h2></div><p class="section-copy">A compact audit summary derived directly from the final evidence files.</p><div id="auditGrid" class="audit-grid"></div><div id="auditConclusion" class="validation-note"></div><div class="evidence-file-links"><a href="../data/final/saci_graph.cyjs" target="_blank" rel="noopener">saci_graph.cyjs</a><a href="../data/final/saci_graph_summary.md" target="_blank" rel="noopener">saci_graph_summary.md</a></div></section>
+</main>
+<script src="../assets/evidence.js?v=final-evidence-reason-audit-3"></script>
+<script src="../assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="../assets/saci-compact-controls.js?v=2"></script>
+<script src="../assets/integrity-badge.js?v=f01"></script></body>
+</html>

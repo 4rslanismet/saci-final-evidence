@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+
+<html data-theme="dim"  lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>SACI Methodology</title>
+  <meta name="description" content="CWLC, CAC, MDC, CTIC and TF formulas of the SACI model, including scope, normalization, validation and interpretation boundaries.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/en/methodology.html">
+<meta content="SACI ölçüm modelinin CWLC, CAC, MDC, CTIC ve TF formülleri; değerlendirme tasarımı, varsayımlar ve geçerlik sınırları." name="description"/>
+<meta content="#10131b" name="theme-color"/>
+<link href="https://4rslanismet.github.io/saci-final-evidence/methodology.html" rel="canonical"/>
+<style>
+    :root {
+      --saci-font-scale: 1;
+      --bg: #10131b;
+      --text: #edf2f7;
+      --muted: #aebdcc;
+      --line: #3b4655;
+      --accent: #9bb7d4;
+      --accent-2: #d5e4f2;
+      --warning: #d6bd7c;
+      --max: 1480px;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #020617;
+      --text: #e5e7eb;
+      --muted: #aebdcc;
+      --line: #293647;
+      --accent: #9bb7d4;
+      --accent-2: #d5e4f2;
+      --warning: #d6bd7c;
+    }
+
+    html[data-theme="dim"] {
+      --bg: #10131b;
+      --text: #edf2f7;
+      --muted: #aebdcc;
+      --line: #3b4655;
+      --accent: #9bb7d4;
+      --accent-2: #d5e4f2;
+      --warning: #d6bd7c;
+    }
+
+    html[data-theme="light"] {
+      --bg: #f5f2ec;
+      --text: #111827;
+      --muted: #475569;
+      --line: #c8c0b4;
+      --accent: #24547a;
+      --accent-2: #111827;
+      --warning: #8a6418;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: calc(16px * var(--saci-font-scale));
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .top-inner {
+      width: min(var(--max), calc(100vw - 64px));
+      margin: 0 auto;
+      padding: 17px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 680;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 680;
+    }
+
+    .nav a.active {
+      color: var(--text);
+    }
+
+    main {
+      width: min(var(--max), calc(100vw - 64px));
+      margin: 0 auto;
+      padding: 46px 0 90px;
+    }
+
+    .utility {
+      display: flex;
+      justify-content: flex-end;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+      margin-bottom: 38px;
+      user-select: none;
+    }
+
+    .utility button {
+      all: unset;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .utility button:hover,
+    .utility button.active {
+      color: var(--accent);
+    }
+
+    .primary-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 0 0 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 680;
+    }
+
+    .kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 12px;
+      font-weight: 760;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 4.8vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      font-weight: 620;
+      max-width: 1180px;
+      margin: 0 0 28px;
+    }
+
+    h2 {
+      color: var(--text);
+      font-size: clamp(28px, 3vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -.035em;
+      font-weight: 620;
+      margin: 0 0 22px;
+      max-width: 980px;
+    }
+
+    h3 {
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 650;
+      margin: 0 0 12px;
+    }
+
+    p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(17px, 1.35vw, 20px);
+      line-height: 1.74;
+      max-width: 980px;
+    }
+
+    .section {
+      padding: 54px 0;
+      border-top: 1px solid var(--line);
+      max-width: 1120px;
+    }
+
+    .section:first-of-type {
+      margin-top: 72px;
+    }
+
+    .section p {
+      font-size: 17px;
+      line-height: 1.8;
+      max-width: 1040px;
+    }
+
+    .section p + p {
+      margin-top: 16px;
+    }
+
+    .plain-list {
+      margin: 22px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      max-width: 1040px;
+    }
+
+    .plain-list li {
+      font-size: 17px;
+      line-height: 1.78;
+      margin-bottom: 10px;
+    }
+
+    .plain-list b {
+      color: var(--text);
+    }
+
+    .metric-flow {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+    }
+
+    .metric-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .metric-item b {
+      color: var(--text);
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
+    .metric-item .weight {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .metric-item p {
+      margin-top: 8px;
+      font-size: 16.5px;
+      line-height: 1.75;
+    }
+
+    .formula {
+      margin: 24px 0;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 15px;
+      line-height: 1.85;
+      overflow-x: auto;
+      max-width: 1040px;
+    }
+
+    .scenario-tabs {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 26px 0 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .scenario-tabs button {
+      all: unset;
+      cursor: pointer;
+      color: var(--muted);
+      font-weight: 760;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .scenario-tabs button.active,
+    .scenario-tabs button:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .scenario-explain {
+      max-width: 1040px;
+    }
+
+    .scenario-explain .title {
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 650;
+      margin-bottom: 10px;
+    }
+
+    .weight-lines {
+      margin-top: 24px;
+      border-top: 1px solid var(--line);
+      max-width: 1040px;
+    }
+
+    .weight-line {
+      display: grid;
+      grid-template-columns: 80px 150px 1fr;
+      gap: 22px;
+      align-items: baseline;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .weight-line b {
+      color: var(--text);
+    }
+
+    .weight-line span {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .weight-line p {
+      font-size: 15.5px;
+      line-height: 1.65;
+    }
+
+    .note {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height: 1.72;
+      max-width: 1040px;
+    }
+
+    .note b {
+      color: var(--warning);
+    }
+
+    footer {
+      margin-top: 72px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      main,
+      .top-inner {
+        width: min(var(--max), calc(100vw - 32px));
+      }
+
+      .top-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .utility {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .weight-line {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+  
+    /* mathematical methodology additions */
+    .method-definitions {
+      margin-top: 26px;
+      max-width: 1080px;
+    }
+
+    .metric-definition {
+      padding: 28px 0;
+    }
+
+    .metric-definition + .metric-definition {
+      border-top: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+    }
+
+    .metric-definition h3 {
+      margin: 0 0 10px;
+      font-size: 23px !important;
+      font-weight: 560 !important;
+      letter-spacing: -.015em;
+      color: var(--text);
+    }
+
+    .metric-long {
+      display: block;
+      color: var(--muted);
+      font-size: 15.5px;
+      margin-bottom: 14px;
+    }
+
+    .math-line {
+      margin: 16px 0;
+      padding-left: 16px;
+      border-left: 2px solid color-mix(in srgb, var(--accent) 48%, var(--line));
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--text);
+      font-size: 14.5px;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+
+    .source-line {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 15.8px;
+      line-height: 1.72;
+    }
+
+    .source-line .soft-term,
+    .metric-definition .soft-term {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .method-note {
+      max-width: 1040px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height: 1.78;
+    }
+
+  
+    /* additional methodology sections */
+    .method-extra {
+      max-width: 1120px;
+    }
+
+    .method-extra h2 {
+      margin-top: 0;
+    }
+
+    .method-extra p {
+      max-width: 1040px;
+      color: var(--muted);
+      font-size: 16.8px;
+      line-height: 1.78;
+    }
+
+    .method-extra p + p {
+      margin-top: 15px;
+    }
+
+    .method-points {
+      margin: 22px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      max-width: 1040px;
+    }
+
+    .method-points li {
+      margin-bottom: 10px;
+      font-size: 16.5px;
+      line-height: 1.75;
+    }
+
+    .method-points .term {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .soft-formula {
+      margin: 20px 0;
+      padding-left: 16px;
+      border-left: 2px solid color-mix(in srgb, var(--accent) 48%, var(--line));
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--muted);
+      font-size: 14.4px;
+      line-height: 1.8;
+      max-width: 1040px;
+      overflow-x: auto;
+    }
+
+  
+    /* methodology missing parts */
+    .method-added {
+      max-width: 1120px;
+    }
+
+    .method-added p {
+      max-width: 1040px;
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height: 1.78;
+    }
+
+    .method-added p + p {
+      margin-top: 15px;
+    }
+
+    .method-steps {
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      max-width: 1040px;
+    }
+
+    .method-steps li {
+      color: var(--muted);
+      font-size: 16.3px;
+      line-height: 1.75;
+      margin-bottom: 11px;
+    }
+
+    .method-steps .term {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .method-flow {
+      margin-top: 24px;
+      max-width: 1040px;
+    }
+
+    .method-flow-item {
+      margin-bottom: 18px;
+    }
+
+    .method-flow-item .name {
+      color: var(--text);
+      font-weight: 520;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .method-flow-item .desc {
+      color: var(--muted);
+      font-size: 16.2px;
+      line-height: 1.72;
+    }
+
+    .worked-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 26px 0 24px;
+    }
+
+    .worked-tabs button {
+      all: unset;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 14.5px;
+      font-weight: 500;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .worked-tabs button.active,
+    .worked-tabs button:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .worked-result {
+      max-width: 1040px;
+    }
+
+    .worked-result .worked-title {
+      color: var(--text);
+      font-size: 19px;
+      font-weight: 560;
+      margin-bottom: 10px;
+    }
+
+    .worked-result p {
+      margin-top: 0;
+    }
+
+    .worked-formula {
+      margin: 20px 0;
+      padding-left: 16px;
+      border-left: 2px solid color-mix(in srgb, var(--accent) 48%, var(--line));
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14.3px;
+      line-height: 1.8;
+      max-width: 1040px;
+      overflow-x: auto;
+    }
+
+    .worked-lines {
+      margin-top: 18px;
+      max-width: 1040px;
+    }
+
+    .worked-line {
+      color: var(--muted);
+      font-size: 15.8px;
+      line-height: 1.75;
+      margin-bottom: 7px;
+    }
+
+    .worked-line .metric {
+      color: var(--text);
+      font-weight: 500;
+      display: inline-block;
+      min-width: 56px;
+    }
+
+    .worked-line .state {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .term-list {
+      max-width: 1040px;
+      margin-top: 24px;
+    }
+
+    .term-list div {
+      margin-bottom: 16px;
+    }
+
+    .term-list dt {
+      color: var(--text);
+      font-weight: 520;
+      margin-bottom: 4px;
+    }
+
+    .term-list dd {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16.2px;
+      line-height: 1.72;
+    }
+
+  </style>
+<link href="../assets/saci-standard.css?v=preserve-en-1" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/saci-standard.css?v=repair-bilingual-1">
+  <link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
+<link rel="stylesheet" href="../assets/integrity.css?v=f01"></head>
+<body data-page="methodology">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="top">
+<div class="top-inner">
+<a class="brand" href="index.html">SACI Final Evidence</a>
+<nav aria-label="Primary navigation" class="nav">
+<a href="index.html">Home</a>
+<a class="active" href="methodology.html">Methodology</a>
+<a href="architecture.html">Architecture</a>
+<a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+<a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+<a href="graph.html">Graph</a>
+<a href="explanation.html">Explanation</a>
+<a href="paper.html">Paper View</a>
+</nav>
+<div aria-label="Display controls" class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Smaller</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Reset</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Larger</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Theme</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+</div>
+</header>
+<main id="main">
+<section>
+<div class="kicker">METHODOLOGY</div>
+<h1>How SACI is calculated and interpreted</h1>
+<p class="lead">
+    This page explains the SACI measurement model, including CWLC, CAC, MDC, CTIC and TF formulas,
+    evaluation design, assumptions, validation checks and interpretation boundaries.
+  </p>
+</section>
+<section class="section method-added">
+<h2>Methodology at a glance</h2>
+<p>
+    SACI first defines the evaluation scope and then builds the expected visibility relations in a graph.
+    Each relation is interpreted as observed, missing or out of scope. Metrics are calculated from these
+    relations; non-applicable metrics are treated as N/A and the final score is produced only from the
+    normalized weights of active metrics.
+  </p>
+<p>
+    The goal is not to reduce security visibility to a single alert count. The method shows how log source
+    status, detection controls, MITRE mapping, CTI enrichment and freshness jointly become an evidence-based result.
+  </p>
+<ul class="method-steps">
+<li><span class="term">1. Scope is declared:</span> expected asset, log source, control, MITRE technique and CTI relations are defined.</li>
+<li><span class="term">2. The graph is built:</span> expected visibility relations are modeled as edges.</li>
+<li><span class="term">3. Evidence is searched:</span> log, alert, rule, enrichment and coverage outputs are used to validate relations.</li>
+<li><span class="term">4. Metrics are calculated:</span> CWLC, CAC, MDC, CTIC and TF are produced from the relevant evidence relations.</li>
+<li><span class="term">5. The score is normalized:</span> N/A metrics are removed and final SACI is calculated from active weights.</li>
+<li><span class="term">6. The explanation is produced:</span> the explanation layer does not change the score; it makes deterministic outputs readable.</li>
+</ul>
+</section>
+<section class="section method-added">
+<h2>Assumptions</h2>
+<p>
+    SACI is not designed as a system that discovers the entire unknown attack surface by itself. For the model
+    to work correctly, the evaluation scope must be declared in advance. Critical assets, expected log sources,
+    enabled detection controls, in-scope MITRE techniques and CTI enrichment expectations must be explicit.
+  </p>
+<p>
+    This assumption also defines the boundary of the study. SACI does not claim that there are no unknown gaps
+    in the environment. It makes a narrower and measurable claim: are the expected visibility relations in the
+    declared scope validated by evidence?
+  </p>
+<ul class="method-steps">
+<li><span class="term">Declared scope:</span> the defined set of assets, log sources, controls, MITRE techniques and CTI relations included in the evaluation.</li>
+<li><span class="term">Expected relation:</span> a relation that is expected to close in the graph within that scope.</li>
+<li><span class="term">Evidence source:</span> a log, alert, rule, enrichment or coverage output that validates the relation.</li>
+<li><span class="term">Boundary:</span> a relation outside the scope is not counted as missing; it is treated as a separate inventory or scope issue.</li>
+</ul>
+</section>
+<section class="section">
+<h2>Core idea</h2>
+<p>
+    SACI asks a simple question: have the expected visibility relations in the declared evaluation scope really closed?
+    This relation is not limited to “did a log arrive?”. The chain from asset to log source, log source to Wazuh,
+    detection control to rule, rule to MITRE technique and CTI finding to alert is evaluated together.
+  </p>
+<p>
+    Therefore, SACI is not a “is the organization secure?” score. It provides a narrower but more measurable claim:
+    what portion of expected visibility relations can be validated within the declared scope?
+  </p>
+<div class="formula">
+    SACI = weighted average of active metrics<br/>
+    SACI = Σ(metric_score × metric_weight) / Σ(active_metric_weight)
+  </div>
+<p>
+    The critical point is that every metric is not forced into every scenario. If a metric is truly not applicable
+    for a scenario, it is treated as N/A. The final score is then normalized using only the active metric weights.
+  </p>
+</section>
+<section class="section">
+<h2>What do the metrics measure and how are they calculated?</h2>
+<p>
+    Each SACI metric measures a different part of the visibility chain. A log source may be active, but it may not
+    feed a detection control. A control may be defined, but not validated through the expected Wazuh rule or MITRE
+    ATT&amp;CK technique. CTI may contain IOC information, but if that information does not turn into an alert,
+    operational visibility is still incomplete.
+  </p>
+<p>
+    SACI is therefore not a single “alert count”. Each metric is calculated from its own evidence base and then
+    active metrics are combined through weighted normalization.
+  </p>
+<div class="method-definitions">
+<div class="metric-definition">
+<h3>CWLC</h3>
+<span class="metric-long">Criticality-weighted log coverage</span>
+<p>CWLC measures whether critical assets are actually monitored through the expected log sources. Assets are not treated equally; losing visibility from a high-criticality system such as a domain controller affects the score more.</p>
+<div class="math-line">
+        L<sub>a</sub> = Σ<sub>s</sub>(w<sub>as</sub> × o<sub>as</sub>) / Σ<sub>s</sub>w<sub>as</sub><br/>
+        CWLC = 100 × Σ<sub>a</sub>(c<sub>a</sub> × L<sub>a</sub>) / Σ<sub>a</sub>c<sub>a</sub>
+</div>
+<p class="source-line">Evidence base: asset inventory, expected log sources, log_source_status and asset → log_source graph relations.</p>
+</div>
+<div class="metric-definition">
+<h3>CAC</h3>
+<span class="metric-long">Control / alert coverage</span>
+<p>CAC measures whether declared detection controls are connected to the rule and alert chain that produces operational evidence. A control being listed is not sufficient; the control must close through Wazuh rule, alert and evidence relations.</p>
+<div class="math-line">CAC = 100 × Σ(weight × seen × enabled) / Σ(weight × enabled)</div>
+<p class="source-line">Evidence base: control_coverage, detection_controls, Wazuh rule observations and control → rule / rule → alert graph relations.</p>
+</div>
+<div class="metric-definition">
+<h3>MDC</h3>
+<span class="metric-long">MITRE ATT&amp;CK detection coverage</span>
+<p>MDC measures whether in-scope MITRE ATT&amp;CK techniques are covered by detection controls. The aim is to show not only that rules run, but also which attack techniques they make visible.</p>
+<div class="math-line">MDC = 100 × covered MITRE techniques / MITRE techniques in declared scope</div>
+<p class="source-line">Evidence base: mitre_coverage, detection-control mappings and control → MITRE or rule → MITRE graph relations.</p>
+</div>
+<div class="metric-definition">
+<h3>CTIC</h3>
+<span class="metric-long">CTI / MISP enrichment coverage</span>
+<p>CTIC measures the closure of lookup_executed, MISP hit, Wazuh alert and MITRE mapping fields for synthetic IOC records. Since lookup_executed may be initialized from expected_lookup=1, the first quarter is not independent proof of query execution and the four fields alone do not establish causality.</p>
+<div class="math-line">CTIC = 100 × Σ(lookup_flag + misp_hit + wazuh_alert + mapped_to_mitre) / (4 × IOC count)</div>
+<p class="source-line">Evidence base: ctic_coverage, MISP enrichment outputs, IOC matches and IOC → MISP → alert → MITRE graph relations.</p>
+</div>
+<div class="metric-definition">
+<h3>TF</h3>
+<span class="metric-long">Telemetry freshness</span>
+<p>TF scores the distance between the scorer runtime and the newest last_seen value across log-source rows. It is not a per-source freshness average; a globally recent event can keep TF high even if some sources are older.</p>
+<div class="math-line">TF = 100 if newest age ≤60 min; 80 if ≤1440 min; 50 if older; 0 if no event</div>
+<p class="source-line">Evidence base: log_source_status, last_seen timestamps, freshness thresholds and active log-source relations.</p>
+</div>
+</div>
+</section>
+<section class="section method-added">
+<h2>Worked example</h2>
+<p>
+    The examples clarify weighted scoring and N/A normalization. They are illustrative, not the final laboratory result.
+    As the scenario changes, some metrics remain active and some become out of scope. Out-of-scope metrics are not set
+    to zero; they are removed from the active-weight denominator.
+  </p>
+<div class="worked-tabs">
+<button class="active" data-worked-case="ctic_na">CTI out of scope</button>
+<button data-worked-case="full_active">All metrics active</button>
+<button data-worked-case="freshness_drop">Freshness degradation</button>
+<button data-worked-case="mitre_ctic_na">MITRE + CTI out of scope</button>
+</div>
+<div class="worked-result" id="workedResult"></div>
+</section>
+<section class="section method-added">
+<h2>Decision rules</h2>
+<p>
+    The observed or missing status of a relation is not arbitrary. Each relation is based on a predefined expectation
+    and an evidence type that can validate it. If the expected relation is validated by evidence, it becomes observed.
+    If it is declared but no expected evidence is found, it remains missing. A relation outside the declared scope is
+    not converted into missing.
+  </p>
+<div class="method-flow">
+<div class="method-flow-item"><span class="name">Observed decision</span><span class="desc">The expected relation is validated by log, alert, rule, enrichment or coverage output.</span></div>
+<div class="method-flow-item"><span class="name">Missing decision</span><span class="desc">The relation is expected within the declared scope, but the required evidence was not produced.</span></div>
+<div class="method-flow-item"><span class="name">N/A decision</span><span class="desc">The relation or metric is outside the scenario scope and is not interpreted as success or failure.</span></div>
+<div class="method-flow-item"><span class="name">Reason-code decision</span><span class="desc">The reason code explains whether the missing relation comes from the log-source, control, MITRE, CTI or freshness layer.</span></div>
+</div>
+</section>
+<section class="section method-added">
+<h2>Data-to-metric mapping</h2>
+<p>
+    Every metric is grounded in specific files and graph relations. This mapping makes it clear where the score comes from
+    and which evidence layer supports each component.
+  </p>
+<div class="method-flow">
+<div class="method-flow-item"><span class="name">Asset inventory + log source status → CWLC</span><span class="desc">Calculates whether critical assets are monitored through expected log sources.</span></div>
+<div class="method-flow-item"><span class="name">Detection controls + Wazuh rules → CAC</span><span class="desc">Shows whether controls are linked to expected rule and alert relations.</span></div>
+<div class="method-flow-item"><span class="name">MITRE coverage → MDC</span><span class="desc">Validates whether controls and rules cover declared ATT&amp;CK techniques.</span></div>
+<div class="method-flow-item"><span class="name">MISP enrichment + IOC matches → CTIC</span><span class="desc">Evaluates closure of lookup, MISP hit, alert and MITRE mapping flags.</span></div>
+<div class="method-flow-item"><span class="name">Last seen timestamps + freshness threshold → TF</span><span class="desc">Calculates whether telemetry is still recent enough to support operational visibility.</span></div>
+<div class="method-flow-item"><span class="name">saci_nodes + saci_edges → graph closure</span><span class="desc">Combines expected, observed and missing relations in a shared evidence graph.</span></div>
+</div>
+</section>
+<section class="section method-added">
+<h2>Weight sensitivity</h2>
+<p>
+    SACI weights differ because some visibility layers are operationally more foundational than others. Log coverage
+    and control/alert coverage receive higher weights because MITRE or CTI visibility has limited practical value if
+    the telemetry and detection chain does not close.
+  </p>
+<p>
+    Active-weight normalization prevents an out-of-scope metric from artificially lowering or raising the score.
+    Weights therefore express methodological priority while still adapting to the scenario scope.
+  </p>
+</section>
+<section class="section method-added">
+<h2>Validation checks</h2>
+<p>
+    SACI outputs are supported by consistency checks. These checks ensure that the final score does not contradict
+    graph relations, edge arithmetic remains consistent and N/A handling is applied correctly.
+  </p>
+<ul class="method-steps">
+<li><span class="term">Formula check:</span> derived tables, active metric scores and weights must support the final arithmetic.</li>
+<li><span class="term">Edge arithmetic:</span> observed edge count plus missing edge count must equal total edge count.</li>
+<li><span class="term">Closure check:</span> observed=0 edge count and undeclared endpoints must be reported separately.</li>
+<li><span class="term">N/A check:</span> out-of-scope metrics must be removed from the active-weight denominator.</li>
+<li><span class="term">Explanation check:</span> the explanation layer must not contradict deterministic outputs.</li>
+</ul>
+</section>
+<section class="section method-added">
+<h2>Short glossary</h2>
+<dl class="term-list">
+<div><dt>Declared scope</dt><dd>The defined set of assets, log sources, controls, MITRE techniques and CTI relations included in the evaluation.</dd></div>
+<div><dt>Expected edge</dt><dd>A visibility relation that the model expects to close in the graph.</dd></div>
+<div><dt>Observed edge</dt><dd>An expected relation that is validated by evidence.</dd></div>
+<div><dt>Missing edge</dt><dd>An expected relation that could not be validated by evidence.</dd></div>
+<div><dt>Graph closure</dt><dd>The state in which expected relations in the declared scope become observed and no missing relation remains.</dd></div>
+<div><dt>Reason code</dt><dd>A label that explains which visibility layer caused a missing relation.</dd></div>
+<div><dt>Freshness</dt><dd>The operational recency of telemetry beyond the fact that it was once observed.</dd></div>
+<div><dt>Explanation layer</dt><dd>A non-scoring layer that interprets deterministic SACI outputs in natural language.</dd></div>
+</dl>
+</section>
+<!-- SACI_INTEGRITY_METHOD_START --><section class="section integrity-method-section" id="integrity-gate"><h2>Independent evidence-integrity gate</h2><p>Finding F-01 shows that relation closure and graph integrity are distinct validation dimensions.</p><p><a href="integrity.html">Open integrity report →</a></p></section><!-- SACI_INTEGRITY_METHOD_END --></main>
+<script>
+    (function () {
+      const cases = {
+        all: {
+          title: "Tüm metrikler aktif",
+          text: "Bu durumda SACI, beş metriğin tamamını kullanır. Base weight toplamı 1.00 olduğu için ağırlıklar yeniden ölçeklenmez. Bu senaryo, modelin tam kapsamlı değerlendirme yaptığı standart durumu temsil eder.",
+          activeSum: 1.00,
+          metrics: [
+            ["CWLC", 0.30, "Kritik log görünürlüğü skora en yüksek katkıyı verir."],
+            ["CAC", 0.25, "Kontrol ve alarm ilişkileri ikinci güçlü bileşendir."],
+            ["MDC", 0.20, "MITRE detection coverage teknik kapsamı temsil eder."],
+            ["CTIC", 0.15, "CTI enrichment zinciri hesaba katılır."],
+            ["TF", 0.10, "Telemetri tazeliği daha düşük ama tamamlayıcı ağırlığa sahiptir."]
+          ]
+        },
+        noctic: {
+          title: "CTI kapsam dışı",
+          text: "Bu örnekte CTI enrichment senaryonun kapsamına dahil değildir. CTIC 0 yapılmaz; N/A kabul edilir. Kalan aktif metriklerin toplam ağırlığı 0.85 olur ve skor bu ağırlık toplamına göre normalize edilir.",
+          activeSum: 0.85,
+          metrics: [
+            ["CWLC", 0.30, "Normalize sonrası göreli etkisi artar."],
+            ["CAC", 0.25, "Kontrol/alert ilişkileri daha yüksek göreli ağırlık taşır."],
+            ["MDC", 0.20, "MITRE coverage aktif kalır."],
+            ["TF", 0.10, "Freshness aktif kalır."]
+          ]
+        },
+        nomitre: {
+          title: "MITRE ve CTI kapsam dışı",
+          text: "Bu örnekte değerlendirme yalnızca telemetri, kontrol/alert ve freshness düzeyine odaklanır. MDC ve CTIC kapsam dışıdır. Kalan aktif ağırlık toplamı 0.65 olur ve final skor sadece bu aktif katmanlar üzerinden okunur.",
+          activeSum: 0.65,
+          metrics: [
+            ["CWLC", 0.30, "Kritik log görünürlüğü ana belirleyici hale gelir."],
+            ["CAC", 0.25, "Control/alert coverage ikinci ana bileşendir."],
+            ["TF", 0.10, "Freshness destekleyici bileşen olarak kalır."]
+          ]
+        },
+        telemetry: {
+          title: "Yalnız telemetry/control/freshness",
+          text: "Bu örnek, CTI ve MITRE bağlamının bilinçli olarak dışarıda bırakıldığı dar bir operasyonel görünürlük kontrolünü temsil eder. Model burada saldırı tekniği veya enrichment zinciri iddiasında bulunmaz; yalnızca telemetri, kontrol ve güncellik ilişkilerini yorumlar.",
+          activeSum: 0.65,
+          metrics: [
+            ["CWLC", 0.30, "Asset ve log-source ilişkileri ana odaktır."],
+            ["CAC", 0.25, "Kontrolün alarma bağlanıp bağlanmadığı izlenir."],
+            ["TF", 0.10, "Verinin güncelliği ayrıca değerlendirilir."]
+          ]
+        }
+      };
+
+      function fmtPercent(v) {
+        return (v * 100).toFixed(2).replace(".00", "") + "%";
+      }
+
+      function renderCase(key) {
+        const item = cases[key] || cases.all;
+        const explain = document.getElementById("scenarioExplain");
+        const lines = document.getElementById("weightLines");
+
+        explain.innerHTML = `
+          <div class="title">${item.title}</div>
+          <p>${item.text}</p>
+          <p style="margin-top:14px;">Aktif ağırlık toplamı: <b style="color:var(--text)">${item.activeSum.toFixed(2)}</b>. Normalize ağırlık, her metriğin base weight değerinin aktif ağırlık toplamına bölünmesiyle okunur.</p>
+        `;
+
+        lines.innerHTML = item.metrics.map(([name, base, desc]) => {
+          const normalized = base / item.activeSum;
+          return `
+            <div class="weight-line">
+              <b>${name}</b>
+              <span>${fmtPercent(normalized)}</span>
+              <p>${desc} <span style="color:var(--muted)">Base weight: ${base.toFixed(2)}</span></p>
+            </div>
+          `;
+        }).join("");
+      }
+
+      function initScenarioTabs() {
+        document.querySelectorAll("[data-case]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll("[data-case]").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderCase(btn.dataset.case);
+          });
+        });
+
+        renderCase("all");
+      }
+
+      function initThemeSwitcher() {
+        const saved = localStorage.getItem("saci-graph-theme") || "dim";
+        document.documentElement.setAttribute("data-theme", saved);
+
+        document.querySelectorAll("[data-theme-btn]").forEach(btn => {
+          const t = btn.getAttribute("data-theme-btn");
+          btn.classList.toggle("active", t === saved);
+
+          btn.addEventListener("click", () => {
+            localStorage.setItem("saci-graph-theme", t);
+            document.documentElement.setAttribute("data-theme", t);
+
+            document.querySelectorAll("[data-theme-btn]").forEach(b => {
+              b.classList.toggle("active", b.getAttribute("data-theme-btn") === t);
+            });
+          });
+        });
+      }
+
+      function initFontControls() {
+        let scale = Number(localStorage.getItem("saci-font-scale") || "1");
+        if (Number.isNaN(scale)) scale = 1;
+
+        function apply() {
+          scale = Math.max(0.9, Math.min(1.25, scale));
+          document.documentElement.style.setProperty("--saci-font-scale", String(scale));
+          localStorage.setItem("saci-font-scale", String(scale));
+        }
+
+        const down = document.getElementById("fontDown");
+        const up = document.getElementById("fontUp");
+        const reset = document.getElementById("fontReset");
+
+        if (down) down.onclick = () => { scale -= 0.05; apply(); };
+        if (up) up.onclick = () => { scale += 0.05; apply(); };
+        if (reset) reset.onclick = () => { scale = 1; apply(); };
+
+        apply();
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initThemeSwitcher();
+        initFontControls();
+        initScenarioTabs();
+      });
+    })();
+  </script>
+<script>
+    (function () {
+      const workedCases = {
+        ctic_na: {
+          title: "CTI kapsam dışı örnek",
+          text: "Bu örnekte CTI enrichment bu senaryonun kapsamına dahil değildir. CTIC 0 yapılmaz; N/A kabul edilir. Bu yüzden aktif ağırlık toplamı 0.85 olur.",
+          metrics: [
+            ["CWLC", 80, 0.30],
+            ["CAC", 60, 0.25],
+            ["MDC", 100, 0.20],
+            ["CTIC", "N/A", 0.15],
+            ["TF", 90, 0.10]
+          ]
+        },
+        full_active: {
+          title: "Tüm metrikler aktif örnek",
+          text: "Bu örnekte beş metriğin tamamı kapsam içindedir. Aktif ağırlık toplamı 1.00 olduğu için yeniden ölçekleme yapılmaz.",
+          metrics: [
+            ["CWLC", 80, 0.30],
+            ["CAC", 70, 0.25],
+            ["MDC", 90, 0.20],
+            ["CTIC", 60, 0.15],
+            ["TF", 100, 0.10]
+          ]
+        },
+        freshness_drop: {
+          title: "Freshness düşüşü örneği",
+          text: "Bu örnekte görünürlük ilişkileri büyük ölçüde kapanmış olsa da telemetri güncelliği düşüktür. TF değeri final skoru aşağı çeker.",
+          metrics: [
+            ["CWLC", 100, 0.30],
+            ["CAC", 100, 0.25],
+            ["MDC", 100, 0.20],
+            ["CTIC", 100, 0.15],
+            ["TF", 50, 0.10]
+          ]
+        },
+        mitre_ctic_na: {
+          title: "MITRE ve CTI kapsam dışı örnek",
+          text: "Bu örnekte değerlendirme telemetri, control/alert ve freshness üzerine daraltılmıştır. MDC ve CTIC kapsam dışıdır; aktif ağırlık toplamı 0.65 olur.",
+          metrics: [
+            ["CWLC", 70, 0.30],
+            ["CAC", 80, 0.25],
+            ["MDC", "N/A", 0.20],
+            ["CTIC", "N/A", 0.15],
+            ["TF", 60, 0.10]
+          ]
+        }
+      };
+
+      function fmt(n) {
+        return Number.isInteger(n) ? String(n) : n.toFixed(2);
+      }
+
+      function renderWorkedCase(key) {
+        const root = document.getElementById("workedResult");
+        if (!root) return;
+
+        const item = workedCases[key] || workedCases.ctic_na;
+        const active = item.metrics.filter(m => m[1] !== "N/A");
+        const activeWeight = active.reduce((s, m) => s + m[2], 0);
+        const weightedSum = active.reduce((s, m) => s + (m[1] * m[2]), 0);
+        const saci = weightedSum / activeWeight;
+
+        const lines = item.metrics.map(([name, value, weight]) => {
+          if (value === "N/A") {
+            return `<div class="worked-line"><span class="metric">${name}</span> <span class="state">N/A</span> — kapsam dışı, payda dışına alınır. Base weight: ${weight.toFixed(2)}</div>`;
+          }
+          const normalized = weight / activeWeight;
+          return `<div class="worked-line"><span class="metric">${name}</span> skor ${value}, base weight ${weight.toFixed(2)}, normalize weight ${(normalized * 100).toFixed(2)}%</div>`;
+        }).join("");
+
+        root.innerHTML = `
+          <div class="worked-title">${item.title}</div>
+          <p>${item.text}</p>
+          <div class="worked-formula">
+            Aktif ağırlık toplamı = ${activeWeight.toFixed(2)}<br>
+            Ağırlıklı toplam = ${weightedSum.toFixed(2)}<br>
+            SACI = ${weightedSum.toFixed(2)} / ${activeWeight.toFixed(2)} = ${fmt(saci)}
+          </div>
+          <div class="worked-lines">${lines}</div>
+        `;
+      }
+
+      function initWorkedExample() {
+        document.querySelectorAll("[data-worked-case]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll("[data-worked-case]").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderWorkedCase(btn.dataset.workedCase);
+          });
+        });
+
+        renderWorkedCase("ctic_na");
+      }
+
+      document.addEventListener("DOMContentLoaded", initWorkedExample);
+    })();
+  </script>
+  <script src="../assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="../assets/saci-compact-controls.js?v=2"></script>
+<script src="../assets/integrity-badge.js?v=f01"></script></body>
+</html>

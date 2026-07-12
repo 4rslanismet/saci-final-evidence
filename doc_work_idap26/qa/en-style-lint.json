@@ -1,0 +1,69 @@
+{
+  "input": "E:\\Downloads\\saci_github_pages_site\\deliverables\\IDAP26_SACI_Graph_Attack_Surface_Final_EN.docx",
+  "fonts_by_char_count": {
+    "Times New Roman": 22854
+  },
+  "direct_run_formatting_runs": 112,
+  "direct_paragraph_formatting_paragraphs": 109,
+  "heading_like_paragraphs_not_heading_style": [],
+  "examples": {
+    "direct_run_formatting": [
+      {
+        "para_index": 1,
+        "run_text": "SACI: Explainable Graph-Based Attack Surface Visibility Scoring Using SIEM Telem",
+        "style": "paper title"
+      },
+      {
+        "para_index": 2,
+        "run_text": "Ismet Arslan",
+        "style": "Author"
+      },
+      {
+        "para_index": 4,
+        "run_text": "Abstract\u2014",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 4,
+        "run_text": "This study presents SACI v2, a scope-bounded framework for measuring security in",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 5,
+        "run_text": "Keywords\u2014",
+        "style": "Body Text"
+      }
+    ],
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 4,
+        "text": "Abstract\u2014This study presents SACI v2, a scope-bounded framework for measuring security information and event management ",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 5,
+        "text": "Keywords\u2014SACI, SIEM, Wazuh, evidence graph, MITRE ATT&CK, cyber threat intelligence, visibility scoring, auditability",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 6,
+        "text": "I. INTRODUCTION",
+        "style": "Heading 1"
+      },
+      {
+        "para_index": 7,
+        "text": "Modern security operations centers (SOCs) continuously collect endpoint, identity, network, and application telemetry to",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 8,
+        "text": "The growth of enterprise attack surfaces makes this distinction increasingly important. Cloud services, remote-access pl",
+        "style": "Body Text"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}

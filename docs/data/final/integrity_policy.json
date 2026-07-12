@@ -1,0 +1,27 @@
+{
+  "policy_version": "1.1",
+  "publication_rule": "integrity_status_must_equal_VALID",
+  "exempt_isolated_node_types": [
+    "legend",
+    "annotation",
+    "note"
+  ],
+  "exempt_isolated_node_ids": [
+    "CONTROL:C003",
+    "CONTROL:C004",
+    "METRIC:SACI",
+    "MITRE:T1059.003",
+    "RULE:92052",
+    "RULE:92057"
+  ],
+  "allowed_multi_rule_mappings": {},
+  "isolated_node_exemptions": {
+    "CONTROL:C003": "Disabled legacy control retained for audit provenance; out of active scope.",
+    "CONTROL:C004": "Disabled legacy control retained for audit provenance; out of active scope.",
+    "RULE:92057": "Legacy Wazuh rule retained with disabled control C003; out of active scope.",
+    "RULE:92052": "Legacy Wazuh rule retained with disabled control C004; out of active scope.",
+    "MITRE:T1059.003": "Historical technique retained for the disabled legacy control; out of active MDC scope.",
+    "METRIC:SACI": "Aggregate summary metric; the canonical aggregate is represented by SCORE:SACI."
+  },
+  "duplicate_edge_policy": "Parallel source-relation-target triples are permitted only when every row has a non-empty unique evidence_id."
+}

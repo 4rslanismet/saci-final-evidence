@@ -1,0 +1,426 @@
+<!doctype html><html  lang="en" data-theme="dim" data-font-level="0"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>References and technology stack — SACI Final Evidence</title>
+  <meta name="description" content="Official and academic references for GOAD, Wazuh, MISP, pfSense, Sysmon and other components used by SACI.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/en/references.html">
+<link rel="stylesheet" href="../assets/saci-standard.css?v=references-stack-2">
+<link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1">
+<link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=references-stack-2">
+<link rel="stylesheet" href="../assets/references.css?v=references-stack-2">
+  <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
+</head><body data-page="references"><a class="skip-link" href="#main">Skip to main content</a>
+<header class="top"><div class="top-inner">
+<a class="brand" href="index.html">SACI Final Evidence</a>
+<nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a class="active" href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+<div class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Smaller</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Reset</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Larger</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Theme</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div></div></header>
+<main id="main" class="references-page">
+<section class="references-hero"><div class="kicker">REFERENCES</div><h1>References and technology stack</h1>
+<p class="lead">Official documentation, standards and academic literature for every platform and component used in the SACI laboratory, scoring chain, graph model and publication portal.</p><p class="references-scope">The page explicitly separates components directly used in the canonical final chain, infrastructure-only components, supporting tools and methodological sources.</p>
+<div class="stack-summary"><article><strong>Direct final chain</strong><p>GOAD assets, Wazuh, Sysmon, Windows/Linux telemetry, pfSense, MISP, ATT&CK and SACI scripts.</p></article><article><strong>Infrastructure</strong><p>Vagrant and VMware ESXi used to deploy and operate the isolated lab.</p></article><article><strong>Supporting components</strong><p>OpenCTI was used during early CTI setup but is not part of the canonical final score.</p></article><article><strong>Publication stack</strong><p>Python, Requests, Cytoscape.js, Mermaid and GitHub Pages.</p></article></div>
+<nav class="reference-nav" aria-label="Reference categories"><a href="#lab">Laboratory and virtualization infrastructure</a><a href="#telemetry">Telemetry, SIEM and detection layer</a><a href="#cti">CTI and MITRE ATT&CK</a><a href="#implementation">Scoring, graph and publication tools</a><a href="#academic">Standards and academic literature</a></nav></section>
+<section class="references-section" id="lab">
+<h2>Laboratory and virtualization infrastructure</h2>
+<p>Controlled experiment environment built with GOAD, Active Directory, ESXi/Vagrant, Ubuntu and pfSense.</p>
+<div class="reference-list">
+<article class="reference-entry" id="goad">
+<div class="reference-entry-head"><div>
+<h3>GOAD — Game of Active Directory</h3><p class="reference-citation">Orange Cyberdefense. (n.d.). GOAD: Game of Active Directory [Software repository]. GitHub. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Lab platform</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to provide the isolated Active Directory laboratory, including Windows assets such as DC01 and WS01, for repeatable identity, discovery and process-behavior tests.</p>
+<a class="reference-link" href="https://github.com/Orange-Cyberdefense/GOAD" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="vagrant">
+<div class="reference-entry-head"><div>
+<h3>HashiCorp Vagrant</h3><p class="reference-citation">HashiCorp. (n.d.). Vagrant documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Infrastructure automation</span>
+<span class="reference-scope infra">Used in lab infrastructure</span>
+</div></div>
+<p class="reference-role">Used to define GOAD virtual machines, provision the multi-machine topology and reproduce the laboratory environment.</p>
+<a class="reference-link" href="https://developer.hashicorp.com/vagrant/docs" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="vmware-esxi">
+<div class="reference-entry-head"><div>
+<h3>VMware ESXi / vSphere</h3><p class="reference-citation">VMware by Broadcom. (n.d.). VMware vSphere documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Virtualization infrastructure</span>
+<span class="reference-scope infra">Used in lab infrastructure</span>
+</div></div>
+<p class="reference-role">Hypervisor layer used to run GOAD, Wazuh, CTI and supporting laboratory virtual machines on the dedicated server.</p>
+<a class="reference-link" href="https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0.html" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="ad-ds">
+<div class="reference-entry-head"><div>
+<h3>Microsoft Active Directory Domain Services</h3><p class="reference-citation">Microsoft. (2025). Active Directory Domain Services overview. Microsoft Learn.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Identity infrastructure</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Contextual basis for the GOAD domain controller, users, computers, authentication and domain-discovery events.</p>
+<a class="reference-link" href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="ubuntu-server">
+<div class="reference-entry-head"><div>
+<h3>Ubuntu Server</h3><p class="reference-citation">Canonical. (n.d.). Ubuntu Server documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Server operating system</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Server operating-system layer hosting Wazuh, CTI01 and Linux telemetry sources.</p>
+<a class="reference-link" href="https://documentation.ubuntu.com/server/" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="pfsense">
+<div class="reference-entry-head"><div>
+<h3>pfSense</h3><p class="reference-citation">Netgate. (n.d.). pfSense documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Firewall / network telemetry</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to generate firewall, block and IOC-traffic events as syslog from the FW01-PFSENSE asset.</p>
+<a class="reference-link" href="https://docs.netgate.com/pfsense/en/latest/index.html" target="_blank" rel="noopener">Open source ↗</a>
+</article>
+</div></section><section class="references-section" id="telemetry">
+<h2>Telemetry, SIEM and detection layer</h2>
+<p>Visibility chain built with Wazuh, OpenSearch, Windows and Linux log sources.</p>
+<div class="reference-list">
+<article class="reference-entry" id="wazuh">
+<div class="reference-entry-head"><div>
+<h3>Wazuh Documentation</h3><p class="reference-citation">Wazuh, Inc. (n.d.). Wazuh documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">SIEM/XDR platform</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Primary technical source for the agent, manager, indexer, dashboard, decoder, rule, alert and integration components.</p>
+<a class="reference-link" href="https://documentation.wazuh.com/current/index.html" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="wazuh-architecture">
+<div class="reference-entry-head"><div>
+<h3>Wazuh Architecture</h3><p class="reference-citation">Wazuh, Inc. (n.d.). Architecture. Wazuh documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Architecture documentation</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Architectural basis for the endpoint → Wazuh server → indexer → dashboard data flow.</p>
+<a class="reference-link" href="https://documentation.wazuh.com/current/getting-started/architecture.html" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="wazuh-log-analysis">
+<div class="reference-entry-head"><div>
+<h3>Wazuh Log Collection, Decoders and Rules</h3><p class="reference-citation">Wazuh, Inc. (n.d.). Log data collection and data analysis. Wazuh documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Detection documentation</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to normalize Security, Sysmon, PowerShell, Linux and pfSense logs and convert them into Wazuh rule/alert evidence.</p>
+<a class="reference-link" href="https://documentation.wazuh.com/current/user-manual/capabilities/log-data-collection/how-it-works.html" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="wazuh-indexer">
+<div class="reference-entry-head"><div>
+<h3>Wazuh Indexer</h3><p class="reference-citation">Wazuh, Inc. (n.d.). Wazuh indexer. Wazuh documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Security-data indexing</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to index, store and query analyzed Wazuh events through the dashboard.</p>
+<a class="reference-link" href="https://documentation.wazuh.com/current/user-manual/wazuh-indexer/index.html" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="opensearch">
+<div class="reference-entry-head"><div>
+<h3>OpenSearch</h3><p class="reference-citation">OpenSearch Project. (n.d.). OpenSearch documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Search and analytics engine</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Documents the search, indexing and analytics foundation used by the Wazuh indexer layer.</p>
+<a class="reference-link" href="https://docs.opensearch.org/latest/" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="sysmon">
+<div class="reference-entry-head"><div>
+<h3>Microsoft Sysmon</h3><p class="reference-citation">Microsoft. (2026). Sysmon overview. Microsoft Learn.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Windows endpoint telemetry</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used on DC01 and WS01 to produce high-fidelity process-creation, network, DNS and related endpoint events.</p>
+<a class="reference-link" href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/sysmon/overview" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="windows-audit">
+<div class="reference-entry-head"><div>
+<h3>Windows Advanced Audit Policy</h3><p class="reference-citation">Microsoft. (2025). Advanced Audit Policy Configuration settings. Microsoft Learn.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Windows Security telemetry</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to generate authentication, account-use, policy-change and process-auditing events in the Windows Security channel.</p>
+<a class="reference-link" href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/advanced-audit-policy-configuration" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="powershell-logging">
+<div class="reference-entry-head"><div>
+<h3>PowerShell Script Block Logging</h3><p class="reference-citation">Microsoft. (2026). about_Logging_Windows. PowerShell documentation.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Command-execution telemetry</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to produce PowerShell command, script-block, function and script execution evidence for T1059.001.</p>
+<a class="reference-link" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="rsyslog">
+<div class="reference-entry-head"><div>
+<h3>rsyslog</h3><p class="reference-citation">Adiscon. (n.d.). rsyslog documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Linux log forwarding</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Log-processing layer used to collect, filter and forward Linux authlog/syslog events to Wazuh.</p>
+<a class="reference-link" href="https://docs.rsyslog.com/doc/index.html" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="journald">
+<div class="reference-entry-head"><div>
+<h3>systemd-journald</h3><p class="reference-citation">systemd Project. (n.d.). systemd-journald.service manual.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Linux system journal</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Documents the structured journal source used for Linux service and process events.</p>
+<a class="reference-link" href="https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html" target="_blank" rel="noopener">Open source ↗</a>
+</article>
+</div></section><section class="references-section" id="cti">
+<h2>CTI and MITRE ATT&CK</h2>
+<p>MISP enrichment, ATT&CK mapping and supporting CTI platforms.</p>
+<div class="reference-list">
+<article class="reference-entry" id="misp">
+<div class="reference-entry-head"><div>
+<h3>MISP Documentation</h3><p class="reference-citation">MISP Project. (n.d.). MISP documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">CTI platform</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Primary technical source for IOC lookup, event/attribute structures, hit/no-hit distinction and the enrichment chain.</p>
+<a class="reference-link" href="https://www.misp-project.org/documentation/" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="opencti">
+<div class="reference-entry-head"><div>
+<h3>OpenCTI</h3><p class="reference-citation">Filigran. (n.d.). OpenCTI documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Supporting CTI platform</span>
+<span class="reference-scope aux">Supporting; not in final score</span>
+</div></div>
+<p class="reference-role">Used during the early CTI setup and evaluation stage; it is not an active input to the canonical final SACI scoring chain.</p>
+<a class="reference-link" href="https://docs.opencti.io/latest/" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="mitre">
+<div class="reference-entry-head"><div>
+<h3>MITRE ATT&CK — Enterprise Matrix</h3><p class="reference-citation">MITRE. (n.d.). MITRE ATT&CK: Enterprise Matrix. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Behavior knowledge base</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to map detection controls to T1078, T1087, T1059.001, T1110, T1082 and other in-scope techniques.</p>
+<a class="reference-link" href="https://attack.mitre.org/matrices/enterprise/" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="mitre-philosophy">
+<div class="reference-entry-head"><div>
+<h3>MITRE ATT&CK: Design and Philosophy</h3><p class="reference-citation">MITRE. (2020). MITRE ATT&CK: Design and philosophy.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Official technical report</span>
+<span class="reference-scope method">Methodological basis</span>
+</div></div>
+<p class="reference-role">Explains ATT&CK scope, behavior, technique and knowledge-base modelling assumptions.</p>
+<a class="reference-link" href="https://attack.mitre.org/docs/ATTACK_Design_and_Philosophy_March_2020.pdf" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="cisa-mapping">
+<div class="reference-entry-head"><div>
+<h3>Best Practices for MITRE ATT&CK Mapping</h3><p class="reference-citation">Cybersecurity and Infrastructure Security Agency. (2023). Best practices for MITRE ATT&CK mapping.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Mapping guidance</span>
+<span class="reference-scope method">Methodological basis</span>
+</div></div>
+<p class="reference-role">Supports evidence-based technique mapping while avoiding overgeneralization.</p>
+<a class="reference-link" href="https://www.cisa.gov/news-events/news/best-practices-mitre-attckr-mapping" target="_blank" rel="noopener">Open source ↗</a>
+</article>
+</div></section><section class="references-section" id="implementation">
+<h2>Scoring, graph and publication tools</h2>
+<p>Tools used for SACI computation, MISP querying, graph visualization and portal publication.</p>
+<div class="reference-list">
+<article class="reference-entry" id="python">
+<div class="reference-entry-head"><div>
+<h3>Python 3</h3><p class="reference-citation">Python Software Foundation. (n.d.). Python 3 documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Scoring and data processing</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Runtime language for saci_score.py, saci_graph.py and the data-transformation/validation scripts.</p>
+<a class="reference-link" href="https://docs.python.org/3/" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="requests">
+<div class="reference-entry-head"><div>
+<h3>Requests</h3><p class="reference-citation">Reitz, K., & Python Software Foundation contributors. (n.d.). Requests: HTTP for Humans. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">HTTP client library</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used in custom-misp.py to query the MISP API with IOC values extracted from Wazuh alerts.</p>
+<a class="reference-link" href="https://requests.readthedocs.io/" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="cytoscape">
+<div class="reference-entry-head"><div>
+<h3>Cytoscape.js</h3><p class="reference-citation">Cytoscape Consortium. (n.d.). Cytoscape.js documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Interactive graph visualization</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to render saci_graph.cyjs as an interactive node/edge view in the portal.</p>
+<a class="reference-link" href="https://js.cytoscape.org/" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="mermaid">
+<div class="reference-entry-head"><div>
+<h3>Mermaid</h3><p class="reference-citation">Mermaid Project. (n.d.). Mermaid documentation and repository. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Text-based graph/diagram output</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to generate saci_graph.mmd and reproducible text-based diagram outputs.</p>
+<a class="reference-link" href="https://github.com/mermaid-js/mermaid" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="github-pages">
+<div class="reference-entry-head"><div>
+<h3>GitHub Pages</h3><p class="reference-citation">GitHub. (n.d.). GitHub Pages documentation. Retrieved July 12, 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Publication and evidence portal</span>
+<span class="reference-scope direct">Directly used in final chain</span>
+</div></div>
+<p class="reference-role">Used to publish the final evidence portal, TR/EN pages, downloadable data and interactive graph as a static website.</p>
+<a class="reference-link" href="https://docs.github.com/en/pages" target="_blank" rel="noopener">Open source ↗</a>
+</article>
+</div></section><section class="references-section" id="academic">
+<h2>Standards and academic literature</h2>
+<p>Foundational work on log management, CTI, SIEM and graph-based security assessment.</p>
+<div class="reference-list">
+<article class="reference-entry" id="nist-800-92">
+<div class="reference-entry-head"><div>
+<h3>NIST SP 800-92 — Guide to Computer Security Log Management</h3><p class="reference-citation">Kent, K., & Souppaya, M. (2006). Guide to computer security log management (NIST SP 800-92). National Institute of Standards and Technology.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Standards guidance</span>
+<span class="reference-scope method">Methodological basis</span>
+</div></div>
+<p class="reference-role">General basis for centralized log collection, retention, analysis and log management.</p>
+<a class="reference-link" href="https://nvlpubs.nist.gov/nistpubs/legacy/SP/nistspecialpublication800-92.Pdf" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="nist-800-150">
+<div class="reference-entry-head"><div>
+<h3>NIST SP 800-150 — Guide to Cyber Threat Information Sharing</h3><p class="reference-citation">Johnson, C. S., Badger, M. L., Waltermire, D. A., Snyder, J., & Skorupka, C. (2016). Guide to cyber threat information sharing (NIST SP 800-150). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.SP.800-150</p>
+</div><div class="reference-badges">
+<span class="reference-type">CTI guidance</span>
+<span class="reference-scope method">Methodological basis</span>
+</div></div>
+<p class="reference-role">Provides methodological grounding for CTI sources, sharing scope and structured threat information.</p>
+<a class="reference-link" href="https://csrc.nist.gov/pubs/sp/800/150/final" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="siem-role">
+<div class="reference-entry-head"><div>
+<h3>The Operational Role of Security Information and Event Management Systems</h3><p class="reference-citation">Bhatt, S., Manadhata, P. K., & Zomlot, L. (2014). The operational role of security information and event management systems. IEEE Security & Privacy, 12(5), 35–41. https://doi.org/10.1109/MSP.2014.103</p>
+</div><div class="reference-badges">
+<span class="reference-type">Peer-reviewed article</span>
+<span class="reference-scope method">Methodological basis</span>
+</div></div>
+<p class="reference-role">Explains SIEM collection, normalization, analysis and operational limitations within SOCs.</p>
+<a class="reference-link" href="https://doi.org/10.1109/MSP.2014.103" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="misp-paper">
+<div class="reference-entry-head"><div>
+<h3>MISP: The Design and Implementation of a Collaborative Threat Intelligence Sharing Platform</h3><p class="reference-citation">Wagner, C., Dulaunoy, A., Wagener, G., & Iklody, A. (2016). MISP: The design and implementation of a collaborative threat intelligence sharing platform. Proceedings of the 3rd ACM Workshop on Information Sharing and Collaborative Security. https://doi.org/10.1145/2994539.2994542</p>
+</div><div class="reference-badges">
+<span class="reference-type">Peer-reviewed paper</span>
+<span class="reference-scope method">Methodological basis</span>
+</div></div>
+<p class="reference-role">Foundational academic source for the MISP data model, collaborative CTI sharing and detection support.</p>
+<a class="reference-link" href="https://doi.org/10.1145/2994539.2994542" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="attack-graphs">
+<div class="reference-entry-head"><div>
+<h3>Fast Network Attack Modeling and Security Evaluation Based on Attack Graphs</h3><p class="reference-citation">Kotenko, I., & Chechulin, A. (2014). Fast network attack modeling and security evaluation based on attack graphs. Journal of Cyber Security and Mobility, 3(1), 27–46.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Peer-reviewed article</span>
+<span class="reference-scope method">Methodological basis</span>
+</div></div>
+<p class="reference-role">Supports the relationship among SIEM events, attack graphs and security-metric generation.</p>
+<a class="reference-link" href="https://journals.riverpublishers.com/index.php/JCSANDM/article/view/6167" target="_blank" rel="noopener">Open source ↗</a>
+</article><article class="reference-entry" id="graph-survey">
+<div class="reference-entry-head"><div>
+<h3>Graph Models for Cybersecurity — A Survey</h3><p class="reference-citation">Wachter, J. (2023). Graph models for cybersecurity—A survey. arXiv. https://doi.org/10.48550/arXiv.2311.10050</p>
+</div><div class="reference-badges">
+<span class="reference-type">Literature survey</span>
+<span class="reference-scope method">Methodological basis</span>
+</div></div>
+<p class="reference-role">Broad literature framework for graph semantics, attack-graph formalisms and analysis features in cybersecurity.</p>
+<a class="reference-link" href="https://arxiv.org/abs/2311.10050" target="_blank" rel="noopener">Open source ↗</a>
+</article>
+</div></section>
+<div class="reference-note"><strong>Scope note:</strong> Software repositories and continuously updated product documentation include an access date. Internal SACI files remain under Artifacts and Data; they are not duplicated as external references.</div>
+</main><script src="../assets/saci-ui.js?v=responsive-nav-1"></script>  <script src="../assets/saci-compact-controls.js?v=2"></script>
+</body></html>

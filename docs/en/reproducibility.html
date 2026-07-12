@@ -1,0 +1,99 @@
+<!doctype html><html lang="en" data-theme="dim" data-font-level="0"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reproducibility — SACI Final Evidence</title><meta name="description" content="Vagrant-based reconstruction of the SACI laboratory topology, canonical artifact verification and service-deployment profiles."><link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/en/reproducibility.html"><link rel="stylesheet" href="../assets/saci-standard.css?v=repro-1"><link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1"><link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=repro-1"><link rel="stylesheet" href="../assets/reproducibility.css?v=repro-1">  <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
+<link rel="stylesheet" href="../assets/integrity.css?v=f01"></head><body data-page="reproducibility"><a class="skip-link" href="#main">Skip to main content</a><header class="top"><div class="top-inner"><a class="brand" href="index.html">SACI Final Evidence</a><nav class="nav"><a href="index.html">Home</a>
+<a href="methodology.html">Methodology</a>
+<a href="architecture.html">Architecture</a>
+<a href="evidence.html">Evidence</a>
+<a href="scenarios.html">Scenarios</a>
+<a href="artifacts.html">Artifacts</a>
+<a class=active href="reproducibility.html">Reproduce</a>
+<a href="data.html">Data</a>
+<a href="references.html">References</a>
+<a href="graph.html">Graph</a>
+<a href="explanation.html">Explanation</a>
+<a href="paper.html">Paper View</a></nav><div class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Smaller</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Reset</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Larger</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Theme</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div></div></header><main id="main" class="repro-page">
+<!-- SACI_INTEGRITY_BANNER_START --><aside class="saci-integrity-banner" data-integrity-banner><p><strong data-integrity-status>Integrity</strong> — <span data-integrity-copy>Loading.</span></p><a href="integrity.html">Finding F-01 →</a></aside><!-- SACI_INTEGRITY_BANNER_END --><section class="repro-hero"><div class="kicker">REPRODUCIBILITY</div><h1>Reproducibility</h1><p class="lead">A Vagrant-based scaffold reconstructs the declared laboratory topology, verifies the canonical evidence package and optionally prepares service deployment.</p><div class="repro-note"><strong>Boundary:</strong> This is a reconstruction scaffold, not a byte-identical archive of the original run. Live telemetry reproduction still requires provider-compatible guest images, an isolated authorized lab and runtime secrets.</div><div class="repro-links"><a href="../downloads/reproducibility/Vagrantfile" download>Vagrantfile</a><a href="../downloads/reproducibility/topology.json" download>topology.json</a><a href="../downloads/reproducibility/README.md">README</a><a href="../downloads/reproducibility/verify.py">verify.py</a></div></section><section class="repro-section"><h2>Profiles</h2><div class="repro-grid"><article class="repro-card"><h3>evidence</h3><p>Canonical artifact verification only.</p></article><article class="repro-card"><h3>portable</h3><p>All declared machines as Linux stubs.</p></article><article class="repro-card"><h3>native</h3><p>Linux, Windows and FreeBSD guests.</p></article></div></section><section class="repro-section"><h2>Fast verification</h2><pre class="repro-code">SACI_LAB_PROFILE=evidence vagrant up --provider=virtualbox</pre><p>The wsiem guest receives docs/data/final and runs lab/verify.py without changing the published artifacts.</p></section><section class="repro-section"><h2>Native topology</h2><pre class="repro-code">export SACI_DC01_BOX='your/windows-server-box'
+export SACI_WS01_BOX='your/windows-client-box'
+export SACI_FW01_PFSENSE_BOX='your/freebsd-or-pfsense-box'
+SACI_LAB_PROFILE=native SACI_DEPLOY_SERVICES=0 vagrant up --provider=vmware_desktop</pre></section><section class="repro-section"><h2>ESXi</h2><pre class="repro-code">export GOAD_VAGRANT_ESXIHOST='192.0.2.10'
+export GOAD_VAGRANT_ESXIUSER='root'
+export GOAD_VAGRANT_ESXIPASSWORD='...'
+export GOAD_VAGRANT_ESXIDATASTORE='datastore1'
+export GOAD_VAGRANT_ESXINETWORK='SOC_VLAN'
+SACI_LAB_PROFILE=native vagrant up --provider=vmware_esxi</pre><p>Credentials are supplied at runtime and are never stored in the repository.</p></section></main><script src="../assets/saci-ui.js?v=responsive-nav-1"></script>  <script src="../assets/saci-compact-controls.js?v=2"></script>
+<script src="../assets/integrity-badge.js?v=f01"></script></body></html>

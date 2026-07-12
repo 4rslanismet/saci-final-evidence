@@ -1,0 +1,301 @@
+/*
+ * SACI Graph Explorer
+ * Global Dark / Dim / Light theme alignment
+ */
+
+body[data-page="graph"] {
+  --gx-panel:
+    color-mix(in srgb, var(--bg) 94%, var(--text) 6%);
+
+  --gx-panel-soft:
+    color-mix(in srgb, var(--bg) 97%, var(--text) 3%);
+
+  --gx-panel-strong:
+    color-mix(in srgb, var(--bg) 89%, var(--text) 11%);
+
+  --gx-border:
+    color-mix(in srgb, var(--line) 76%, transparent);
+
+  --gx-border-soft:
+    color-mix(in srgb, var(--line) 52%, transparent);
+
+  --gx-accent-soft:
+    color-mix(in srgb, var(--accent) 10%, transparent);
+
+  --gx-accent-medium:
+    color-mix(in srgb, var(--accent) 42%, var(--line));
+
+  --gx-shadow:
+    0 18px 50px color-mix(in srgb, var(--bg) 84%, transparent);
+}
+
+
+/* Sayfanın bütün ana panelleri */
+
+body[data-page="graph"] .graph-toolbar,
+body[data-page="graph"] .graph-stat,
+body[data-page="graph"] .analysis-panel,
+body[data-page="graph"] .score-chip,
+body[data-page="graph"] .interpretation-text,
+body[data-page="graph"] .mitre-group,
+body[data-page="graph"] .tech-item {
+  background: var(--gx-panel) !important;
+  border-color: var(--gx-border) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+}
+
+
+/* Ana graph alanı */
+
+body[data-page="graph"] .graph-frame {
+  background:
+    radial-gradient(
+      circle at 18% 18%,
+      var(--gx-accent-soft),
+      transparent 36%
+    ),
+    var(--gx-panel-soft) !important;
+
+  border-color: var(--gx-border) !important;
+  box-shadow: var(--gx-shadow) !important;
+}
+
+
+/* Toolbar girişleri */
+
+body[data-page="graph"] .graph-toolbar select,
+body[data-page="graph"] .graph-toolbar input,
+body[data-page="graph"] .graph-toolbar button {
+  background: var(--gx-panel-soft) !important;
+  border-color: var(--gx-border) !important;
+  color: var(--text) !important;
+}
+
+body[data-page="graph"] .graph-toolbar select:hover,
+body[data-page="graph"] .graph-toolbar input:hover,
+body[data-page="graph"] .graph-toolbar button:hover {
+  border-color: var(--gx-accent-medium) !important;
+}
+
+body[data-page="graph"] .graph-toolbar input:focus,
+body[data-page="graph"] .graph-toolbar select:focus {
+  border-color: var(--accent) !important;
+  outline: 2px solid var(--gx-accent-soft) !important;
+  outline-offset: 1px !important;
+}
+
+body[data-page="graph"] select option {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+
+/* Metrik kutuları */
+
+body[data-page="graph"] .graph-stat span,
+body[data-page="graph"] .score-chip b {
+  color: var(--muted) !important;
+}
+
+body[data-page="graph"] .graph-stat strong,
+body[data-page="graph"] .score-chip strong {
+  color: var(--text) !important;
+}
+
+
+/* Graph yorumlama paneli */
+
+body[data-page="graph"] .analysis-panel h2,
+body[data-page="graph"] .scenario-title {
+  color: var(--text) !important;
+}
+
+body[data-page="graph"] .scenario-subtitle,
+body[data-page="graph"] .analysis-panel p,
+body[data-page="graph"] .interpretation-text {
+  color: var(--muted) !important;
+}
+
+body[data-page="graph"] .interpretation-text {
+  background: var(--gx-panel-soft) !important;
+}
+
+
+/*
+ * Durum etiketleri
+ * Neon yeşil ve sarı kaldırıldı.
+ */
+
+body[data-page="graph"] .status-pill,
+body[data-page="graph"] .tech-state {
+  background: var(--gx-panel-soft) !important;
+  border-color: var(--gx-accent-medium) !important;
+  color: var(--accent) !important;
+  text-shadow: none !important;
+}
+
+body[data-page="graph"] .status-pill.good,
+body[data-page="graph"] .tech-state.covered {
+  background: var(--gx-accent-soft) !important;
+  border-color: var(--gx-accent-medium) !important;
+  color: var(--accent) !important;
+}
+
+body[data-page="graph"] .status-pill.warn,
+body[data-page="graph"] .tech-state.missing {
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 5px,
+      var(--gx-accent-soft) 5px,
+      var(--gx-accent-soft) 9px
+    ),
+    var(--gx-panel-soft) !important;
+
+  border-color: var(--gx-accent-medium) !important;
+  border-style: dashed !important;
+  color: var(--text) !important;
+}
+
+
+/* MITRE taktik başlıkları */
+
+body[data-page="graph"] .mitre-group h3 {
+  color: var(--text) !important;
+}
+
+body[data-page="graph"] .mitre-group h3 a {
+  color: var(--text) !important;
+  text-decoration: none !important;
+  border-bottom:
+    1px solid color-mix(
+      in srgb,
+      var(--accent) 58%,
+      transparent
+    ) !important;
+}
+
+body[data-page="graph"] .mitre-group h3 a:hover {
+  color: var(--accent) !important;
+}
+
+
+/* MITRE teknik bağlantıları */
+
+body[data-page="graph"] .tech-id {
+  color: var(--accent) !important;
+}
+
+body[data-page="graph"] .tech-name {
+  color: var(--muted) !important;
+}
+
+body[data-page="graph"] .tech-item:hover {
+  background: var(--gx-panel-strong) !important;
+  border-color: var(--gx-accent-medium) !important;
+}
+
+body[data-page="graph"] .tech-item:hover .tech-name {
+  color: var(--text) !important;
+}
+
+
+/* Graph içindeki yükleme/durum mesajı */
+
+body[data-page="graph"] .graph-status {
+  background:
+    color-mix(
+      in srgb,
+      var(--bg) 88%,
+      transparent
+    ) !important;
+
+  border-color: var(--gx-border) !important;
+  color: var(--muted) !important;
+  box-shadow: none !important;
+}
+
+body[data-page="graph"] .graph-status.err {
+  background: var(--gx-panel-soft) !important;
+  border-color: var(--gx-accent-medium) !important;
+  color: var(--text) !important;
+}
+
+
+/* Node/edge sağ detay paneli */
+
+body[data-page="graph"] .node-detail-drawer {
+  background: var(--bg) !important;
+  border-left-color: var(--gx-border) !important;
+  color: var(--text) !important;
+}
+
+body[data-page="graph"] .drawer-head button {
+  background: var(--gx-panel) !important;
+  border-color: var(--gx-border) !important;
+  color: var(--text) !important;
+}
+
+body[data-page="graph"] .role-card {
+  background: var(--gx-accent-soft) !important;
+  border-color: var(--gx-accent-medium) !important;
+  color: var(--text) !important;
+}
+
+body[data-page="graph"] .kv b {
+  color: var(--text) !important;
+}
+
+body[data-page="graph"] .kv span {
+  color: var(--muted) !important;
+}
+
+
+/* Arka plan perdesi de temaya göre yumuşatılır */
+
+body[data-page="graph"] .node-detail-backdrop {
+  background:
+    color-mix(
+      in srgb,
+      var(--bg) 70%,
+      transparent
+    ) !important;
+}
+
+
+/* Light temada gölge ve yüzey düzeltmesi */
+
+html[data-theme="light"] body[data-page="graph"] {
+  --gx-panel:
+    color-mix(in srgb, var(--bg) 90%, var(--text) 10%);
+
+  --gx-panel-soft:
+    color-mix(in srgb, var(--bg) 96%, var(--text) 4%);
+
+  --gx-panel-strong:
+    color-mix(in srgb, var(--bg) 84%, var(--text) 16%);
+
+  --gx-shadow:
+    0 18px 50px
+    color-mix(in srgb, var(--text) 10%, transparent);
+}
+
+
+/* Küçük ekran */
+
+@media (max-width: 720px) {
+  body[data-page="graph"] .analysis-panel {
+    padding: 15px !important;
+  }
+
+  body[data-page="graph"] .tech-item {
+    grid-template-columns: 82px minmax(0, 1fr) !important;
+  }
+
+  body[data-page="graph"] .tech-state {
+    grid-column: 1 / -1 !important;
+    justify-self: start !important;
+  }
+}

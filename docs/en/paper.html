@@ -1,0 +1,515 @@
+<!doctype html>
+<html  lang="en" data-theme="dim" data-font-level="0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SACI results summary — SACI Final Evidence</title>
+  <meta name="description" content="Paper-oriented presentation of SACI final and scenario results with figures, summary metrics and academic interpretation.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/en/paper.html">
+
+  <link rel="stylesheet" href="../assets/saci-standard.css?v=paper-view-5">
+  <link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="../assets/paper.css?v=paper-view-5">
+  <link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
+<link rel="stylesheet" href="../assets/integrity.css?v=f01"></head>
+
+<body data-page="paper">
+
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a class="active" href="paper.html">Paper View</a>
+    </nav>
+
+    <div class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Smaller</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Reset</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Larger</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Theme</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+
+
+<main id="main" class="paper-page">
+<!-- SACI_INTEGRITY_BANNER_START --><aside class="saci-integrity-banner" data-integrity-banner><p><strong data-integrity-status>Integrity</strong> — <span data-integrity-copy>Loading.</span></p><a href="integrity.html">Finding F-01 →</a></aside><!-- SACI_INTEGRITY_BANNER_END -->
+  <section class="paper-hero">
+    <div class="kicker">RESULTS</div>
+    <h1>SACI results summary</h1>
+    <p class="lead">This page consolidates the final quantitative results, evidence-graph closure, MITRE/CTI coverage and scenario-based validation findings of the SACI model.</p>
+    <p class="paper-scope">The publication-level final dataset and the historical S0–S18 validation series are interpreted separately. Figures can be exported as SVG and adapted for the paper.</p>
+
+    <div class="paper-actions">
+      <button type="button" id="printPage">Print / Save as PDF</button>
+      <a href="evidence.html">Open final evidence</a>
+    </div>
+  </section>
+
+  <div id="loadingState" class="empty-state">Loading results...</div>
+
+  <div id="paperContent" hidden>
+    <section class="paper-section">
+      <div class="paper-section-head">
+        <h2>Final results</h2>
+        <p>Core indicators derived from the publication-level final evidence package.</p>
+      </div>
+
+      <div class="paper-summary-grid">
+        <article class="paper-summary-card">
+          <span>Final SACI score</span>
+          <strong id="scoreValue">-</strong>
+          <small id="scoreSub"></small>
+        </article>
+
+        <article class="paper-summary-card">
+          <span>Graph closure</span>
+          <strong id="closureValue">-</strong>
+          <small id="closureSub"></small>
+        </article>
+
+        <article class="paper-summary-card">
+          <span>MITRE coverage</span>
+          <strong id="mitreValue">-</strong>
+          <small id="mitreSub"></small>
+        </article>
+
+        <article class="paper-summary-card">
+          <span>CTI/MISP coverage</span>
+          <strong id="ctiValue">-</strong>
+          <small id="ctiSub"></small>
+        </article>
+      </div>
+
+      <div class="paper-boundary"><strong>Interpretation boundary:</strong> SACI=100 indicates closure of declared visibility relations. It is not an absolute security guarantee.</div>
+    </section>
+
+
+    <section class="paper-section" id="scenarioExplorer">
+      <div class="paper-section-head">
+        <h2>Scenario view</h2>
+        <p>Inspect the final dataset and every S0–S18 validation scenario available in the manifest.</p>
+      </div>
+
+      <div class="paper-scenario-menu">
+        <div class="paper-scenario-field">
+          <label id="paperScenarioPickerLabel" for="paperScenarioTrigger">Dataset / scenario</label>
+
+          <div class="paper-scenario-picker" id="paperScenarioPicker">
+            <button type="button"
+                    id="paperScenarioTrigger"
+                    class="paper-scenario-trigger"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-labelledby="paperScenarioPickerLabel paperScenarioTriggerText">
+              <span id="paperScenarioTriggerText">Final — Final visibility closure</span>
+              <span class="paper-scenario-chevron" aria-hidden="true">⌄</span>
+            </button>
+
+            <div id="paperScenarioPopover"
+                 class="paper-scenario-popover"
+                 hidden>
+              <div class="paper-scenario-search">
+                <input type="search"
+                       id="paperScenarioSearch"
+                       placeholder="Search scenarios"
+                       autocomplete="off"
+                       aria-label="Search scenarios">
+              </div>
+
+              <div id="paperScenarioOptions"
+                   class="paper-scenario-options"
+                   role="listbox"
+                   aria-labelledby="paperScenarioPickerLabel"></div>
+            </div>
+          </div>
+
+          <select id="paperScenarioSelect"
+                  class="paper-scenario-native-select"
+                  tabindex="-1"
+                  aria-hidden="true"></select>
+        </div>
+
+        <div class="paper-scenario-actions">
+          <button type="button" id="previousPaperScenario">← Previous</button>
+          <button type="button" id="nextPaperScenario">Next →</button>
+          <a id="paperScenarioGraphLink" href="graph.html">Open graph</a>
+          <a id="paperScenarioEvidenceLink" href="evidence.html">Open evidence</a>
+        </div>
+      </div>
+
+      <article class="paper-scenario-panel">
+        <div class="paper-scenario-heading">
+          <div>
+            <span id="paperScenarioCode" class="paper-scenario-code">FINAL</span>
+            <h3 id="paperScenarioTitle">Final visibility closure</h3>
+            <p id="paperScenarioFocus"></p>
+          </div>
+
+          <span id="paperScenarioStatus" class="paper-scenario-status"></span>
+        </div>
+
+        <div id="paperScenarioMetrics" class="paper-scenario-metrics"></div>
+
+        <div class="paper-scenario-insights">
+          <section>
+            <h4>Graph summary</h4>
+            <p id="paperScenarioGraphSummary"></p>
+          </section>
+
+          <section>
+            <h4>Primary effect</h4>
+            <p id="paperScenarioPrimaryImpact"></p>
+          </section>
+
+          <section>
+            <h4>Academic interpretation</h4>
+            <p id="paperScenarioInterpretation"></p>
+          </section>
+        </div>
+
+        <figure class="paper-figure paper-scenario-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3 id="paperScenarioFigureTitle">Scenario component profile</h3>
+              <p>Active SACI components of the selected dataset.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      id="paperScenarioDownload"
+                      data-download-figure="paperScenarioFigure"
+                      data-filename="saci-scenario-component-profile.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="paperScenarioFigure" class="figure-canvas tall"></div>
+          <figcaption id="paperScenarioCaption"></figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section class="paper-section">
+      <div class="paper-section-head">
+        <h2>System and evidence structure</h2>
+        <p>Architecture and final graph-level results used to support the scoring model.</p>
+      </div>
+
+      <div class="figure-grid">
+        <figure class="paper-figure wide">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Laboratory architecture and evidence flow</h3>
+              <p>Telemetry, Wazuh, detection, MITRE/CTI, SACI and graph-output layers.</p>
+            </div>
+
+            <div class="figure-tools">
+              <a href="../assets/arch-en.png" target="_blank" rel="noopener">Open image</a>
+            </div>
+          </div>
+
+          <div class="figure-canvas">
+            <img class="architecture-figure"
+                 src="../assets/arch-en.png"
+                 alt="SACI laboratory architecture">
+          </div>
+
+          <figcaption>Figure 1. SACI laboratory architecture and end-to-end evidence flow.</figcaption>
+        </figure>
+
+        <figure class="paper-figure wide">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Final SACI component profile</h3>
+              <p>Normalized scores across active visibility dimensions.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="componentFigure"
+                      data-filename="saci-final-component-profile.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="componentFigure" class="figure-canvas tall"></div>
+          <figcaption>Figure 2. Final SACI component profile.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Evidence-graph closure</h3>
+              <p>Observed and missing relations in the final evidence graph.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="closureFigure"
+                      data-filename="saci-evidence-graph-closure.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="closureFigure" class="figure-canvas"></div>
+          <figcaption>Figure 3. Evidence-graph closure in the publication-level final dataset.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>MITRE and CTI coverage</h3>
+              <p>ATT&CK technique coverage and staged CTI/MISP closure.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="coverageFigure"
+                      data-filename="saci-mitre-cti-coverage.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="coverageFigure" class="figure-canvas"></div>
+          <figcaption>Figure 4. MITRE ATT&CK and CTI/MISP coverage.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="paper-section">
+      <div class="paper-section-head">
+        <h2>Scenario-based validation</h2>
+        <p>Figures showing score progression, missing-relation closure, criticality sensitivity, CTI behavior, freshness degradation and active-scope normalization.</p>
+      </div>
+
+      <div class="figure-grid">
+        <figure class="paper-figure wide">
+          <div class="paper-figure-head">
+            <div>
+              <h3>SACI progression across S0–S18</h3>
+              <p>Sensitivity of the score to staged visibility improvements and controlled degradations.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="scenarioScoreFigure"
+                      data-filename="saci-scenario-progression.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="scenarioScoreFigure" class="figure-canvas tall"></div>
+          <figcaption>Figure 5. SACI progression across the S0–S18 validation series.</figcaption>
+        </figure>
+
+        <figure class="paper-figure wide">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Missing-relation progression</h3>
+              <p>Reduction and reappearance of missing evidence relations across the controlled validation series.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="missingFigure"
+                      data-filename="saci-missing-edge-progression.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="missingFigure" class="figure-canvas tall"></div>
+          <figcaption>Figure 6. Missing-edge progression across the validation series.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Criticality sensitivity</h3>
+              <p>S7A critical DC01 Sysmon loss versus S7B non-critical WS01 Sysmon loss.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="criticalityFigure"
+                      data-filename="saci-criticality-sensitivity.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="criticalityFigure" class="figure-canvas"></div>
+          <figcaption>Figure 7. Criticality sensitivity under comparable Sysmon losses.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>CTI-stage behavior</h3>
+              <p>Comparison of enrichment activation, open CTI chains and no-hit lookup outcomes.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="ctiScenarioFigure"
+                      data-filename="saci-cti-stage-behavior.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="ctiScenarioFigure" class="figure-canvas"></div>
+          <figcaption>Figure 8. CTI-stage behavior across enrichment scenarios.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Freshness degradation and recovery</h3>
+              <p>S15 freshness degradation compared with post-remediation recovery in S17.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="freshnessFigure"
+                      data-filename="saci-freshness-recovery.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="freshnessFigure" class="figure-canvas"></div>
+          <figcaption>Figure 9. Freshness degradation and post-remediation recovery.</figcaption>
+        </figure>
+
+        <figure class="paper-figure">
+          <div class="paper-figure-head">
+            <div>
+              <h3>Active-scope normalization</h3>
+              <p>S18 treatment of a legacy control outside the active evaluation scope.</p>
+            </div>
+
+            <div class="figure-tools">
+              <button type="button"
+                      data-download-figure="scopeFigure"
+                      data-filename="saci-active-scope-normalization.svg">
+                Download SVG
+              </button>
+            </div>
+          </div>
+
+          <div id="scopeFigure" class="figure-canvas"></div>
+          <figcaption>Figure 10. Active-scope normalization in S18; N/A components remain outside the active denominator.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="paper-section">
+      <div class="paper-section-head">
+        <h2>Interpretation and limitations</h2>
+        <p>Academic interpretation of the final and scenario-based results.</p>
+      </div>
+
+      <div id="academicNotes" class="academic-grid"></div>
+      <div id="structuralNote" class="structural-note" hidden></div>
+    </section>
+  </div>
+</main>
+
+<script src="../assets/paper.js?v=paper-view-5"></script>
+<script src="../assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="../assets/saci-compact-controls.js?v=2"></script>
+<script src="../assets/integrity-badge.js?v=f01"></script></body>
+</html>

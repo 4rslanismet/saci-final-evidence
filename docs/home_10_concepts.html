@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="tr" data-theme="dim">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SACI Home Concepts — 10 Variants</title>
+
+  <style>
+    :root {
+      --bg:#10131b;
+      --text:#edf2f7;
+      --muted:#aebdcc;
+      --line:#3b4655;
+      --accent:#9bb7d4;
+      --warn:#d6bd7c;
+      --max:1180px;
+      --scale:1;
+    }
+
+    html[data-theme="dark"] {
+      --bg:#020617;
+      --text:#e5e7eb;
+      --muted:#aebdcc;
+      --line:#293647;
+      --accent:#9bb7d4;
+      --warn:#d6bd7c;
+    }
+
+    html[data-theme="light"] {
+      --bg:#f5f2ec;
+      --text:#111827;
+      --muted:#475569;
+      --line:#c8c0b4;
+      --accent:#24547a;
+      --warn:#8a6418;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size:calc(16px * var(--scale));
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:var(--accent); }
+
+    .top {
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .top-inner {
+      width:min(var(--max), calc(100vw - 32px));
+      margin:0 auto;
+      padding:14px 0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .brand {
+      font-weight:900;
+      letter-spacing:-.02em;
+      white-space:nowrap;
+    }
+
+    .switcher {
+      display:flex;
+      align-items:center;
+      gap:7px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    button {
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--muted);
+      padding:7px 10px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:850;
+      font-size:12px;
+    }
+
+    button.active,
+    button:hover {
+      color:var(--text);
+      border-color:var(--accent);
+    }
+
+    main {
+      width:min(var(--max), calc(100vw - 32px));
+      margin:0 auto;
+      padding:56px 0 96px;
+    }
+
+    .view { display:none; }
+    .view.active { display:block; }
+
+    .kicker {
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:12px;
+      font-weight:950;
+      margin-bottom:22px;
+    }
+
+    h1 {
+      font-size:clamp(50px, 7.8vw, 110px);
+      line-height:.92;
+      letter-spacing:-.085em;
+      margin:0 0 28px;
+      max-width:1040px;
+    }
+
+    h2 {
+      font-size:clamp(30px, 4vw, 52px);
+      line-height:1;
+      letter-spacing:-.06em;
+      margin:70px 0 18px;
+    }
+
+    h3 {
+      margin:0;
+      font-size:20px;
+      letter-spacing:-.02em;
+    }
+
+    p {
+      color:var(--muted);
+      margin:0;
+      max-width:900px;
+    }
+
+    .lead {
+      font-size:clamp(18px, 2vw, 23px);
+      color:var(--muted);
+      max-width:980px;
+    }
+
+    .rule { border-top:1px solid var(--line); margin:42px 0; }
+
+    .links {
+      display:flex;
+      gap:28px;
+      flex-wrap:wrap;
+      margin-top:38px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      font-weight:850;
+    }
+
+    .links span { color:var(--accent); }
+
+    .status {
+      margin-top:58px;
+      border-top:1px solid var(--line);
+    }
+
+    .row {
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:24px;
+      padding:16px 0;
+      border-bottom:1px solid var(--line);
+      align-items:baseline;
+    }
+
+    .row .label { color:var(--muted); font-weight:750; }
+    .row .value { color:var(--text); font-weight:850; text-align:right; }
+    .row .value.big { color:var(--accent); font-size:24px; }
+
+    .routes {
+      margin-top:26px;
+      border-top:1px solid var(--line);
+    }
+
+    .route {
+      display:grid;
+      grid-template-columns:220px 1fr auto;
+      gap:24px;
+      padding:18px 0;
+      border-bottom:1px solid var(--line);
+      align-items:baseline;
+    }
+
+    .route p { font-size:15px; }
+    .route span { color:var(--accent); font-weight:850; white-space:nowrap; }
+
+    .two {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 360px;
+      gap:70px;
+      align-items:start;
+    }
+
+    .metric-list {
+      border-top:1px solid var(--line);
+      margin-top:12px;
+    }
+
+    .metric-list div {
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      padding:13px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .metric-list span { color:var(--muted); }
+    .metric-list b { color:var(--text); }
+
+    .mega {
+      font-size:clamp(90px, 14vw, 190px);
+      line-height:.78;
+      letter-spacing:-.1em;
+      font-weight:950;
+      color:var(--accent);
+      margin:0;
+    }
+
+    .note {
+      margin-top:60px;
+      padding-top:20px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      max-width:980px;
+    }
+
+    .note b { color:var(--warn); }
+
+    .mono {
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      letter-spacing:-.04em;
+    }
+
+    .abstract {
+      max-width:920px;
+      font-size:19px;
+    }
+
+    .abstract p + p { margin-top:18px; }
+
+    .toc {
+      counter-reset:item;
+      margin-top:42px;
+      border-top:1px solid var(--line);
+    }
+
+    .toc a {
+      counter-increment:item;
+      display:grid;
+      grid-template-columns:70px 260px 1fr;
+      gap:24px;
+      padding:20px 0;
+      border-bottom:1px solid var(--line);
+      align-items:baseline;
+    }
+
+    .toc a::before {
+      content:counter(item, decimal-leading-zero);
+      color:var(--accent);
+      font-weight:950;
+    }
+
+    .timeline {
+      margin-top:46px;
+      border-left:1px solid var(--line);
+      padding-left:28px;
+    }
+
+    .time-row {
+      position:relative;
+      padding:0 0 34px;
+    }
+
+    .time-row::before {
+      content:"";
+      position:absolute;
+      left:-34px;
+      top:.45em;
+      width:11px;
+      height:11px;
+      border-radius:999px;
+      background:var(--accent);
+    }
+
+    .time-row b {
+      display:block;
+      color:var(--text);
+      margin-bottom:5px;
+    }
+
+    .time-row p {
+      font-size:15px;
+    }
+
+    .columns {
+      columns:2 360px;
+      column-gap:60px;
+      margin-top:36px;
+    }
+
+    .columns p {
+      break-inside:avoid;
+      margin-bottom:18px;
+    }
+
+    .statement {
+      font-size:clamp(28px, 4vw, 54px);
+      line-height:1.08;
+      letter-spacing:-.055em;
+      color:var(--text);
+      max-width:1040px;
+      margin:0;
+    }
+
+    .smallcap {
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.11em;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .footer {
+      margin-top:76px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media (max-width:880px) {
+      .top-inner {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .switcher {
+        justify-content:flex-start;
+      }
+
+      .two,
+      .row,
+      .route,
+      .toc a {
+        grid-template-columns:1fr;
+        gap:8px;
+      }
+
+      .row .value { text-align:left; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/saci-standard.css?v=repair-bilingual-1">
+  <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
+</head>
+
+<body data-page="home_10_concepts">
+<a class="skip-link" href="#main">Ana içeriğe geç</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html" data-i18n="navHome">Home</a>
+      <a href="methodology.html" data-i18n="navMethodology">Methodology</a>
+      <a href="architecture.html" data-i18n="navArchitecture">Architecture</a>
+      <a href="evidence.html" data-i18n="navEvidence">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+<a href="artifacts.html" data-i18n="navArtifacts">Artifacts</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html" data-i18n="navGraph">Graph</a>
+      <a href="explanation.html" data-i18n="navExplanation">Explanation</a>
+      <a href="paper.html" data-i18n="navPaper">Paper View</a>
+    </nav>
+
+    <div class="top-actions" aria-label="Display controls">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+
+<main id="main">
+    <!-- 1 -->
+    <section class="view active" id="view-1">
+      <div class="kicker">Öneri 1 — Akademik kapak</div>
+      <h1>SACI Final Evidence Portal</h1>
+      <p class="lead">
+        Graph-based SIEM visibility scoring and evidence closure package for telemetry,
+        detection control, MITRE ATT&CK coverage and CTI/MISP enrichment evaluation.
+      </p>
+
+      <div class="status">
+        <div class="row"><div class="label">Final evidence status</div><div class="value big">Closed within declared scope</div></div>
+        <div class="row"><div class="label">SACI score</div><div class="value">100</div></div>
+        <div class="row"><div class="label">Graph closure</div><div class="value">171 / 171 observed relations</div></div>
+        <div class="row"><div class="label">Missing relations</div><div class="value">0</div></div>
+      </div>
+
+      <div class="links">
+        <a href="graph.html">Interactive graph <span>→</span></a>
+        <a href="evidence.html">Final evidence <span>→</span></a>
+        <a href="methodology.html">Methodology <span>→</span></a>
+      </div>
+
+      <p class="note"><b>Boundary:</b> SACI=100 is a visibility closure result, not an absolute security guarantee.</p>
+    </section>
+
+    <!-- 2 -->
+    <section class="view" id="view-2">
+      <div class="kicker">Öneri 2 — Makale abstract landing</div>
+      <h1>Explainable evidence closure for SIEM visibility</h1>
+
+      <div class="abstract">
+        <p>
+          SACI converts telemetry, detection controls, CTI enrichment and MITRE ATT&CK mappings
+          into an auditable graph-based visibility score.
+        </p>
+        <p>
+          The final package reports complete closure within the declared evaluation scope:
+          97 nodes, 171 edges, 171 observed visibility relations and 0 missing relations.
+        </p>
+      </div>
+
+      <table class="status">
+        <tr class="row"><td class="label">Result</td><td class="value big">Closed</td></tr>
+        <tr class="row"><td class="label">Score</td><td class="value">100</td></tr>
+        <tr class="row"><td class="label">Scope</td><td class="value">Controlled lab evaluation</td></tr>
+        <tr class="row"><td class="label">Interpretation</td><td class="value">Visibility closure, not security guarantee</td></tr>
+      </table>
+
+      <div class="links">
+        <a href="paper.html">Paper view <span>→</span></a>
+        <a href="graph.html">Graph <span>→</span></a>
+        <a href="explanation.html">Explanation <span>→</span></a>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="view" id="view-3">
+      <div class="kicker">Öneri 3 — Documentation index</div>
+      <h1>Final evidence package</h1>
+      <p class="lead">
+        Deterministic outputs, graph evidence, coverage tables and policy-guided scenario interpretations.
+      </p>
+
+      <div class="toc">
+        <a href="methodology.html"><b>Methodology</b><p>Scoring formula, metric boundaries and active-weight normalization.</p></a>
+        <a href="architecture.html"><b>Architecture</b><p>Telemetry and enrichment flow across Wazuh, endpoints, pfSense and MISP.</p></a>
+        <a href="evidence.html"><b>Evidence</b><p>Final coverage tables, scores, asset/log-source status and controls.</p></a>
+        <a href="graph.html"><b>Graph</b><p>Interactive observed/missing visibility relations.</p></a>
+        <a href="explanation.html"><b>Explanation</b><p>Policy-guided interpretation layer.</p></a>
+        <a href="paper.html"><b>Paper View</b><p>Publication-ready figures and summaries.</p></a>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="view" id="view-4">
+      <div class="kicker">Öneri 4 — Teknik manifest</div>
+      <h1 class="mono">SACI_FINAL_EVIDENCE</h1>
+      <p class="lead mono">
+        deterministic scoring / graph closure / cti enrichment / mitre coverage / explanation layer
+      </p>
+
+      <div class="status mono">
+        <div class="row"><div class="label">FINAL_SCORE</div><div class="value">100</div></div>
+        <div class="row"><div class="label">GRAPH_NODES</div><div class="value">97</div></div>
+        <div class="row"><div class="label">GRAPH_EDGES</div><div class="value">171</div></div>
+        <div class="row"><div class="label">OBSERVED_EDGES</div><div class="value">171</div></div>
+        <div class="row"><div class="label">MISSING_EDGES</div><div class="value">0</div></div>
+        <div class="row"><div class="label">STATUS</div><div class="value big">CLOSED_WITHIN_SCOPE</div></div>
+      </div>
+
+      <div class="links mono">
+        <a href="evidence.html">./evidence <span>→</span></a>
+        <a href="graph.html">./graph <span>→</span></a>
+        <a href="data/VALIDATION.txt">./validation <span>→</span></a>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="view" id="view-5">
+      <div class="kicker">Öneri 5 — Proje vitrini ama düz</div>
+      <div class="two">
+        <div>
+          <h1>Explainable evidence closure for SIEM visibility</h1>
+          <p class="lead">
+            SACI converts telemetry, control coverage, CTI enrichment and MITRE mapping evidence
+            into an auditable graph-based visibility score.
+          </p>
+        </div>
+
+        <aside>
+          <div class="metric-list">
+            <div><span>Final SACI</span><b>100</b></div>
+            <div><span>Coverage closure</span><b>Complete</b></div>
+            <div><span>Graph closure</span><b>171/171</b></div>
+            <div><span>Missing edges</span><b>0</b></div>
+          </div>
+        </aside>
+      </div>
+
+      <h2>What is published?</h2>
+      <div class="routes">
+        <a class="route" href="methodology.html"><b>Method</b><p>How the score is calculated and how edge cases are handled.</p><span>Open →</span></a>
+        <a class="route" href="evidence.html"><b>Evidence</b><p>Final deterministic outputs and coverage tables.</p><span>Open →</span></a>
+        <a class="route" href="graph.html"><b>Graph</b><p>Interactive scenario graph with node and edge explanations.</p><span>Open →</span></a>
+        <a class="route" href="explanation.html"><b>Explanation</b><p>Policy-guided interpretation based on deterministic outputs.</p><span>Open →</span></a>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="view" id="view-6">
+      <div class="kicker">Öneri 6 — Sadece sonuç odaklı</div>
+      <p class="mega">100</p>
+      <h1>Final SACI score</h1>
+      <p class="lead">
+        All expected visibility relations in the declared evaluation scope were observed and closed.
+      </p>
+
+      <div class="status">
+        <div class="row"><div class="label">Observed graph relations</div><div class="value">171 / 171</div></div>
+        <div class="row"><div class="label">Missing graph relations</div><div class="value">0</div></div>
+        <div class="row"><div class="label">Interpretation</div><div class="value">Visibility closure within declared scope</div></div>
+      </div>
+
+      <div class="links">
+        <a href="graph.html">Inspect graph <span>→</span></a>
+        <a href="evidence.html">Review evidence <span>→</span></a>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="view" id="view-7">
+      <div class="kicker">Öneri 7 — Tez cümlesi / manifesto</div>
+      <p class="statement">
+        SACI treats SIEM visibility as an auditable graph problem: an expected relation is either observed,
+        missing, or outside the declared evaluation scope.
+      </p>
+
+      <div class="rule"></div>
+
+      <p class="lead">
+        The final evidence package shows that all expected relations in the declared scope were closed:
+        telemetry, detection controls, MITRE coverage, CTI enrichment and freshness validation.
+      </p>
+
+      <div class="status">
+        <div class="row"><div class="label">SACI</div><div class="value">100</div></div>
+        <div class="row"><div class="label">Graph closure</div><div class="value">171/171</div></div>
+        <div class="row"><div class="label">Missing</div><div class="value">0</div></div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="view" id="view-8">
+      <div class="kicker">Öneri 8 — Senaryo yolculuğu</div>
+      <h1>From visibility loss to graph closure</h1>
+      <p class="lead">
+        SACI scenarios describe how missing telemetry, partial recovery, CTI closure and freshness affect the final graph score.
+      </p>
+
+      <div class="timeline">
+        <div class="time-row"><b>S7A — Critical DC01 Sysmon loss</b><p>Sysmon visibility loss creates missing relations across log source, control, rule and MITRE links.</p></div>
+        <div class="time-row"><b>S7B — Partial recovery</b><p>Some visibility relations recover, while unresolved relations remain missing.</p></div>
+        <div class="time-row"><b>S14 — CTI enrichment closure</b><p>MISP lookup, IOC match, alert conversion and MITRE mapping complete the CTI chain.</p></div>
+        <div class="time-row"><b>S15 — Freshness degradation</b><p>Relations may be observed, but stale telemetry affects the freshness metric.</p></div>
+        <div class="time-row"><b>S8 — Final closure</b><p>All expected visibility relations are observed within the declared evaluation scope.</p></div>
+      </div>
+
+      <div class="links">
+        <a href="graph.html">Scenario graph <span>→</span></a>
+        <a href="explanation.html">Scenario explanations <span>→</span></a>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="view" id="view-9">
+      <div class="kicker">Öneri 9 — Mimari odaklı giriş</div>
+      <h1>Telemetry, intelligence and evidence as a graph</h1>
+      <p class="lead">
+        SACI connects assets, log sources, Wazuh rules, detection controls, MITRE techniques,
+        CTI objects and score metrics into a single evidence graph.
+      </p>
+
+      <div class="columns">
+        <p><b>Telemetry layer:</b> Windows Security, Sysmon, PowerShell, Linux logs and pfSense syslog provide the observed signal surface.</p>
+        <p><b>Detection layer:</b> Wazuh rules and controls transform telemetry into detectable scenario evidence.</p>
+        <p><b>Threat intelligence layer:</b> MISP enrichment links IOC evidence to alert conversion and MITRE context.</p>
+        <p><b>Scoring layer:</b> CWLC, CAC, MDC, CTIC and TF combine into the final SACI visibility score.</p>
+      </div>
+
+      <div class="status">
+        <div class="row"><div class="label">Final graph</div><div class="value">97 nodes · 171 edges</div></div>
+        <div class="row"><div class="label">Closure</div><div class="value">171 observed · 0 missing</div></div>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="view" id="view-10">
+      <div class="kicker">Öneri 10 — Repository README havası</div>
+      <h1>SACI final evidence viewer</h1>
+      <p class="lead">
+        Static evidence portal for publishing SACI scoring outputs, graph relations and scenario-level interpretations.
+      </p>
+
+      <h2>Contents</h2>
+      <div class="routes mono">
+        <a class="route" href="methodology.html"><b>/methodology</b><p>scoring model and metric boundaries</p><span>open</span></a>
+        <a class="route" href="architecture.html"><b>/architecture</b><p>lab and telemetry flow</p><span>open</span></a>
+        <a class="route" href="evidence.html"><b>/evidence</b><p>final deterministic outputs</p><span>open</span></a>
+        <a class="route" href="graph.html"><b>/graph</b><p>interactive evidence graph</p><span>open</span></a>
+        <a class="route" href="explanation.html"><b>/explanation</b><p>policy-guided scenario explanations</p><span>open</span></a>
+      </div>
+
+      <p class="note mono">
+        SACI=100 means expected visibility relations are closed in scope. It does not claim full environmental security.
+      </p>
+    </section>
+
+    <div class="footer">
+      Preview file only. Choose one concept, then convert it into docs/index.html.
+    </div>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll("[data-view]");
+    const views = document.querySelectorAll(".view");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.view;
+        buttons.forEach(b => b.classList.remove("active"));
+        views.forEach(v => v.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("view-" + id).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "light" ? "dim" : "light";
+    });
+  </script>
+  <script src="assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="assets/saci-compact-controls.js?v=2"></script>
+</body>
+</html>

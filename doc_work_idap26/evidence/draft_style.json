@@ -1,0 +1,69 @@
+{
+  "input": "E:\\Downloads\\IDAP26_SIEM_Graph_Attack_Surface_Draft.docx",
+  "fonts_by_char_count": {
+    "Times New Roman": 22984
+  },
+  "direct_run_formatting_runs": 131,
+  "direct_paragraph_formatting_paragraphs": 99,
+  "heading_like_paragraphs_not_heading_style": [],
+  "examples": {
+    "direct_run_formatting": [
+      {
+        "para_index": 1,
+        "run_text": "Explainable Graph-Based Attack Surface Visibility Scoring Using SIEM Telemetry a",
+        "style": "paper title"
+      },
+      {
+        "para_index": 2,
+        "run_text": "Ismet Arslan\nDepartment of Computer Engineering\n[University / Institution Name]\n",
+        "style": "Author"
+      },
+      {
+        "para_index": 4,
+        "run_text": "Abstract-",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 4,
+        "run_text": "Security operations centers collect heterogeneous telemetry from endpoint, netwo",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 5,
+        "run_text": "Keywords-",
+        "style": "Body Text"
+      }
+    ],
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 4,
+        "text": "Abstract-Security operations centers collect heterogeneous telemetry from endpoint, network, identity, and application l",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 5,
+        "text": "Keywords-SIEM, Wazuh, attack surface, threat intelligence, MITRE ATT&CK, graph model, explainable security, SOC maturity",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 6,
+        "text": "I. INTRODUCTION",
+        "style": "Heading 1"
+      },
+      {
+        "para_index": 7,
+        "text": "Modern security operations centers (SOCs) depend on continuous telemetry collection to detect malicious behavior, invest",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 8,
+        "text": "This problem is intensified by the growth of enterprise attack surfaces. Cloud services, remote access platforms, identi",
+        "style": "Body Text"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}

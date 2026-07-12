@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+
+<html data-theme="dim"  lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>SACI Final Evidence Portal</title>
+  <meta name="description" content="SACI canonical final evidence portal covering methodology, architecture, scenario validation, graph data, code and academic references.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/en/">
+<meta content="SACI final için akademik yöntem, kapsam-sınırlı görünürlük skorları, kanıt tabloları, graf bütünlüğü notları ve tarihsel senaryo analizi." name="description"/>
+<meta content="#10131b" name="theme-color"/>
+<link href="https://4rslanismet.github.io/saci-final-evidence/" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="SACI Final Evidence Portal" property="og:title"/>
+<meta content="Explainable, graph-based measurement of scope-bounded SIEM visibility closure with a fully auditable final evidence appendix." property="og:description"/>
+<meta content="https://4rslanismet.github.io/saci-final-evidence/" property="og:url"/>
+<meta content="https://4rslanismet.github.io/saci-final-evidence/assets/arch-en.png" property="og:image"/>
+<style>
+    :root {
+      --saci-font-scale: 1;
+      --bg: #10131b;
+      --text: #edf2f7;
+      --muted: #aebdcc;
+      --line: #3b4655;
+      --accent: #9bb7d4;
+      --accent-2: #d5e4f2;
+      --warning: #d6bd7c;
+      --max: 1160px;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #020617;
+      --text: #e5e7eb;
+      --muted: #aebdcc;
+      --line: #293647;
+      --accent: #9bb7d4;
+      --accent-2: #d5e4f2;
+      --warning: #d6bd7c;
+    }
+
+    html[data-theme="dim"] {
+      --bg: #10131b;
+      --text: #edf2f7;
+      --muted: #aebdcc;
+      --line: #3b4655;
+      --accent: #9bb7d4;
+      --accent-2: #d5e4f2;
+      --warning: #d6bd7c;
+    }
+
+    html[data-theme="light"] {
+      --bg: #f5f2ec;
+      --text: #111827;
+      --muted: #475569;
+      --line: #c8c0b4;
+      --accent: #24547a;
+      --accent-2: #111827;
+      --warning: #8a6418;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: calc(16px * var(--saci-font-scale));
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .top-inner {
+      width: min(var(--max), calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 17px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .nav a.active {
+      color: var(--text);
+    }
+
+    main {
+      width: min(var(--max), calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 46px 0 90px;
+    }
+
+    .utility {
+      display: flex;
+      justify-content: flex-end;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      margin-bottom: 38px;
+      user-select: none;
+    }
+
+    .utility button {
+      all: unset;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .utility button:hover,
+    .utility button.active {
+      color: var(--accent);
+    }
+
+    .primary-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 0 0 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7.2vw, 96px);
+      line-height: .94;
+      letter-spacing: -.08em;
+      margin: 0 0 30px;
+      max-width: 1040px;
+    }
+
+    h2 {
+      margin: 74px 0 18px;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(18px, 1.8vw, 21px);
+      max-width: 930px;
+    }
+
+    .description {
+      margin-top: 34px;
+      padding-top: 0;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 34px;
+    }
+
+    .description b {
+      color: var(--text);
+    }
+
+    .description p + p {
+      margin-top: 14px;
+    }
+
+    .result-line {
+      margin-top: 38px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+      align-items: baseline;
+    }
+
+    .result-line strong {
+      color: var(--accent-2);
+      font-size: 18px;
+    }
+
+    .result-line span {
+      color: var(--muted);
+      font-weight: 750;
+    }
+
+    .scenario-section {
+      margin-top: 76px;
+      border-top: 1px solid var(--line);
+      padding-top: 34px;
+    }
+
+    .scenario-head {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(360px, 1fr);
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .scenario-head h2 {
+      margin: 0;
+    }
+
+    .scenario-head p {
+      max-width: 680px;
+    }
+
+    .radial-chart {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+      gap: 24px;
+      align-items: start;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .radial-item {
+      text-align: center;
+    }
+
+    .radial {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 12px;
+      transform: rotate(-90deg);
+    }
+
+    .radial-bg {
+      fill: none;
+      stroke: color-mix(in srgb, var(--line) 75%, transparent);
+      stroke-width: 8;
+    }
+
+    .radial-fg {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 314;
+      stroke-dashoffset: calc(314 - (314 * var(--score)) / 100);
+    }
+
+    .radial-text {
+      transform: rotate(90deg);
+      transform-origin: 56px 56px;
+      fill: var(--text);
+      font-size: 18px;
+      font-weight: 900;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .scenario-id {
+      color: var(--text);
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .scenario-name {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .timeline {
+      margin-top: 54px;
+      border-left: 1px solid var(--line);
+      padding-left: 30px;
+    }
+
+    .time-row {
+      position: relative;
+      padding: 0 0 34px;
+    }
+
+    .time-row:last-child {
+      padding-bottom: 0;
+    }
+
+    .time-row::before {
+      content: "";
+      position: absolute;
+      left: -36px;
+      top: .48em;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .time-row a {
+      display: inline-block;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .time-row a:hover {
+      color: var(--accent);
+    }
+
+    .time-row p {
+      max-width: 920px;
+      font-size: 15px;
+    }
+
+    .portal-links {
+      margin-top: 76px;
+      border-top: 1px solid var(--line);
+    }
+
+    .route {
+      display: grid;
+      grid-template-columns: 230px 1fr auto;
+      gap: 24px;
+      align-items: baseline;
+      padding: 19px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .route b {
+      color: var(--text);
+    }
+
+    .route p {
+      font-size: 15px;
+    }
+
+    .route span {
+      color: var(--accent);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .note {
+      margin-top: 64px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      max-width: 940px;
+    }
+
+    .note b {
+      color: var(--warning);
+    }
+
+    footer {
+      margin-top: 72px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .top-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .utility {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .description,
+      .scenario-head,
+      .route {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    .description p {
+      max-width: 880px;
+    }
+
+    .description p + p {
+      margin-top: 16px;
+    }
+
+    .result-line {
+      color: var(--muted);
+    }
+
+    .result-line strong {
+      color: var(--accent-2);
+    }
+
+
+    .editorial-flow {
+      margin-top: 34px;
+    }
+
+    .editorial-block {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 34px;
+      padding: 24px 0;
+    }
+
+    .editorial-block + .editorial-block {
+      border-top: 1px solid var(--line);
+    }
+
+    .editorial-label {
+      color: var(--text);
+      font-weight: 900;
+      font-size: 15px;
+      letter-spacing: -.01em;
+    }
+
+    .editorial-body p {
+      max-width: 920px;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 15.5px;
+    }
+
+    .editorial-body p + p {
+      margin-top: 14px;
+    }
+
+    .compact-list {
+      margin: 0;
+      padding-left: 18px;
+      max-width: 920px;
+      color: var(--muted);
+    }
+
+    .compact-list li {
+      margin: 0 0 10px 0;
+      line-height: 1.7;
+      font-size: 15.5px;
+    }
+
+    .compact-list li b {
+      color: var(--text);
+    }
+
+    .inline-summary {
+      margin-top: 34px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 28px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .inline-summary span b {
+      color: var(--text);
+      font-weight: 900;
+      margin-right: 6px;
+    }
+
+    .micro-lead {
+      margin-top: 18px;
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    @media (max-width: 850px) {
+      .editorial-block {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px 0;
+      }
+    }
+
+
+    .hero-title span,
+    .split-title span,
+    .editorial-label span {
+      display: block;
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: .93;
+      letter-spacing: -.08em;
+      margin: 0 0 28px;
+      max-width: 1040px;
+    }
+
+    .split-head {
+      display: grid;
+      grid-template-columns: minmax(0, .78fr) minmax(360px, 1fr);
+      gap: 38px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .split-title {
+      margin: 0;
+      font-size: clamp(34px, 4.6vw, 68px);
+      line-height: .94;
+      letter-spacing: -.065em;
+      color: var(--text);
+    }
+
+    .section-intro {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-top: 2px;
+    }
+
+    .editorial-flow {
+      margin-top: 34px;
+    }
+
+    .editorial-block {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 34px;
+      padding: 24px 0;
+    }
+
+    .editorial-block + .editorial-block {
+      border-top: 1px solid var(--line);
+    }
+
+    .editorial-label {
+      color: var(--text);
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: -.01em;
+      line-height: 1.08;
+    }
+
+    .editorial-body p {
+      max-width: 940px;
+      color: var(--muted);
+      line-height: 1.78;
+      font-size: 15.7px;
+    }
+
+    .editorial-body p + p {
+      margin-top: 15px;
+    }
+
+    .compact-list {
+      margin: 0;
+      padding-left: 18px;
+      max-width: 940px;
+      color: var(--muted);
+    }
+
+    .compact-list li {
+      margin: 0 0 10px 0;
+      line-height: 1.72;
+      font-size: 15.7px;
+    }
+
+    .compact-list li b {
+      color: var(--text);
+    }
+
+    .micro-lead {
+      margin-top: 18px;
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.76;
+    }
+
+    .inline-summary {
+      margin-top: 34px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .inline-summary span b {
+      color: var(--text);
+      font-weight: 900;
+      margin-right: 6px;
+    }
+
+    @media (max-width: 850px) {
+      .split-head,
+      .editorial-block {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .hero-title {
+        font-size: clamp(42px, 10vw, 74px);
+      }
+    }
+
+
+    </style>
+<link href="../assets/saci-standard.css?v=preserve-en-1" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/saci-standard.css?v=repair-bilingual-1">
+  <link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
+<link rel="stylesheet" href="../assets/integrity.css?v=f01"></head>
+<body data-page="home">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="top">
+<div class="top-inner">
+<a class="brand" href="index.html">SACI Final Evidence</a>
+<nav class="nav" aria-label="Primary navigation">
+      <a class="active" href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+<div aria-label="Display controls" class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Smaller</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Reset</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Larger</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Theme</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+</div>
+</header>
+<main id="main">
+<!-- SACI_INTEGRITY_BANNER_START --><aside class="saci-integrity-banner" data-integrity-banner><p><strong data-integrity-status>Integrity</strong> — <span data-integrity-copy>Loading.</span></p><a href="integrity.html">Finding F-01 →</a></aside><!-- SACI_INTEGRITY_BANNER_END -->
+<section>
+<div class="kicker">CANONICAL PUBLICATION SNAPSHOT</div>
+<h1>SACI Final Evidence Portal</h1>
+<p class="lead">
+    SACI is an explainable, graph-based model for measuring SIEM visibility across telemetry,
+    detection controls, MITRE ATT&amp;CK coverage and CTI/MISP enrichment.
+  </p>
+<p class="micro-lead">
+    This portal brings together the problem statement, methodological approach, laboratory scope,
+    scenario-level score progression and final evidence-closure output in a single publication package.
+    The goal is not only to report a score, but to show transparently which relations, data sources
+    and control chains produce that score.
+  </p>
+<div class="editorial-flow">
+<div class="editorial-block">
+<div class="editorial-label">Canonical publication snapshot</div>
+<div class="editorial-body">
+<p>
+          The primary result of the paper is the <b>final</b> package: 99 declared nodes,
+          171 edge rows, <code>observed=1</code> in all 171 rows, 6 assets, 12/12 expected
+          asset-log pairs, 25/25 enabled controls, 13/13 in-scope ATT&amp;CK techniques and SACI=100.
+        </p>
+<p>
+          The S0-S18 scenarios are a separate <b>historical controlled-validation series</b>.
+          The S8 closure point in that series uses 95 nodes and 173 edges; it is not the same
+          data snapshot as final. The portal does not merge these two layers into a single
+          numeric sequence.
+        </p>
+<p>
+          Although final contains no edge rows with <code>observed=0</code>, the
+          <code>LOGSOURCE:Wazuh</code> and <code>MITRE:T1071.001</code> edge endpoints are not
+          declared in the node table. Therefore, the result is not interpreted as perfect
+          graph integrity.
+        </p>
+</div>
+</div>
+<div class="editorial-block">
+<div class="editorial-label">Problem and motivation</div>
+<div class="editorial-body">
+<p>
+          One of the core problems in SOC and SIEM environments is that visibility is often evaluated
+          in fragmented and disconnected ways. The fact that an organization collects logs, generates
+          alerts or enables certain rules does not necessarily mean that critical assets are actually
+          monitored, expected log sources are active, detection controls work and CTI findings become
+          operational alerts.
+        </p>
+<p>
+          This work was developed from that common operational gap. In SIEM deployments, questions
+          such as “is data actually arriving?”, “which control covers which technique?”, “is the
+          critical asset really visible?” and “does the CTI enrichment chain reach alert generation?”
+          are often not answerable within a single measurable model. SACI aims to make these questions
+          visible through a graph-based evidence model.
+        </p>
+</div>
+</div>
+<div class="editorial-block">
+<div class="editorial-label">What does it solve?</div>
+<div class="editorial-body">
+<p>
+          SACI treats the evaluation of SIEM visibility through only alert counts or dashboard presence
+          as insufficient. A high number of alerts does not prove that all assets and attack techniques
+          that should be monitored are covered. Similarly, a defined rule does not necessarily mean that
+          it has been validated against the relevant log source, asset, MITRE technique and alert-generation
+          chain.
+        </p>
+<p>
+          For this reason, the model treats security visibility as an <b>evidence graph</b> problem.
+          Relations are established among asset, log source, detection control, Wazuh rule,
+          MITRE ATT&amp;CK technique, CTI object, platform, score metric and reason-code nodes.
+          These relations are tracked as observed or missing. This makes it possible to show where the
+          visibility chain closes, where it breaks and which score component it affects.
+        </p>
+</div>
+</div>
+<div class="editorial-block">
+<div class="editorial-label">Contribution</div>
+<div class="editorial-body">
+<p>
+          The main contribution of this work is an explainable and auditable graph model for measuring
+          SIEM visibility. SACI does not only produce a final score; it also shows which evidence
+          relations produced that score, which relations were closed and which relations remained missing.
+        </p>
+<p>
+          The model evaluates log coverage, critical asset coverage, control/alert coverage,
+          MITRE detection coverage, CTI/MISP enrichment coverage and telemetry freshness together.
+          Visibility is therefore assessed through a chain that connects a log source to controls,
+          rules, MITRE techniques, CTI context and freshness.
+        </p>
+<ul class="compact-list">
+<li><b>Graph-based modeling:</b> relates distributed security evidence inside a single evidence graph.</li>
+<li><b>Explainable score:</b> makes the SACI score readable together with observed and missing graph relations.</li>
+<li><b>Scenario-based validation:</b> shows telemetry loss, partial recovery, CTI closure and freshness impact separately.</li>
+</ul>
+</div>
+</div>
+<div class="editorial-block">
+<div class="editorial-label">Evaluation scope</div>
+<div class="editorial-body">
+<p>
+          The final evidence package was prepared in a controlled Wazuh-based laboratory environment.
+          Windows Security, Sysmon, PowerShell, Linux authlog/syslog/process records, pfSense syslog events
+          and MISP-based CTI enrichment outputs were connected to the SACI graph model.
+        </p>
+<p>
+          The evaluation is presented in two layers. The primary publication result is the final snapshot.
+          The S0-S18 series tests historical controlled scenarios in which the visibility chain breaks and
+          closes again. Critical Sysmon loss, partial recovery, CTI enrichment closure and freshness degradation
+          are modeled in this second layer.
+        </p>
+</div>
+</div>
+<div class="editorial-block">
+<div class="editorial-label">Evidence layers</div>
+<div class="editorial-body">
+<p>
+          SACI treats evidence layers as graph relations rather than disconnected tables. An asset is considered
+          visible only when its expected telemetry relation is observed and can be connected to the relevant
+          detection and scoring context.
+        </p>
+<p>
+          The CTI layer is interpreted similarly. The final scorer counts lookup, MISP hit, Wazuh alert and
+          MITRE mapping fields as four flags. Since <code>lookup_executed</code> can be initialized from
+          <code>expected_lookup</code>, the first flag is not an independent proof of query execution and the
+          fields alone do not establish a causal event chain.
+        </p>
+</div>
+</div>
+<div class="editorial-block">
+<div class="editorial-label">What it does not claim</div>
+<div class="editorial-body">
+<p>
+          SACI does not measure the absolute security level of an environment, does not perform vulnerability
+          scanning and does not claim that every possible attack path has been closed. It answers a narrower
+          and more auditable question: have the expected visibility relations inside the declared scope been
+          confirmed by evidence?
+        </p>
+<ul class="compact-list">
+<li>SACI does not measure absolute security.</li>
+<li>SACI is not a vulnerability scanner or an attack-simulation platform.</li>
+<li>SACI does not claim to cover every possible attack scenario.</li>
+<li>SACI only answers whether expected visibility relations inside the declared scope are closed.</li>
+</ul>
+</div>
+</div>
+<div class="editorial-block">
+<div class="editorial-label">Reading the final result</div>
+<div class="editorial-body">
+<p>
+          In the final state, all 171 edge rows are marked as <code>observed=1</code> and the SACI score is 100.
+          This indicates that the structured visibility criteria in the declared laboratory scope are closed in
+          that snapshot. Because two edge endpoints are not declared in the node table, the result should be
+          interpreted as edge-row closure, not as perfect endpoint integrity.
+        </p>
+<p>
+          The result should be read as an evidence package that answers operational questions such as which
+          relations were missing, how they were closed and which visibility layer affected the score.
+        </p>
+</div>
+</div>
+</div>
+<section class="scenario-section">
+<div class="split-head">
+<h2>Historical scenario score progression</h2>
+<p class="section-intro">
+        The S0-S18 series is a controlled validation study separate from the final publication snapshot.
+        It shows that the model reports not only a final score, but also the impact of critical telemetry loss,
+        partial recovery, CTI closure and freshness degradation.
+      </p>
+</div>
+<p class="micro-lead">
+      All expected visibility relations are observed within the declared final scope. Historical scenarios
+      remain available as methodology evidence rather than as the canonical publication snapshot.
+    </p>
+</section>
+<section class="portal-links">
+<h2>Portal sections</h2>
+<div class="route"><b>Methodology</b><p>Metric definitions, formulas, N/A handling and active-weight normalization.</p><a href="methodology.html">Open →</a></div>
+<div class="route"><b>Architecture</b><p>Laboratory architecture and end-to-end telemetry flow.</p><a href="architecture.html">Open →</a></div>
+<div class="route"><b>Evidence</b><p>Canonical final evidence appendix and score package.</p><a href="evidence.html">Open →</a></div>
+<div class="route"><b>Graph</b><p>Interactive evidence graph and observed/missing relation explorer.</p><a href="graph.html">Open →</a></div>
+<div class="route"><b>Artifacts</b><p>Auditability map for final data, code and graph artifacts.</p><a href="data.html">Open →</a>
+      <a href="references.html">References</a></div>
+</section>
+<p class="note">
+<b>Interpretation note:</b> SACI=100 is a visibility-closure result for the declared scope. It is not
+    an absolute security guarantee.
+  </p>
+</section>
+</main>
+<script>
+    (function () {
+      function initThemeSwitcher() {
+        const saved = localStorage.getItem("saci-graph-theme") || "dim";
+        document.documentElement.setAttribute("data-theme", saved);
+
+        document.querySelectorAll("[data-theme-btn]").forEach(btn => {
+          const t = btn.getAttribute("data-theme-btn");
+          btn.classList.toggle("active", t === saved);
+
+          btn.addEventListener("click", () => {
+            localStorage.setItem("saci-graph-theme", t);
+            document.documentElement.setAttribute("data-theme", t);
+
+            document.querySelectorAll("[data-theme-btn]").forEach(b => {
+              b.classList.toggle("active", b.getAttribute("data-theme-btn") === t);
+            });
+          });
+        });
+      }
+
+      function initFontControls() {
+        let scale = Number(localStorage.getItem("saci-font-scale") || "1");
+        if (Number.isNaN(scale)) scale = 1;
+
+        function apply() {
+          scale = Math.max(0.9, Math.min(1.25, scale));
+          document.documentElement.style.setProperty("--saci-font-scale", String(scale));
+          localStorage.setItem("saci-font-scale", String(scale));
+        }
+
+        const down = document.getElementById("fontDown");
+        const up = document.getElementById("fontUp");
+        const reset = document.getElementById("fontReset");
+
+        if (down) down.onclick = () => { scale -= 0.05; apply(); };
+        if (up) up.onclick = () => { scale += 0.05; apply(); };
+        if (reset) reset.onclick = () => { scale = 1; apply(); };
+
+        apply();
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initThemeSwitcher();
+        initFontControls();
+      });
+    })();
+  </script>
+  <script src="../assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="../assets/saci-compact-controls.js?v=2"></script>
+<script src="../assets/integrity-badge.js?v=f01"></script></body>
+</html>

@@ -1,111 +1,868 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!doctype html>
+<html  lang="tr" data-theme="dim" data-font-level="0">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SACI Evidence | Architecture & Config</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="assets/app.js"></script>
-</head>
-<body>
-    <div class="topbar">
-        <nav class="nav">
-            <a href="index.html" class="brand"><span class="brand-dot"></span>SACI Portal</a>
-            <div class="nav-right">
-                <div class="nav-links"><a href="index.html" ><span class="tr">Genel Bakış</span><span class="en">Overview</span></a><a href="architecture.html" class="active"><span class="tr">Mimari & Kurulum</span><span class="en">Architecture & Config</span></a><a href="data.html" ><span class="tr">Kanıt Verileri</span><span class="en">Evidence Data</span></a><a href="graph.html" ><span class="tr">Etkileşimli Graf</span><span class="en">Interactive Graph</span></a><a href="scenarios.html" ><span class="tr">Senaryolar & Değerlendirme</span><span class="en">Scenarios & LLM</span></a></div>
-                <div class="lang-switch">
-                    <button data-lang="tr">TR</button>
-                    <button data-lang="en">EN</button>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div class="shell">
-        
-<h1><span class="tr">Mimari ve Kurulum</span><span class="en">Architecture and Installation</span></h1>
-<p class="lead"><span class="tr">SACI değerlendirmesini besleyen kontrollü laboratuvarın yapısal topolojisi ve konfigürasyon adımları.</span><span class="en">The structural topology and configuration steps of the controlled laboratory feeding the SACI evaluation.</span></p>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SACI Architecture</title>
+  <meta name="description" content="GOAD, Windows, Linux, pfSense, MISP ve Wazuh bileşenlerini içeren SACI laboratuvar mimarisi ve uçtan uca kanıt akışı.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/architecture.html">
+<style>
+    :root {
+      --bg: #10131b;
+      --text: #edf2f7;
+      --muted: #aebdcc;
+      --line: #3b4655;
+      --accent: #9bb7d4;
+      --warning: #d6bd7c;
+      --content-max: 86rem;
+      --page-pad: clamp(18px, 4vw, 72px);
+    }
 
-<h2><span class="tr">Sistem Topolojisi</span><span class="en">System Topology</span></h2>
-<div class="topology">
-    <div class="topo-zone" data-title="Endpoints">
-        <div class="topo-box">
-            <h3>DC01</h3>
-            <p>Domain Controller<br>Sysmon, Security</p>
-            <span class="pill pill-ok" style="margin-top:8px; display:inline-block;">Wazuh Agent</span>
-        </div>
-        <div class="topo-box">
-            <h3>WS01</h3>
-            <p>Windows Workstation<br>PowerShell, Sysmon</p>
-            <span class="pill pill-ok" style="margin-top:8px; display:inline-block;">Wazuh Agent</span>
-        </div>
-        <div class="topo-box">
-            <h3>uhost</h3>
-            <p>Ubuntu Linux<br>Authlog, Syslog</p>
-            <span class="pill pill-ok" style="margin-top:8px; display:inline-block;">Wazuh Agent</span>
-        </div>
-    </div>
-    
-    <div style="display:flex; align-items:center; color:var(--accent-blue); font-weight:bold;">──▶</div>
-    
-    <div class="topo-zone" data-title="Wazuh Central Components" style="flex-grow: 1;">
-        <div class="topo-inner-group">
-            <h3>Wazuh Server Node (192.168.1.100)</h3>
-            <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                <div class="topo-box" style="flex:1;">
-                    <h3>Analysis Engine</h3>
-                    <p>Rule Matching & Decoding</p>
-                </div>
-                <div class="topo-box" style="flex:1;">
-                    <h3>API / Filebeat</h3>
-                    <p>Data routing</p>
-                </div>
-            </div>
-        </div>
-        <div style="display:flex; gap:20px; flex-wrap:wrap;">
-            <div class="topo-box" style="flex:1;">
-                <h3>Wazuh Indexer</h3>
-                <p>Data storage & Search</p>
-            </div>
-            <div class="topo-box" style="flex:1;">
-                <h3>Wazuh Dashboard</h3>
-                <p>UI & Visualization</p>
-            </div>
-            <div class="topo-box" style="flex:1; border-color:var(--accent-green);">
-                <h3>MISP CTI Platform</h3>
-                <p>Threat Intel & IOCs</p>
-            </div>
-        </div>
-    </div>
+    html[data-theme="dark"] {
+      --bg: #020617;
+      --text: #e5e7eb;
+      --muted: #aebdcc;
+      --line: #293647;
+      --accent: #9bb7d4;
+      --warning: #d6bd7c;
+    }
+
+    html[data-theme="dim"] {
+      --bg: #10131b;
+      --text: #edf2f7;
+      --muted: #aebdcc;
+      --line: #3b4655;
+      --accent: #9bb7d4;
+      --warning: #d6bd7c;
+    }
+
+    html[data-theme="light"] {
+      --bg: #f5f2ec;
+      --text: #111827;
+      --muted: #475569;
+      --line: #c8c0b4;
+      --accent: #24547a;
+      --warning: #8a6418;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.72;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      left: 16px;
+      top: 16px;
+      width: auto;
+      height: auto;
+      z-index: 9999;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: color-mix(in srgb, var(--bg) 94%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 62%, transparent);
+    }
+
+    .top-inner {
+      width: min(100% - (var(--page-pad) * 2), var(--content-max));
+      margin-inline: auto;
+      padding-block: 18px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: clamp(22px, 3vw, 44px);
+    }
+
+    .brand {
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: -0.015em;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(14px, 1.5vw, 22px);
+      flex-wrap: wrap;
+      margin: 0;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: 560;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 3px;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+    }
+
+    .top-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .top-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.2;
+      font-weight: 500;
+    }
+
+    .top-control button {
+      appearance: none;
+      background: none;
+      border: 0;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      padding: 0;
+      line-height: 1.2;
+      border-bottom: 1px solid transparent;
+    }
+
+    .top-control button:hover,
+    .top-control button.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    main {
+      width: min(100% - (var(--page-pad) * 2), var(--content-max));
+      margin-inline: auto;
+      padding-block: clamp(42px, 5vw, 64px) clamp(64px, 7vw, 96px);
+    }
+
+    .kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 12px;
+      font-weight: 650;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 26px;
+      max-width: 70rem;
+      color: var(--text);
+      font-size: clamp(38px, 5.2vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      font-weight: 620;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      max-width: 58rem;
+      color: var(--text);
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1.12;
+      letter-spacing: -.03em;
+      font-weight: 620;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    p + p {
+      margin-top: 15px;
+    }
+
+    .lead {
+      max-width: 66rem;
+      color: var(--muted);
+      font-size: clamp(17px, 0.55vw + 15px, 20px);
+      line-height: 1.74;
+    }
+
+    .section {
+      max-width: 70rem;
+      padding-block: clamp(34px, 5vw, 54px);
+    }
+
+    .section p {
+      max-width: 66rem;
+      color: var(--muted);
+      font-size: clamp(15.5px, 0.42vw + 14px, 17px);
+      line-height: 1.76;
+    }
+
+    .figure-section {
+      padding-block: clamp(42px, 5vw, 64px);
+    }
+
+    .figure-title {
+      margin-bottom: 18px;
+      max-width: 66rem;
+    }
+
+    .figure-title p {
+      max-width: 58rem;
+      color: var(--muted);
+      font-size: 15.8px;
+      line-height: 1.72;
+    }
+
+    .figure-shell {
+      position: relative;
+      width: 100%;
+      overflow: auto;
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--bg) 84%, #000 16%);
+      border: 1px solid color-mix(in srgb, var(--line) 62%, transparent);
+      padding: clamp(10px, 1.6vw, 18px);
+    }
+
+    .figure-overlay {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 8;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      backdrop-filter: blur(8px);
+      border: 1px solid color-mix(in srgb, var(--line) 68%, transparent);
+    }
+
+    .figure-overlay button,
+    .figure-overlay a {
+      appearance: none;
+      background: none;
+      border: 0;
+      color: var(--muted);
+      text-decoration: none;
+      cursor: pointer;
+      font: inherit;
+      font-size: 12.5px;
+      padding: 0;
+      line-height: 1.2;
+      border-bottom: 1px solid transparent;
+    }
+
+    .figure-overlay button:hover,
+    .figure-overlay button.active,
+    .figure-overlay a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .figure-shell img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 12px;
+      transition: width .2s ease;
+    }
+
+    .missing-image {
+      display: none;
+      color: var(--warning);
+      font-size: 15px;
+      line-height: 1.7;
+      padding: 18px 0;
+    }
+
+    .figure-caption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+      max-width: 66rem;
+    }
+
+    .component-flow {
+      max-width: 66rem;
+      margin-top: 24px;
+    }
+
+    .component-item {
+      margin-bottom: 22px;
+    }
+
+    .component-item .name {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+      font-weight: 520;
+    }
+
+    .component-item .desc {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    .flow-list {
+      max-width: 66rem;
+      margin-top: 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .flow-list li {
+      display: grid;
+      grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+      gap: 22px;
+      padding: 14px 0;
+    }
+
+    .flow-list .term {
+      color: var(--text);
+      font-weight: 520;
+    }
+
+    .flow-list .desc {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    .note {
+      max-width: 66rem;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    .note .warn {
+      color: var(--warning);
+      font-weight: 520;
+    }
+
+    footer {
+      margin-top: 58px;
+      padding-top: 20px;
+      border-top: 1px solid color-mix(in srgb, var(--line) 45%, transparent);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    html[data-font-level="-2"] body { font-size: 14px; }
+    html[data-font-level="-1"] body { font-size: 15px; }
+    html[data-font-level="0"] body { font-size: 16px; }
+    html[data-font-level="1"] body { font-size: 17.5px; }
+    html[data-font-level="2"] body { font-size: 19px; }
+
+    @media (max-width: 1180px) {
+      .top-inner {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .top-actions {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --page-pad: clamp(14px, 5vw, 24px);
+      }
+
+      .flow-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .figure-overlay {
+        top: 10px;
+        right: 10px;
+        gap: 10px;
+        padding: 7px 9px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/saci-standard.css?v=repair-bilingual-1">
+
+<!-- SACI_FINAL_UI_START -->
+<style id="saci-final-ui">
+  /*
+   * Final publication UI cleanup
+   * Uses the site's global theme variables.
+   */
+
+  body[data-page="graph"] .graph-hero .lead,
+  body[data-page="architecture"] .lead,
+  body[data-page="architecture"] .hero-copy,
+  body[data-page="architecture"] .architecture-intro,
+  body[data-page="architecture"] main > section > p {
+    max-width: 76ch !important;
+    line-height: 1.78 !important;
+  }
+
+  body[data-page="architecture"] .architecture-scope-note,
+  body[data-page="graph"] .graph-scope-note {
+    max-width: 76ch;
+    margin-top: 20px;
+    padding-left: 15px;
+    border-left: 2px solid
+      color-mix(in srgb, var(--accent) 54%, transparent);
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.72;
+  }
+
+  body[data-page="architecture"] h1 {
+    max-width: 18ch !important;
+  }
+
+  body[data-page="architecture"] h2 {
+    margin-top: clamp(44px, 6vw, 76px) !important;
+  }
+
+  body[data-page="architecture"] .figure-shell,
+  body[data-page="architecture"] .architecture-figure {
+    margin-top: 18px !important;
+  }
+
+  /*
+   * Graph analysis cards should size according to their own content.
+   * Previously the shorter card inherited the height of the MITRE panel.
+   */
+  body[data-page="graph"] .graph-analysis {
+    align-items: start !important;
+  }
+
+  body[data-page="graph"] .analysis-panel {
+    align-self: start !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  body[data-page="graph"] #interpretation {
+    display: block !important;
+  }
+
+  body[data-page="graph"] .interpretation-text {
+    max-width: none !important;
+    font-size: 15.5px !important;
+    line-height: 1.74 !important;
+  }
+
+  body[data-page="graph"] .saci-expanded-interpretation {
+    margin-top: 14px;
+    display: grid;
+    gap: 12px;
+  }
+
+  body[data-page="graph"] .saci-explanation-block {
+    padding: 14px 15px;
+    border: 1px solid
+      color-mix(in srgb, var(--line) 58%, transparent);
+    border-radius: 14px;
+    background:
+      color-mix(
+        in srgb,
+        var(--surface, var(--bg)) 82%,
+        transparent
+      );
+  }
+
+  body[data-page="graph"] .saci-explanation-block h4 {
+    margin: 0 0 9px;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  body[data-page="graph"] .saci-explanation-block p {
+    max-width: 78ch !important;
+    margin: 0 0 10px;
+    color: var(--muted);
+    font-size: 14.5px !important;
+    line-height: 1.7 !important;
+  }
+
+  body[data-page="graph"] .saci-explanation-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  body[data-page="graph"] .saci-result-list {
+    display: grid;
+    grid-template-columns:
+      repeat(auto-fit, minmax(170px, 1fr));
+    gap: 8px;
+    margin: 11px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  body[data-page="graph"] .saci-result-list li {
+    padding: 10px 11px;
+    border: 1px solid
+      color-mix(in srgb, var(--line) 52%, transparent);
+    border-radius: 12px;
+    background:
+      color-mix(
+        in srgb,
+        var(--bg) 78%,
+        transparent
+      );
+  }
+
+  body[data-page="graph"] .saci-result-list span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--muted);
+    font-size: 11.5px;
+    font-weight: 650;
+  }
+
+  body[data-page="graph"] .saci-result-list strong {
+    display: block;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  body[data-page="graph"] .saci-policy-explanation {
+    margin-top: 14px;
+    border: 1px solid
+      color-mix(in srgb, var(--line) 62%, transparent);
+    border-radius: 14px;
+    overflow: hidden;
+    background:
+      color-mix(
+        in srgb,
+        var(--surface, var(--bg)) 76%,
+        transparent
+      );
+  }
+
+  body[data-page="graph"] .saci-policy-explanation summary {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 15px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  body[data-page="graph"]
+  .saci-policy-explanation summary::-webkit-details-marker {
+    display: none;
+  }
+
+  body[data-page="graph"] .saci-policy-explanation summary::before {
+    content: "›";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid
+      color-mix(in srgb, var(--accent) 42%, var(--line));
+    border-radius: 50%;
+    color: var(--accent);
+    transition: transform .16s ease;
+  }
+
+  body[data-page="graph"]
+  .saci-policy-explanation[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  body[data-page="graph"] .saci-policy-body {
+    padding: 0 15px 15px;
+  }
+
+  body[data-page="graph"] .saci-policy-body p {
+    max-width: 78ch !important;
+    margin: 0 0 10px;
+    color: var(--muted);
+    font-size: 14.5px !important;
+    line-height: 1.7 !important;
+  }
+
+  body[data-page="graph"] .saci-policy-note {
+    padding: 10px 12px;
+    border-left: 2px solid var(--accent);
+    background:
+      color-mix(
+        in srgb,
+        var(--accent) 6%,
+        transparent
+      );
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.62;
+  }
+
+  @media (max-width: 760px) {
+    body[data-page="graph"] .saci-result-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    body[data-page="graph"] .saci-result-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+<!-- SACI_FINAL_UI_END -->
+
+  <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
+</head>
+
+<body data-page="architecture">
+<a class="skip-link" href="#main">Ana içeriğe geç</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a class="active" href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+
+    <div class="top-actions" aria-label="Display controls">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
 </div>
 
-<h2><span class="tr">Adım Adım Kurulum (Single-Node Wazuh)</span><span class="en">Step-by-Step Installation (Single-Node Wazuh)</span></h2>
-<p><span class="tr">SACI laboratuvarı için adanmış sunucuya (Dedicated Server) kurulan Wazuh mimarisi adımları:</span><span class="en">Wazuh architecture steps installed on the dedicated server for the SACI laboratory:</span></p>
-<pre><code># 1. Wazuh Installation Assistant İndirme
-curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh
-curl -sO https://packages.wazuh.com/4.14/config.yml
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
 
-# 2. config.yml Düzenlemesi (Tek node üzerinden 192.168.1.100)
-nodes:
-  indexer:
-    - name: node-1
-      ip: "192.168.1.100"
-  server:
-    - name: wazuh-1
-      ip: "192.168.1.100"
-  dashboard:
-    - name: dashboard
-      ip: "192.168.1.100"
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
 
-# 3. Sertifika Üretimi ve Kurulum
-bash wazuh-install.sh --generate-config-files
-bash wazuh-install.sh --wazuh-indexer node-1
-bash wazuh-install.sh --start-cluster
-bash wazuh-install.sh --wazuh-server wazuh-1
-bash wazuh-install.sh --wazuh-dashboard dashboard
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
 
-# 4. Parolaları Çekme
-tar -axf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt -O | grep -P "'admin'" -A 1</code></pre>
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
 
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<main id="main">
+  <section>
+    <div class="kicker">MİMARİ</div>
+    <h1>Lab mimarisi ve veri akışı</h1>
+
+<div class="architecture-final-intro">
+  <p>
+    Bu sayfa, SACI değerlendirmesinde kullanılan kontrollü laboratuvar
+    mimarisini ve verinin uçtan uca nasıl aktığını açıklar. Amaç,
+    telemetri kaynaklarından başlayarak Wazuh toplama ve detection
+    katmanına, oradan MITRE / CTI bağlamına, SACI skorlamasına ve son
+    olarak evidence graph çıktısına uzanan ilişkiyi sade ve izlenebilir
+    biçimde göstermektir.
+  </p>
+
+  <p>
+    Gösterilen mimari; Windows, Linux, pfSense ve MISP kaynaklarından
+    üretilen verinin nasıl toplandığını, normalize edildiğini, detection
+    mantığıyla işlendiğini ve graph tabanlı görünürlük modeline nasıl
+    dönüştürüldüğünü açıklar. Böylece yalnızca hangi araçların kullanıldığı
+    değil, hangi verinin hangi kanıt ilişkisini beslediği de görülebilir.
+  </p>
+
+  <p class="architecture-scope-note">
+    Kapsam notu: Portalda final yayın görünümü ile S0–S18 tarihsel senaryo
+    serisi ayrı tutulur. Final görünüm yayına esas değerlendirme sonucunu;
+    tarihsel senaryolar ise metodolojik doğrulama ve değişim analizini
+    temsil eder.
+  </p>
+</div>
+
+
+    
+    
+  </section>
+
+  <section class="figure-section arch-figure-section">
+    <div class="figure-title">
+      <h2>Veri akış diyagramı</h2>
+      <p>Diyagram; Windows, Linux, pfSense ve MISP kaynaklarından gelen verinin Wazuh üzerinde işlenmesini, detection ve enrichment ilişkilerinin kurulmasını, ardından SACI skor ve graph çıktısına dönüşmesini gösterir.</p>
     </div>
+
+    <div class="figure-shell" id="figureShell">
+      <div class="figure-overlay">
+        <button type="button" class="active" data-zoom="fit">Fit</button>
+        <button type="button" data-zoom="125">125%</button>
+        <button type="button" data-zoom="150">150%</button>
+        <a href="assets/arch-tr.png" id="archOpenLink" target="_blank" rel="noopener">Görseli aç</a>
+      </div>
+      <img id="archImage" src="assets/arch-tr.png" alt="SACI lab mimarisi ve veri akışı diyagramı">
+    </div>
+    <p class="figure-caption">Şekil: SACI lab mimarisi. Diyagram final skorun kendisini değil; final skorun beslendiği telemetri, detection, CTI/MITRE, SACI ve graph ilişkilerinin mimari akışını gösterir.</p>
+  </section>
+
+  <section class="section">
+    <h2>Mimari neyi temsil eder?</h2>
+    <p>SACI mimarisi, güvenlik görünürlüğünü tek bir ürün veya tek bir log kaynağı üzerinden açıklamaz. Bunun yerine, telemetri üreten varlıkları, Wazuh toplama sürecini, detection rule ve alert üretimini, MITRE ATT&CK bağlamını, CTI/MISP enrichment zincirini ve bunların evidence graph modeline nasıl taşındığını birlikte ele alır.</p>
+    <p>Bu yaklaşımın nedeni şudur: Bir logun var olması tek başına yeterli değildir. Logun doğru kaynaktan gelmesi, Wazuh pipeline içinde işlenmesi, beklenen detection kontrolüne bağlanması, ilgili MITRE tekniğiyle ilişkilendirilmesi ve gerektiğinde CTI enrichment zinciriyle desteklenmesi gerekir.</p>
+  </section>
+
+  <section class="section">
+    <h2>Lab bileşenleri</h2>
+    <div class="component-flow">
+      <div class="component-item"><span class="name">Windows kaynakları</span><span class="desc">DC01 ve WS01 üzerinden Security, Sysmon ve PowerShell telemetrisi üretilir.</span></div>
+      <div class="component-item"><span class="name">Linux kaynakları</span><span class="desc">uhost üzerinden authlog, syslog ve process kayıtları alınır.</span></div>
+      <div class="component-item"><span class="name">pfSense / firewall kaynakları</span><span class="desc">FW01 üzerinden firewall ve pfsense_syslog olayları toplanır.</span></div>
+      <div class="component-item"><span class="name">MISP / CTI kaynakları</span><span class="desc">CTI01 üzerinde IOC, MISP event, misp_api ve misp_enrichment çıktıları kullanılır.</span></div>
+      <div class="component-item"><span class="name">Wazuh toplama ve detection katmanı</span><span class="desc">Wazuh; log ve event ingestion, decoder/rule eşleşmeleri, alert üretimi ve MITRE mapping adımlarını yürütür.</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Uçtan uca veri akışı</h2>
+    <ul class="flow-list">
+      <li><span class="term">Telemetry</span><span class="desc">Windows, Linux, pfSense ve MISP kaynaklarından ham log, event ve IOC bilgisi üretilir.</span></li>
+      <li><span class="term">Wazuh</span><span class="desc">Gelen loglar Wazuh tarafından alınır, decoder ve rule katmanlarından geçirilir.</span></li>
+      <li><span class="term">Detection</span><span class="desc">Kurallar alert üretir; alertlerin detection control ve MITRE technique ilişkileri kurulur.</span></li>
+      <li><span class="term">MITRE / CTI</span><span class="desc">MITRE ATT&CK teknikleri ve MISP enrichment çıktıları alert bağlamını güçlendirir.</span></li>
+      <li><span class="term">SACI</span><span class="desc">CWLC, CAC, MDC, CTIC ve TF metrikleri declared scope ve observed/missing ilişkiler üzerinden hesaplanır.</span></li>
+      <li><span class="term">Graph</span><span class="desc">Asset, log source, control, Wazuh rule, MITRE technique, CTI object, metric ve reason code ilişkileri evidence graph içinde birleşir.</span></li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Telemetry → Wazuh → Detection → MITRE/CTI → SACI → Graph ilişkisi</h2>
+    <p>Bu zincirdeki her aşama SACI skorunun başka bir yönünü besler. Telemetry katmanı log görünürlüğünü, Wazuh ve detection katmanı control/alert coverage değerini, MITRE/CTI katmanı teknik ve istihbarat bağlamını, SACI katmanı metrik hesaplamasını, graph katmanı ise bu ilişkilerin observed veya missing olarak açıklanmasını sağlar.</p>
+    <p>Architecture sayfası, Methodology ve Graph sayfaları arasındaki köprü olarak okunmalıdır.</p>
+    <p class="note"><span>Yorumlama notu:</span> Diyagram final ortamın tamamen güvenli olduğunu göstermez. Yalnızca SACI kapsamındaki beklenen telemetri, detection, MITRE/CTI ve graph ilişkilerinin hangi mimari akış üzerinden değerlendirildiğini gösterir.</p>
+  </section>
+
+  <footer>SACI Architecture — lab topology, telemetry flow, Wazuh detection pipeline, MITRE/CTI enrichment and evidence graph output.</footer>
+</main>
+  <script src="assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="assets/saci-compact-controls.js?v=2"></script>
 </body>
 </html>

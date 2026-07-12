@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2239">
+  <title>SACI | Etkileşimli Kanıt Grafı</title>
+  <meta name="description" content="SACI final-v2 için filtrelenebilir kanıt grafı ve açık veri bütünlüğü notları.">
+  <link rel="stylesheet" href="assets/academic.css">
+  <script defer src="assets/academic.js"></script>
+  <script defer src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+  <script defer src="assets/graph-v2.js"></script>
+</head>
+<body data-page="graph" data-title-tr="SACI | Etkileşimli Kanıt Grafı" data-title-en="SACI | Interactive Evidence Graph">
+  <a class="skip-link" href="#main" data-tr="Ana içeriğe geç" data-en="Skip to main content">Ana içeriğe geç</a>
+  <header class="site-header">
+    <nav class="site-nav container" aria-label="Ana navigasyon">
+      <a class="wordmark" href="index.html"><span class="wordmark-mark" aria-hidden="true">S</span><span class="wordmark-copy"><strong>SACI</strong><small data-tr="Kanıt grafı" data-en="Evidence graph">Kanıt grafı</small></span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel"><span></span><span></span><span></span><span class="sr-only" data-tr="Menüyü aç" data-en="Open menu">Menüyü aç</span></button>
+      <div class="nav-panel" id="nav-panel">
+        <div class="nav-links"><a href="index.html" data-tr="Genel bakış" data-en="Overview">Genel bakış</a><a href="architecture.html" data-tr="Yöntem" data-en="Method">Yöntem</a><a href="evidence/lab/final_v2/index.html" data-tr="Kanıt eki" data-en="Evidence appendix">Kanıt eki</a><a class="active" href="graph.html" data-tr="Graf" data-en="Graph">Graf</a><a href="data.html" data-tr="Artefaktlar" data-en="Artifacts">Artefaktlar</a></div>
+        <div class="nav-actions"><div class="lang-switch" role="group" aria-label="Dil seçimi"><button type="button" data-lang="tr" aria-pressed="true">TR</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div></div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <header class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">SACI</a><span>/</span><span data-tr="Kanıt grafı" data-en="Evidence graph">Kanıt grafı</span></nav>
+        <p class="eyebrow">INTERACTIVE EVIDENCE EXPLORER · FINAL-V2</p>
+        <h1 data-tr="Görünürlük ilişkilerini düğüm düzeyinde inceleyin" data-en="Inspect visibility relationships at node level">Görünürlük ilişkilerini düğüm düzeyinde inceleyin</h1>
+        <p data-tr="Varlık, log kaynağı, kontrol, Wazuh kuralı, ATT&amp;CK tekniği, CTI nesnesi ve metriği tek graf üzerinde arayın; bir düğüm seçerek yayımlanan niteliklerini görüntüleyin." data-en="Search assets, log sources, controls, Wazuh rules, ATT&amp;CK techniques, CTI objects, and metrics in one graph; select a node to inspect its published attributes.">Varlık, log kaynağı, kontrol, Wazuh kuralı, ATT&amp;CK tekniği, CTI nesnesi ve metriği tek graf üzerinde arayın; bir düğüm seçerek yayımlanan niteliklerini görüntüleyin.</p>
+        <div class="page-kpis"><div><strong>97</strong><span data-tr="beyan edilmiş düğüm" data-en="declared nodes">beyan edilmiş düğüm</span></div><div><strong>171</strong><span data-tr="ilişki satırı" data-en="relationship rows">ilişki satırı</span></div><div><strong>17</strong><span data-tr="ilişki etiketi" data-en="relationship labels">ilişki etiketi</span></div><div><strong>2</strong><span data-tr="açık yer tutucu" data-en="explicit placeholders">açık yer tutucu</span></div></div>
+      </div>
+    </header>
+    <aside class="scope-banner"><div class="scope-banner-inner container"><strong data-tr="Görsel bütünlük ilkesi" data-en="Visual integrity policy">Görsel bütünlük ilkesi</strong><p data-tr="Ham graf sessizce düzeltilmez. Düğüm tablosunda bulunmayan LOGSOURCE:Wazuh ve MITRE:T1071.001 yalnızca bu görselde kırmızı elmas biçimli undeclared_endpoint yer tutucuları olarak eklenir; ekranda bu nedenle 99 düğüm görülebilir." data-en="The raw graph is not silently repaired. LOGSOURCE:Wazuh and MITRE:T1071.001, absent from the node table, are added only in this visualization as red diamond-shaped undeclared_endpoint placeholders; the display may therefore contain 99 nodes.">Ham graf sessizce düzeltilmez. Düğüm tablosunda bulunmayan LOGSOURCE:Wazuh ve MITRE:T1071.001 yalnızca bu görselde kırmızı elmas biçimli undeclared_endpoint yer tutucuları olarak eklenir; ekranda bu nedenle 99 düğüm görülebilir.</p></div></aside>
+
+    <section class="page-section" aria-labelledby="explorer-title">
+      <div class="container">
+        <p class="section-index">FIGURE 01 · EVIDENCE GRAPH</p>
+        <h2 id="explorer-title" data-tr="Filtrelenebilir ilişki görünümü" data-en="Filterable relationship view">Filtrelenebilir ilişki görünümü</h2>
+        <p data-tr="Tür, ilişki etiketi veya serbest metinle odaklanın. Filtreler eşleşmeyen elemanları soldurur; sıfırla düğmesi tam grafı yeniden sığdırır." data-en="Focus by type, relationship label, or free text. Filters fade non-matching elements; reset restores and fits the complete graph.">Tür, ilişki etiketi veya serbest metinle odaklanın. Filtreler eşleşmeyen elemanları soldurur; sıfırla düğmesi tam grafı yeniden sığdırır.</p>
+        <noscript><div class="audit-note" style="margin:20px 0"><strong>!</strong><div><h3>JavaScript required</h3><p data-tr="Etkileşimli görünüm için JavaScript gerekir. Erişilebilir CSV tabloları aşağıda kalır." data-en="JavaScript is required for the interactive view. Accessible CSV tables remain below.">Etkileşimli görünüm için JavaScript gerekir. Erişilebilir CSV tabloları aşağıda kalır.</p></div></div></noscript>
+        <div class="graph-shell" style="margin-top:26px">
+          <div class="graph-stage"><div class="graph-status" data-graph-status role="status" aria-live="polite" data-tr="Graf yükleniyor…" data-en="Loading graph…">Graf yükleniyor…</div><div id="cy" data-graph-source="evidence/lab/final_v2/saci_graph_v2.cyjs" role="img" aria-label="Interactive SACI evidence graph"></div></div>
+          <aside class="graph-side" aria-label="Graph controls and node details">
+            <h2 data-tr="Graf denetimleri" data-en="Graph controls">Graf denetimleri</h2>
+            <div class="graph-controls">
+              <label for="graph-search" data-tr="Düğüm ara" data-en="Search nodes">Düğüm ara</label><input id="graph-search" type="search" data-graph-filter="search" placeholder="A01, Wazuh, T1071…">
+              <label for="graph-type" data-tr="Düğüm türü" data-en="Node type">Düğüm türü</label><select id="graph-type" data-graph-filter="type"><option value="all" data-tr="Tüm türler" data-en="All types">Tüm türler</option></select>
+              <label for="graph-relation" data-tr="İlişki etiketi" data-en="Relationship label">İlişki etiketi</label><select id="graph-relation" data-graph-filter="relationship"><option value="all" data-tr="Tüm ilişkiler" data-en="All relationships">Tüm ilişkiler</option></select>
+              <button type="button" data-graph-reset data-tr="Filtreleri sıfırla" data-en="Reset filters">Filtreleri sıfırla</button>
+            </div>
+            <div class="graph-legend" aria-label="Node type color legend"><span><i style="--legend:#43b8bb"></i>asset</span><span><i style="--legend:#6b9db9"></i>log_source</span><span><i style="--legend:#72b686"></i>control</span><span><i style="--legend:#d29b54"></i>wazuh_rule</span><span><i style="--legend:#a788c6"></i>mitre_technique</span><span><i style="--legend:#d87676"></i>cti_object</span><span><i style="--legend:#c7aa59"></i>metric</span><span><i style="--legend:#e4574f"></i>undeclared_endpoint</span></div>
+            <div class="node-detail" data-node-detail><p data-tr="Ayrıntıları görmek için bir düğüm seçin." data-en="Select a node to inspect its attributes.">Ayrıntıları görmek için bir düğüm seçin.</p></div>
+          </aside>
+        </div>
+        <p style="margin:16px 0 0;color:var(--ink-soft);font-size:12px" data-tr="Şekil 1. final-v2 CYJS artefaktından oluşturulan etkileşimli görünüm. Yerleşim görseldir; analitik skorun parçası değildir." data-en="Figure 1. Interactive view generated from the final-v2 CYJS artifact. Layout is visual and is not part of the analytic score.">Şekil 1. final-v2 CYJS artefaktından oluşturulan etkileşimli görünüm. Yerleşim görseldir; analitik skorun parçası değildir.</p>
+      </div>
+    </section>
+
+    <section class="page-section section-paper" aria-labelledby="audit-title">
+      <div class="container">
+        <p class="section-index">DATA NOTE · GRAPH AUDIT</p>
+        <h2 id="audit-title" data-tr="Graf istatistikleri ve bilinen anomaliler" data-en="Graph statistics and known anomalies">Graf istatistikleri ve bilinen anomaliler</h2>
+        <div class="audit-grid">
+          <article><span data-tr="Beyan edilmiş düğüm" data-en="Declared nodes">Beyan edilmiş düğüm</span><strong>97</strong><p>saci_nodes_v2.csv</p></article>
+          <article><span data-tr="Gözlendi işaretli ilişki" data-en="Observed-marked relationships">Gözlendi işaretli ilişki</span><strong>171/171</strong><p data-tr="observed=1, endpoint bütünlüğüyle eş anlamlı değildir." data-en="observed=1 is not equivalent to endpoint integrity.">observed=1, endpoint bütünlüğüyle eş anlamlı değildir.</p></article>
+          <article><span data-tr="Benzersiz üçlü" data-en="Unique triples">Benzersiz üçlü</span><strong>165</strong><p>source + relationship + target</p></article>
+          <article><span data-tr="İzole düğüm" data-en="Isolated nodes">İzole düğüm</span><strong>6</strong><p data-tr="Bir skor metriği, bir teknik ve iki legacy control/rule çifti." data-en="One score metric, one technique, and two legacy control/rule pairs.">Bir skor metriği, bir teknik ve iki legacy control/rule çifti.</p></article>
+          <article><span data-tr="Tanımsız endpoint" data-en="Undeclared endpoints">Tanımsız endpoint</span><strong>2</strong><p><code>LOGSOURCE:Wazuh</code><br><code>MITRE:T1071.001</code></p></article>
+          <article><span data-tr="Çapraz dosya notu" data-en="Cross-file note">Çapraz dosya notu</span><strong>110203</strong><p><code>T1071.001</code> control ↔ <code>T1071.004</code> CTIC</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="alternative-title">
+      <div class="container">
+        <p class="section-index">ACCESSIBLE ALTERNATIVE</p>
+        <h2 id="alternative-title" data-tr="Kaynak tablo alternatifi" data-en="Source-table alternative">Kaynak tablo alternatifi</h2>
+        <p data-tr="Canvas görünümü verinin tek erişim yolu değildir. Klavye ve ekran okuyucu kullanıcıları düğüm/ilişki CSV'lerini doğrudan açabilir veya filtrelenebilir kanıt ekine dönebilir." data-en="The canvas is not the only access path. Keyboard and screen-reader users can open the node/edge CSVs directly or return to the filterable evidence appendix.">Canvas görünümü verinin tek erişim yolu değildir. Klavye ve ekran okuyucu kullanıcıları düğüm/ilişki CSV'lerini doğrudan açabilir veya filtrelenebilir kanıt ekine dönebilir.</p>
+        <div class="download-grid">
+          <a href="evidence/lab/final_v2/saci_nodes_v2.csv"><span class="file-type">CSV</span><span><strong>saci_nodes_v2.csv</strong><small data-tr="97 düğüm" data-en="97 nodes">97 düğüm</small></span></a>
+          <a href="evidence/lab/final_v2/saci_edges_v2.csv"><span class="file-type">CSV</span><span><strong>saci_edges_v2.csv</strong><small data-tr="171 ilişki" data-en="171 relationships">171 ilişki</small></span></a>
+          <a href="evidence/lab/final_v2/saci_graph_v2.cyjs"><span class="file-type">CYJS</span><span><strong>saci_graph_v2.cyjs</strong><small data-tr="Ham graf girdisi" data-en="Raw graph input">Ham graf girdisi</small></span></a>
+          <a href="evidence/lab/final_v2/index.html"><span class="file-type">HTML</span><span><strong data-tr="Kanıt eki" data-en="Evidence appendix">Kanıt eki</strong><small data-tr="Filtrelenebilir tablolar" data-en="Filterable tables">Filtrelenebilir tablolar</small></span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-mark wordmark"><span class="wordmark-mark">S</span><span class="wordmark-copy"><strong>SACI</strong><small>final-v2 · 2026</small></span></div><p data-tr="Graf gezgini ham CYJS verisini değiştirmez; iki görsel yer tutucu açıkça etiketlenir." data-en="The graph explorer does not alter raw CYJS data; two visual placeholders are explicitly labeled.">Graf gezgini ham CYJS verisini değiştirmez; iki görsel yer tutucu açıkça etiketlenir.</p><div class="footer-links"><a href="index.html" data-tr="Ana sayfa" data-en="Home">Ana sayfa</a><a href="architecture.html" data-tr="Yöntem" data-en="Method">Yöntem</a><a href="evidence/lab/final_v2/index.html" data-tr="Kanıt" data-en="Evidence">Kanıt</a></div><small>© <span data-current-year>2026</span> SACI Research Artifact</small></div></footer>
+</body>
+</html>

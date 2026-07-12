@@ -1,3 +1,3 @@
-indicator,type,lookup_executed,misp_hit,wazuh_alert,mapped_to_mitre,expected_alert_rule,mitre_technique,expected_lookup
-cti-test.example.com,domain,1,1,1,1,110100,T1071.004,1
-203.0.113.66,ip-dst,1,1,1,1,110203,T1071.004,1
+indicator,type,lookup_executed,misp_hit,wazuh_alert,mapped_to_mitre,expected_alert_rule,mitre_technique,expected_lookup,context_technique,mapping_basis
+cti-test.example.com,domain,1,1,1,1,110100,T1071.004,1,,
+203.0.113.66,ip-dst,1,1,1,1,110203,,1,T1071.004,misp_context_only

@@ -1,37 +1,233 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!doctype html>
+<html  lang="tr" data-theme="dim" data-font-level="0">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SACI Evidence | Evidence Data</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="assets/app.js"></script>
-</head>
-<body>
-    <div class="topbar">
-        <nav class="nav">
-            <a href="index.html" class="brand"><span class="brand-dot"></span>SACI Portal</a>
-            <div class="nav-right">
-                <div class="nav-links"><a href="index.html" ><span class="tr">Genel Bakış</span><span class="en">Overview</span></a><a href="architecture.html" ><span class="tr">Mimari & Kurulum</span><span class="en">Architecture & Config</span></a><a href="data.html" class="active"><span class="tr">Kanıt Verileri</span><span class="en">Evidence Data</span></a><a href="graph.html" ><span class="tr">Etkileşimli Graf</span><span class="en">Interactive Graph</span></a><a href="scenarios.html" ><span class="tr">Senaryolar & Değerlendirme</span><span class="en">Scenarios & LLM</span></a></div>
-                <div class="lang-switch">
-                    <button data-lang="tr">TR</button>
-                    <button data-lang="en">EN</button>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div class="shell">
-        
-<h1><span class="tr">Görünürlük Kanıt Verileri</span><span class="en">Visibility Evidence Data</span></h1>
-<p class="lead"><span class="tr">SACI skorunu oluşturan deterministik veri alt setleri.</span><span class="en">The deterministic data subsets constituting the SACI score.</span></p>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<h2>1. <span class="tr">Kritiklik Ağırlıklı Log Kapsamı</span><span class="en">Criticality-Weighted Log Coverage (CWLC)</span></h2>
-<div class="table-wrapper"><table><thead><tr><th><span class="tr">Varlık</span><span class="en">Asset</span></th><th><span class="tr">Beklenen</span><span class="en">Expected</span></th><th><span class="tr">Gözlemlenen</span><span class="en">Received</span></th><th><span class="tr">Kritiklik</span><span class="en">Criticality</span></th><th><span class="tr">Kapsam %</span><span class="en">Coverage %</span></th></tr></thead><tbody></tbody></table></div>
-<h2>2. <span class="tr">Kontrol / Alarm Kapsamı</span><span class="en">Control / Alert Coverage (CAC)</span></h2>
-<div class="table-wrapper"><table><thead><tr><th><span class="tr">Kontrol ID</span><span class="en">Control ID</span></th><th><span class="tr">Kural</span><span class="en">Rule</span></th><th><span class="tr">MITRE</span><span class="en">MITRE</span></th><th><span class="tr">Aktif</span><span class="en">Enabled</span></th><th><span class="tr">Gözlemlendi</span><span class="en">Seen</span></th></tr></thead><tbody></tbody></table></div>
-<h2>3. <span class="tr">MITRE Tespit Kapsamı</span><span class="en">MITRE Detection Coverage (MDC)</span></h2>
-<div class="table-wrapper"><table><thead><tr><th>ID</th><th><span class="tr">Teknik Adı</span><span class="en">Technique Name</span></th><th><span class="tr">Taktik</span><span class="en">Tactic</span></th><th><span class="tr">Kapsandı</span><span class="en">Covered</span></th></tr></thead><tbody></tbody></table></div>
+  <title>Veri ve indirilebilir dosyalar — SACI Final Evidence</title>
+  <meta name="description" content="SACI kanonik final skor, graph, kapsama, reason code, validation ve audit dosyalarının doğrudan indirilebilir veri sayfası.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/data.html">
 
+  <link rel="stylesheet" href="assets/saci-standard.css?v=data-page-2">
+  <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="assets/data.css?v=data-page-2">
+  <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
+<link rel="stylesheet" href="assets/integrity.css?v=f01"></head>
+
+<body data-page="data">
+
+<a class="skip-link" href="#main">Ana içeriğe geç</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a class="active" href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+
+    <div class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+
+
+<main id="main" class="data-page">
+<!-- SACI_INTEGRITY_BANNER_START --><aside class="saci-integrity-banner" data-integrity-banner><p><strong data-integrity-status>Integrity</strong> — <span data-integrity-copy>Yükleniyor.</span></p><a href="integrity.html">Bulgu F-01 →</a></aside><!-- SACI_INTEGRITY_BANNER_END -->
+  <section class="data-hero">
+    <div class="kicker">VERİ</div>
+    <h1>Veri ve indirilebilir dosyalar</h1>
+    <p class="lead">Kanonik yayın veri kümesi; skor, graph, kapsama, açıklanabilirlik ve audit artefaktları olarak doğrudan indirilebilir biçimde sunulur.</p>
+    <p class="data-scope">Bu paket yalnızca yayına esas final anlık görüntüyü içerir. S0–S18 kontrollü doğrulama serisi ayrı tutulur ve bu dosyalarla sayısal olarak birleştirilmez.</p>
+
+    <div class="data-actions">
+      <a id="downloadBundle"
+         class="primary"
+         href="data/final/saci_final_data_package.zip"
+         download>
+        <span>Tüm dosyaları indir</span>
+      </a>
+
+      <a id="checksumLink"
+         href="data/final/SHA256SUMS.txt"
+         download>
+        SHA-256 özetleri
+      </a>
+
+      <a href="data/final/VALIDATION.txt">
+        VALIDATION.txt
+      </a>
+
+      <a href="data/final/FINAL_AUDIT_RESULT.md">
+        FINAL_AUDIT_RESULT.md
+      </a>
     </div>
-</body>
+
+    <div class="data-summary">
+      <article>
+        <span>Yayımlanan dosya</span>
+        <strong id="fileCount">14</strong>
+      </article>
+
+      <article>
+        <span>Final SACI</span>
+        <strong id="finalScore">100</strong>
+      </article>
+
+      <article>
+        <span>İlişki kapanışı</span>
+        <strong id="relationClosure">171/171</strong>
+      </article>
+
+      <article>
+        <span>Aktif reason code</span>
+        <strong id="activeReasons">0</strong>
+      </article>
+    </div>
+  </section>
+
+  <div id="loadingState" class="loading-state">Veri manifesti yükleniyor...</div>
+
+  <div id="dataContent" hidden>
+    <section class="data-section">
+      <div class="data-section-head">
+        <h2>Kanonik final veri kümesi</h2>
+        <p>Her artefakt biçimi, kayıt kapsamı, dosya boyutu ve SHA-256 özetiyle birlikte yayımlanır.</p>
+      </div>
+
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Dosya</th><th>Bilimsel rol</th><th>Kapsam</th><th>Boyut</th><th>SHA-256</th><th>İşlem</th>
+            </tr>
+          </thead>
+          <tbody id="dataRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="data-section">
+      <div class="data-section-head">
+        <h2>Doğrulama özeti</h2>
+        <p>İlişki kapanışı başarılıdır. Endpoint bildirim bütünlüğü yapısal inceleme maddesi olarak korunur.</p>
+      </div>
+
+      <div class="audit-grid">
+        <article>
+          <span>Observed edge</span>
+          <strong id="auditEdges">171/171</strong>
+        </article>
+
+        <article>
+          <span>Varlık-log çifti</span>
+          <strong id="auditLogs">12/12</strong>
+        </article>
+
+        <article>
+          <span>Etkin kontrol</span>
+          <strong id="auditControls">25</strong>
+        </article>
+
+        <article>
+          <span>MITRE · CTI</span>
+          <strong id="auditMitreCti">13/13 · 2/2</strong>
+        </article>
+      </div>
+
+      <div class="structural-review"><strong>Yapısal inceleme:</strong> iki edge endpointi karşılık gelen node bildirimi olmadan referans edilmektedir: <code id="endpointList"></code>. Bu durum missing ilişki sayısını veya SACI skorunu değiştirmez.</div>
+    </section>
+  </div>
+</main>
+
+<script src="assets/data.js?v=data-page-2"></script>
+<script src="assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="assets/saci-compact-controls.js?v=2"></script>
+<script src="assets/integrity-badge.js?v=f01"></script></body>
 </html>

@@ -1,0 +1,51 @@
+[
+  {
+    "scenario_id": "S7A",
+    "title": "Critical DC01 Sysmon loss",
+    "short_interpretation": "Bu senaryo kritik DC01 varlığı üzerinde Sysmon telemetrisinin kaybını temsil eder. Sysmon görünürlüğü kesildiğinde process, DNS ve davranışsal detection zincirleri kırılır.",
+    "technical_interpretation": "Sysmon kaybı; asset, log source, detection control, Wazuh rule ve MITRE technique ilişkilerinde missing edge üretir. Bu nedenle graph closure düşer ve SACI skoru visibility zincirindeki kopmayı yansıtır.",
+    "academic_note": "Bu sonuç ortamın doğrudan güvensiz olduğunu değil, tanımlı değerlendirme kapsamındaki görünürlük zincirinde ölçülebilir bir kırılma oluştuğunu gösterir."
+  },
+  {
+    "scenario_id": "S7B",
+    "title": "Reduced visibility after partial recovery",
+    "short_interpretation": "Bu senaryo, kaybolan görünürlük ilişkilerinin bir kısmının geri kazanıldığı ara durumu temsil eder.",
+    "technical_interpretation": "Bazı log source ve detection ilişkileri observed duruma dönerken, kapanmamış ilişkiler graph üzerinde missing edge olarak kalır. Bu nedenle skor tamamen kapanışa ulaşmaz.",
+    "academic_note": "Ara senaryolar, SACI skorunun tek bir alarm sayısından değil, graph üzerindeki visibility relation kapanışından etkilendiğini gösterir."
+  },
+  {
+    "scenario_id": "S8",
+    "title": "Final closure",
+    "short_interpretation": "Final closure senaryosunda beklenen log source, detection control, Wazuh rule, MITRE mapping, CTI enrichment ve freshness ilişkileri graph üzerinde observed durumdadır.",
+    "technical_interpretation": "Missing edge bulunmadığı için tanımlı kapsamda graph closure tamamlanmıştır. Bu durum SACI skorunun 100 değerine ulaşmasını açıklar.",
+    "academic_note": "SACI=100 güvenlik garantisi değildir. Bu sonuç yalnızca beyan edilen değerlendirme kapsamındaki beklenen görünürlük ilişkilerinin kapandığını ifade eder."
+  },
+  {
+    "scenario_id": "S8_final_closure",
+    "title": "Final closure",
+    "short_interpretation": "Final closure senaryosunda beklenen log source, detection control, Wazuh rule, MITRE mapping, CTI enrichment ve freshness ilişkileri graph üzerinde observed durumdadır.",
+    "technical_interpretation": "Missing edge bulunmadığı için tanımlı kapsamda graph closure tamamlanmıştır. Bu durum SACI skorunun 100 değerine ulaşmasını açıklar.",
+    "academic_note": "SACI=100 güvenlik garantisi değildir. Bu sonuç yalnızca beyan edilen değerlendirme kapsamındaki beklenen görünürlük ilişkilerinin kapandığını ifade eder."
+  },
+  {
+    "scenario_id": "S14",
+    "title": "CTI enrichment closure",
+    "short_interpretation": "Bu senaryo CTI/MISP enrichment zincirinin graph üzerindeki etkisini gösterir.",
+    "technical_interpretation": "IOC lookup, MISP hit, Wazuh alert ve MITRE mapping adımlarının kapanması CTIC metriğini güçlendirir. Zincirdeki herhangi bir kopukluk CTI ilişkilerinde missing edge üretir.",
+    "academic_note": "CTI entegrasyonu, yalnızca IOC varlığıyla değil, IOC'nin alert ve MITRE bağlamına dönüştürülmesiyle değerlendirilir."
+  },
+  {
+    "scenario_id": "S15",
+    "title": "Freshness degradation",
+    "short_interpretation": "Bu senaryo, graph ilişkileri kapanmış olsa bile telemetri tazeliğinin skora etkisini gösterir.",
+    "technical_interpretation": "Observed edge sayısı tam olabilir; ancak son gözlem zamanı eskiyse TF metriği düşer. Bu da SACI skorunun yalnızca coverage değil, zaman duyarlı visibility üzerinden de değerlendirildiğini gösterir.",
+    "academic_note": "Freshness etkisi, eski ama hâlâ mevcut görünen telemetrinin operasyonel güvenilirliğini ayrı bir metrik olarak ele alır."
+  },
+  {
+    "scenario_id": "S18",
+    "title": "Legacy control outside active scope",
+    "short_interpretation": "Bu senaryo, aktif değerlendirme kapsamı dışında kalan eski kontrol ilişkilerinin skorlamadan ayrıştırılmasını temsil eder.",
+    "technical_interpretation": "Aktif scope dışındaki kontrol veya relation kayıtları evidence traceability için saklanabilir; fakat aktif metrik hesabına dahil edilmez.",
+    "academic_note": "Bu ayrım, tarihsel PoC verileri ile final değerlendirme kapsamının karışmasını engeller."
+  }
+]

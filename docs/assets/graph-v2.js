@@ -16,6 +16,10 @@
     undeclared_endpoint: "#e4574f"
   };
 
+  function currentLanguage() {
+    return localStorage.getItem("saci-academic-language") === "en" ? "en" : "tr";
+  }
+
   function option(select, value, label) {
     const element = document.createElement("option");
     element.value = value;
@@ -57,8 +61,11 @@
     const panel = document.querySelector("[data-node-detail]");
     if (!panel) return;
     if (!node) {
-      panel.innerHTML = '<p data-tr="Ayrıntıları görmek için bir düğüm seçin." data-en="Select a node to inspect its attributes.">Ayrıntıları görmek için bir düğüm seçin.</p>';
-      window.dispatchEvent(new CustomEvent("saci:language", { detail: { lang: localStorage.getItem("saci-academic-language") || "tr" } }));
+      const prompt = document.createElement("p");
+      prompt.textContent = currentLanguage() === "en"
+        ? "Select a node to inspect its attributes."
+        : "Ayrıntıları görmek için bir düğüm seçin.";
+      panel.replaceChildren(prompt);
       return;
     }
     const data = node.data();
@@ -83,9 +90,17 @@
 
   async function initGraph() {
     const container = document.getElementById("cy");
-    if (!container || typeof cytoscape !== "function") return;
-    const path = container.dataset.graphSource;
     const status = document.querySelector("[data-graph-status]");
+    if (!container) return;
+    if (typeof cytoscape !== "function") {
+      if (status) {
+        status.textContent = currentLanguage() === "en"
+          ? "Interactive library unavailable. Use the accessible CSV tables below."
+          : "Etkileşimli kütüphane yüklenemedi. Aşağıdaki erişilebilir CSV tablolarını kullanın.";
+      }
+      return;
+    }
+    const path = container.dataset.graphSource;
     try {
       const response = await fetch(path);
       if (!response.ok) throw new Error(`${response.status} ${path}`);
@@ -187,7 +202,11 @@
 
         const activeNodes = nodes.not(".faded");
         const activeEdges = edges.not(".faded");
-        if (status) status.textContent = `${activeNodes.length} nodes · ${activeEdges.length} edges · ${graph.placeholderCount} integrity placeholders`;
+        if (status) {
+          status.textContent = currentLanguage() === "en"
+            ? `${activeNodes.length} nodes · ${activeEdges.length} edges · ${graph.placeholderCount} integrity placeholders`
+            : `${activeNodes.length} düğüm · ${activeEdges.length} ilişki · ${graph.placeholderCount} bütünlük yer tutucusu`;
+        }
       }
 
       typeSelect.addEventListener("change", applyFilters);
@@ -201,6 +220,7 @@
         cy.fit(undefined, 35);
         applyFilters();
       });
+      window.addEventListener("saci:language", applyFilters);
       cy.on("tap", "node", (event) => detailPanel(event.target));
       cy.on("tap", (event) => { if (event.target === cy) detailPanel(null); });
       applyFilters();

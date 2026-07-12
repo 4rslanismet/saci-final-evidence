@@ -2,7 +2,7 @@ applicable,confidence,covered,criticality,cti_type,description,enabled,id,ip,lab
 ,,,,,,,PLATFORM:Wazuh,,Wazuh SIEM,,,,,,,,,platform,,
 ,,,,,,,PLATFORM:MISP,,MISP CTI,,,,,,,,,platform,,
 ,,,,,,,INTEGRATION:custom-misp,,custom-misp,,,,,,,,,integration,,
-,,,,,,,SCORE:SACI,,SACI Score,,,,,,,,,score,v2,
+,,,,,,,SCORE:SACI,,SACI Score,,,,,,,,,score,final,
 1,,,,,,,METRIC:CWLC,,CWLC,,,100.0,,,,,,metric,,0.3
 1,,,,,,,METRIC:CAC,,CAC,,,100.0,,,,,,metric,,0.25
 1,,,,,,,METRIC:MDC,,MDC,,,100.0,,,,,,metric,,0.2
@@ -96,3 +96,5 @@ applicable,confidence,covered,criticality,cti_type,description,enabled,id,ip,lab
 ,low,,,malware,,,CTI:test-malware-family,,test-malware-family,,,,,,synthetic,,,cti_object,,
 ,low,,,threat_actor,,,CTI:test-threat-actor,,test-threat-actor,,,,,,synthetic,,,cti_object,,
 ,low,,,campaign,,,CTI:saci-lab-campaign,,saci-lab-campaign,,,,,,synthetic,,,cti_object,,
+1,high,,,,Derived Wazuh alert stream consumed by the CTI conversion control,1,LOGSOURCE:Wazuh,,Wazuh alert stream,,graph_context,,1,,derived_alert_stream,,,log_source,,
+0,medium,1,,,Context-only ATT&CK technique referenced by control C016,,MITRE:T1071.001,,T1071.001,,graph_context,,,,,Command and Control,Web Protocols,mitre_technique,,

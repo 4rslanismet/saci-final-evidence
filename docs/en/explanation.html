@@ -1,0 +1,165 @@
+<!doctype html>
+<html  lang="en" data-theme="dim" data-font-level="0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explanation report — SACI Final Evidence</title>
+  <meta name="description" content="Scenario-based operational interpretations of deterministic SACI outputs through the policy-guided explanation layer.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/en/explanation.html">
+  <link rel="stylesheet" href="../assets/saci-standard.css?v=explanation-report-1">
+  <link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="../assets/explanation.css?v=explanation-report-1">
+  <link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=1">
+  <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
+</head>
+<body data-page="explanation">
+
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a class="active" href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+    <div class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Smaller</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Reset</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Larger</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Theme</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+
+<main id="main" class="explanation-page">
+  <section class="explanation-hero">
+    <div class="kicker">EXPLANATION REPORT</div>
+    <h1>Explanation report</h1>
+    <p class="lead">This page converts deterministic SACI metrics, graph relations, reason codes and scenario states into long-form operational explanations through a policy-guided reporting layer.</p>
+    <div class="explanation-boundary"><strong>Method boundary:</strong> the explanation layer does not calculate, modify or override the SACI score. It interprets deterministic outputs. An optional LLM may only rephrase the structured report produced by the policy.</div>
+  </section>
+
+  <section class="explanation-section">
+    <div class="explanation-section-head"><h2>Policy-guided explanation layer</h2><p>The reporting policy defines what can be stated, which evidence must support it and how scope limitations must be communicated.</p></div>
+    <div class="policy-grid">
+      <article class="policy-card"><span>01</span><h3>Deterministic source</h3><p>Metrics, graph relations and reason codes are authoritative inputs.</p></article><article class="policy-card"><span>02</span><h3>Policy boundary</h3><p>The policy controls wording, confidence and scope statements.</p></article><article class="policy-card"><span>03</span><h3>Optional LLM</h3><p>An LLM may rephrase a structured report but cannot infer or change the score.</p></article><article class="policy-card"><span>04</span><h3>Auditable output</h3><p>Every statement remains traceable to metrics, relations or reason codes.</p></article>
+    </div>
+  </section>
+
+  <div id="loadingState" class="empty-state">Loading explanation data...</div>
+
+  <div id="reportContent" hidden>
+    <section class="explanation-section">
+      <div class="explanation-section-head"><h2>Final closure report</h2><p>Long-form interpretation of the publication-level final dataset.</p></div>
+      <div id="finalReport" class="final-report"></div>
+    </section>
+
+    <section class="explanation-section">
+      <div class="explanation-section-head"><h2>Scenario-based natural-language explanations</h2><p>Select a scenario to see its finding, evidence interpretation, operational meaning and recommended validation.</p></div>
+      <div class="scenario-report-shell">
+        <aside class="scenario-selector">
+          <label for="scenarioSelect">Dataset / scenario</label>
+          <select id="scenarioSelect"></select>
+          <div class="selector-actions">
+            <a id="openGraph" href="graph.html">Open in graph</a>
+            <a id="openEvidence" href="evidence.html">Open evidence</a>
+          </div>
+        </aside>
+        <article id="scenarioReport" class="scenario-report"></article>
+      </div>
+    </section>
+  </div>
+
+  <section class="explanation-section">
+    <div class="explanation-section-head"><h2>Explanation production flow</h2><p>Deterministic results remain authoritative; language generation is only a presentation layer.</p></div>
+    <div class="pipeline">
+      <article class="pipeline-step"><span>01</span><h3>Deterministic SACI output</h3><p>Component scores, graph closure, missing relations, MITRE, CTI and freshness.</p></article><article class="pipeline-step"><span>02</span><h3>Reporting policy</h3><p>Applies interpretation rules, scenario context and scope boundaries.</p></article><article class="pipeline-step"><span>03</span><h3>Structured report</h3><p>Produces finding, evidence interpretation, operational meaning and validation guidance.</p></article><article class="pipeline-step"><span>04</span><h3>Optional language model</h3><p>May improve readability without calculating or changing the score.</p></article>
+    </div>
+  </section>
+</main>
+<script src="../assets/explanation.js?v=explanation-report-1"></script>
+<script src="../assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="../assets/saci-compact-controls.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html  lang="tr" data-theme="dim" data-font-level="0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yeniden üretilebilirlik artefaktları — SACI Final Evidence</title>
+  <meta name="description" content="SACI hesaplama, graph üretimi, laboratuvar senaryoları ve kanonik yayın çıktıları için yeniden üretilebilirlik artefaktları.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/artifacts.html">
+  <link rel="stylesheet" href="assets/saci-standard.css?v=release-1">
+  <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=release-1">
+  <link rel="stylesheet" href="assets/artifacts.css?v=release-1">
+  <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
+<link rel="stylesheet" href="assets/integrity.css?v=f01"></head>
+<body data-page="artifacts">
+<a class="skip-link" href="#main">Ana içeriğe geç</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a class="active" href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+    <div class="top-actions" aria-label="Display controls">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<main id="main" class="artifacts-page">
+<!-- SACI_INTEGRITY_BANNER_START --><aside class="saci-integrity-banner" data-integrity-banner><p><strong data-integrity-status>Integrity</strong> — <span data-integrity-copy>Yükleniyor.</span></p><a href="integrity.html">Bulgu F-01 →</a></aside><!-- SACI_INTEGRITY_BANNER_END -->
+  <section class="artifacts-hero">
+    <div class="kicker">ARTEFAKTLAR</div>
+    <h1>Yeniden üretilebilirlik artefaktları</h1>
+    <p class="lead">SACI sonucunu denetlemek ve yeniden üretmek için kullanılan kaynak kod, senaryo tanımları, graph üreticileri ve yayın çıktıları.</p>
+    <p class="artifacts-scope">Artifacts çıktıların nasıl üretildiğini açıklar. Data kanonik makinece okunabilir dosyaları; References ise dış teknoloji ve literatürü sunar.</p>
+    <div class="artifact-summary"><article><span>Kaynak program</span><strong>3</strong></article><article><span>Veri kümesi</span><strong>Final + 20 tarihsel</strong></article><article><span>Kanonik edge</span><strong>171/171</strong></article><article><span>Aktif reason code</span><strong>0</strong></article></div>
+  </section>
+  <section class="artifact-section"><h2>Kaynak ve yürütme artefaktları</h2><p>Skoru hesaplayan, graph’ı üreten ve kontrollü doğrulama veri kümelerini tanımlayan dosyalar.</p><div class="artifact-grid"><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>saci_score.py</h3><p>safe_ratio, aktif ağırlık normalizasyonu ve final SACI hesabının deterministik uygulaması.</p></div><span class="artifact-type">PY</span></div>
+  <div class="artifact-links"><a href="code/saci_score.py">Kaynak kodu aç</a><a href="data/final/saci_scores.csv">Final skorlar</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>saci_graph.py</h3><p>Beyan edilen kanıt modelinden node, edge, CYJS, Mermaid ve graph özeti artefaktlarını üretir.</p></div><span class="artifact-type">PY</span></div>
+  <div class="artifact-links"><a href="code/saci_graph.py">Kaynak kodu aç</a><a href="data/final/saci_graph.cyjs">CYJS aç</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>saci_attack_runner.sh</h3><p>Kontrollü senaryo kanıtı üretmek için izinli laboratuvar düzeneğidir; üretim veya üçüncü taraf sistemler için değildir.</p></div><span class="artifact-type">SH</span></div>
+  <div class="artifact-links"><a href="code/saci_attack_runner.sh">Kaynak kodu aç</a><a href="scenarios.html">Senaryo analizi</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Senaryo manifesti</h3><p>Kanonik final anlık görüntüyü S0–S18 tarihsel kontrollü doğrulama serisinden ayırır.</p></div><span class="artifact-type">JSON</span></div>
+  <div class="artifact-links"><a href="data/scenarios/manifest.json">Manifesti aç</a><a href="graph.html?scenario=final">Graph gezginini aç</a></div>
+</article><article class="artifact-card"><div class="artifact-card-head"><div><h3>Vagrant yeniden üretim iskelesi</h3><p>Beyan edilen topolojiyi yeniden kurar, kanonik artefaktları doğrular ve secret saklamadan evidence, portable ve native profilleri sunar.</p></div><span class="artifact-type">VAGRANT</span></div><div class="artifact-links"><a href="reproducibility.html">Rehberi aç</a><a href="downloads/reproducibility/Vagrantfile" download>Vagrantfile indir</a></div></article></div></section>
+  <section class="artifact-section"><h2>Kanonik yayın çıktıları</h2><p>Makale, portal ve bağımsız audit için sabitlenmiş final çıktılar.</p><div class="artifact-grid"><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Kanonik final paketi</h3><p>Skor, graph, kapsama, reason code, validation ve audit çıktılarının bütünlük kontrollü paketi.</p></div><span class="artifact-type">ZIP</span></div>
+  <div class="artifact-links"><a href="data/final/saci_final_data_package.zip">Paketi indir</a><a href="data/final/SHA256SUMS.txt">SHA-256 özetleri</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Graph artefaktları</h3><p>Beyan edilen node’lar, ilişki satırları, etkileşimli graph girdisi ve Mermaid gösterimi.</p></div><span class="artifact-type">CSV/CYJS/MMD</span></div>
+  <div class="artifact-links"><a href="data/final/saci_nodes.csv">Node’lar</a><a href="data/final/saci_edges.csv">Edge’ler</a><a href="data/final/saci_graph.cyjs">CYJS</a><a href="data/final/saci_graph.mmd">Mermaid</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Kapsama artefaktları</h3><p>Varlık/log kaynağı, kontrol, MITRE ATT&CK ve CTI/MISP kapanış kanıtları.</p></div><span class="artifact-type">CSV</span></div>
+  <div class="artifact-links"><a href="data/final/asset_log_coverage.csv">Varlık/log</a><a href="data/final/control_coverage.csv">Kontroller</a><a href="data/final/mitre_coverage.csv">MITRE</a><a href="data/final/ctic_coverage.csv">CTI</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Audit çıktıları</h3><p>Makinece doğrulanabilir kontrol özeti ve ayrıntılı yapısal audit sonucu.</p></div><span class="artifact-type">TXT/MD</span></div>
+  <div class="artifact-links"><a href="data/final/VALIDATION.txt">Doğrulama</a><a href="data/final/FINAL_AUDIT_RESULT.md">Audit sonucu</a></div>
+</article></div></section>
+  <section class="artifact-section"><h2>Yeniden üretim ve audit</h2><p>Aşağıdaki komutlar kanıt dosyalarını değiştirmeden yayın paketini doğrular.</p><div class="repro-command"><code>python3 tools/validate_academic_site.py
+python3 -m http.server 8000 --directory docs</code></div><div class="artifact-note"><strong>Sınır:</strong> paket aritmetik, ilişki, kapsama ve yayın auditini destekler. Upstream deneyin tamamını yeniden çalıştırmak için izinli GOAD/Wazuh/MISP/pfSense laboratuvarı ve canlı telemetri gerekir.</div></section>
+</main>
+<script src="assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="assets/saci-compact-controls.js?v=2"></script>
+<script src="assets/integrity-badge.js?v=f01"></script></body>
+</html>

@@ -1,0 +1,426 @@
+<!doctype html><html  lang="tr" data-theme="dim" data-font-level="0"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kaynaklar ve teknoloji yığını — SACI Final Evidence</title>
+  <meta name="description" content="SACI laboratuvarında kullanılan GOAD, Wazuh, MISP, pfSense, Sysmon ve diğer araçlar ile akademik kaynakların listesi.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/references.html">
+<link rel="stylesheet" href="assets/saci-standard.css?v=references-stack-2">
+<link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
+<link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=references-stack-2">
+<link rel="stylesheet" href="assets/references.css?v=references-stack-2">
+  <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
+</head><body data-page="references"><a class="skip-link" href="#main">Ana içeriğe geç</a>
+<header class="top"><div class="top-inner">
+<a class="brand" href="index.html">SACI Final Evidence</a>
+<nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a class="active" href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+<div class="top-actions">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Küçült</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Sıfırla</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Büyüt</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Tema</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div></div></header>
+<main id="main" class="references-page">
+<section class="references-hero"><div class="kicker">KAYNAKLAR</div><h1>Kaynaklar ve teknoloji yığını</h1>
+<p class="lead">SACI laboratuvarında, skorlama zincirinde, graph modelinde ve yayın portalında kullanılan bütün platform ve bileşenlere ait resmî dokümantasyon, standartlar ve akademik literatür.</p><p class="references-scope">Sayfada kanonik final zincirinde doğrudan kullanılan bileşenler, yalnızca altyapıda kullanılan araçlar, yardımcı platformlar ve yöntemsel kaynaklar açıkça ayrılmıştır.</p>
+<div class="stack-summary"><article><strong>Final zincirde doğrudan</strong><p>GOAD varlıkları, Wazuh, Sysmon, Windows/Linux telemetrisi, pfSense, MISP, ATT&CK ve SACI scriptleri.</p></article><article><strong>Altyapı</strong><p>İzole laboratuvarın kurulumu ve çalıştırılması için Vagrant ve VMware ESXi.</p></article><article><strong>Yardımcı bileşenler</strong><p>OpenCTI erken CTI kurulumunda kullanıldı; kanonik final skora dahil değildir.</p></article><article><strong>Yayın ve üretim</strong><p>Python, Requests, Cytoscape.js, Mermaid ve GitHub Pages.</p></article></div>
+<nav class="reference-nav" aria-label="Reference categories"><a href="#lab">Laboratuvar ve sanallaştırma altyapısı</a><a href="#telemetry">Telemetri, SIEM ve detection katmanı</a><a href="#cti">CTI ve MITRE ATT&CK</a><a href="#implementation">Skorlama, graph ve yayın araçları</a><a href="#academic">Standartlar ve akademik literatür</a></nav></section>
+<section class="references-section" id="lab">
+<h2>Laboratuvar ve sanallaştırma altyapısı</h2>
+<p>GOAD, Active Directory, ESXi/Vagrant, Ubuntu ve pfSense ile kurulan kontrollü deney ortamı.</p>
+<div class="reference-list">
+<article class="reference-entry" id="goad">
+<div class="reference-entry-head"><div>
+<h3>GOAD — Game of Active Directory</h3><p class="reference-citation">Orange Cyberdefense. (t.y.). GOAD: Game of Active Directory [Yazılım deposu]. GitHub. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Lab platformu</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Kontrollü ve izole Active Directory laboratuvarının DC01 ve WS01 gibi Windows varlıklarını üretmek; kimlik, keşif ve süreç davranışlarını tekrarlanabilir biçimde test etmek için kullanıldı.</p>
+<a class="reference-link" href="https://github.com/Orange-Cyberdefense/GOAD" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="vagrant">
+<div class="reference-entry-head"><div>
+<h3>HashiCorp Vagrant</h3><p class="reference-citation">HashiCorp. (t.y.). Vagrant documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Altyapı otomasyonu</span>
+<span class="reference-scope infra">Lab altyapısında kullanıldı</span>
+</div></div>
+<p class="reference-role">GOAD sanal makinelerinin tanımlanması, çok makineli topolojinin kurulması ve laboratuvarın yeniden üretilebilir biçimde ayağa kaldırılması için kullanıldı.</p>
+<a class="reference-link" href="https://developer.hashicorp.com/vagrant/docs" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="vmware-esxi">
+<div class="reference-entry-head"><div>
+<h3>VMware ESXi / vSphere</h3><p class="reference-citation">VMware by Broadcom. (t.y.). VMware vSphere documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Sanallaştırma altyapısı</span>
+<span class="reference-scope infra">Lab altyapısında kullanıldı</span>
+</div></div>
+<p class="reference-role">Dedicated sunucu üzerinde GOAD, Wazuh, CTI ve yardımcı laboratuvar sanal makinelerinin çalıştırıldığı hipervizör katmanıdır.</p>
+<a class="reference-link" href="https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0.html" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="ad-ds">
+<div class="reference-entry-head"><div>
+<h3>Microsoft Active Directory Domain Services</h3><p class="reference-citation">Microsoft. (2025). Active Directory Domain Services overview. Microsoft Learn.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Kimlik altyapısı</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">GOAD tabanlı domain controller, kullanıcı, bilgisayar, kimlik doğrulama ve domain keşif olaylarının bağlamsal temelidir.</p>
+<a class="reference-link" href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="ubuntu-server">
+<div class="reference-entry-head"><div>
+<h3>Ubuntu Server</h3><p class="reference-citation">Canonical. (t.y.). Ubuntu Server documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Sunucu işletim sistemi</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Wazuh, CTI01 ve Linux telemetri kaynaklarının barındırıldığı sunucu işletim sistemi katmanıdır.</p>
+<a class="reference-link" href="https://documentation.ubuntu.com/server/" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="pfsense">
+<div class="reference-entry-head"><div>
+<h3>pfSense</h3><p class="reference-citation">Netgate. (t.y.). pfSense documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Firewall / ağ telemetrisi</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">FW01-PFSENSE varlığından firewall, block ve IOC trafik olaylarının syslog olarak üretilmesi için kullanıldı.</p>
+<a class="reference-link" href="https://docs.netgate.com/pfsense/en/latest/index.html" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article>
+</div></section><section class="references-section" id="telemetry">
+<h2>Telemetri, SIEM ve detection katmanı</h2>
+<p>Wazuh, OpenSearch, Windows ve Linux log kaynaklarıyla kurulan görünürlük zinciri.</p>
+<div class="reference-list">
+<article class="reference-entry" id="wazuh">
+<div class="reference-entry-head"><div>
+<h3>Wazuh Documentation</h3><p class="reference-citation">Wazuh, Inc. (t.y.). Wazuh documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">SIEM/XDR platformu</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Agent, manager, indexer, dashboard, decoder, rule, alert ve entegrasyon bileşenlerinin ana teknik kaynağıdır.</p>
+<a class="reference-link" href="https://documentation.wazuh.com/current/index.html" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="wazuh-architecture">
+<div class="reference-entry-head"><div>
+<h3>Wazuh Architecture</h3><p class="reference-citation">Wazuh, Inc. (t.y.). Architecture. Wazuh documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Mimari dokümantasyon</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Endpoint → Wazuh server → indexer → dashboard veri akışının mimari dayanağıdır.</p>
+<a class="reference-link" href="https://documentation.wazuh.com/current/getting-started/architecture.html" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="wazuh-log-analysis">
+<div class="reference-entry-head"><div>
+<h3>Wazuh Log Collection, Decoders and Rules</h3><p class="reference-citation">Wazuh, Inc. (t.y.). Log data collection and data analysis. Wazuh documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Detection dokümantasyonu</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Security, Sysmon, PowerShell, Linux ve pfSense loglarının normalize edilmesi ve Wazuh rule/alert kanıtına dönüştürülmesi için kullanıldı.</p>
+<a class="reference-link" href="https://documentation.wazuh.com/current/user-manual/capabilities/log-data-collection/how-it-works.html" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="wazuh-indexer">
+<div class="reference-entry-head"><div>
+<h3>Wazuh Indexer</h3><p class="reference-citation">Wazuh, Inc. (t.y.). Wazuh indexer. Wazuh documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Güvenlik veri indeksleme</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Analiz edilen Wazuh olaylarının indekslenmesi, saklanması ve dashboard üzerinden sorgulanması için kullanıldı.</p>
+<a class="reference-link" href="https://documentation.wazuh.com/current/user-manual/wazuh-indexer/index.html" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="opensearch">
+<div class="reference-entry-head"><div>
+<h3>OpenSearch</h3><p class="reference-citation">OpenSearch Project. (t.y.). OpenSearch documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Arama ve analitik motoru</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Wazuh indexer katmanının dayandığı arama, indeksleme ve analitik altyapısını açıklar.</p>
+<a class="reference-link" href="https://docs.opensearch.org/latest/" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="sysmon">
+<div class="reference-entry-head"><div>
+<h3>Microsoft Sysmon</h3><p class="reference-citation">Microsoft. (2026). Sysmon overview. Microsoft Learn.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Windows endpoint telemetrisi</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">DC01 ve WS01 üzerinde process creation, network, DNS ve diğer yüksek ayrıntılı endpoint olaylarını üretmek için kullanıldı.</p>
+<a class="reference-link" href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/sysmon/overview" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="windows-audit">
+<div class="reference-entry-head"><div>
+<h3>Windows Advanced Audit Policy</h3><p class="reference-citation">Microsoft. (2025). Advanced Audit Policy Configuration settings. Microsoft Learn.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Windows Security telemetrisi</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Windows Security kanalındaki kimlik doğrulama, hesap kullanımı, policy change ve process auditing olaylarının üretilmesi için kullanıldı.</p>
+<a class="reference-link" href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/advanced-audit-policy-configuration" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="powershell-logging">
+<div class="reference-entry-head"><div>
+<h3>PowerShell Script Block Logging</h3><p class="reference-citation">Microsoft. (2026). about_Logging_Windows. PowerShell documentation.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Komut yürütme telemetrisi</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">T1059.001 kapsamındaki PowerShell komut, script block, function ve script yürütme kanıtlarını üretmek için kullanıldı.</p>
+<a class="reference-link" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="rsyslog">
+<div class="reference-entry-head"><div>
+<h3>rsyslog</h3><p class="reference-citation">Adiscon. (t.y.). rsyslog documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Linux log yönlendirme</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Linux authlog/syslog olaylarının toplanması, filtrelenmesi ve Wazuh'a aktarılması için kullanılan log işleme katmanıdır.</p>
+<a class="reference-link" href="https://docs.rsyslog.com/doc/index.html" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="journald">
+<div class="reference-entry-head"><div>
+<h3>systemd-journald</h3><p class="reference-citation">systemd Project. (t.y.). systemd-journald.service manual.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Linux sistem günlüğü</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Linux servis ve process olaylarının yapılandırılmış journal kaynağını açıklar.</p>
+<a class="reference-link" href="https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article>
+</div></section><section class="references-section" id="cti">
+<h2>CTI ve MITRE ATT&CK</h2>
+<p>MISP enrichment, ATT&CK mapping ve yardımcı CTI platformları.</p>
+<div class="reference-list">
+<article class="reference-entry" id="misp">
+<div class="reference-entry-head"><div>
+<h3>MISP Documentation</h3><p class="reference-citation">MISP Project. (t.y.). MISP documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">CTI platformu</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">IOC lookup, event/attribute yapısı, hit/no-hit ayrımı ve enrichment zincirinin ana teknik kaynağıdır.</p>
+<a class="reference-link" href="https://www.misp-project.org/documentation/" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="opencti">
+<div class="reference-entry-head"><div>
+<h3>OpenCTI</h3><p class="reference-citation">Filigran. (t.y.). OpenCTI documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Yardımcı CTI platformu</span>
+<span class="reference-scope aux">Yardımcı; final skora dahil değil</span>
+</div></div>
+<p class="reference-role">Laboratuvarın erken CTI kurulum ve değerlendirme aşamasında kullanıldı; kanonik final SACI skor zincirinin aktif girdisi değildir.</p>
+<a class="reference-link" href="https://docs.opencti.io/latest/" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="mitre">
+<div class="reference-entry-head"><div>
+<h3>MITRE ATT&CK — Enterprise Matrix</h3><p class="reference-citation">MITRE. (t.y.). MITRE ATT&CK: Enterprise Matrix. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Davranış bilgi tabanı</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Detection kontrollerinin T1078, T1087, T1059.001, T1110, T1082 ve diğer kapsam teknikleriyle eşlenmesi için kullanıldı.</p>
+<a class="reference-link" href="https://attack.mitre.org/matrices/enterprise/" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="mitre-philosophy">
+<div class="reference-entry-head"><div>
+<h3>MITRE ATT&CK: Design and Philosophy</h3><p class="reference-citation">MITRE. (2020). MITRE ATT&CK: Design and philosophy.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Resmî teknik rapor</span>
+<span class="reference-scope method">Yöntemsel dayanak</span>
+</div></div>
+<p class="reference-role">ATT&CK'in kapsam, davranış, teknik ve bilgi tabanı modelleme varsayımlarını açıklar.</p>
+<a class="reference-link" href="https://attack.mitre.org/docs/ATTACK_Design_and_Philosophy_March_2020.pdf" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="cisa-mapping">
+<div class="reference-entry-head"><div>
+<h3>Best Practices for MITRE ATT&CK Mapping</h3><p class="reference-citation">Cybersecurity and Infrastructure Security Agency. (2023). Best practices for MITRE ATT&CK mapping.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Eşleme rehberi</span>
+<span class="reference-scope method">Yöntemsel dayanak</span>
+</div></div>
+<p class="reference-role">Technique mapping işleminin kanıta dayalı ve aşırı genellemeden kaçınan biçimde yapılmasını destekler.</p>
+<a class="reference-link" href="https://www.cisa.gov/news-events/news/best-practices-mitre-attckr-mapping" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article>
+</div></section><section class="references-section" id="implementation">
+<h2>Skorlama, graph ve yayın araçları</h2>
+<p>SACI hesaplama, MISP sorgulama, graph görselleştirme ve portal yayını için kullanılan araçlar.</p>
+<div class="reference-list">
+<article class="reference-entry" id="python">
+<div class="reference-entry-head"><div>
+<h3>Python 3</h3><p class="reference-citation">Python Software Foundation. (t.y.). Python 3 documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Skorlama ve veri işleme</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">saci_score.py, saci_graph.py ve veri dönüştürme/validation scriptlerinin çalışma dilidir.</p>
+<a class="reference-link" href="https://docs.python.org/3/" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="requests">
+<div class="reference-entry-head"><div>
+<h3>Requests</h3><p class="reference-citation">Reitz, K. ve Python Software Foundation contributors. (t.y.). Requests: HTTP for Humans. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">HTTP istemci kütüphanesi</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">custom-misp.py içinde Wazuh'tan çıkarılan IOC değerlerinin MISP API'sine sorgulanması için kullanıldı.</p>
+<a class="reference-link" href="https://requests.readthedocs.io/" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="cytoscape">
+<div class="reference-entry-head"><div>
+<h3>Cytoscape.js</h3><p class="reference-citation">Cytoscape Consortium. (t.y.). Cytoscape.js documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Etkileşimli graph görselleştirme</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">saci_graph.cyjs verisinin portal üzerindeki etkileşimli node/edge görünümünde sunulması için kullanıldı.</p>
+<a class="reference-link" href="https://js.cytoscape.org/" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="mermaid">
+<div class="reference-entry-head"><div>
+<h3>Mermaid</h3><p class="reference-citation">Mermaid Project. (t.y.). Mermaid documentation and repository. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Metin tabanlı graph/diagram çıktısı</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">saci_graph.mmd ve tekrar üretilebilir metin tabanlı diagram çıktılarının oluşturulması için kullanıldı.</p>
+<a class="reference-link" href="https://github.com/mermaid-js/mermaid" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="github-pages">
+<div class="reference-entry-head"><div>
+<h3>GitHub Pages</h3><p class="reference-citation">GitHub. (t.y.). GitHub Pages documentation. Erişim tarihi: 12 Temmuz 2026.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Yayın ve kanıt portalı</span>
+<span class="reference-scope direct">Final zincirde doğrudan kullanıldı</span>
+</div></div>
+<p class="reference-role">Final evidence portalı, TR/EN sayfalar, indirilebilir veri ve interaktif graph'ın statik web yayını için kullanıldı.</p>
+<a class="reference-link" href="https://docs.github.com/en/pages" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article>
+</div></section><section class="references-section" id="academic">
+<h2>Standartlar ve akademik literatür</h2>
+<p>Log yönetimi, CTI, SIEM ve graph tabanlı güvenlik değerlendirmesine ilişkin temel çalışmalar.</p>
+<div class="reference-list">
+<article class="reference-entry" id="nist-800-92">
+<div class="reference-entry-head"><div>
+<h3>NIST SP 800-92 — Guide to Computer Security Log Management</h3><p class="reference-citation">Kent, K. ve Souppaya, M. (2006). Guide to computer security log management (NIST SP 800-92). National Institute of Standards and Technology.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Standart rehberi</span>
+<span class="reference-scope method">Yöntemsel dayanak</span>
+</div></div>
+<p class="reference-role">Merkezi log toplama, saklama, analiz ve log management yaklaşımının genel dayanağıdır.</p>
+<a class="reference-link" href="https://nvlpubs.nist.gov/nistpubs/legacy/SP/nistspecialpublication800-92.Pdf" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="nist-800-150">
+<div class="reference-entry-head"><div>
+<h3>NIST SP 800-150 — Guide to Cyber Threat Information Sharing</h3><p class="reference-citation">Johnson, C. S., Badger, M. L., Waltermire, D. A., Snyder, J. ve Skorupka, C. (2016). Guide to cyber threat information sharing (NIST SP 800-150). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.SP.800-150</p>
+</div><div class="reference-badges">
+<span class="reference-type">CTI rehberi</span>
+<span class="reference-scope method">Yöntemsel dayanak</span>
+</div></div>
+<p class="reference-role">CTI kaynaklarının, paylaşım kapsamının ve yapılandırılmış tehdit bilgisinin kullanımına ilişkin yöntemsel dayanak sağlar.</p>
+<a class="reference-link" href="https://csrc.nist.gov/pubs/sp/800/150/final" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="siem-role">
+<div class="reference-entry-head"><div>
+<h3>The Operational Role of Security Information and Event Management Systems</h3><p class="reference-citation">Bhatt, S., Manadhata, P. K. ve Zomlot, L. (2014). The operational role of security information and event management systems. IEEE Security & Privacy, 12(5), 35–41. https://doi.org/10.1109/MSP.2014.103</p>
+</div><div class="reference-badges">
+<span class="reference-type">Hakemli makale</span>
+<span class="reference-scope method">Yöntemsel dayanak</span>
+</div></div>
+<p class="reference-role">SIEM'in SOC içindeki toplama, normalizasyon, analiz ve operasyonel sınırlılıklarını açıklar.</p>
+<a class="reference-link" href="https://doi.org/10.1109/MSP.2014.103" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="misp-paper">
+<div class="reference-entry-head"><div>
+<h3>MISP: The Design and Implementation of a Collaborative Threat Intelligence Sharing Platform</h3><p class="reference-citation">Wagner, C., Dulaunoy, A., Wagener, G. ve Iklody, A. (2016). MISP: The design and implementation of a collaborative threat intelligence sharing platform. Proceedings of the 3rd ACM Workshop on Information Sharing and Collaborative Security. https://doi.org/10.1145/2994539.2994542</p>
+</div><div class="reference-badges">
+<span class="reference-type">Hakemli bildiri</span>
+<span class="reference-scope method">Yöntemsel dayanak</span>
+</div></div>
+<p class="reference-role">MISP'in veri modeli, collaborative CTI paylaşımı ve detection desteği için temel akademik kaynaktır.</p>
+<a class="reference-link" href="https://doi.org/10.1145/2994539.2994542" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="attack-graphs">
+<div class="reference-entry-head"><div>
+<h3>Fast Network Attack Modeling and Security Evaluation Based on Attack Graphs</h3><p class="reference-citation">Kotenko, I. ve Chechulin, A. (2014). Fast network attack modeling and security evaluation based on attack graphs. Journal of Cyber Security and Mobility, 3(1), 27–46.</p>
+</div><div class="reference-badges">
+<span class="reference-type">Hakemli makale</span>
+<span class="reference-scope method">Yöntemsel dayanak</span>
+</div></div>
+<p class="reference-role">SIEM olayları, attack graph ve güvenlik metriği üretimi arasındaki ilişkiyi destekler.</p>
+<a class="reference-link" href="https://journals.riverpublishers.com/index.php/JCSANDM/article/view/6167" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article><article class="reference-entry" id="graph-survey">
+<div class="reference-entry-head"><div>
+<h3>Graph Models for Cybersecurity — A Survey</h3><p class="reference-citation">Wachter, J. (2023). Graph models for cybersecurity—A survey. arXiv. https://doi.org/10.48550/arXiv.2311.10050</p>
+</div><div class="reference-badges">
+<span class="reference-type">Literatür incelemesi</span>
+<span class="reference-scope method">Yöntemsel dayanak</span>
+</div></div>
+<p class="reference-role">Siber güvenlikte graph semantiği, attack graph biçimleri ve analiz özellikleri için genel literatür çerçevesidir.</p>
+<a class="reference-link" href="https://arxiv.org/abs/2311.10050" target="_blank" rel="noopener">Kaynağı aç ↗</a>
+</article>
+</div></section>
+<div class="reference-note"><strong>Kapsam notu:</strong> Yazılım depoları ve sürekli güncellenen ürün dokümantasyonu için erişim tarihi verilmiştir. SACI'ye ait iç dosyalar Artifacts ve Data altında kalır; dış kaynak olarak burada tekrarlanmaz.</div>
+</main><script src="assets/saci-ui.js?v=responsive-nav-1"></script>  <script src="assets/saci-compact-controls.js?v=2"></script>
+</body></html>

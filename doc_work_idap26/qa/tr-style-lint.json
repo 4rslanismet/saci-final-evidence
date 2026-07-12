@@ -1,0 +1,69 @@
+{
+  "input": "E:\\Downloads\\saci_github_pages_site\\deliverables\\IDAP26_SACI_Graph_Attack_Surface_Final_TR.docx",
+  "fonts_by_char_count": {
+    "Times New Roman": 22985
+  },
+  "direct_run_formatting_runs": 112,
+  "direct_paragraph_formatting_paragraphs": 109,
+  "heading_like_paragraphs_not_heading_style": [],
+  "examples": {
+    "direct_run_formatting": [
+      {
+        "para_index": 1,
+        "run_text": "SACI: SIEM Telemetrisi ve Tehdit \u0130stihbarat\u0131yla A\u00e7\u0131klanabilir Graf Tabanl\u0131 Sald\u0131",
+        "style": "paper title"
+      },
+      {
+        "para_index": 2,
+        "run_text": "\u0130smet Arslan",
+        "style": "Author"
+      },
+      {
+        "para_index": 4,
+        "run_text": "\u00d6zet\u2014",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 4,
+        "run_text": "Bu \u00e7al\u0131\u015fma, g\u00fcvenlik bilgi ve olay y\u00f6netimi g\u00f6r\u00fcn\u00fcrl\u00fc\u011f\u00fcn\u00fc; varl\u0131klar, log kaynak",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 5,
+        "run_text": "Anahtar Kelimeler\u2014",
+        "style": "Body Text"
+      }
+    ],
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 4,
+        "text": "\u00d6zet\u2014Bu \u00e7al\u0131\u015fma, g\u00fcvenlik bilgi ve olay y\u00f6netimi g\u00f6r\u00fcn\u00fcrl\u00fc\u011f\u00fcn\u00fc; varl\u0131klar, log kaynaklar\u0131, tespit kontrolleri, Wazuh kur",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 5,
+        "text": "Anahtar Kelimeler\u2014SACI, SIEM, Wazuh, kan\u0131t graf\u0131, MITRE ATT&CK, siber tehdit istihbarat\u0131, g\u00f6r\u00fcn\u00fcrl\u00fck skoru, denetlenebil",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 6,
+        "text": "I. G\u0130R\u0130\u015e",
+        "style": "Heading 1"
+      },
+      {
+        "para_index": 7,
+        "text": "Modern g\u00fcvenlik operasyon merkezleri (SOC), zararl\u0131 davran\u0131\u015flar\u0131 tespit etmek ve m\u00fcdahaleyi \u00f6nceliklendirmek i\u00e7in u\u00e7 nok",
+        "style": "Body Text"
+      },
+      {
+        "para_index": 8,
+        "text": "Kurumsal sald\u0131r\u0131 y\u00fczeyinin b\u00fcy\u00fcmesi bu ayr\u0131m\u0131 daha \u00f6nemli hale getirmektedir. Bulut hizmetleri, uzaktan eri\u015fim platforml",
+        "style": "Body Text"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}

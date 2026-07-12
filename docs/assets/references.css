@@ -1,0 +1,102 @@
+body[data-page="references"] { overflow-x: hidden; }
+
+.references-page {
+  width: min(calc(100% - clamp(34px, 7vw, 112px)), 1460px) !important;
+  margin-inline: auto !important;
+  padding: clamp(34px, 4vw, 58px) 0 clamp(64px, 7vw, 104px) !important;
+}
+
+.references-hero { margin-bottom: 68px; }
+.references-hero h1 {
+  max-width: 1180px !important; margin: 0 0 26px !important;
+  color: var(--text) !important; font-size: clamp(46px, 5.2vw, 76px) !important;
+  line-height: 1.02 !important; letter-spacing: -.05em !important;
+}
+.references-hero .lead {
+  max-width: 980px !important; margin: 0 !important; color: var(--muted) !important;
+  font-size: clamp(17px, 1.35vw, 20px) !important; line-height: 1.74 !important;
+}
+.references-scope {
+  max-width: 1040px; margin: 17px 0 0; color: var(--muted);
+  font-size: 17px; line-height: 1.8;
+}
+
+.stack-summary {
+  display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 10px; margin-top: 28px;
+}
+.stack-summary article {
+  padding: 15px 16px; border: 1px solid color-mix(in srgb,var(--line) 64%,transparent);
+  border-radius: 14px; background: var(--surface,var(--bg));
+}
+.stack-summary strong { display:block; margin-bottom:6px; color:var(--text); font-size:14px; }
+.stack-summary p { margin:0; color:var(--muted); font-size:12.5px; line-height:1.62; }
+
+.reference-nav { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+.reference-nav a {
+  display:inline-flex; align-items:center; min-height:34px; padding:0 11px;
+  border:1px solid color-mix(in srgb,var(--line) 64%,transparent);
+  border-radius:999px; color:var(--text); text-decoration:none;
+  font-size:11.5px; font-weight:700;
+}
+.reference-nav a:hover { color:var(--accent); border-color:color-mix(in srgb,var(--accent) 48%,var(--line)); }
+
+.references-section {
+  width:100%; max-width:1120px; padding:54px 0; scroll-margin-top:92px;
+}
+.references-section + .references-section { border-top:1px solid color-mix(in srgb,var(--line) 48%,transparent); }
+.references-section h2 {
+  max-width:980px; margin:0 0 10px; color:var(--text);
+  font-size:clamp(30px,3vw,43px); line-height:1.1; letter-spacing:-.035em;
+}
+.references-section > p {
+  max-width:1040px; margin:0 0 22px; color:var(--muted);
+  font-size:17px; line-height:1.8;
+}
+.reference-list { display:grid; gap:10px; }
+.reference-entry {
+  padding:17px 18px; border:1px solid color-mix(in srgb,var(--line) 60%,transparent);
+  border-radius:15px; background:var(--surface,var(--bg));
+}
+.reference-entry-head { display:flex; align-items:start; justify-content:space-between; gap:18px; }
+.reference-entry h3 { margin:0 0 7px; color:var(--text); font-size:17px; line-height:1.42; }
+.reference-badges { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:6px; }
+.reference-type,.reference-scope {
+  flex:0 0 auto; min-height:27px; display:inline-flex; align-items:center;
+  padding:0 8px; border:1px solid color-mix(in srgb,var(--line) 60%,transparent);
+  border-radius:999px; font-size:10.5px; font-weight:760; white-space:nowrap;
+}
+.reference-type { color:var(--accent); }
+.reference-scope { color:var(--muted); }
+.reference-scope.direct { color:var(--green,#55c98a); border-color:color-mix(in srgb,var(--green,#55c98a) 34%,var(--line)); }
+.reference-scope.aux { color:var(--muted); border-style:dashed; }
+.reference-citation {
+  max-width:1040px; margin:0; padding-left:24px; text-indent:-24px;
+  color:var(--text); font-size:14px; line-height:1.72;
+}
+.reference-role {
+  max-width:1000px; margin:11px 0 0; color:var(--muted);
+  font-size:13px; line-height:1.68;
+}
+.reference-link {
+  display:inline-flex; margin-top:11px; color:var(--accent);
+  text-decoration:none; font-size:12px; font-weight:700;
+}
+.reference-link:hover { text-decoration:underline; }
+.reference-note {
+  max-width:1040px; margin-top:12px; padding:14px 16px;
+  border-left:2px solid var(--accent); border-radius:0 12px 12px 0;
+  background:color-mix(in srgb,var(--accent) 5%,transparent);
+  color:var(--muted); font-size:13.5px; line-height:1.7;
+}
+.reference-note strong { color:var(--text); }
+
+@media(max-width:980px){ .stack-summary{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media(max-width:760px){
+  .reference-entry-head{flex-direction:column;gap:8px;}
+  .reference-badges{justify-content:flex-start;}
+}
+@media(max-width:580px){
+  .references-page{width:min(calc(100% - 24px),1460px)!important;}
+  .stack-summary{grid-template-columns:1fr;}
+}

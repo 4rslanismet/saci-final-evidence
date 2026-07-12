@@ -1,0 +1,7 @@
+metric,name,weight,score
+LC,Log Coverage,0.3,90.74
+CAC,Control / Alert Coverage,0.25,97.0
+MDC,MITRE Detection Coverage,0.2,100.0
+CTIC,CTI Integration Coverage,0.15,100.0
+TF,Timeliness / Freshness,0.1,100.0
+SACI,Overall SACI Visibility Score,1.0,96.47

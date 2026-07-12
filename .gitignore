@@ -2,3 +2,51 @@ _extract/
 *.tmp
 *.bak
 *.log
+__pycache__/
+*.py[cod]
+/.vagrant/
+/lab/state/
+
+# Private local conversation memory. Never publish this directory.
+/.private/
+
+# ChatGPT export files are private and must not be added at repository root.
+/chat.html
+/conversations.json
+/conversations-*.json
+/conversation_asset_file_names.json
+/export_manifest.json
+/group_chats.json
+/library_files.json
+/shared_conversations.json
+/user.json
+/user_settings.json
+/file-*.dat
+/file_*.dat
+
+# Local site-build workspaces and safety backups. Never publish these.
+/_local_backups/
+/_saci_final_seed/
+/saci-academic-portal/
+/docs_backup_*/
+/.paper_clean_backups/
+/saci_final_seed_current.zip
+/saci_site_builder_package.zip
+
+# Local release work
+backups/
+archive/
+*.zip
+apply_*.py
+repair_*.py
+finalize_*.py
+README_INTEGRITY_*PHASE*.txt
+
+# Local release work
+backups/
+archive/
+*.zip
+apply_*.py
+repair_*.py
+finalize_*.py
+README_INTEGRITY_*PHASE*.txt

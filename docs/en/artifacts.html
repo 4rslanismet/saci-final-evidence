@@ -1,0 +1,154 @@
+<!doctype html>
+<html  lang="en" data-theme="dim" data-font-level="0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reproducibility artifacts — SACI Final Evidence</title>
+  <meta name="description" content="Reproducibility artifacts for SACI scoring, graph generation, laboratory scenarios and canonical publication outputs.">
+  <link rel="canonical" href="https://4rslanismet.github.io/saci-final-evidence/en/artifacts.html">
+  <link rel="stylesheet" href="../assets/saci-standard.css?v=release-1">
+  <link rel="stylesheet" href="../assets/saci-global-ui.css?v=responsive-nav-1">
+  <link rel="stylesheet" href="../assets/saci-methodology-rhythm.css?v=release-1">
+  <link rel="stylesheet" href="../assets/artifacts.css?v=release-1">
+  <link rel="stylesheet" href="../assets/saci-compact-controls.css?v=1">
+<link rel="stylesheet" href="../assets/integrity.css?v=f01"></head>
+<body data-page="artifacts">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html">SACI Final Evidence</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a class="active" href="artifacts.html">Artifacts</a>
+      <a href="reproducibility.html">Reproduce</a>
+      <a href="data.html">Data</a>
+      <a href="references.html">References</a>
+      <a href="graph.html">Graph</a>
+      <a href="explanation.html">Explanation</a>
+      <a href="paper.html">Paper View</a>
+    </nav>
+    <div class="top-actions" aria-label="Display controls">
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Language</span>
+  <button type="button" id="langTR" tabindex="-1">TR</button>
+  <button type="button" id="langEN" tabindex="-1">EN</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Font</span>
+  <button type="button" id="fontDown" tabindex="-1">A−</button>
+  <button type="button" id="fontReset" tabindex="-1">A</button>
+  <button type="button" id="fontUp" tabindex="-1">A+</button>
+</div>
+
+<div class="top-control saci-control-hooks" aria-hidden="true">
+  <span>Theme</span>
+  <button type="button" data-theme-btn="dark" tabindex="-1">Dark</button>
+  <button type="button" data-theme-btn="dim" tabindex="-1">Dim</button>
+  <button type="button" data-theme-btn="light" tabindex="-1">Light</button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciLanguageCompact"
+          class="saci-compact-trigger">
+    <span class="label">TR</span>
+  </button>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciFontCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciFontMenu">
+    <span>A</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciFontMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-font-proxy="fontDown">
+      <span>Smaller</span><span class="value">A−</span>
+    </button>
+    <button type="button" data-font-proxy="fontReset">
+      <span>Reset</span><span class="value">A</span>
+    </button>
+    <button type="button" data-font-proxy="fontUp">
+      <span>Larger</span><span class="value">A+</span>
+    </button>
+  </div>
+</div>
+
+<div class="saci-compact-control">
+  <button type="button"
+          id="saciThemeCompact"
+          class="saci-compact-trigger"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="saciThemeMenu">
+    <span>Theme</span>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="saciThemeMenu"
+       class="saci-compact-menu"
+       role="menu"
+       hidden>
+    <button type="button" data-theme-proxy="dark"><span>Dark</span></button>
+    <button type="button" data-theme-proxy="dim"><span>Dim</span></button>
+    <button type="button" data-theme-proxy="light"><span>Light</span></button>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<main id="main" class="artifacts-page">
+<!-- SACI_INTEGRITY_BANNER_START --><aside class="saci-integrity-banner" data-integrity-banner><p><strong data-integrity-status>Integrity</strong> — <span data-integrity-copy>Loading.</span></p><a href="integrity.html">Finding F-01 →</a></aside><!-- SACI_INTEGRITY_BANNER_END -->
+  <section class="artifacts-hero">
+    <div class="kicker">ARTIFACTS</div>
+    <h1>Reproducibility artifacts</h1>
+    <p class="lead">Source code, scenario definitions, graph generators and publication outputs used to audit and reproduce the SACI result.</p>
+    <p class="artifacts-scope">Artifacts explains how outputs are produced. Data provides the canonical machine-readable files; References documents external technologies and literature.</p>
+    <div class="artifact-summary"><article><span>Source programs</span><strong>3</strong></article><article><span>Datasets</span><strong>Final + 20 historical</strong></article><article><span>Canonical edges</span><strong>171/171</strong></article><article><span>Active reason codes</span><strong>0</strong></article></div>
+  </section>
+  <section class="artifact-section"><h2>Source and execution artifacts</h2><p>Files that compute the score, build the graph and describe the controlled validation datasets.</p><div class="artifact-grid"><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>saci_score.py</h3><p>Deterministic implementation of safe ratios, active-weight normalization and final SACI scoring.</p></div><span class="artifact-type">PY</span></div>
+  <div class="artifact-links"><a href="../code/saci_score.py">Open source</a><a href="../data/final/saci_scores.csv">Final scores</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>saci_graph.py</h3><p>Builds node, edge, CYJS, Mermaid and graph-summary artifacts from the declared evidence model.</p></div><span class="artifact-type">PY</span></div>
+  <div class="artifact-links"><a href="../code/saci_graph.py">Open source</a><a href="../data/final/saci_graph.cyjs">Open CYJS</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>saci_attack_runner.sh</h3><p>Authorized laboratory harness for generating controlled scenario evidence. It is not intended for production or third-party systems.</p></div><span class="artifact-type">SH</span></div>
+  <div class="artifact-links"><a href="../code/saci_attack_runner.sh">Open source</a><a href="scenarios.html">Scenario analysis</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Scenario manifest</h3><p>Separates the canonical final snapshot from the historical S0–S18 controlled validation series.</p></div><span class="artifact-type">JSON</span></div>
+  <div class="artifact-links"><a href="../data/scenarios/manifest.json">Open manifest</a><a href="graph.html?scenario=final">Open graph explorer</a></div>
+</article><article class="artifact-card"><div class="artifact-card-head"><div><h3>Vagrant reproduction scaffold</h3><p>Reconstructs the declared topology, verifies canonical artifacts and exposes evidence, portable and native profiles without storing secrets.</p></div><span class="artifact-type">VAGRANT</span></div><div class="artifact-links"><a href="reproducibility.html">Open guide</a><a href="../downloads/reproducibility/Vagrantfile" download>Download Vagrantfile</a></div></article></div></section>
+  <section class="artifact-section"><h2>Canonical publication outputs</h2><p>Frozen final outputs used by the paper, portal and independent audit.</p><div class="artifact-grid"><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Canonical final package</h3><p>Score, graph, coverage, reason-code, validation and audit outputs in one integrity-checked package.</p></div><span class="artifact-type">ZIP</span></div>
+  <div class="artifact-links"><a href="../data/final/saci_final_data_package.zip">Download package</a><a href="../data/final/SHA256SUMS.txt">SHA-256 checksums</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Graph artifacts</h3><p>Declared nodes, relation rows, interactive graph input and text-based Mermaid representation.</p></div><span class="artifact-type">CSV/CYJS/MMD</span></div>
+  <div class="artifact-links"><a href="../data/final/saci_nodes.csv">Nodes</a><a href="../data/final/saci_edges.csv">Edges</a><a href="../data/final/saci_graph.cyjs">CYJS</a><a href="../data/final/saci_graph.mmd">Mermaid</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Coverage artifacts</h3><p>Asset/log-source, control, MITRE ATT&CK and CTI/MISP closure evidence.</p></div><span class="artifact-type">CSV</span></div>
+  <div class="artifact-links"><a href="../data/final/asset_log_coverage.csv">Asset/log</a><a href="../data/final/control_coverage.csv">Controls</a><a href="../data/final/mitre_coverage.csv">MITRE</a><a href="../data/final/ctic_coverage.csv">CTI</a></div>
+</article><article class="artifact-card">
+  <div class="artifact-card-head"><div><h3>Audit outputs</h3><p>Machine-checkable validation summary and detailed structural audit result.</p></div><span class="artifact-type">TXT/MD</span></div>
+  <div class="artifact-links"><a href="../data/final/VALIDATION.txt">Validation</a><a href="../data/final/FINAL_AUDIT_RESULT.md">Audit result</a></div>
+</article></div></section>
+  <section class="artifact-section"><h2>Reproduction and audit</h2><p>The commands below verify the publication package without altering its evidence files.</p><div class="repro-command"><code>python3 tools/validate_academic_site.py
+python3 -m http.server 8000 --directory docs</code></div><div class="artifact-note"><strong>Boundary:</strong> the package supports arithmetic, relation, coverage and publication auditing. Replaying the complete upstream experiment still requires the authorized GOAD/Wazuh/MISP/pfSense laboratory and its live telemetry.</div></section>
+</main>
+<script src="../assets/saci-ui.js?v=responsive-nav-1"></script>
+  <script src="../assets/saci-compact-controls.js?v=2"></script>
+<script src="../assets/integrity-badge.js?v=f01"></script></body>
+</html>

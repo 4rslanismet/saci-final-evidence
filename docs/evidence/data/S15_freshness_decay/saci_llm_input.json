@@ -1,0 +1,36 @@
+{
+  "stage": {
+    "stage_id": "S15",
+    "stage_name": "freshness_decay",
+    "scenario_type": "sensitivity_test",
+    "description": "All graph relationships remain closed, but telemetry freshness score decays.",
+    "generated_at": "2026-07-06T10:21:15.001239+00:00",
+    "base_stage": "S8_final_closure",
+    "action": "freshness_decay"
+  },
+  "scores": {
+    "LC": "100.0",
+    "CAC": "100.0",
+    "MDC": "100.0",
+    "CTIC": "100.0",
+    "TF": "50.0",
+    "SACI": "95.0"
+  },
+  "graph_summary": "# SACI Graph Summary\n\nNodes: 95\nEdges: 173\nObserved edges: 173\nMissing edges: 0\n\n## Node types\n- asset: 6\n- control: 27\n- ioc: 2\n- logsource: 11\n- metric: 6\n- mitre: 15\n- platform: 2\n- score: 1\n- wazuh_rule: 25\n\n## Missing edge examples\n- None",
+  "weak_assets": [],
+  "critical_asset_gaps": [],
+  "missing_controls": [],
+  "missing_mitre": [],
+  "weak_cti": [],
+  "missing_edges_examples": [],
+  "detected_reasons": [
+    {
+      "metric": "TF",
+      "reason": "Son gözlenen kanıt freshness penceresini geçtiği için tazelik skoru düştü.",
+      "evidence": {
+        "TF": "50.0"
+      }
+    }
+  ],
+  "important_note": "LLM skor hesaplamaz. SACI skorları deterministik olarak hesaplanır. LLM yalnızca skor, coverage ve graph çıktılarını doğal dille açıklar."
+}
