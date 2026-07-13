@@ -1,0 +1,3053 @@
+{
+  "generated_at": "2026-07-09T00:16:43.696292+00:00",
+  "version": "final",
+  "elements": {
+    "nodes": [
+      {
+        "data": {
+          "id": "PLATFORM:Wazuh",
+          "label": "Wazuh SIEM",
+          "type": "platform"
+        }
+      },
+      {
+        "data": {
+          "id": "PLATFORM:MISP",
+          "label": "MISP CTI",
+          "type": "platform"
+        }
+      },
+      {
+        "data": {
+          "id": "INTEGRATION:custom-misp",
+          "label": "custom-misp",
+          "type": "integration"
+        }
+      },
+      {
+        "data": {
+          "id": "SCORE:SACI",
+          "label": "SACI Score",
+          "type": "score",
+          "version": "final"
+        }
+      },
+      {
+        "data": {
+          "id": "METRIC:CWLC",
+          "label": "CWLC",
+          "type": "metric",
+          "score": "100.0",
+          "weight": "0.3",
+          "applicable": "1"
+        }
+      },
+      {
+        "data": {
+          "id": "METRIC:CAC",
+          "label": "CAC",
+          "type": "metric",
+          "score": "100.0",
+          "weight": "0.25",
+          "applicable": "1"
+        }
+      },
+      {
+        "data": {
+          "id": "METRIC:MDC",
+          "label": "MDC",
+          "type": "metric",
+          "score": "100.0",
+          "weight": "0.2",
+          "applicable": "1"
+        }
+      },
+      {
+        "data": {
+          "id": "METRIC:CTIC",
+          "label": "CTIC",
+          "type": "metric",
+          "score": "100.0",
+          "weight": "0.15",
+          "applicable": "1"
+        }
+      },
+      {
+        "data": {
+          "id": "METRIC:TF",
+          "label": "TF",
+          "type": "metric",
+          "score": "100",
+          "weight": "0.1",
+          "applicable": "1"
+        }
+      },
+      {
+        "data": {
+          "id": "METRIC:SACI",
+          "label": "SACI",
+          "type": "metric",
+          "score": "100.0",
+          "weight": "1.0",
+          "applicable": "1"
+        }
+      },
+      {
+        "data": {
+          "id": "ASSET:A01",
+          "label": "DC01",
+          "type": "asset",
+          "ip": "192.168.1.10",
+          "role": "Domain Controller",
+          "criticality": "5"
+        }
+      },
+      {
+        "data": {
+          "id": "ASSET:A02",
+          "label": "WSIEM",
+          "type": "asset",
+          "ip": "192.168.1.100",
+          "role": "Wazuh SIEM",
+          "criticality": "5"
+        }
+      },
+      {
+        "data": {
+          "id": "ASSET:A03",
+          "label": "CTI01",
+          "type": "asset",
+          "ip": "192.168.1.101",
+          "role": "MISP CTI Platform",
+          "criticality": "4"
+        }
+      },
+      {
+        "data": {
+          "id": "ASSET:A07",
+          "label": "FW01-PFSENSE",
+          "type": "asset",
+          "ip": "192.168.1.1",
+          "role": "Firewall",
+          "criticality": "5"
+        }
+      },
+      {
+        "data": {
+          "id": "ASSET:A04",
+          "label": "WS01",
+          "type": "asset",
+          "ip": "192.168.1.111",
+          "role": "Windows workstation endpoint",
+          "criticality": "4"
+        }
+      },
+      {
+        "data": {
+          "id": "ASSET:A05",
+          "label": "uhost",
+          "type": "asset",
+          "ip": "192.168.1.121",
+          "role": "Ubuntu Linux endpoint",
+          "criticality": "4"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:Security",
+          "label": "Security",
+          "type": "log_source",
+          "source_weight": "4.0"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:Sysmon",
+          "label": "Sysmon",
+          "type": "log_source",
+          "source_weight": "3.0"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:ossec",
+          "label": "ossec",
+          "type": "log_source",
+          "source_weight": "2.0"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:misp_enrichment",
+          "label": "misp_enrichment",
+          "type": "log_source",
+          "source_weight": "4.0"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:misp_api",
+          "label": "misp_api",
+          "type": "log_source",
+          "source_weight": "4.0"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:pfsense_syslog",
+          "label": "pfsense_syslog",
+          "type": "log_source",
+          "source_weight": "5.0"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:PowerShell",
+          "label": "PowerShell",
+          "type": "log_source",
+          "source_weight": "3.0"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:authlog",
+          "label": "authlog",
+          "type": "log_source",
+          "source_weight": "4.0"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:syslog",
+          "label": "syslog",
+          "type": "log_source",
+          "source_weight": "2.0"
+        }
+      },
+      {
+        "data": {
+          "id": "LOGSOURCE:process",
+          "label": "process",
+          "type": "log_source",
+          "source_weight": "3.0"
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1071.004",
+          "label": "T1071.004",
+          "type": "mitre_technique",
+          "technique_name": "DNS",
+          "tactic": "Command and Control",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1059.001",
+          "label": "T1059.001",
+          "type": "mitre_technique",
+          "technique_name": "PowerShell",
+          "tactic": "Execution",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1059.003",
+          "label": "T1059.003",
+          "type": "mitre_technique",
+          "technique_name": "Windows Command Shell",
+          "tactic": "Execution",
+          "covered": 0
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1078",
+          "label": "T1078",
+          "type": "mitre_technique",
+          "technique_name": "Valid Accounts",
+          "tactic": "Initial Access / Persistence / Privilege Escalation",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1105",
+          "label": "T1105",
+          "type": "mitre_technique",
+          "technique_name": "Ingress Tool Transfer",
+          "tactic": "Command and Control",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1016",
+          "label": "T1016",
+          "type": "mitre_technique",
+          "technique_name": "System Network Configuration Discovery",
+          "tactic": "Discovery",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1018",
+          "label": "T1018",
+          "type": "mitre_technique",
+          "technique_name": "Remote System Discovery",
+          "tactic": "Discovery",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1135",
+          "label": "T1135",
+          "type": "mitre_technique",
+          "technique_name": "Network Share Discovery",
+          "tactic": "Discovery",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1482",
+          "label": "T1482",
+          "type": "mitre_technique",
+          "technique_name": "Domain Trust Discovery",
+          "tactic": "Discovery",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1087",
+          "label": "T1087",
+          "type": "mitre_technique",
+          "technique_name": "Account Discovery",
+          "tactic": "Discovery",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1049",
+          "label": "T1049",
+          "type": "mitre_technique",
+          "technique_name": "System Network Connections Discovery",
+          "tactic": "Discovery",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1110",
+          "label": "T1110",
+          "type": "mitre_technique",
+          "technique_name": "Brute Force",
+          "tactic": "Credential Access",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1082",
+          "label": "T1082",
+          "type": "mitre_technique",
+          "technique_name": "System Information Discovery",
+          "tactic": "Discovery",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MITRE:T1046",
+          "label": "T1046",
+          "type": "mitre_technique",
+          "technique_name": "Network Service Discovery",
+          "tactic": "Discovery",
+          "covered": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C001",
+          "label": "C001",
+          "type": "control",
+          "description": "IOC or suspicious domain observed in process command line",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110006",
+          "label": "110006",
+          "type": "wazuh_rule",
+          "description": "IOC or suspicious domain observed in process command line",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C002",
+          "label": "C002",
+          "type": "control",
+          "description": "Sysmon DNS query observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110005",
+          "label": "110005",
+          "type": "wazuh_rule",
+          "description": "Sysmon DNS query observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C003",
+          "label": "C003",
+          "type": "control",
+          "description": "PowerShell encoded command observed [disabled: legacy default Wazuh rule not used in final SACI scenario] [disabled: legacy default Wazuh rule not used in final SACI scenario]",
+          "seen": 0,
+          "enabled": 0,
+          "scope": "out_of_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:92057",
+          "label": "92057",
+          "type": "wazuh_rule",
+          "description": "PowerShell encoded command observed [disabled: legacy default Wazuh rule not used in final SACI scenario] [disabled: legacy default Wazuh rule not used in final SACI scenario]",
+          "seen": 0,
+          "enabled": 0,
+          "scope": "out_of_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C004",
+          "label": "C004",
+          "type": "control",
+          "description": "Abnormal command shell execution observed [disabled: legacy default Wazuh rule not used in final SACI scenario] [disabled: legacy default Wazuh rule not used in final SACI scenario]",
+          "seen": 0,
+          "enabled": 0,
+          "scope": "out_of_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:92052",
+          "label": "92052",
+          "type": "wazuh_rule",
+          "description": "Abnormal command shell execution observed [disabled: legacy default Wazuh rule not used in final SACI scenario] [disabled: legacy default Wazuh rule not used in final SACI scenario]",
+          "seen": 0,
+          "enabled": 0,
+          "scope": "out_of_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C005",
+          "label": "C005",
+          "type": "control",
+          "description": "Windows successful logon observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:60106",
+          "label": "60106",
+          "type": "wazuh_rule",
+          "description": "Windows successful logon observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C006",
+          "label": "C006",
+          "type": "control",
+          "description": "MISP IOC match converted to Wazuh alert",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110100",
+          "label": "110100",
+          "type": "wazuh_rule",
+          "description": "MISP IOC match converted to Wazuh alert",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C007",
+          "label": "C007",
+          "type": "control",
+          "description": "Account discovery command observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110010",
+          "label": "110010",
+          "type": "wazuh_rule",
+          "description": "Account discovery command observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C008",
+          "label": "C008",
+          "type": "control",
+          "description": "Domain trust or domain controller discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110011",
+          "label": "110011",
+          "type": "wazuh_rule",
+          "description": "Remote system discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C009",
+          "label": "C009",
+          "type": "control",
+          "description": "Network configuration discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110012",
+          "label": "110012",
+          "type": "wazuh_rule",
+          "description": "Network connection discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C010",
+          "label": "C010",
+          "type": "control",
+          "description": "Ingress tool transfer simulation observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110013",
+          "label": "110013",
+          "type": "wazuh_rule",
+          "description": "Ingress tool transfer simulation observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C011",
+          "label": "C011",
+          "type": "control",
+          "description": "Network share discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110014",
+          "label": "110014",
+          "type": "wazuh_rule",
+          "description": "Network share discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C012",
+          "label": "C012",
+          "type": "control",
+          "description": "Remote system discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C013",
+          "label": "C013",
+          "type": "control",
+          "description": "Network connection discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C014",
+          "label": "C014",
+          "type": "control",
+          "description": "pfSense firewall event observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110200",
+          "label": "110200",
+          "type": "wazuh_rule",
+          "description": "pfSense firewall event observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C015",
+          "label": "C015",
+          "type": "control",
+          "description": "pfSense blocked traffic observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110201",
+          "label": "110201",
+          "type": "wazuh_rule",
+          "description": "pfSense blocked traffic observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C016",
+          "label": "C016",
+          "type": "control",
+          "description": "pfSense observed CTI IOC IP traffic",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110203",
+          "label": "110203",
+          "type": "wazuh_rule",
+          "description": "pfSense observed CTI IOC IP traffic",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C017",
+          "label": "C017",
+          "type": "control",
+          "description": "Windows endpoint security logon observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110223",
+          "label": "110223",
+          "type": "wazuh_rule",
+          "description": "Windows endpoint security logon observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C018",
+          "label": "C018",
+          "type": "control",
+          "description": "Windows endpoint account discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110220",
+          "label": "110220",
+          "type": "wazuh_rule",
+          "description": "Windows endpoint account discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C019",
+          "label": "C019",
+          "type": "control",
+          "description": "Windows endpoint PowerShell execution observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110222",
+          "label": "110222",
+          "type": "wazuh_rule",
+          "description": "Windows endpoint PowerShell execution observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C020",
+          "label": "C020",
+          "type": "control",
+          "description": "Ubuntu SSH authentication failure observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110230",
+          "label": "110230",
+          "type": "wazuh_rule",
+          "description": "Ubuntu SSH authentication failure observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C021",
+          "label": "C021",
+          "type": "control",
+          "description": "Ubuntu syslog telemetry observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110231",
+          "label": "110231",
+          "type": "wazuh_rule",
+          "description": "Ubuntu syslog telemetry observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C022",
+          "label": "C022",
+          "type": "control",
+          "description": "Ubuntu process or network discovery telemetry observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110232",
+          "label": "110232",
+          "type": "wazuh_rule",
+          "description": "Ubuntu process or network discovery telemetry observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C023",
+          "label": "C023",
+          "type": "control",
+          "description": "Real Windows endpoint successful logon observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110240",
+          "label": "110240",
+          "type": "wazuh_rule",
+          "description": "Real Windows endpoint successful logon observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C024",
+          "label": "C024",
+          "type": "control",
+          "description": "Real Windows endpoint account discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110241",
+          "label": "110241",
+          "type": "wazuh_rule",
+          "description": "Real Windows endpoint account discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C025",
+          "label": "C025",
+          "type": "control",
+          "description": "Real Windows endpoint network discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110242",
+          "label": "110242",
+          "type": "wazuh_rule",
+          "description": "Real Windows endpoint network discovery observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C026",
+          "label": "C026",
+          "type": "control",
+          "description": "Real Windows endpoint PowerShell execution observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110243",
+          "label": "110243",
+          "type": "wazuh_rule",
+          "description": "Real Windows endpoint PowerShell execution observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CONTROL:C027",
+          "label": "C027",
+          "type": "control",
+          "description": "Real Windows endpoint DNS IOC query observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "RULE:110244",
+          "label": "110244",
+          "type": "wazuh_rule",
+          "description": "Real Windows endpoint DNS IOC query observed",
+          "seen": 1,
+          "enabled": 1,
+          "scope": "in_scope"
+        }
+      },
+      {
+        "data": {
+          "id": "CTI:cti-test.example.com",
+          "label": "cti-test.example.com",
+          "type": "cti_object",
+          "cti_type": "indicator",
+          "subtype": "domain",
+          "confidence": "medium"
+        }
+      },
+      {
+        "data": {
+          "id": "CTI:203.0.113.66",
+          "label": "203.0.113.66",
+          "type": "cti_object",
+          "cti_type": "indicator",
+          "subtype": "ip-dst",
+          "confidence": "medium"
+        }
+      },
+      {
+        "data": {
+          "id": "CTI:test-malware-family",
+          "label": "test-malware-family",
+          "type": "cti_object",
+          "cti_type": "malware",
+          "subtype": "synthetic",
+          "confidence": "low"
+        }
+      },
+      {
+        "data": {
+          "id": "CTI:test-threat-actor",
+          "label": "test-threat-actor",
+          "type": "cti_object",
+          "cti_type": "threat_actor",
+          "subtype": "synthetic",
+          "confidence": "low"
+        }
+      },
+      {
+        "data": {
+          "id": "CTI:saci-lab-campaign",
+          "label": "saci-lab-campaign",
+          "type": "cti_object",
+          "cti_type": "campaign",
+          "subtype": "synthetic",
+          "confidence": "low"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "METRIC:CWLC",
+          "target": "SCORE:SACI",
+          "relationship": "contributes_to",
+          "observed": 1,
+          "weight": 0.3,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e0"
+        }
+      },
+      {
+        "data": {
+          "source": "METRIC:CAC",
+          "target": "SCORE:SACI",
+          "relationship": "contributes_to",
+          "observed": 1,
+          "weight": 0.25,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e1"
+        }
+      },
+      {
+        "data": {
+          "source": "METRIC:MDC",
+          "target": "SCORE:SACI",
+          "relationship": "contributes_to",
+          "observed": 1,
+          "weight": 0.2,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e2"
+        }
+      },
+      {
+        "data": {
+          "source": "METRIC:CTIC",
+          "target": "SCORE:SACI",
+          "relationship": "contributes_to",
+          "observed": 1,
+          "weight": 0.15,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e3"
+        }
+      },
+      {
+        "data": {
+          "source": "METRIC:TF",
+          "target": "SCORE:SACI",
+          "relationship": "contributes_to",
+          "observed": 1,
+          "weight": 0.1,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e4"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "LOGSOURCE:Security",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 5.0,
+          "confidence": "high",
+          "last_seen": "2026-06-27T18:34:56.082605+00:00",
+          "id": "e5"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:Security",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-06-27T18:34:56.082605+00:00",
+          "id": "e6"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 4.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T15:18:37.603129+00:00",
+          "id": "e7"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:Sysmon",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T15:18:37.603129+00:00",
+          "id": "e8"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A02",
+          "target": "LOGSOURCE:ossec",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 2.0,
+          "confidence": "high",
+          "last_seen": "2026-06-27T18:34:56.082605+00:00",
+          "id": "e9"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:ossec",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-06-27T18:34:56.082605+00:00",
+          "id": "e10"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A02",
+          "target": "LOGSOURCE:misp_enrichment",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 4.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T23:21:03.579315+00:00",
+          "id": "e11"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:misp_enrichment",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T23:21:03.579315+00:00",
+          "id": "e12"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A03",
+          "target": "LOGSOURCE:misp_api",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 4.0,
+          "confidence": "high",
+          "last_seen": "2026-06-27T18:34:56.082605+00:00",
+          "id": "e13"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:misp_api",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-06-27T18:34:56.082605+00:00",
+          "id": "e14"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A07",
+          "target": "LOGSOURCE:pfsense_syslog",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 5.0,
+          "confidence": "high",
+          "last_seen": "2026-06-27T18:34:56.149396+00:00",
+          "id": "e15"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:pfsense_syslog",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-06-27T18:34:56.149396+00:00",
+          "id": "e16"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "LOGSOURCE:Security",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 4.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:05+00:00",
+          "id": "e17"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:Security",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:05+00:00",
+          "id": "e18"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:09+00:00",
+          "id": "e19"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:Sysmon",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:09+00:00",
+          "id": "e20"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "LOGSOURCE:PowerShell",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T23:21:03.579315+00:00",
+          "id": "e21"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:PowerShell",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T23:21:03.579315+00:00",
+          "id": "e22"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A05",
+          "target": "LOGSOURCE:authlog",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 4.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:02+00:00",
+          "id": "e23"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:authlog",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:02+00:00",
+          "id": "e24"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A05",
+          "target": "LOGSOURCE:syslog",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 2.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:03+00:00",
+          "id": "e25"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:syslog",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:03+00:00",
+          "id": "e26"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A05",
+          "target": "LOGSOURCE:process",
+          "relationship": "emits",
+          "observed": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:04+00:00",
+          "id": "e27"
+        }
+      },
+      {
+        "data": {
+          "source": "LOGSOURCE:process",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "collected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "2026-07-08T12:01:04+00:00",
+          "id": "e28"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C001",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e29"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C001",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e30"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C001",
+          "target": "RULE:110006",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e31"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110006",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e32"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C001",
+          "target": "MITRE:T1071.004",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e33"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C002",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e34"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C002",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e35"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C002",
+          "target": "RULE:110005",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e36"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110005",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e37"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C002",
+          "target": "MITRE:T1071.004",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e38"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C005",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.7,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e39"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C005",
+          "target": "LOGSOURCE:Security",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e40"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C005",
+          "target": "RULE:60106",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e41"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:60106",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e42"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C005",
+          "target": "MITRE:T1078",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e43"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A02",
+          "target": "CONTROL:C006",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.2,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e44"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C006",
+          "target": "LOGSOURCE:Wazuh",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e45"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C006",
+          "target": "RULE:110100",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e46"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110100",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e47"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C006",
+          "target": "MITRE:T1071.004",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e48"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C007",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e49"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C007",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e50"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C007",
+          "target": "RULE:110010",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e51"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110010",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e52"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C007",
+          "target": "MITRE:T1087",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e53"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C008",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e54"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C008",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e55"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C008",
+          "target": "RULE:110011",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e56"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110011",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e57"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C008",
+          "target": "MITRE:T1482",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e58"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C009",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.8,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e59"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C009",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e60"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C009",
+          "target": "RULE:110012",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e61"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110012",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e62"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C009",
+          "target": "MITRE:T1016",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e63"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C010",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.2,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e64"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C010",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e65"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C010",
+          "target": "RULE:110013",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e66"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110013",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e67"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C010",
+          "target": "MITRE:T1105",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e68"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C011",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.8,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e69"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C011",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e70"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C011",
+          "target": "RULE:110014",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e71"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110014",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e72"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C011",
+          "target": "MITRE:T1135",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e73"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C012",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.8,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e74"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C012",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e75"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C012",
+          "target": "RULE:110011",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e76"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110011",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e77"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C012",
+          "target": "MITRE:T1018",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e78"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A01",
+          "target": "CONTROL:C013",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.8,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e79"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C013",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e80"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C013",
+          "target": "RULE:110012",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e81"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110012",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e82"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C013",
+          "target": "MITRE:T1049",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e83"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A07",
+          "target": "CONTROL:C014",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e84"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C014",
+          "target": "LOGSOURCE:pfsense_syslog",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e85"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C014",
+          "target": "RULE:110200",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e86"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110200",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e87"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C014",
+          "target": "MITRE:T1046",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e88"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A07",
+          "target": "CONTROL:C015",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e89"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C015",
+          "target": "LOGSOURCE:pfsense_syslog",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e90"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C015",
+          "target": "RULE:110201",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e91"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110201",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e92"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C015",
+          "target": "MITRE:T1046",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e93"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A07",
+          "target": "CONTROL:C016",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.2,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e94"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C016",
+          "target": "LOGSOURCE:pfsense_syslog",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e95"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C016",
+          "target": "RULE:110203",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e96"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110203",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e97"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C016",
+          "target": "MITRE:T1071.001",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e98"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "CONTROL:C017",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.7,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e99"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C017",
+          "target": "LOGSOURCE:Security",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e100"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C017",
+          "target": "RULE:110223",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e101"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110223",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e102"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C017",
+          "target": "MITRE:T1078",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e103"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "CONTROL:C018",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e104"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C018",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e105"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C018",
+          "target": "RULE:110220",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e106"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110220",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e107"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C018",
+          "target": "MITRE:T1087",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e108"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "CONTROL:C019",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.9,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e109"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C019",
+          "target": "LOGSOURCE:PowerShell",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e110"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C019",
+          "target": "RULE:110222",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e111"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110222",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e112"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C019",
+          "target": "MITRE:T1059.001",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e113"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A05",
+          "target": "CONTROL:C020",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e114"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C020",
+          "target": "LOGSOURCE:authlog",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e115"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C020",
+          "target": "RULE:110230",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e116"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110230",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e117"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C020",
+          "target": "MITRE:T1110",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e118"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A05",
+          "target": "CONTROL:C021",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.8,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e119"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C021",
+          "target": "LOGSOURCE:syslog",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e120"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C021",
+          "target": "RULE:110231",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e121"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110231",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e122"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C021",
+          "target": "MITRE:T1082",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e123"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A05",
+          "target": "CONTROL:C022",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e124"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C022",
+          "target": "LOGSOURCE:process",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e125"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C022",
+          "target": "RULE:110232",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e126"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110232",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e127"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C022",
+          "target": "MITRE:T1046",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e128"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "CONTROL:C023",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.7,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e129"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C023",
+          "target": "LOGSOURCE:Security",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e130"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C023",
+          "target": "RULE:110240",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e131"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110240",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e132"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C023",
+          "target": "MITRE:T1078",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e133"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "CONTROL:C024",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e134"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C024",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e135"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C024",
+          "target": "RULE:110241",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e136"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110241",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e137"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C024",
+          "target": "MITRE:T1087",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e138"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "CONTROL:C025",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e139"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C025",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e140"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C025",
+          "target": "RULE:110242",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e141"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110242",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e142"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C025",
+          "target": "MITRE:T1016",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e143"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "CONTROL:C026",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.9,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e144"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C026",
+          "target": "LOGSOURCE:PowerShell",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e145"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C026",
+          "target": "RULE:110243",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e146"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110243",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e147"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C026",
+          "target": "MITRE:T1059.001",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e148"
+        }
+      },
+      {
+        "data": {
+          "source": "ASSET:A04",
+          "target": "CONTROL:C027",
+          "relationship": "protected_by",
+          "observed": 1,
+          "weight": 0.8,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e149"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C027",
+          "target": "LOGSOURCE:Sysmon",
+          "relationship": "uses_log_source",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e150"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C027",
+          "target": "RULE:110244",
+          "relationship": "produces_rule",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e151"
+        }
+      },
+      {
+        "data": {
+          "source": "RULE:110244",
+          "target": "PLATFORM:Wazuh",
+          "relationship": "alerted_in",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e152"
+        }
+      },
+      {
+        "data": {
+          "source": "CONTROL:C027",
+          "target": "MITRE:T1071.004",
+          "relationship": "detects_technique",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e153"
+        }
+      },
+      {
+        "data": {
+          "source": "INTEGRATION:custom-misp",
+          "target": "PLATFORM:MISP",
+          "relationship": "queries",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "",
+          "id": "e154"
+        }
+      },
+      {
+        "data": {
+          "source": "PLATFORM:MISP",
+          "target": "CTI:cti-test.example.com",
+          "relationship": "contains_ioc",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "medium",
+          "last_seen": "",
+          "id": "e155"
+        }
+      },
+      {
+        "data": {
+          "source": "PLATFORM:Wazuh",
+          "target": "INTEGRATION:custom-misp",
+          "relationship": "triggers_integration",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e156"
+        }
+      },
+      {
+        "data": {
+          "source": "INTEGRATION:custom-misp",
+          "target": "CTI:cti-test.example.com",
+          "relationship": "matches_ioc",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e157"
+        }
+      },
+      {
+        "data": {
+          "source": "CTI:cti-test.example.com",
+          "target": "RULE:110100",
+          "relationship": "converted_to_alert",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e158"
+        }
+      },
+      {
+        "data": {
+          "source": "CTI:cti-test.example.com",
+          "target": "MITRE:T1071.004",
+          "relationship": "mapped_to",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e159"
+        }
+      },
+      {
+        "data": {
+          "source": "INTEGRATION:custom-misp",
+          "target": "PLATFORM:MISP",
+          "relationship": "queries",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "high",
+          "last_seen": "",
+          "id": "e160"
+        }
+      },
+      {
+        "data": {
+          "source": "PLATFORM:MISP",
+          "target": "CTI:203.0.113.66",
+          "relationship": "contains_ioc",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "medium",
+          "last_seen": "",
+          "id": "e161"
+        }
+      },
+      {
+        "data": {
+          "source": "PLATFORM:Wazuh",
+          "target": "INTEGRATION:custom-misp",
+          "relationship": "triggers_integration",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e162"
+        }
+      },
+      {
+        "data": {
+          "source": "INTEGRATION:custom-misp",
+          "target": "CTI:203.0.113.66",
+          "relationship": "matches_ioc",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e163"
+        }
+      },
+      {
+        "data": {
+          "source": "CTI:203.0.113.66",
+          "target": "RULE:110203",
+          "relationship": "converted_to_alert",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e164"
+        }
+      },
+      {
+        "data": {
+          "source": "CTI:203.0.113.66",
+          "target": "MITRE:T1071.004",
+          "relationship": "mapped_to",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "",
+          "last_seen": "",
+          "id": "e165"
+        }
+      },
+      {
+        "data": {
+          "source": "CTI:cti-test.example.com",
+          "target": "MITRE:T1071.004",
+          "relationship": "maps_to",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "medium",
+          "last_seen": "",
+          "id": "e166"
+        }
+      },
+      {
+        "data": {
+          "source": "CTI:203.0.113.66",
+          "target": "MITRE:T1071.004",
+          "relationship": "maps_to",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "medium",
+          "last_seen": "",
+          "id": "e167"
+        }
+      },
+      {
+        "data": {
+          "source": "CTI:test-malware-family",
+          "target": "MITRE:T1071.004",
+          "relationship": "uses",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "last_seen": "",
+          "id": "e168"
+        }
+      },
+      {
+        "data": {
+          "source": "CTI:test-threat-actor",
+          "target": "CTI:test-malware-family",
+          "relationship": "uses",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "last_seen": "",
+          "id": "e169"
+        }
+      },
+      {
+        "data": {
+          "source": "CTI:saci-lab-campaign",
+          "target": "CTI:cti-test.example.com",
+          "relationship": "contains",
+          "observed": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "last_seen": "",
+          "id": "e170"
+        }
+      }
+    ]
+  }
+}

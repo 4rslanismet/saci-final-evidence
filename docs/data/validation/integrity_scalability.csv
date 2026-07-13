@@ -1,0 +1,5 @@
+multiplier,nodes,edge_rows,unique_triples,status,median_time_ms,min_time_ms,max_time_ms,median_peak_mib,repeats
+1,99,171,165,VALID,0.778,0.699,0.93,0.035,7
+10,990,1710,1650,VALID,5.763,5.644,9.372,0.308,7
+100,9900,17100,16500,VALID,67.691,66.732,92.224,4.27,7
+1000,99000,171000,165000,VALID,883.438,860.457,1048.322,41.17,7

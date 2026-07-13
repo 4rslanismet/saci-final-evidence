@@ -1,0 +1,23 @@
+name: Validate research artifact
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate Vagrant syntax
+        run: ruby -c Vagrantfile
+      - name: Validate canonical release and portal
+        run: python3 tools/validate_all.py

@@ -2,7 +2,6 @@ SACI CANONICAL FINAL DATASET VALIDATION
 ======================================
 
 Dataset type: Canonical publication snapshot
-Package generated: 2026-07-11
 
 SCORE CHECKS
 ------------
@@ -10,13 +9,15 @@ SCORE CHECKS
 [PASS] CAC  = 100.0
 [PASS] MDC  = 100.0
 [PASS] CTIC = 100.0
-[PASS] TF   = 100
+[PASS] TF   = 100.0
 [PASS] SACI = 100.0
 
 RELATION CHECKS
 ---------------
-[PASS] Declared nodes: 97
+[PASS] Declared nodes: 99
+[PASS] Rendered nodes: 99
 [PASS] Edge rows: 171
+[PASS] Unique edge triples: 165
 [PASS] Observed edges: 171
 [PASS] Missing edges: 0
 
@@ -33,34 +34,24 @@ COVERAGE CHECKS
 
 STRUCTURAL INTEGRITY
 --------------------
-[REVIEW] Undeclared edge endpoints: 2
-         - LOGSOURCE:Wazuh
-         - MITRE:T1071.001
+[PASS] Undeclared endpoints: 0
+[PASS] Duplicate node identifiers: 0
+[PASS] Conflicting direct ATT&CK mappings: 0
+[PASS] CSV-CYJS mismatch: 0
+[PASS] Parallel evidence rows without unique evidence_id: 0
+[PASS] Undocumented isolated nodes: 0
 
 OVERALL RESULT
 --------------
-PASS WITH STRUCTURAL REVIEW
+VALID
+PUBLICATION GATE: OPEN
+
+F-01 HISTORY
+------------
+The former 97/99 mismatch is retained only as a pre-release regression case.
+The current canonical release is 99/99 and contains no active integrity finding.
 
 INTERPRETATION
 --------------
-All declared visibility relations in the canonical evaluation scope are
-observed. The two undeclared endpoints are retained as a structural graph
-integrity finding. They do not change relation closure, active reason-code
-status, or the SACI score.
-
-SACI=100 is a scope-bounded visibility result. It is not an absolute security
-guarantee and does not claim discovery of every unknown attack-surface element.
-
-SACI_INTEGRITY_GATE_START
-## Independent evidence-integrity gate
-
-| Check | Result |
-|---|---:|
-| Calculated SACI | 100.0 |
-| Relation closure | 171/171 |
-| Declared/rendered nodes | 99/99 |
-| Integrity status | **VALID** |
-| Publication gate | **OPEN** |
-
-Finding F-01 was resolved by declaring the formerly implicit endpoints, separating direct ATT&CK mappings from CTI contextual associations, assigning unique evidence identifiers to parallel evidence edges and documenting intentionally retained out-of-scope nodes.
-SACI_INTEGRITY_GATE_END
+SACI=100 is a scope-bounded evidence-closure result. It is not an absolute
+security guarantee or a claim of complete unknown attack-surface discovery.

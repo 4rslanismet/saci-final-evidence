@@ -1,6 +1,6 @@
 {
   "dataset": "SACI canonical publication snapshot",
-  "generated": "2026-07-12T17:32:01.538117+00:00",
+  "generated": "2026-07-13T18:55:01.679753+00:00",
   "summary": {
     "files": 14,
     "saci": 100.0,
@@ -54,8 +54,8 @@
       "group": "graph",
       "description_tr": "Final kanıt graph'ında beyan edilen düğümler.",
       "description_en": "Nodes declared in the final evidence graph.",
-      "records_tr": "97 düğüm",
-      "records_en": "97 nodes",
+      "records_tr": "99 düğüm",
+      "records_en": "99 nodes",
       "size": "9.2 KB",
       "bytes": 9436,
       "sha256": "f3aadab97050f9c705803b1c9fd40222ae188c08327d4cf1a374a4b9802d754e"
@@ -80,8 +80,8 @@
       "group": "graph",
       "description_tr": "Etkileşimli graph görünümü için Cytoscape.js veri dosyası.",
       "description_en": "Cytoscape.js data file for the interactive graph view.",
-      "records_tr": "97 node / 171 edge",
-      "records_en": "97 nodes / 171 edges",
+      "records_tr": "99 node / 171 edge",
+      "records_en": "99 nodes / 171 edges",
       "size": "136.9 KB",
       "bytes": 140158,
       "sha256": "19dad221cf0b507641214f7b3131c9028e77ab68ab78413da53c3e9f83c5926b"
@@ -184,11 +184,11 @@
       "group": "audit",
       "description_tr": "Skor, graph, coverage ve yapısal bütünlük kontrolleri.",
       "description_en": "Score, graph, coverage and structural-integrity checks.",
-      "records_tr": "PASS + REVIEW",
-      "records_en": "PASS + REVIEW",
-      "size": "1.9 KB",
-      "bytes": 1905,
-      "sha256": "66f54e72f6dce40b6b42a2ee597201f36db219f8796505b978f550ca1b628a88"
+      "records_tr": "VALID · OPEN",
+      "records_en": "VALID · OPEN",
+      "size": "1.4 KB",
+      "bytes": 1466,
+      "sha256": "6dfcfd99cc07b6f70c0562bd3eb0ad1db3d5231a63972ad51ea29024a1070713"
     },
     {
       "name": "FINAL_AUDIT_RESULT.md",
@@ -197,17 +197,17 @@
       "group": "audit",
       "description_tr": "Final yayın veri kümesinin ayrıntılı audit sonucu.",
       "description_en": "Detailed audit result for the final publication dataset.",
-      "records_tr": "Markdown rapor",
-      "records_en": "Markdown report",
+      "records_tr": "VALID · OPEN raporu",
+      "records_en": "VALID · OPEN report",
       "size": "2.5 KB",
-      "bytes": 2585,
-      "sha256": "18481f45f7a1a6f78f23aed483ebcfcd0aa4b8cb6b43f29638fc3dc345cc59d8"
+      "bytes": 2558,
+      "sha256": "79872c8dfa68e97adba28ac1908dfe870466fe84a20e7cf5f1875404c9067636"
     }
   ],
   "bundle": {
     "path": "data/final/saci_final_data_package.zip",
-    "bytes": 27149,
-    "size": "26.5 KB",
-    "sha256": "e333f452f6798e12ffd55a22b04a7b7ffdad11c857162639203a7890f7fd2628"
+    "bytes": 27585,
+    "size": "26.9 KB",
+    "sha256": "19345a02fa5fd3d8be900c703497d4ebead2fadbef13f331b69b82e704a0d993"
   }
 }

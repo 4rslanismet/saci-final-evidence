@@ -1,0 +1,24 @@
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad="0.15", nodesep="0.42", ranksep="0.55", dpi=300];
+  node [shape=box, style="rounded", fontname="Times-Roman", fontsize=12, margin="0.13,0.10", color="black"];
+  edge [fontname="Times-Roman", fontsize=9, color="black", arrowsize=0.7];
+
+  scope [label=< <B>Declared scope</B><BR/><FONT POINT-SIZE="9">assets, sources, controls,<BR/>techniques, and IOCs</FONT> >];
+  observed [label=< <B>Observed evidence</B><BR/><FONT POINT-SIZE="9">alerts, logs, lookups,<BR/>and scenario records</FONT> >];
+  tables [label=< <B>Coverage tables</B><BR/><FONT POINT-SIZE="9">asset-log, control,<BR/>ATT&amp;CK, CTI, freshness</FONT> >];
+  score [label=< <B>Score engine</B><BR/><FONT POINT-SIZE="9">CWLC, CAC, MDC,<BR/>CTIC, TF, SACI</FONT> >];
+  pgraph [label=< <B>Provenance graph</B><BR/><FONT POINT-SIZE="9">typed nodes, edges,<BR/>evidence identifiers</FONT> >];
+  gate [label=< <B>Integrity gate</B><BR/><FONT POINT-SIZE="9">endpoints, mappings,<BR/>schema, graph consistency</FONT> >];
+  open [label=< <B>OPEN</B><BR/><FONT POINT-SIZE="9">canonical package</FONT> >];
+  blocked [label=< <B>BLOCKED</B><BR/><FONT POINT-SIZE="9">findings retained</FONT> >];
+
+  scope -> observed -> tables;
+  tables -> score;
+  tables -> pgraph;
+  score -> gate;
+  pgraph -> gate;
+  gate -> open [label="VALID"];
+  gate -> blocked [label="otherwise"];
+  {rank=same; score; pgraph}
+  {rank=same; open; blocked}
+}

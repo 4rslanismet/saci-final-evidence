@@ -661,7 +661,8 @@
   <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
   <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=1">
   <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
-<link rel="stylesheet" href="assets/integrity.css?v=f01"></head>
+<link rel="stylesheet" href="assets/integrity.css?v=f01"><link rel="stylesheet" href="assets/portal-paper-sync.css">
+</head>
 
 <body data-page="methodology">
 <a class="skip-link" href="#main">Ana içeriğe geç</a>
@@ -1494,7 +1495,15 @@
     <footer>
       SACI Methodology — active metric normalization, graph closure and bounded explanation layer.
     </footer>
-  <!-- SACI_INTEGRITY_METHOD_START --><section class="section integrity-method-section" id="integrity-gate"><h2>Bağımsız kanıt bütünlüğü kapısı</h2><p>Bulgu F-01, ilişki kapanışı ile graph bütünlüğünün ayrı doğrulama boyutları olduğunu göstermiştir.</p><p><a href="integrity.html">Integrity raporunu aç →</a></p></section><!-- SACI_INTEGRITY_METHOD_END --></main>
+  <!-- SACI_INTEGRITY_METHOD_START --><section class="section integrity-method-section" id="integrity-gate"><h2>Bağımsız kanıt bütünlüğü kapısı</h2><p>Bulgu F-01, ilişki kapanışı ile graph bütünlüğünün ayrı doğrulama boyutları olduğunu göstermiştir.</p><p><a href="integrity.html">Integrity raporunu aç →</a></p></section><!-- SACI_INTEGRITY_METHOD_END --><!-- VALIDATION_EXPERIMENTS_SYNC_START -->
+<section class="section portal-sync-section" id="integrity-validation-experiments">
+<h2>Bütünlük doğrulama deneyleri</h2>
+<p>Bütünlük kapısı dokuz kontrollü kusur enjeksiyonu ile sınanmış ve bütün beklenen durumlar gözlenmiştir. Kanonik 99 node / 171 ilişki yapısı ayrıca 1×–1000× kardinalitelerde çoğaltılmıştır.</p>
+<p>En büyük sentetik vaka 99.000 node ve 171.000 edge satırında medyan 883.438 ms ve 41.170 MiB tepe bellek üretmiştir. Bu sonuç yalnız validator veri-yapısı ölçeklenebilirliğine ilişkindir.</p>
+<div class="portal-sync-links"><a href="integrity.html#validation-experiments">Deney sonuçları</a><a href="data/validation/BENCHMARK_PROTOCOL.md">Protokol</a></div>
+</section>
+<!-- VALIDATION_EXPERIMENTS_SYNC_END -->
+</main>
 
   <script>
     (function () {

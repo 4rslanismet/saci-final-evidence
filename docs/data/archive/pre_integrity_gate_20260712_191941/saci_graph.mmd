@@ -1,0 +1,269 @@
+graph LR
+  PLATFORM_Wazuh["Wazuh SIEM<br/>platform"]
+  PLATFORM_MISP["MISP CTI<br/>platform"]
+  INTEGRATION_custom_misp["custom-misp<br/>integration"]
+  SCORE_SACI["SACI Score<br/>score"]
+  METRIC_CWLC["CWLC<br/>metric"]
+  METRIC_CAC["CAC<br/>metric"]
+  METRIC_MDC["MDC<br/>metric"]
+  METRIC_CTIC["CTIC<br/>metric"]
+  METRIC_TF["TF<br/>metric"]
+  METRIC_SACI["SACI<br/>metric"]
+  ASSET_A01["DC01<br/>asset"]
+  ASSET_A02["WSIEM<br/>asset"]
+  ASSET_A03["CTI01<br/>asset"]
+  ASSET_A07["FW01-PFSENSE<br/>asset"]
+  ASSET_A04["WS01<br/>asset"]
+  ASSET_A05["uhost<br/>asset"]
+  LOGSOURCE_Security["Security<br/>log_source"]
+  LOGSOURCE_Sysmon["Sysmon<br/>log_source"]
+  LOGSOURCE_ossec["ossec<br/>log_source"]
+  LOGSOURCE_misp_enrichment["misp_enrichment<br/>log_source"]
+  LOGSOURCE_misp_api["misp_api<br/>log_source"]
+  LOGSOURCE_pfsense_syslog["pfsense_syslog<br/>log_source"]
+  LOGSOURCE_PowerShell["PowerShell<br/>log_source"]
+  LOGSOURCE_authlog["authlog<br/>log_source"]
+  LOGSOURCE_syslog["syslog<br/>log_source"]
+  LOGSOURCE_process["process<br/>log_source"]
+  MITRE_T1071_004["T1071.004<br/>mitre_technique"]
+  MITRE_T1059_001["T1059.001<br/>mitre_technique"]
+  MITRE_T1059_003["T1059.003<br/>mitre_technique"]
+  MITRE_T1078["T1078<br/>mitre_technique"]
+  MITRE_T1105["T1105<br/>mitre_technique"]
+  MITRE_T1016["T1016<br/>mitre_technique"]
+  MITRE_T1018["T1018<br/>mitre_technique"]
+  MITRE_T1135["T1135<br/>mitre_technique"]
+  MITRE_T1482["T1482<br/>mitre_technique"]
+  MITRE_T1087["T1087<br/>mitre_technique"]
+  MITRE_T1049["T1049<br/>mitre_technique"]
+  MITRE_T1110["T1110<br/>mitre_technique"]
+  MITRE_T1082["T1082<br/>mitre_technique"]
+  MITRE_T1046["T1046<br/>mitre_technique"]
+  CONTROL_C001["C001<br/>control"]
+  RULE_110006["110006<br/>wazuh_rule"]
+  CONTROL_C002["C002<br/>control"]
+  RULE_110005["110005<br/>wazuh_rule"]
+  CONTROL_C003["C003<br/>control"]
+  RULE_92057["92057<br/>wazuh_rule"]
+  CONTROL_C004["C004<br/>control"]
+  RULE_92052["92052<br/>wazuh_rule"]
+  CONTROL_C005["C005<br/>control"]
+  RULE_60106["60106<br/>wazuh_rule"]
+  CONTROL_C006["C006<br/>control"]
+  RULE_110100["110100<br/>wazuh_rule"]
+  CONTROL_C007["C007<br/>control"]
+  RULE_110010["110010<br/>wazuh_rule"]
+  CONTROL_C008["C008<br/>control"]
+  RULE_110011["110011<br/>wazuh_rule"]
+  CONTROL_C009["C009<br/>control"]
+  RULE_110012["110012<br/>wazuh_rule"]
+  CONTROL_C010["C010<br/>control"]
+  RULE_110013["110013<br/>wazuh_rule"]
+  CONTROL_C011["C011<br/>control"]
+  RULE_110014["110014<br/>wazuh_rule"]
+  CONTROL_C012["C012<br/>control"]
+  CONTROL_C013["C013<br/>control"]
+  CONTROL_C014["C014<br/>control"]
+  RULE_110200["110200<br/>wazuh_rule"]
+  CONTROL_C015["C015<br/>control"]
+  RULE_110201["110201<br/>wazuh_rule"]
+  CONTROL_C016["C016<br/>control"]
+  RULE_110203["110203<br/>wazuh_rule"]
+  CONTROL_C017["C017<br/>control"]
+  RULE_110223["110223<br/>wazuh_rule"]
+  CONTROL_C018["C018<br/>control"]
+  RULE_110220["110220<br/>wazuh_rule"]
+  CONTROL_C019["C019<br/>control"]
+  RULE_110222["110222<br/>wazuh_rule"]
+  CONTROL_C020["C020<br/>control"]
+  RULE_110230["110230<br/>wazuh_rule"]
+  CONTROL_C021["C021<br/>control"]
+  RULE_110231["110231<br/>wazuh_rule"]
+  CONTROL_C022["C022<br/>control"]
+  RULE_110232["110232<br/>wazuh_rule"]
+  CONTROL_C023["C023<br/>control"]
+  RULE_110240["110240<br/>wazuh_rule"]
+  CONTROL_C024["C024<br/>control"]
+  RULE_110241["110241<br/>wazuh_rule"]
+  CONTROL_C025["C025<br/>control"]
+  RULE_110242["110242<br/>wazuh_rule"]
+  CONTROL_C026["C026<br/>control"]
+  RULE_110243["110243<br/>wazuh_rule"]
+  CONTROL_C027["C027<br/>control"]
+  RULE_110244["110244<br/>wazuh_rule"]
+  CTI_cti_test_example_com["cti-test.example.com<br/>cti_object"]
+  CTI_203_0_113_66["203.0.113.66<br/>cti_object"]
+  CTI_test_malware_family["test-malware-family<br/>cti_object"]
+  CTI_test_threat_actor["test-threat-actor<br/>cti_object"]
+  CTI_saci_lab_campaign["saci-lab-campaign<br/>cti_object"]
+  METRIC_CWLC -- "contributes_to / observed" --> SCORE_SACI
+  METRIC_CAC -- "contributes_to / observed" --> SCORE_SACI
+  METRIC_MDC -- "contributes_to / observed" --> SCORE_SACI
+  METRIC_CTIC -- "contributes_to / observed" --> SCORE_SACI
+  METRIC_TF -- "contributes_to / observed" --> SCORE_SACI
+  ASSET_A01 -- "emits / observed" --> LOGSOURCE_Security
+  LOGSOURCE_Security -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A01 -- "emits / observed" --> LOGSOURCE_Sysmon
+  LOGSOURCE_Sysmon -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A02 -- "emits / observed" --> LOGSOURCE_ossec
+  LOGSOURCE_ossec -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A02 -- "emits / observed" --> LOGSOURCE_misp_enrichment
+  LOGSOURCE_misp_enrichment -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A03 -- "emits / observed" --> LOGSOURCE_misp_api
+  LOGSOURCE_misp_api -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A07 -- "emits / observed" --> LOGSOURCE_pfsense_syslog
+  LOGSOURCE_pfsense_syslog -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A04 -- "emits / observed" --> LOGSOURCE_Security
+  LOGSOURCE_Security -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A04 -- "emits / observed" --> LOGSOURCE_Sysmon
+  LOGSOURCE_Sysmon -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A04 -- "emits / observed" --> LOGSOURCE_PowerShell
+  LOGSOURCE_PowerShell -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A05 -- "emits / observed" --> LOGSOURCE_authlog
+  LOGSOURCE_authlog -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A05 -- "emits / observed" --> LOGSOURCE_syslog
+  LOGSOURCE_syslog -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A05 -- "emits / observed" --> LOGSOURCE_process
+  LOGSOURCE_process -- "collected_by / observed" --> PLATFORM_Wazuh
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C001
+  CONTROL_C001 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C001 -- "produces_rule / observed" --> RULE_110006
+  RULE_110006 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C001 -- "detects_technique / observed" --> MITRE_T1071_004
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C002
+  CONTROL_C002 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C002 -- "produces_rule / observed" --> RULE_110005
+  RULE_110005 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C002 -- "detects_technique / observed" --> MITRE_T1071_004
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C005
+  CONTROL_C005 -- "uses_log_source / observed" --> LOGSOURCE_Security
+  CONTROL_C005 -- "produces_rule / observed" --> RULE_60106
+  RULE_60106 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C005 -- "detects_technique / observed" --> MITRE_T1078
+  ASSET_A02 -- "protected_by / observed" --> CONTROL_C006
+  CONTROL_C006 -- "uses_log_source / observed" --> LOGSOURCE_Wazuh
+  CONTROL_C006 -- "produces_rule / observed" --> RULE_110100
+  RULE_110100 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C006 -- "detects_technique / observed" --> MITRE_T1071_004
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C007
+  CONTROL_C007 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C007 -- "produces_rule / observed" --> RULE_110010
+  RULE_110010 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C007 -- "detects_technique / observed" --> MITRE_T1087
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C008
+  CONTROL_C008 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C008 -- "produces_rule / observed" --> RULE_110011
+  RULE_110011 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C008 -- "detects_technique / observed" --> MITRE_T1482
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C009
+  CONTROL_C009 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C009 -- "produces_rule / observed" --> RULE_110012
+  RULE_110012 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C009 -- "detects_technique / observed" --> MITRE_T1016
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C010
+  CONTROL_C010 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C010 -- "produces_rule / observed" --> RULE_110013
+  RULE_110013 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C010 -- "detects_technique / observed" --> MITRE_T1105
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C011
+  CONTROL_C011 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C011 -- "produces_rule / observed" --> RULE_110014
+  RULE_110014 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C011 -- "detects_technique / observed" --> MITRE_T1135
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C012
+  CONTROL_C012 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C012 -- "produces_rule / observed" --> RULE_110011
+  RULE_110011 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C012 -- "detects_technique / observed" --> MITRE_T1018
+  ASSET_A01 -- "protected_by / observed" --> CONTROL_C013
+  CONTROL_C013 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C013 -- "produces_rule / observed" --> RULE_110012
+  RULE_110012 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C013 -- "detects_technique / observed" --> MITRE_T1049
+  ASSET_A07 -- "protected_by / observed" --> CONTROL_C014
+  CONTROL_C014 -- "uses_log_source / observed" --> LOGSOURCE_pfsense_syslog
+  CONTROL_C014 -- "produces_rule / observed" --> RULE_110200
+  RULE_110200 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C014 -- "detects_technique / observed" --> MITRE_T1046
+  ASSET_A07 -- "protected_by / observed" --> CONTROL_C015
+  CONTROL_C015 -- "uses_log_source / observed" --> LOGSOURCE_pfsense_syslog
+  CONTROL_C015 -- "produces_rule / observed" --> RULE_110201
+  RULE_110201 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C015 -- "detects_technique / observed" --> MITRE_T1046
+  ASSET_A07 -- "protected_by / observed" --> CONTROL_C016
+  CONTROL_C016 -- "uses_log_source / observed" --> LOGSOURCE_pfsense_syslog
+  CONTROL_C016 -- "produces_rule / observed" --> RULE_110203
+  RULE_110203 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C016 -- "detects_technique / observed" --> MITRE_T1071_001
+  ASSET_A04 -- "protected_by / observed" --> CONTROL_C017
+  CONTROL_C017 -- "uses_log_source / observed" --> LOGSOURCE_Security
+  CONTROL_C017 -- "produces_rule / observed" --> RULE_110223
+  RULE_110223 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C017 -- "detects_technique / observed" --> MITRE_T1078
+  ASSET_A04 -- "protected_by / observed" --> CONTROL_C018
+  CONTROL_C018 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C018 -- "produces_rule / observed" --> RULE_110220
+  RULE_110220 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C018 -- "detects_technique / observed" --> MITRE_T1087
+  ASSET_A04 -- "protected_by / observed" --> CONTROL_C019
+  CONTROL_C019 -- "uses_log_source / observed" --> LOGSOURCE_PowerShell
+  CONTROL_C019 -- "produces_rule / observed" --> RULE_110222
+  RULE_110222 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C019 -- "detects_technique / observed" --> MITRE_T1059_001
+  ASSET_A05 -- "protected_by / observed" --> CONTROL_C020
+  CONTROL_C020 -- "uses_log_source / observed" --> LOGSOURCE_authlog
+  CONTROL_C020 -- "produces_rule / observed" --> RULE_110230
+  RULE_110230 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C020 -- "detects_technique / observed" --> MITRE_T1110
+  ASSET_A05 -- "protected_by / observed" --> CONTROL_C021
+  CONTROL_C021 -- "uses_log_source / observed" --> LOGSOURCE_syslog
+  CONTROL_C021 -- "produces_rule / observed" --> RULE_110231
+  RULE_110231 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C021 -- "detects_technique / observed" --> MITRE_T1082
+  ASSET_A05 -- "protected_by / observed" --> CONTROL_C022
+  CONTROL_C022 -- "uses_log_source / observed" --> LOGSOURCE_process
+  CONTROL_C022 -- "produces_rule / observed" --> RULE_110232
+  RULE_110232 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C022 -- "detects_technique / observed" --> MITRE_T1046
+  ASSET_A04 -- "protected_by / observed" --> CONTROL_C023
+  CONTROL_C023 -- "uses_log_source / observed" --> LOGSOURCE_Security
+  CONTROL_C023 -- "produces_rule / observed" --> RULE_110240
+  RULE_110240 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C023 -- "detects_technique / observed" --> MITRE_T1078
+  ASSET_A04 -- "protected_by / observed" --> CONTROL_C024
+  CONTROL_C024 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C024 -- "produces_rule / observed" --> RULE_110241
+  RULE_110241 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C024 -- "detects_technique / observed" --> MITRE_T1087
+  ASSET_A04 -- "protected_by / observed" --> CONTROL_C025
+  CONTROL_C025 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C025 -- "produces_rule / observed" --> RULE_110242
+  RULE_110242 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C025 -- "detects_technique / observed" --> MITRE_T1016
+  ASSET_A04 -- "protected_by / observed" --> CONTROL_C026
+  CONTROL_C026 -- "uses_log_source / observed" --> LOGSOURCE_PowerShell
+  CONTROL_C026 -- "produces_rule / observed" --> RULE_110243
+  RULE_110243 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C026 -- "detects_technique / observed" --> MITRE_T1059_001
+  ASSET_A04 -- "protected_by / observed" --> CONTROL_C027
+  CONTROL_C027 -- "uses_log_source / observed" --> LOGSOURCE_Sysmon
+  CONTROL_C027 -- "produces_rule / observed" --> RULE_110244
+  RULE_110244 -- "alerted_in / observed" --> PLATFORM_Wazuh
+  CONTROL_C027 -- "detects_technique / observed" --> MITRE_T1071_004
+  INTEGRATION_custom_misp -- "queries / observed" --> PLATFORM_MISP
+  PLATFORM_MISP -- "contains_ioc / observed" --> CTI_cti_test_example_com
+  PLATFORM_Wazuh -- "triggers_integration / observed" --> INTEGRATION_custom_misp
+  INTEGRATION_custom_misp -- "matches_ioc / observed" --> CTI_cti_test_example_com
+  CTI_cti_test_example_com -- "converted_to_alert / observed" --> RULE_110100
+  CTI_cti_test_example_com -- "mapped_to / observed" --> MITRE_T1071_004
+  INTEGRATION_custom_misp -- "queries / observed" --> PLATFORM_MISP
+  PLATFORM_MISP -- "contains_ioc / observed" --> CTI_203_0_113_66
+  PLATFORM_Wazuh -- "triggers_integration / observed" --> INTEGRATION_custom_misp
+  INTEGRATION_custom_misp -- "matches_ioc / observed" --> CTI_203_0_113_66
+  CTI_203_0_113_66 -- "converted_to_alert / observed" --> RULE_110203
+  CTI_203_0_113_66 -- "mapped_to / observed" --> MITRE_T1071_004
+  CTI_cti_test_example_com -- "maps_to / observed" --> MITRE_T1071_004
+  CTI_203_0_113_66 -- "maps_to / observed" --> MITRE_T1071_004
+  CTI_test_malware_family -- "uses / observed" --> MITRE_T1071_004
+  CTI_test_threat_actor -- "uses / observed" --> CTI_test_malware_family
+  CTI_saci_lab_campaign -- "contains / observed" --> CTI_cti_test_example_com

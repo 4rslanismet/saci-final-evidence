@@ -655,7 +655,8 @@
   <link rel="stylesheet" href="assets/saci-global-ui.css?v=responsive-nav-1">
   <link rel="stylesheet" href="assets/saci-methodology-rhythm.css?v=1">
   <link rel="stylesheet" href="assets/saci-compact-controls.css?v=1">
-<link rel="stylesheet" href="assets/integrity.css?v=f01"></head>
+<link rel="stylesheet" href="assets/integrity.css?v=f01"><link rel="stylesheet" href="assets/portal-paper-sync.css">
+</head>
 
 <body data-page="home">
 <a class="skip-link" href="#main">Ana içeriğe geç</a>
@@ -781,9 +782,10 @@
           <div class="editorial-label">Kanonik yayın anlık görüntüsü</div>
           <div class="editorial-body">
             <p>
-              Makalenin birincil sonucu <b>final</b> paketidir: 97 beyan edilmiş node, 171 edge satırı,
-              171 satırda <code>observed=1</code>, 6 varlık, 12/12 beklenen asset–log çifti,
-              25/25 etkin kontrol, 13/13 kapsam içi ATT&amp;CK tekniği ve SACI=100.
+              Makalenin birincil sonucu düzeltilmiş <b>kanonik final</b> paketidir: 99 beyan edilmiş ve
+              99 render edilen node, 171/171 gözlenen ilişki, 6 varlık, 12/12 beklenen
+              asset–log çifti, 25/25 etkin kontrol, 13/13 kapsam içi ATT&amp;CK tekniği,
+              sıfır etkin bütünlük bulgusu ve SACI=100.
             </p>
             <p>
               S0–S18 senaryoları ayrı bir <b>tarihsel kontrollü doğrulama serisidir</b>.
@@ -791,9 +793,11 @@
               Portal bu iki katmanı tek sayı dizisi gibi birleştirmez.
             </p>
             <p>
-              final edge satırlarında <code>observed=0</code> bulunmamakla birlikte,
-              <code>LOGSOURCE:Wazuh</code> ve <code>MITRE:T1071.001</code> edge uçları node tablosunda beyan edilmemiştir.
-              Bu nedenle sonuç “graf bütünlüğü kusursuz” biçiminde yorumlanmaz.
+              97/99 uyumsuzluğu güncel finalin bir kusuru değildir. Bu durum, F-01 ön yayın
+              doğrulama vakası olarak tarihsel biçimde korunur. İki endpointin beyan edilmesi,
+              mapping bağlamlarının ayrıştırılması, paralel kanıt kimliklerinin eklenmesi ve
+              izolasyon politikasının belgelenmesi sonrasında kanonik paket <b>VALID</b> olmuş,
+              yayın kapısı <b>OPEN</b> durumuna geçmiştir.
             </p>
           </div>
         </div>
@@ -1093,7 +1097,23 @@
     <footer>
       SACI Final Evidence Portal — deterministic scoring outputs, graph-based evidence and policy-guided explanations.
     </footer>
-  </main>
+  <!-- CANONICAL_RELEASE_SYNC_START -->
+<section class="portal-sync-section" id="canonical-release">
+<div class="kicker">KANONİK YAYIN DURUMU</div>
+<h2>Makale ile portal aynı doğrulanmış sürümü raporlar</h2>
+<p>Güncel kanonik paket, F-01 ön yayın vakasından sonra düzeltilmiş ve bağımsız bütünlük kapısından geçirilmiştir.</p>
+<div class="portal-sync-grid">
+<div class="portal-sync-metric"><span>SACI</span><strong>100.0</strong></div>
+<div class="portal-sync-metric"><span>Düğümler</span><strong>99 / 99</strong></div>
+<div class="portal-sync-metric"><span>İlişkiler</span><strong>171 / 171</strong></div>
+<div class="portal-sync-metric"><span>Etkin bulgu</span><strong>0</strong></div>
+<div class="portal-sync-metric"><span>Bütünlük</span><strong>VALID</strong></div>
+<div class="portal-sync-metric"><span>Yayın kapısı</span><strong>OPEN</strong></div>
+</div>
+<div class="portal-sync-links"><a href="integrity.html">F-01 ve doğrulama deneyleri</a><a href="data/final/integrity_summary.json">Kanonik özet</a><a href="data/validation/benchmark_summary.json">Deney özeti</a></div>
+</section>
+<!-- CANONICAL_RELEASE_SYNC_END -->
+</main>
 
   <script>
     (function () {

@@ -1,33 +1,35 @@
 # SACI Final Audit Result
 
 **Dataset:** Canonical publication snapshot  
-**Audit result:** **PASS WITH STRUCTURAL REVIEW**  
-**Package generated:** 2026-07-11
+**Audit result:** **PASS — INTEGRITY VALID**  
+**Publication gate:** **OPEN**
 
 ## 1. Final score
 
 | Metric | Score | Weight | Applicable |
 |---|---:|---:|---:|
-| CWLC | 100.0 | 0.3 | 1 |
+| CWLC | 100.0 | 0.30 | 1 |
 | CAC | 100.0 | 0.25 | 1 |
-| MDC | 100.0 | 0.2 | 1 |
+| MDC | 100.0 | 0.20 | 1 |
 | CTIC | 100.0 | 0.15 | 1 |
-| TF | 100 | 0.1 | 1 |
-| SACI | 100.0 | 1.0 | 1 |
+| TF | 100.0 | 0.10 | 1 |
+| SACI | 100.0 | 1.00 | 1 |
 
-All active SACI components are scored at 100. The final SACI value is **100.0**.
+All active SACI components are scored at 100.0.
 
-## 2. Graph closure
+## 2. Canonical graph
 
 | Check | Result |
 |---|---:|
-| Declared nodes | 97 |
+| Declared nodes | 99 |
+| Rendered nodes | 99 |
 | Edge rows | 171 |
+| Unique source–relationship–target triples | 165 |
 | Observed edges | 171 |
 | Missing edges | 0 |
-| Rendered nodes after synthetic endpoint completion | 99 |
+| Active integrity findings | 0 |
 
-The canonical graph contains no missing visibility relation.
+The node inventory and rendered graph agree at 99/99. Every published edge references a declared endpoint.
 
 ## 3. Coverage audit
 
@@ -42,43 +44,33 @@ The canonical graph contains no missing visibility relation.
 | CTI/MISP enrichment chains | 2/2 |
 | Active reason codes | 0 |
 
-## 4. Structural integrity finding
-
-Two edge endpoints are referenced without corresponding declarations in
-`saci_nodes.csv`:
-
-- `LOGSOURCE:Wazuh`
-- `MITRE:T1071.001`
-
-This is retained as a structural integrity finding. It does **not** create a
-missing visibility relation and does not change the SACI score. A graph renderer
-may synthesize these endpoints, producing 99 rendered nodes from 97 declared
-nodes.
-
-## 5. Interpretation boundary
-
-The final score indicates that all visibility relations declared in the
-evaluation scope were observed. It does not demonstrate absolute security,
-complete attack prevention, or discovery of every unknown attack-surface
-element.
-
-## 6. Dataset separation
-
-This canonical publication snapshot must not be merged numerically with the
-historical S0–S18 controlled validation series. The historical series is used to
-evaluate model behavior and sensitivity; the canonical snapshot is the
-publication-level final evidence package.
-
-<!-- SACI_INTEGRITY_GATE_START -->
-## Independent evidence-integrity gate
+## 4. Integrity gate
 
 | Check | Result |
 |---|---:|
-| Calculated SACI | 100.0 |
-| Relation closure | 171/171 |
-| Declared/rendered nodes | 99/99 |
 | Integrity status | **VALID** |
 | Publication gate | **OPEN** |
+| INVALID findings | 0 |
+| WARNING findings | 0 |
+| INCOMPLETE findings | 0 |
 
-Finding F-01 was resolved by declaring the formerly implicit endpoints, separating direct ATT&CK mappings from CTI contextual associations, assigning unique evidence identifiers to parallel evidence edges and documenting intentionally retained out-of-scope nodes.
-<!-- SACI_INTEGRITY_GATE_END -->
+The validator checks endpoint declarations, duplicate node identifiers, required fields, observed values, CSV–CYJS consistency, direct ATT&CK mapping consistency, parallel-edge evidence identity, and isolated-node policy.
+
+## 5. F-01 pre-release case
+
+The earlier 97-declared/99-rendered mismatch is retained only as a historical pre-release regression case. It is not an active defect in this canonical release.
+
+The correction:
+
+- declared `LOGSOURCE:Wazuh` and `MITRE:T1071.001`,
+- separated the direct `110203 → T1071.001` mapping from `T1071.004` CTI context,
+- assigned unique `evidence_id` values to parallel evidence rows, and
+- documented intentionally retained isolated nodes in policy.
+
+## 6. Interpretation boundary
+
+SACI=100 means that all evidence relationships declared in the evaluated scope are observed under the published rules. It does not represent absolute security, complete attack prevention, or discovery of every unknown attack-surface element.
+
+## 7. Dataset separation
+
+The canonical final snapshot (99 nodes, 171 edge rows) is separate from the historical S0–S18 controlled sensitivity series. Historical S8 contains 95 nodes and 173 edge rows and must not be merged numerically with the canonical release.

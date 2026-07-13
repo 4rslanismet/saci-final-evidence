@@ -1,4 +1,5 @@
-<!doctype html><html lang="en" data-theme="dim" data-font-level="0"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Evidence integrity and Finding F-01 — SACI</title><link rel="stylesheet" href="../assets/saci-standard.css"><link rel="stylesheet" href="../assets/saci-global-ui.css"><link rel="stylesheet" href="../assets/saci-methodology-rhythm.css"><link rel="stylesheet" href="../assets/integrity.css"></head><body data-page="integrity"><header class="top">
+<!doctype html><html lang="en" data-theme="dim" data-font-level="0"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Evidence integrity and Finding F-01 — SACI</title><link rel="stylesheet" href="../assets/saci-standard.css"><link rel="stylesheet" href="../assets/saci-global-ui.css"><link rel="stylesheet" href="../assets/saci-methodology-rhythm.css"><link rel="stylesheet" href="../assets/integrity.css"><link rel="stylesheet" href="../assets/portal-paper-sync.css">
+</head><body data-page="integrity"><header class="top">
   <div class="top-inner">
     <a class="brand" href="index.html">SACI Final Evidence</a>
     <nav class="nav" aria-label="Primary navigation">
@@ -93,4 +94,38 @@
 </div>
 </div>
   </div>
-</header><main id="main" class="integrity-page"><section class="integrity-hero"><div class="kicker">EVIDENCE INTEGRITY</div><h1>Evidence integrity and Finding F-01</h1><p class="lead">The numerical coverage score and structural graph validity are evaluated independently.</p><div class="integrity-summary"><article><span>Calculated SACI</span><strong id="integrityScore">—</strong></article><article><span>Relation closure</span><strong id="integrityClosure">—</strong></article><article><span>Integrity status</span><strong id="integrityStatus" class="integrity-status">—</strong></article><article><span>Publication gate</span><strong id="integrityGate">—</strong></article></div></section><div id="integrityLoading">Loading integrity outputs...</div><div id="integrityContent" hidden><section class="integrity-section"><h2>F-01 — Relation closure ile graph bütünlüğü ayrı doğrulama boyutlarıdır</h2><p>Complete relation closure does not by itself prove graph integrity. SACI reports coverage, integrity status and publication decision separately.</p><div class="integrity-rule"><strong>Publication rule:</strong> Only VALID opens the canonical publication gate.</div><div class="integrity-actions"><a href="../data/final/INTEGRITY_RESULT.md">INTEGRITY_RESULT.md</a><a href="../data/final/FINDING_F01.md">FINDING_F01.md</a><a href="../data/final/integrity_findings.csv">integrity_findings.csv</a></div></section><section class="integrity-section"><h2>Active findings</h2><p id="integrityCounts"></p><div class="integrity-table-wrap"><table class="integrity-table"><thead><tr><th>ID</th><th>Severity</th><th>Finding</th><th>Object</th><th>Corrective action</th></tr></thead><tbody id="integrityRows"></tbody></table></div></section></div></main><script src="../assets/integrity.js"></script><script src="../assets/saci-ui.js"></script></body></html>
+</header><main id="main" class="integrity-page"><section class="integrity-hero"><div class="kicker">EVIDENCE INTEGRITY</div><h1>Evidence integrity and Finding F-01</h1><p class="lead">The numerical coverage score and structural graph validity are evaluated independently.</p><div class="integrity-summary"><article><span>Calculated SACI</span><strong id="integrityScore">—</strong></article><article><span>Relation closure</span><strong id="integrityClosure">—</strong></article><article><span>Integrity status</span><strong id="integrityStatus" class="integrity-status">—</strong></article><article><span>Publication gate</span><strong id="integrityGate">—</strong></article></div></section><div id="integrityLoading">Loading integrity outputs...</div><div id="integrityContent" hidden><section class="integrity-section"><h2>F-01 — Relation closure ile graph bütünlüğü ayrı doğrulama boyutlarıdır</h2><p>Complete relation closure does not by itself prove graph integrity. SACI reports coverage, integrity status and publication decision separately.</p><div class="integrity-rule"><strong>Publication rule:</strong> Only VALID opens the canonical publication gate.</div><div class="integrity-actions"><a href="../data/final/INTEGRITY_RESULT.md">INTEGRITY_RESULT.md</a><a href="../data/final/FINDING_F01.md">FINDING_F01.md</a><a href="../data/final/integrity_findings.csv">integrity_findings.csv</a></div></section><section class="integrity-section"><h2>Active findings</h2><p id="integrityCounts"></p><div class="integrity-table-wrap"><table class="integrity-table"><thead><tr><th>ID</th><th>Severity</th><th>Finding</th><th>Object</th><th>Corrective action</th></tr></thead><tbody id="integrityRows"></tbody></table></div></section></div><!-- F01_PORTAL_SYNC_START -->
+<section class="integrity-section portal-sync-section" id="f01-pre-release-case">
+<h2>F-01 — Pre-release validation case</h2>
+<p>F-01 is not presented as a theoretical discovery or an active defect. The 97/99 mismatch found during artifact generation is retained as a regression case showing why coverage scoring and structural integrity must be validated independently.</p>
+<div class="portal-sync-history">
+<article><h3>Pre-release snapshot</h3><p><strong>97 declared / 99 rendered</strong><br>171/171 closure<br>3 INVALID · 12 WARNING<br>Gate: BLOCKED</p></article>
+<article><h3>Canonical release</h3><p><strong>99 declared / 99 rendered</strong><br>171/171 observed relations<br>0 active findings<br>VALID · OPEN</p></article>
+</div>
+</section>
+<section class="integrity-section portal-sync-section" id="validation-experiments">
+<h2>Controlled fault injection</h2>
+<p>Observed status matched the pre-declared expected status in all nine cases.</p>
+<div class="portal-sync-table-wrap"><table class="portal-sync-table"><thead><tr><th>Case</th><th>Expected</th><th>Observed</th><th>Result</th></tr></thead><tbody>
+<tr><td>Valid baseline</td><td>VALID</td><td>VALID</td><td>PASS</td></tr>
+<tr><td>Undeclared endpoint</td><td>INVALID</td><td>INVALID</td><td>PASS</td></tr>
+<tr><td>Duplicate node identifier</td><td>INVALID</td><td>INVALID</td><td>PASS</td></tr>
+<tr><td>Conflicting direct ATT&amp;CK mapping</td><td>INVALID</td><td>INVALID</td><td>PASS</td></tr>
+<tr><td>CSV–renderer mismatch</td><td>INVALID</td><td>INVALID</td><td>PASS</td></tr>
+<tr><td>Missing required edge field</td><td>INVALID</td><td>INVALID</td><td>PASS</td></tr>
+<tr><td>Parallel evidence-ID collision</td><td>INVALID</td><td>INVALID</td><td>PASS</td></tr>
+<tr><td>Undocumented isolated node</td><td>VALID_WITH_WARNINGS</td><td>VALID_WITH_WARNINGS</td><td>PASS</td></tr>
+<tr><td>Policy-documented isolated node</td><td>VALID</td><td>VALID</td><td>PASS</td></tr>
+</tbody></table></div>
+<h2>Synthetic cardinality scalability</h2>
+<p>This experiment measures only the integrity validator's response to data-structure growth; it is not a SIEM ingestion or SOC-throughput test.</p>
+<div class="portal-sync-table-wrap"><table class="portal-sync-table"><thead><tr><th>Multiplier</th><th>Nodes</th><th>Edge rows</th><th>Median time</th><th>Peak memory</th></tr></thead><tbody>
+<tr><td>1×</td><td>99</td><td>171</td><td>0.778 ms</td><td>0.035 MiB</td></tr>
+<tr><td>10×</td><td>990</td><td>1,710</td><td>5.763 ms</td><td>0.308 MiB</td></tr>
+<tr><td>100×</td><td>9,900</td><td>17,100</td><td>67.691 ms</td><td>4.270 MiB</td></tr>
+<tr><td>1000×</td><td>99,000</td><td>171,000</td><td>883.438 ms</td><td>41.170 MiB</td></tr>
+</tbody></table></div>
+<div class="portal-sync-links"><a href="../data/validation/integrity_fault_matrix.csv">Fault matrix</a><a href="../data/validation/integrity_scalability.csv">Scalability data</a><a href="../data/validation/BENCHMARK_PROTOCOL.md">Benchmark protocol</a></div>
+</section>
+<!-- F01_PORTAL_SYNC_END -->
+</main><script src="../assets/integrity.js"></script><script src="../assets/saci-ui.js"></script></body></html>

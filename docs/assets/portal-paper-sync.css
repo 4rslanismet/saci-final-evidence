@@ -1,0 +1,17 @@
+.portal-sync-section{margin-top:56px;padding-top:30px;border-top:1px solid var(--line)}
+.portal-sync-section h2{margin:0 0 16px}
+.portal-sync-section p{max-width:1040px}
+.portal-sync-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin-top:24px}
+.portal-sync-metric{padding:18px 0;border-top:1px solid var(--line)}
+.portal-sync-metric span{display:block;color:var(--muted);font-size:13px;font-weight:700}
+.portal-sync-metric strong{display:block;margin-top:5px;color:var(--text);font-size:22px}
+.portal-sync-table-wrap{overflow-x:auto;margin-top:24px}
+.portal-sync-table{width:100%;border-collapse:collapse;min-width:720px}
+.portal-sync-table th,.portal-sync-table td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.portal-sync-table th{color:var(--text)}.portal-sync-table td{color:var(--muted)}
+.portal-sync-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px}
+.portal-sync-links a{color:var(--accent);font-weight:750}
+.portal-sync-history{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:24px}
+.portal-sync-history article{padding-top:18px;border-top:1px solid var(--line)}
+.portal-sync-history h3{margin:0 0 10px}.portal-sync-history p{margin:0}
+@media(max-width:760px){.portal-sync-history{grid-template-columns:1fr}}

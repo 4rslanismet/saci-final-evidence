@@ -1,0 +1,10 @@
+case,expected_status,observed_status,pass,finding_codes
+baseline,VALID,VALID,1,
+undeclared_endpoint,INVALID,INVALID,1,undeclared_endpoint
+duplicate_node_id,INVALID,INVALID,1,duplicate_node_id
+conflicting_mapping,INVALID,INVALID,1,conflicting_direct_mapping
+representation_mismatch,INVALID,INVALID,1,csv_cyjs_mismatch
+missing_required_field,INVALID,INVALID,1,missing_required_edge_field
+parallel_identity_collision,INVALID,INVALID,1,parallel_edge_identity
+undocumented_isolated_node,VALID_WITH_WARNINGS,VALID_WITH_WARNINGS,1,undocumented_isolated_node
+documented_isolated_node,VALID,VALID,1,

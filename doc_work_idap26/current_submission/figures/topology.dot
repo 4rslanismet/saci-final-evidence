@@ -1,0 +1,26 @@
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad="0.15", nodesep="0.35", ranksep="0.75", dpi=300, splines=polyline];
+  node [shape=box, style="rounded", fontname="Times-Roman", fontsize=11, margin="0.13,0.09", color="black"];
+  edge [fontname="Times-Roman", fontsize=8.5, color="black", arrowsize=0.7];
+
+  dc [label=< <B>DC01</B><BR/><FONT POINT-SIZE="9">Security + Sysmon</FONT> >];
+  ws [label=< <B>WS01</B><BR/><FONT POINT-SIZE="9">Security + Sysmon<BR/>+ PowerShell</FONT> >];
+  uh [label=< <B>uhost</B><BR/><FONT POINT-SIZE="9">authlog + syslog<BR/>+ process</FONT> >];
+  fw [label=< <B>FW01-pfSense</B><BR/><FONT POINT-SIZE="9">remote syslog</FONT> >];
+  siem [label=< <B>WSIEM</B><BR/><FONT POINT-SIZE="9">Wazuh collection, rules, alerts,<BR/>indexing, dashboard, custom MISP integration</FONT> >, penwidth=1.3];
+  cti [label=< <B>CTI01</B><BR/><FONT POINT-SIZE="9">MISP API + synthetic IOCs</FONT> >];
+  attack [label=< <B>MITRE ATT&amp;CK</B><BR/><FONT POINT-SIZE="9">in-scope techniques</FONT> >];
+  art [label=< <B>Canonical artifacts</B><BR/><FONT POINT-SIZE="9">CSV, JSON, CYJS,<BR/>validators, checksums</FONT> >];
+
+  {rank=same; dc; ws; uh; fw}
+  {rank=same; cti; attack; art}
+
+  dc -> siem [label="logs"];
+  ws -> siem [label="logs"];
+  uh -> siem [label="logs"];
+  fw -> siem [label="syslog"];
+  siem -> cti [label="query"];
+  cti -> siem [label="enrichment", constraint=false];
+  siem -> attack [label="mapping"];
+  siem -> art [label="derived evidence"];
+}
