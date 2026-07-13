@@ -1,0 +1,22 @@
+{
+  "package_role": "current_official_submission",
+  "title": "SACI: SIEM-CTI Görünürlük Kanıtlarının Graf Destekli Ölçümü",
+  "language": "tr",
+  "format": "IEEEtran conference",
+  "pages": 6,
+  "canonical_result": {
+    "SACI": 100.0,
+    "CWLC": 100.0,
+    "CAC": 100.0,
+    "MDC": 100.0,
+    "CTIC": 100.0,
+    "TF": 100.0,
+    "nodes": "99/99",
+    "relations": "171/171",
+    "active_integrity_findings": 0,
+    "integrity_status": "VALID",
+    "publication_gate": "OPEN"
+  },
+  "supplementary_extended_manuscript": "../supplementary_extended_en/",
+  "generated_at": "2026-07-13T22:14:46.322552+00:00"
+}

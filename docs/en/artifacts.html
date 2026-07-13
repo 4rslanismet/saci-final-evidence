@@ -147,6 +147,23 @@
 </article></div></section>
   <section class="artifact-section"><h2>Reproduction and audit</h2><p>The commands below verify the publication package without altering its evidence files.</p><div class="repro-command"><code>python3 tools/validate_academic_site.py
 python3 -m http.server 8000 --directory docs</code></div><div class="artifact-note"><strong>Boundary:</strong> the package supports arithmetic, relation, coverage and publication auditing. Replaying the complete upstream experiment still requires the authorized GOAD/Wazuh/MISP/pfSense laboratory and its live telemetry.</div></section>
+<!-- PAPER_PACKAGE_SYNC_START -->
+<section class="artifact-section" id="paper-packages">
+  <h2>Paper and submission packages</h2>
+  <p>The current conference submission and the extended supplementary manuscript are explicitly separated.</p>
+  <div class="artifact-grid">
+    <article class="artifact-card">
+      <div class="artifact-card-head"><div><h3>Current IDAP'26 submission</h3><p>Six-page Turkish manuscript with English abstract, IEEEtran sources, and seven figures.</p></div><span class="artifact-type">PDF/TEX</span></div>
+      <div class="artifact-links"><a href="../downloads/paper/current/SACI_IDAP26_Turkce_Gonderime_Hazir.pdf">Download PDF</a><a href="../downloads/paper/current/SACI_IDAP26_Turkce_Gonderime_Hazir_Source.zip">Download source</a><a href="../downloads/paper/current/SACI_IDAP26_Turkce_Gonderime_Hazir_Kaynakca_Guncel.docx">Download DOCX</a></div>
+    </article>
+    <article class="artifact-card">
+      <div class="artifact-card-head"><div><h3>Extended English supplement</h3><p>Expanded related work, fault injection, synthetic scalability, and explanation-layer discussion. It is not the current conference submission.</p></div><span class="artifact-type">SUPPLEMENT</span></div>
+      <div class="artifact-links"><a href="../downloads/paper/supplementary/SACI_IDAP26_Arslan_Extended_EN.pdf">Supplementary PDF</a></div>
+    </article>
+  </div>
+  <div class="artifact-note"><strong>Alignment:</strong> Both manuscripts and the portal use the same canonical result: SACI 100, 99/99 nodes, 171/171 relations, VALID, and OPEN. The 97/99 state is retained only as the resolved F-01 pre-release case.</div>
+</section>
+<!-- PAPER_PACKAGE_SYNC_END -->
 </main>
 <script src="../assets/saci-ui.js?v=responsive-nav-1"></script>
   <script src="../assets/saci-compact-controls.js?v=2"></script>

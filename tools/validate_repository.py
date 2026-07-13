@@ -10,7 +10,7 @@ allowed_root_dirs = {
     "doc_work_idap26", "docs", "lab", "tools",
 }
 allowed_root_files = {
-    ".gitignore", "CITATION.cff", "README.md", "Vagrantfile", "LICENSE", "DATA_LICENSE.md",
+    ".gitignore", "CITATION.cff", "README.md", "Vagrantfile", "LICENSE", "DATA_LICENSE.md", "LICENSE", "DATA_LICENSE.md",
 }
 ignored_runtime = {".git", "__pycache__"}
 
@@ -64,13 +64,22 @@ for name in ("saci_attack_runner.sh", "saci_graph.py", "saci_score.py"):
 
 # Current paper files must exist.
 for rel in [
-    "deliverables/SACI_IDAP26_Reviewer_Hardened_EN.pdf",
-    "deliverables/SACI_IDAP26_Turkce_Hakem_Guclendirilmis.docx",
-    "doc_work_idap26/current_submission/SACI_IDAP26_Arslan.tex",
+    "deliverables/SACI_IDAP26_Turkce_Gonderime_Hazir.pdf",
+    "deliverables/SACI_IDAP26_Turkce_Gonderime_Hazir_Kaynakca_Guncel.docx",
+    "doc_work_idap26/current_submission/SACI_IDAP26_Turkce_Gonderime_Hazir.pdf",
+    "doc_work_idap26/current_submission/SACI_IDAP26_Turkce_Gonderime_Hazir.tex",
     "doc_work_idap26/current_submission/SACI_IDAP26_References.bib",
+    "doc_work_idap26/current_submission/README_SUBMISSION.txt",
+    "doc_work_idap26/supplementary_extended_en/SACI_IDAP26_Arslan.tex",
+    "docs/downloads/paper/current/SACI_IDAP26_Turkce_Gonderime_Hazir.pdf",
+    "docs/downloads/paper/current/SACI_IDAP26_Turkce_Gonderime_Hazir_Source.zip",
 ]:
     if not (root / rel).exists():
         errors.append(f"missing current paper artifact: {rel}")
+
+
+if (root / "doc_work_idap26/current_submission/SACI_IDAP26_Arslan.tex").exists():
+    errors.append("extended English manuscript is still presented as current submission")
 
 # Working directory should not contain old QA render farms.
 if (root / "doc_work_idap26" / "qa").exists():
@@ -100,5 +109,5 @@ if errors:
 print("SACI repository presentation validation PASSED")
 print("Root layout: clean")
 print("Canonical data location: docs/data/final")
-print("Current paper artifacts: present")
+print("Current Turkish submission and supplementary English manuscript: present")
 print("Private/temporary maintenance files: absent from active tree")

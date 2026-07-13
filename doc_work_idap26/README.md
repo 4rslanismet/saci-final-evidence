@@ -1,9 +1,11 @@
-# IDAP'26 paper workspace
+# SACI IDAP'26 Paper Packages
 
-This directory contains the current reviewer-hardened submission sources.
+## Current submission
 
-- `current_submission/`: IEEEtran LaTeX source, BibTeX database, figures, build script, benchmark protocol, and machine-readable benchmark results.
-- Final reader-facing artifacts are published under `deliverables/`.
-- Historical Word-generation experiments and QA render snapshots were removed from the current tree; they remain recoverable from Git history.
+`current_submission/` is the official six-page Turkish IDAP'26 submission package.
 
-The paper treats F-01 as a pre-release validation/regression case, not as an active defect in the canonical release.
+## Supplementary extended manuscript
+
+`supplementary_extended_en/` retains the longer English reviewer-hardened manuscript and its additional validation material. It is supplementary and must not be interpreted as the current conference submission.
+
+Both packages refer to the same canonical evidence release: SACI 100.0, 99/99 nodes, 171/171 observed relations, zero active findings, integrity `VALID`, and publication gate `OPEN`.

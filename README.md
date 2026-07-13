@@ -203,18 +203,33 @@ These experiments evaluate integrity-validator behavior and data-structure growt
 
 ## Paper Artifacts
 
-Current submission materials are available under:
+### Current IDAP'26 submission
 
-```text
-doc_work_idap26/current_submission/
-```
+The official current submission is the six-page Turkish manuscript:
 
-Current dissemination files are available under:
+- [Submission PDF](doc_work_idap26/current_submission/SACI_IDAP26_Turkce_Gonderime_Hazir.pdf)
+- [LaTeX source](doc_work_idap26/current_submission/SACI_IDAP26_Turkce_Gonderime_Hazir.tex)
+- [Submission package notes](doc_work_idap26/current_submission/README_SUBMISSION.txt)
+- [Downloadable source package](docs/downloads/paper/current/SACI_IDAP26_Turkce_Gonderime_Hazir_Source.zip)
 
-```text
-deliverables/
-```
+### Supplementary extended manuscript
 
+The longer English reviewer-hardened manuscript is retained under
+`doc_work_idap26/supplementary_extended_en/`. It provides additional related
+work, fault-injection detail, synthetic validator scalability, and
+explanation-layer discussion. It is supplementary and is not presented as the
+current six-page conference submission.
+
+### Paper–portal alignment
+
+The submitted paper and the portal use the same canonical release: SACI 100.0,
+99/99 nodes, 171/171 observed relations, zero active integrity findings,
+integrity `VALID`, and publication gate `OPEN`. The historical 97/99 state is
+retained only as the resolved F-01 pre-release regression case.
+
+The optional LLM explanation view and synthetic scalability benchmark are
+supplementary portal features. They do not compute or modify the deterministic
+SACI score or publication decision.
 ## Citation
 
 Until final conference metadata is assigned, cite the repository as:

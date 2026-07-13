@@ -1,141 +1,62 @@
-SACI IDAP'26 REVIEWER-HARDENED SUBMISSION PACKAGE
-=================================================
+SACI IDAP'26 CURRENT SUBMISSION PACKAGE
+======================================
 
-Main PDF
---------
-SACI_IDAP26_Arslan.pdf
+Status
+------
+This directory contains the current official Turkish submission package.
 
-Main LaTeX source
------------------
-SACI_IDAP26_Arslan.tex
+Paper title
+-----------
+SACI: SIEM-CTI Görünürlük Kanıtlarının Graf Destekli Ölçümü
 
-Bibliography
-------------
-SACI_IDAP26_References.bib
-saci_idap26.bib
+Language and format
+-------------------
+- Main language: Turkish
+- English abstract and keywords included
+- IEEEtran conference format
+- A4, two columns
+- 6 pages including references
 
-Class file
+Main files
 ----------
-IEEEtran.cls (conference-provided IEEEtran v1.8b)
+- SACI_IDAP26_Turkce_Gonderime_Hazir.pdf
+- SACI_IDAP26_Turkce_Gonderime_Hazir.tex
+- SACI_IDAP26_Turkce_Gonderime_Hazir.bbl
+- SACI_IDAP26_References.bib
+- IEEEtran.cls
+- figures/
 
-Figures
--------
-figures/saci_pipeline.png
-figures/saci_topology.png
-figures/integrity_f01.png
-figures/sensitivity_selected.png
-
-Editable Graphviz sources for the first three figures are included.
-
-New validation companion
-------------------------
-benchmark_integrity_scalability.py
-benchmark_results/integrity_fault_matrix.csv
-benchmark_results/integrity_scalability.csv
-benchmark_results/benchmark_summary.json
-benchmark_results/run.log
-BENCHMARK_PROTOCOL.md
-
-Build
------
-Run:
-
-  ./compile.sh
-
-or:
-
-  pdflatex SACI_IDAP26_Arslan.tex
-  bibtex SACI_IDAP26_Arslan
-  pdflatex SACI_IDAP26_Arslan.tex
-  pdflatex SACI_IDAP26_Arslan.tex
-
-Preflight status
-----------------
-- IEEEtran conference mode
-- A4 paper
-- Two columns
-- 12 pages including references
-- 60 cited IEEE-style references (61 records in the BibTeX database)
-- 4 figures
-- 6 tables
-- 7 numbered equations
-- No unresolved citations or cross-references
-- No overfull boxes
-- All PDF fonts embedded and subsetted Type 1
-- Last-page reference columns manually balanced at reference 53
-- Template instructional/example text removed
-
-Reviewer-hardening revisions
-----------------------------
-- The component equations are positioned as transparent operational measures
-  aggregated by simple additive weighting, not as a new mathematical theorem.
-- F-01 is framed as a pre-release validation case and regression target rather
-  than a theoretical discovery.
-- A nine-case controlled integrity fault-injection matrix was added.
-- A synthetic cardinality benchmark was added for 99/171 through
-  99,000/171,000 node/edge-row structures.
-- Related work now connects the integrity gate to graph-constraint validation
-  literature while clearly stating that the implementation is not SHACL.
-- CTIC is described as configured workflow-field closure under the published
-  schema; TF is described as a global recency indicator.
-- Defensive boundary statements were concentrated in interpretation and
-  threats-to-validity sections.
-
-Controlled integrity results
-----------------------------
-All nine preregistered cases produced the expected state:
-- Valid baseline: VALID
-- Undeclared endpoint: INVALID
-- Duplicate node identifier: INVALID
-- Conflicting direct mapping: INVALID
-- CSV-renderer mismatch: INVALID
-- Missing required edge field: INVALID
-- Parallel evidence-ID collision: INVALID
-- Undocumented isolated node: VALID_WITH_WARNINGS
-- Policy-documented isolated node: VALID
-
-Synthetic integrity benchmark
------------------------------
-Single-process Python 3.13.5, Linux, 7 repeats per size:
-- 99 nodes / 171 rows: median 0.778 ms, 0.035 MiB
-- 990 nodes / 1,710 rows: median 5.763 ms, 0.308 MiB
-- 9,900 nodes / 17,100 rows: median 67.691 ms, 4.270 MiB
-- 99,000 nodes / 171,000 rows: median 883.438 ms, 41.170 MiB
-
-This benchmark tests integrity-rule execution and data-structure growth only.
-It is not a Wazuh ingestion, browser rendering, or enterprise SOC throughput
-benchmark.
-
-Canonical SACI result reported in the paper
--------------------------------------------
-- SACI: 100
-- Component vector: (100, 100, 100, 100, 100)
-- 99 declared / 99 rendered nodes
-- 171/171 observed relationship rows
-- 165 unique relationship triples
-- 18 relationship labels
-- 0 active integrity findings
+Canonical result reported
+-------------------------
+- SACI: 100.0
+- Components: CWLC=100, CAC=100, MDC=100, CTIC=100, TF=100
+- Asset-log pairs: 12/12
+- Enabled controls: 25/25
+- In-scope ATT&CK techniques: 13/13
+- CTI workflow flags: 8/8 for two IOCs
+- Graph: 99 declared / 99 rendered nodes
+- Relations: 171/171 observed
+- Active integrity findings: 0
 - Integrity status: VALID
 - Publication gate: OPEN
 
-Pre-release case F-01 is retained separately from the canonical release:
-- 97 declared / 99 rendered nodes
-- 171/171 relationship-row closure
-- 3 INVALID and 12 WARNING findings
-- Publication gate: BLOCKED
+F-01
+----
+The historical 97/99 mismatch is retained only as a resolved pre-release
+regression case. It is not an active defect in the canonical release.
 
-Author/contact note
--------------------
-No email address or ORCID was invented. The author block uses the verified
-institution, personal website, and GitHub profile.
+Repository alignment
+--------------------
+The extended English reviewer-hardened manuscript is retained separately
+under ../supplementary_extended_en/.
 
-Conference-header note
-----------------------
-The first-page conference banner was copied from the supplied IDAP'26 LaTeX
-template, including its final word "Philippines". Confirm the organizer-issued
-camera-ready banner before final submission.
+The optional LLM explanation layer and the synthetic validator scalability
+benchmark are supplementary portal features. They do not compute or modify
+the deterministic score or integrity result reported in the current paper.
 
-Copyright note
---------------
-No speculative IEEE copyright code was inserted. Add only the exact copyright
-notice supplied by the conference for the camera-ready version.
+Build
+-----
+  pdflatex SACI_IDAP26_Turkce_Gonderime_Hazir.tex
+  bibtex SACI_IDAP26_Turkce_Gonderime_Hazir
+  pdflatex SACI_IDAP26_Turkce_Gonderime_Hazir.tex
+  pdflatex SACI_IDAP26_Turkce_Gonderime_Hazir.tex
