@@ -1,5 +1,20 @@
 # SACI Final Evidence Package
 
+<!-- SACI_QUICK_LINKS_START -->
+
+[Research Portal](https://4rslanismet.github.io/saci-final-evidence/) ·
+[Methodology](https://4rslanismet.github.io/saci-final-evidence/methodology.html) ·
+[Evidence](https://4rslanismet.github.io/saci-final-evidence/evidence.html) ·
+[Interactive Graph](https://4rslanismet.github.io/saci-final-evidence/graph.html) ·
+[Reproduction](https://4rslanismet.github.io/saci-final-evidence/reproducibility.html)
+
+[![Integrity: VALID](https://img.shields.io/badge/Integrity-VALID-brightgreen)](https://4rslanismet.github.io/saci-final-evidence/integrity.html)
+[![Publication Gate: OPEN](https://img.shields.io/badge/Publication%20Gate-OPEN-brightgreen)](https://4rslanismet.github.io/saci-final-evidence/integrity.html)
+[![Code License: MIT](https://img.shields.io/badge/Code%20License-MIT-blue.svg)](LICENSE)
+[![Data License: CC BY 4.0](https://img.shields.io/badge/Data%20License-CC%20BY%204.0-lightgrey.svg)](DATA_LICENSE.md)
+
+<!-- SACI_QUICK_LINKS_END -->
+
 A reproducible research artifact for **scope-bounded SIEM–CTI evidence coverage scoring, graph-supported explanation, and structural integrity validation**.
 
 **Research portal:** https://4rslanismet.github.io/saci-final-evidence/
@@ -210,6 +225,22 @@ https://github.com/4rslanismet/saci-final-evidence
 ```
 
 Citation metadata is also available in `CITATION.cff`.
+
+<!-- SACI_LICENSE_START -->
+
+## License
+
+Source code in this repository is released under the
+[MIT License](LICENSE).
+
+Original research data, evidence artifacts, documentation, and figures are
+released under the
+[Creative Commons Attribution 4.0 International License](DATA_LICENSE.md),
+unless otherwise stated.
+
+Third-party components retain their original licenses.
+
+<!-- SACI_LICENSE_END -->
 
 ## Author
 

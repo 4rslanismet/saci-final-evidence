@@ -10,7 +10,7 @@ allowed_root_dirs = {
     "doc_work_idap26", "docs", "lab", "tools",
 }
 allowed_root_files = {
-    ".gitignore", "CITATION.cff", "README.md", "Vagrantfile",
+    ".gitignore", "CITATION.cff", "README.md", "Vagrantfile", "LICENSE", "DATA_LICENSE.md",
 }
 ignored_runtime = {".git", "__pycache__"}
 
