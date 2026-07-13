@@ -206,8 +206,8 @@
   ],
   "bundle": {
     "path": "data/final/saci_final_data_package.zip",
-    "bytes": 27149,
     "size": "26.5 KB",
-    "sha256": "e333f452f6798e12ffd55a22b04a7b7ffdad11c857162639203a7890f7fd2628"
+    "bytes": 27149,
+    "sha256": "a7b8c4eeb8fbf1434d0c2a38f035eaa32735a6737da3aacd7d11896a62d960a1"
   }
 }
