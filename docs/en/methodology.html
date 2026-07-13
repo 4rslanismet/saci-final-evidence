@@ -970,13 +970,12 @@
 <div><dt>Explanation layer</dt><dd>A non-scoring layer that interprets deterministic SACI outputs in natural language.</dd></div>
 </dl>
 </section>
-<!-- SACI_INTEGRITY_METHOD_START --><section class="section integrity-method-section" id="integrity-gate"><h2>Independent evidence-integrity gate</h2><p>Finding F-01 shows that relation closure and graph integrity are distinct validation dimensions.</p><p><a href="integrity.html">Open integrity report →</a></p></section><!-- SACI_INTEGRITY_METHOD_END -->
-<!-- VALIDATION_EXPERIMENTS_SYNC_START -->
+<!-- SACI_INTEGRITY_METHOD_START --><section class="section integrity-method-section" id="integrity-gate"><h2>Independent evidence-integrity gate</h2><p>Finding F-01 shows that relation closure and graph integrity are distinct validation dimensions.</p><p><a href="integrity.html">Open integrity report →</a></p></section><!-- SACI_INTEGRITY_METHOD_END --><!-- VALIDATION_EXPERIMENTS_SYNC_START -->
 <section class="section portal-sync-section" id="integrity-validation-experiments">
-  <h2>Integrity-validation experiments</h2>
-  <p>The F-01 narrative is not limited to the historical 97/99 pre-release case. Integrity-gate behavior was tested through nine controlled fault-injection cases, all of which matched their pre-declared expected status. The canonical 99-node / 171-relation structure was also replicated at 1×, 10×, 100×, and 1000× synthetic cardinalities to measure validation time and traced Python peak memory.</p>
-  <p>The largest synthetic case contained 99,000 nodes and 171,000 edge rows, with a median validation time of 883.438 ms and median peak memory of 41.170 MiB. This result concerns validator data-structure scalability only.</p>
-  <div class="portal-sync-links"><a href="../integrity.html#validation-experiments">Open experiment results</a><a href="../data/validation/BENCHMARK_PROTOCOL.md">Download protocol</a></div>
+<h2>Integrity-validation experiments</h2>
+<p>The integrity gate was tested with nine controlled fault-injection cases, all of which produced the expected status. The canonical 99-node / 171-relation structure was also replicated at 1×–1000× cardinalities.</p>
+<p>The largest synthetic case contained 99,000 nodes and 171,000 edge rows, with a median time of 883.438 ms and peak memory of 41.170 MiB. This result concerns validator data-structure scalability only.</p>
+<div class="portal-sync-links"><a href="integrity.html#validation-experiments">Experiment results</a><a href="../data/validation/BENCHMARK_PROTOCOL.md">Protocol</a></div>
 </section>
 <!-- VALIDATION_EXPERIMENTS_SYNC_END -->
 </main>

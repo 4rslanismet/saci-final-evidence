@@ -7,7 +7,7 @@ authors:
     given-names: "İsmet"
 repository-code: "https://github.com/4rslanismet/saci-final-evidence"
 url: "https://4rslanismet.github.io/saci-final-evidence/"
-version: "v1.0.0-integrity-valid"
+version: "1.0.0-integrity-valid"
 date-released: "2026-07-12"
 abstract: >-
   A scope-bounded, graph-supported SIEM-CTI evidence coverage

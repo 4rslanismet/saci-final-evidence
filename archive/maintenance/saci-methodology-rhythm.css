@@ -1,0 +1,368 @@
+/*
+ * SACI — Methodology typography and spacing rhythm
+ *
+ * Reference values are taken from the Methodology page:
+ * - Intro title maximum width: 1180px
+ * - Intro/lead maximum width: 980px
+ * - Narrative section maximum width: 1120px
+ * - Body copy maximum width: 1040px
+ * - Body copy size/leading: 17px / 1.8
+ * - Section vertical rhythm: 54px
+ *
+ * This file changes copy width and vertical rhythm only.
+ * Graphs, tables, figures, cards and application panels remain full-width.
+ */
+
+:root {
+  --saci-method-title-width: 1180px;
+  --saci-method-lead-width: 980px;
+  --saci-method-section-width: 1120px;
+  --saci-method-copy-width: 1040px;
+  --saci-method-section-space: 54px;
+  --saci-method-intro-gap: 72px;
+}
+
+/* ---------------------------------------------------------
+   1. Natural text behavior
+   --------------------------------------------------------- */
+
+body main :is(p, li) {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+body main :is(code, pre, .data-file-name strong, .data-hash, .path-value) {
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* ---------------------------------------------------------
+   2. Intro / hero copy
+   Mirrors the Methodology page without widening the whole page.
+   --------------------------------------------------------- */
+
+body main > section:first-child,
+body main > .hero:first-child,
+body main > .scenario-hero:first-child,
+body main > .scenarios-hero:first-child,
+body main > .architecture-hero:first-child,
+body main > .evidence-hero:first-child,
+body main > .artifacts-hero:first-child,
+body main > .explanation-hero:first-child,
+body main > .paper-hero:first-child,
+body main > .data-hero:first-child {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+body main > section:first-child > h1,
+body main > .hero:first-child h1,
+body main > .scenario-hero:first-child h1,
+body main > .scenarios-hero:first-child h1,
+body main > .architecture-hero:first-child h1,
+body main > .evidence-hero:first-child h1,
+body main > .artifacts-hero:first-child h1,
+body main > .explanation-hero:first-child h1,
+body main > .paper-hero:first-child h1,
+body main > .data-hero:first-child h1 {
+  width: auto !important;
+  max-width: var(--saci-method-title-width) !important;
+  margin-bottom: 28px !important;
+  text-wrap: pretty !important;
+}
+
+/* Methodology lead width and leading */
+body main > section:first-child > .lead,
+body main > section:first-child > p,
+body main > .hero:first-child p,
+body main > .scenario-hero:first-child .lead,
+body main > .scenario-hero:first-child > p,
+body main > .scenarios-hero:first-child .lead,
+body main > .architecture-hero:first-child .lead,
+body main > .evidence-hero:first-child .lead,
+body main > .artifacts-hero:first-child .lead,
+body main > .explanation-hero:first-child .lead,
+body main > .paper-hero:first-child .lead,
+body main > .paper-hero:first-child .paper-scope,
+body main > .data-hero:first-child .lead,
+body main > .data-hero:first-child .data-scope,
+body[data-page="graph"] #graph-instructions {
+  width: auto !important;
+  max-width: var(--saci-method-lead-width) !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  font-size: clamp(17px, 1.35vw, 20px) !important;
+  line-height: 1.74 !important;
+  text-wrap: pretty !important;
+}
+
+/* Additional intro paragraphs should follow body-copy rhythm */
+body main > section:first-child > p:not(.lead),
+body main > section:first-child > blockquote,
+body main > section:first-child > .scope-note,
+body main > section:first-child > .scenario-note,
+body main > section:first-child > .architecture-note,
+body main > .scenario-hero:first-child .scenario-note {
+  max-width: var(--saci-method-copy-width) !important;
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+body main > section:first-child > p + p,
+body main > section:first-child > .lead + p,
+body main > section:first-child > p + blockquote,
+body main > section:first-child > p + .scope-note,
+body main > section:first-child > p + .scenario-note {
+  margin-top: 16px !important;
+}
+
+/* ---------------------------------------------------------
+   3. Narrative sections
+   Full-width widgets remain untouched.
+   --------------------------------------------------------- */
+
+body main > section.section {
+  width: 100% !important;
+  max-width: var(--saci-method-section-width) !important;
+  padding-top: var(--saci-method-section-space) !important;
+  padding-bottom: var(--saci-method-section-space) !important;
+}
+
+body main > section.section > h2,
+body main > section.section > h3 {
+  max-width: 980px !important;
+}
+
+body main > section.section > p,
+body main > section.section > .note,
+body main > section.section > ul,
+body main > section.section > ol {
+  max-width: var(--saci-method-copy-width) !important;
+}
+
+body main > section.section > p {
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+body main > section.section > p + p {
+  margin-top: 16px !important;
+}
+
+body main > section.section > :is(ul, ol) {
+  font-size: 17px !important;
+  line-height: 1.78 !important;
+}
+
+/* ---------------------------------------------------------
+   4. Section-heading copy for full-width pages
+   Cards, figures and tables retain their own width.
+   --------------------------------------------------------- */
+
+body main :is(
+  .scenario-section-head,
+  .paper-section-head,
+  .data-section-head,
+  .explanation-section-head,
+  .evidence-section-head,
+  .artifacts-section-head,
+  .page-section-head,
+  .figure-title
+) {
+  width: 100% !important;
+  max-width: var(--saci-method-section-width) !important;
+}
+
+body main :is(
+  .scenario-section-head,
+  .paper-section-head,
+  .data-section-head,
+  .explanation-section-head,
+  .evidence-section-head,
+  .artifacts-section-head,
+  .page-section-head,
+  .figure-title
+) > :is(h2, h3) {
+  max-width: 980px !important;
+}
+
+body main :is(
+  .scenario-section-head,
+  .paper-section-head,
+  .data-section-head,
+  .explanation-section-head,
+  .evidence-section-head,
+  .artifacts-section-head,
+  .page-section-head,
+  .figure-title
+) > p {
+  max-width: var(--saci-method-copy-width) !important;
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+/* ---------------------------------------------------------
+   5. Home editorial copy
+   --------------------------------------------------------- */
+
+body[data-page="home"] .micro-lead {
+  max-width: var(--saci-method-lead-width) !important;
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+  margin-top: 16px !important;
+}
+
+body[data-page="home"] .editorial-body,
+body[data-page="home"] .editorial-body p,
+body[data-page="home"] .compact-list {
+  max-width: var(--saci-method-copy-width) !important;
+}
+
+body[data-page="home"] .editorial-body p,
+body[data-page="home"] .compact-list li {
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+body[data-page="home"] .editorial-body p + p {
+  margin-top: 16px !important;
+}
+
+/* ---------------------------------------------------------
+   6. Architecture
+   The diagram remains full width; only its text follows Methodology.
+   --------------------------------------------------------- */
+
+body[data-page="architecture"] main > section:first-child {
+  margin-bottom: var(--saci-method-intro-gap) !important;
+}
+
+body[data-page="architecture"] .figure-section {
+  width: 100% !important;
+  max-width: none !important;
+  padding-top: 0 !important;
+}
+
+body[data-page="architecture"] .figure-title {
+  margin-bottom: 20px !important;
+}
+
+body[data-page="architecture"] .figure-shell {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* ---------------------------------------------------------
+   7. Scenarios
+   Summary/cards/table remain full width.
+   --------------------------------------------------------- */
+
+body[data-page="scenarios"] .scenario-hero,
+body[data-page="scenarios"] .scenarios-hero {
+  margin-bottom: var(--saci-method-intro-gap) !important;
+}
+
+body[data-page="scenarios"] .scenario-note {
+  max-width: var(--saci-method-copy-width) !important;
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+/* ---------------------------------------------------------
+   8. Graph
+   Only intro and explanatory prose are constrained.
+   Graph application stays wide.
+   --------------------------------------------------------- */
+
+body[data-page="graph"] .hero {
+  display: block !important;
+  width: 100% !important;
+  max-width: var(--saci-method-title-width) !important;
+  margin-bottom: 34px !important;
+}
+
+body[data-page="graph"] .hero > div {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+body[data-page="graph"] .explain-box {
+  width: 100% !important;
+  max-width: var(--saci-method-section-width) !important;
+}
+
+body[data-page="graph"] .explain-box p {
+  max-width: var(--saci-method-copy-width) !important;
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+body[data-page="graph"] .explain-box p + p {
+  margin-top: 16px !important;
+}
+
+body[data-page="graph"] :is(
+  .graph-app,
+  .toolbar,
+  .stats,
+  .graph-frame,
+  .lower-grid
+) {
+  max-width: none !important;
+}
+
+/* ---------------------------------------------------------
+   9. Explanation, Paper, Data and Evidence
+   Their functional grids remain full width.
+   --------------------------------------------------------- */
+
+body[data-page="explanation"] .explanation-hero,
+body[data-page="paper"] .paper-hero,
+body[data-page="data"] .data-hero,
+body[data-page="evidence"] .evidence-hero,
+body[data-page="artifacts"] .artifacts-hero {
+  margin-bottom: var(--saci-method-intro-gap) !important;
+}
+
+body[data-page="explanation"] :is(.report-block, .academic-note) p,
+body[data-page="paper"] .academic-note p,
+body[data-page="evidence"] .evidence-copy p {
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+/* ---------------------------------------------------------
+   10. Responsive behavior
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  :root {
+    --saci-method-intro-gap: 52px;
+    --saci-method-section-space: 42px;
+  }
+
+  body main > section:first-child > h1,
+  body main > .hero:first-child h1,
+  body main > .scenario-hero:first-child h1,
+  body main > .scenarios-hero:first-child h1,
+  body main > .architecture-hero:first-child h1,
+  body main > .evidence-hero:first-child h1,
+  body main > .artifacts-hero:first-child h1,
+  body main > .explanation-hero:first-child h1,
+  body main > .paper-hero:first-child h1,
+  body main > .data-hero:first-child h1,
+  body main > section:first-child > .lead,
+  body main > section:first-child > p,
+  body main > .hero:first-child p,
+  body main > .scenario-hero:first-child .lead,
+  body main > .scenarios-hero:first-child .lead,
+  body main > .architecture-hero:first-child .lead,
+  body main > .evidence-hero:first-child .lead,
+  body main > .artifacts-hero:first-child .lead,
+  body main > .explanation-hero:first-child .lead,
+  body main > .paper-hero:first-child .lead,
+  body main > .data-hero:first-child .lead {
+    max-width: 100% !important;
+  }
+}

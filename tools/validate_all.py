@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
-import subprocess,sys
+import subprocess
+import sys
 from pathlib import Path
-root=Path(__file__).resolve().parents[1]
-academic=root/"tools"/"validate_academic_site.py"
-if academic.exists():
- rc=subprocess.run([sys.executable,str(academic)],cwd=root).returncode
- if rc: sys.exit(rc)
-sync=root/"tools"/"validate_portal_paper_sync.py"
-if sync.exists():
- rc=subprocess.run([sys.executable,str(sync)],cwd=root).returncode
- if rc: sys.exit(rc)
-sys.exit(subprocess.run([sys.executable,str(root/"tools"/"validate_integrity.py"),"--data-dir","docs/data/final","--check"],cwd=root).returncode)
+
+root = Path(__file__).resolve().parents[1]
+commands = [
+    [sys.executable, str(root / "tools" / "validate_academic_site.py")],
+    [sys.executable, str(root / "tools" / "validate_integrity.py"), "--data-dir", "docs/data/final", "--check"],
+    [sys.executable, str(root / "tools" / "validate_portal_paper_sync.py")],
+    [sys.executable, str(root / "tools" / "validate_repository.py")],
+]
+
+for command in commands:
+    result = subprocess.run(command, cwd=root)
+    if result.returncode:
+        sys.exit(result.returncode)
+
+print("SACI combined validation PASSED")

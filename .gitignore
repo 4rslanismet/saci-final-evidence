@@ -1,91 +1,33 @@
-_extract/
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local build and runtime files
 *.tmp
 *.bak
 *.log
-__pycache__/
-*.py[cod]
-/.vagrant/
-/lab/state/
-
-# Private local conversation memory. Never publish this directory.
-/.private/
-
-# ChatGPT export files are private and must not be added at repository root.
-/chat.html
-/conversations.json
-/conversations-*.json
-/conversation_asset_file_names.json
-/export_manifest.json
-/group_chats.json
-/library_files.json
-/shared_conversations.json
-/user.json
-/user_settings.json
-/file-*.dat
-/file_*.dat
-
-# Local site-build workspaces and safety backups. Never publish these.
-/_local_backups/
-/_saci_final_seed/
-/saci-academic-portal/
-/docs_backup_*/
-/.paper_clean_backups/
-/saci_final_seed_current.zip
-/saci_site_builder_package.zip
-
-# Local release work
+.DS_Store
+Thumbs.db
+.vagrant/
+lab/state/
 backups/
-archive/
-*.zip
-apply_*.py
-repair_*.py
-finalize_*.py
-README_INTEGRITY_*PHASE*.txt
+.cleanup-backup/
+.private/
 
-# Local release work
-
-# SACI_LOCAL_RELEASE_WORK_START
-
-# Yerel yedekler ve geçici release araçları
-/backups/
-/archive/legacy_published_final_v2_*/
+# Local archives and patch packages
 /*.zip
-
-# Yayınlanması gereken kanonik ZIP istisnası
-!/docs/data/final/saci_final_data_package.zip
-
 /apply_*.py
 /repair_*.py
 /finalize_*.py
-/fix_*.py
-/patch_*.py
+/cleanup_*.sh
 
-# Geçici kurulum açıklamaları
-/README*.txt
-/AGENTS.md
+# Preserve the canonical downloadable research package
+!/docs/data/final/saci_final_data_package.zip
 
-# Yerel çalışma ve makale üretim dizinleri
-/arch.png
-/code/
-/data/
-/deliverables/
-/doc_work_idap26/
-/saci-methodology-rhythm.css
-
-# HTML/JS yedekleri ve tasarım denemeleri
-/docs/*.backup.*.html
-/docs/assets/*.backup.*.js
-/docs/home_concepts.html
-/docs/home_10_concepts.html
-
-# Artık kanonik olmayan yayımlanmamış veri kopyaları
-/docs/evidence/data/
-/docs/evidence/lab/final/
-
-# SACI_LOCAL_RELEASE_WORK_END
-
-# Local SACI maintenance artifacts
-/.cleanup-backup/
-/README_*.txt
-/README.txt
-/README_APPLY.txt
+# Office temporary files
+~$*.docx
+~$*.xlsx
+~$*.pptx

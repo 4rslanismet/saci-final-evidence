@@ -1,16 +1,57 @@
-SACI Final Evidence Validation
+SACI CANONICAL FINAL DATASET VALIDATION
+======================================
 
-SACI: 100.0
-CWLC: 100.0
-CAC: 100.0
-MDC: 100.0
-CTIC: 100.0
-TF: 100
+Dataset type: Canonical publication snapshot
 
-Nodes: 97
-Edges: 171
-Observed edges: 171
-Missing edges: 0
+SCORE CHECKS
+------------
+[PASS] CWLC = 100.0
+[PASS] CAC  = 100.0
+[PASS] MDC  = 100.0
+[PASS] CTIC = 100.0
+[PASS] TF   = 100.0
+[PASS] SACI = 100.0
 
-SACI=100 does not indicate that the monitored environment is fully secure.
-It indicates that all expected visibility relations defined within the declared evaluation scope were observed and closed.
+RELATION CHECKS
+---------------
+[PASS] Declared nodes: 99
+[PASS] Rendered nodes: 99
+[PASS] Edge rows: 171
+[PASS] Unique edge triples: 165
+[PASS] Observed edges: 171
+[PASS] Missing edges: 0
+
+COVERAGE CHECKS
+---------------
+[PASS] Assets: 6
+[PASS] Expected asset-log relations: 12
+[PASS] Observed asset-log relations: 12
+[PASS] Enabled controls: 25
+[PASS] Seen enabled controls: 25
+[PASS] MITRE techniques covered: 13/13
+[PASS] CTI/MISP chains closed: 2/2
+[PASS] Active reason codes: 0
+
+STRUCTURAL INTEGRITY
+--------------------
+[PASS] Undeclared endpoints: 0
+[PASS] Duplicate node identifiers: 0
+[PASS] Conflicting direct ATT&CK mappings: 0
+[PASS] CSV-CYJS mismatch: 0
+[PASS] Parallel evidence rows without unique evidence_id: 0
+[PASS] Undocumented isolated nodes: 0
+
+OVERALL RESULT
+--------------
+VALID
+PUBLICATION GATE: OPEN
+
+F-01 HISTORY
+------------
+The former 97/99 mismatch is retained only as a pre-release regression case.
+The current canonical release is 99/99 and contains no active integrity finding.
+
+INTERPRETATION
+--------------
+SACI=100 is a scope-bounded evidence-closure result. It is not an absolute
+security guarantee or a claim of complete unknown attack-surface discovery.

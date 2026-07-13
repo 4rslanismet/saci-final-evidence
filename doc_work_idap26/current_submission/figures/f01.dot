@@ -1,0 +1,25 @@
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad="0.18", nodesep="0.55", ranksep="0.65", dpi=300];
+  node [shape=box, style="rounded", fontname="Times-Roman", fontsize=11, margin="0.16,0.12", color="black"];
+  edge [color="black", arrowsize=0.8];
+
+  pre [label=< <B>Pre-gate snapshot</B><BR ALIGN="LEFT"/>
+    <FONT POINT-SIZE="9">SACI = 100; closure = 171/171<BR ALIGN="LEFT"/>
+    97 declared / 99 rendered nodes<BR ALIGN="LEFT"/>
+    3 INVALID + 12 WARNING<BR ALIGN="LEFT"/>
+    Publication gate: BLOCKED</FONT> >];
+
+  fix [label=< <B>Corrective actions</B><BR ALIGN="LEFT"/>
+    <FONT POINT-SIZE="9">Declare missing endpoints<BR ALIGN="LEFT"/>
+    Separate direct mapping from CTI context<BR ALIGN="LEFT"/>
+    Assign unique evidence identifiers<BR ALIGN="LEFT"/>
+    Document isolation policy</FONT> >];
+
+  post [label=< <B>Canonical release</B><BR ALIGN="LEFT"/>
+    <FONT POINT-SIZE="9">SACI = 100; closure = 171/171<BR ALIGN="LEFT"/>
+    99 declared / 99 rendered nodes<BR ALIGN="LEFT"/>
+    Zero active integrity findings<BR ALIGN="LEFT"/>
+    Publication gate: OPEN</FONT> >];
+
+  pre -> fix -> post;
+}

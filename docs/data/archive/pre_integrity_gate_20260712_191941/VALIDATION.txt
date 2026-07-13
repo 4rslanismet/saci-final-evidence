@@ -1,0 +1,52 @@
+SACI CANONICAL FINAL DATASET VALIDATION
+======================================
+
+Dataset type: Canonical publication snapshot
+Package generated: 2026-07-11
+
+SCORE CHECKS
+------------
+[PASS] CWLC = 100.0
+[PASS] CAC  = 100.0
+[PASS] MDC  = 100.0
+[PASS] CTIC = 100.0
+[PASS] TF   = 100
+[PASS] SACI = 100.0
+
+RELATION CHECKS
+---------------
+[PASS] Declared nodes: 97
+[PASS] Edge rows: 171
+[PASS] Observed edges: 171
+[PASS] Missing edges: 0
+
+COVERAGE CHECKS
+---------------
+[PASS] Assets: 6
+[PASS] Expected asset-log relations: 12
+[PASS] Observed asset-log relations: 12
+[PASS] Enabled controls: 25
+[PASS] Seen enabled controls: 25
+[PASS] MITRE techniques covered: 13/13
+[PASS] CTI/MISP chains closed: 2/2
+[PASS] Active reason codes: 0
+
+STRUCTURAL INTEGRITY
+--------------------
+[REVIEW] Undeclared edge endpoints: 2
+         - LOGSOURCE:Wazuh
+         - MITRE:T1071.001
+
+OVERALL RESULT
+--------------
+PASS WITH STRUCTURAL REVIEW
+
+INTERPRETATION
+--------------
+All declared visibility relations in the canonical evaluation scope are
+observed. The two undeclared endpoints are retained as a structural graph
+integrity finding. They do not change relation closure, active reason-code
+status, or the SACI score.
+
+SACI=100 is a scope-bounded visibility result. It is not an absolute security
+guarantee and does not claim discovery of every unknown attack-surface element.
